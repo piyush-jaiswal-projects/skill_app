@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Interview Prep</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no,maximum-scale=1.0">
+        <link rel="stylesheet" href="../css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="../css/animate.css" type="text/css" />
+        <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css" />
+        <link rel="stylesheet" href="../css/font.css" type="text/css" />
+        <link rel="stylesheet" href="../js/nestable/nestable.css" type="text/css" />
+        <link rel="stylesheet" href="../css/app.css" type="text/css" />
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/bootstrap.js"></script>
+        <script src="../js/app.js"></script>
+        <script src="../js/app.plugin.js"></script>
+        <script src="../js/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="../js/sortable/jquery.sortable.js"></script>
+        <script src="../js/nestable/jquery.nestable.js"></script>
+        <script src="../js/nestable/demo.js"></script>
+        <link rel="stylesheet" href="../css/SessionList.css" type="text/css"/>
+
+        <meta charset="UTF-8">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=0.8, user-scalable=no"/>
+        <script src="../js/SessionList/SessionList.js"></script>
+       
+    </head>
+    <body onload="OScall();">
+        <div > 
+        <div id="mainId" class="listContainer container"> </div>
+        </div>
+    
+        
+        <div id="progressID" class="progressModel"> 
+            <!--data-toggle="tooltip" data-original-title="30%"-->
+            <div id="downloadMSGID" class = "text-center" style="margin-left: 5%;margin-top: 2%;font-size:16px; padding-bottom: 15px">Downloading.... </div>
+            <div class="progress progress-sm m-t-sm  active text-center" style="margin-left: 5%;width: 90%;">
+                
+                <div id ="fillprogressID" class="progress-bar progress-bar-danger" style="width:1%"></div>
+                
+            </div>
+            <div class="col-lg-12 col-xs-12">
+                   <div class="col-lg-2 col-xs-2 col-sm-2">
+                   
+                  </div>
+                
+                <div class="col-lg-8 col-xs-8 col-sm-8">
+<!--                   <div id="progressCancelId" onclick=closeDownloadPrgressBarCall(); class = "text-center" style = "color:#5dc9e6; background: white; font-size: 18px;">
+                       <div id="msgTextId" class="text-center" style="display:none;">wait....</div>      
+                    </div> -->
+                </div>
+                
+                <div class="col-lg-2 col-xs-2 col-sm-2">
+                   
+                </div>
+                     
+                    
+                </div>
+      </div>
+        
+        
+        
+
+        
+        
+        <div id="Modelbar" class="modalWindow"> 
+            <div class = "text-center" style="sfont-size:21px; padding-bottom: 5px">Downloading.... </div>
+
+            <div style="background: #de5e00;;height: 1px;width: 100%;"></div>
+            <div class="text-center">
+                <img src="../images/loading.gif" class ="divElement">
+            </div>
+           </div>     
+     
+        
+        
+        
+        
+        
+        
+        
+        <div id="alertID" class="alertIDModel">
+            
+            <div id="displayMSG" style="font-size:16px; padding-top: 30px;padding-bottom: 5px;height:100px" class="text-center scrollable">
+
+            </div>
+            <div class="col-lg-12 col-xs-12">
+                   <div class="col-lg-3 col-xs-3 col-sm-3">
+                   
+                  </div>
+                
+                <div class="col-lg-5 col-xs-5 col-sm-5">
+                   <div id="okId" onclick=closeAlert() class = "text-center dd-handle" style = "color: black; background: #5dc9e6;">
+                         
+                    </div> 
+                </div>
+                
+                <div class="col-lg-4 col-xs-4 col-sm-4">
+                   
+                </div>
+                     
+                    
+                </div>
+        </div>
+        
+        
+        
+        <div id="modal" class="modalWindow"> 
+            <div class = "text-center" style="font-size:21px; padding-bottom: 5px">Interview Prep </div>
+            <div style="background: #5dc9e6;height: 1px;width: 100%;"></div>
+            <div class="text-center">
+                
+            </div>
+            <div id="modalDynamicText" style="font-size:16px; padding-top: 5px;padding-bottom: 5px;height:135px" class="scrollable text-center">
+
+            </div>
+            <div style="padding-top:5px;"> 
+                <a onclick=closeModalAlert() class = "col-lg-12 col-xs-12 col-sm-12 text-center dd-handle dd-hover" style = "color: white; background: #5dc9e6;" >
+                    OK
+                </a>
+
+            </div>
+        </div>
+        <div id="fadeout"></div>
+    </body>
+</html>

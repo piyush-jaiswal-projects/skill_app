@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "Vocab Edge",
+    "slug": "VocabBuilderV2",
+    "version": "1.03",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "backgroundColor": "#000000",
+      "image": "./assets/splash_vocab.png",
+      "resizeMode": "contain"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "buildNumber": "1.0",
+      "supportsTablet": true,
+      "bundleIdentifier": "com.liqvid.EE",
+      "infoPlist":{
+        "NSLocationWhenInUseUsageDescription":"we use the users location to get the country and city.",
+        "NSPhotoLibraryUsageDescription":"Enable Application to access your camera roll to upload your photos and save ones you to your learning records.",
+        "NSCameraUsageDescription":"Enable camera access to be able to take photos and videos then add them to your learning records."
+
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "android": {
+      "package": "com.liqvid.vocab",
+      "versionCode": 1
+    },
+    "description": ""
+  }
+}

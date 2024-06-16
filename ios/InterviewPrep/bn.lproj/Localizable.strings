@@ -1,0 +1,235 @@
+/* 
+  language.strings
+  InterviewPrep
+
+  Created by Amit Gupta on 19/11/14.
+  Copyright (c) 2014 Liqvid. All rights reserved.
+*/
+
+
+"HM_LOGIN"      ="প্রবেশ কর";
+"HM_SIGNUP"      ="নিবন্ধন করুন";
+"RP_REGISTRATION"          ="নিবন্ধন";
+"RP_TEXT"   ="চালিয়ে যেতে তথ্য পূরণ করুন।";
+"RP_FIRSTNAME"             ="নামের প্রথম অংশ";
+"RP_LASTNAME"              ="নামের শেষাংশ";
+"RP_EMAILID" ="ইমেইল আইডি";
+"RP_PASSWORD"              ="পাসওয়ার্ড";
+"RP_MOBILENO"              ="মোবাইল নম্বর (ঐচ্ছিক)";
+"RP_IAGREETEXT"            ="<em>আমি সেবা ব্যবহারের শর্তে রাজি.</em>";
+"RP_FNAME_MSG"                ="প্রথম নাম ফাঁকা হতে পারে না।";
+"RP_LNAME_MSG"                ="শেষ নাম ফাঁকা হতে পারে না।";
+"RP_ENAME_MSG"                ="ইমেল আইডি ফাঁকা হতে পারে না";
+"RP_VALIDEMAIL_MSG"         ="একটি বৈধ ইমেল আইডি লিখুন দয়া করে";
+"RP_PNAME_MSG"                ="পাসওয়ার্ড ফাঁকা হতে পারে না";
+"RP_VALIDTC_MSG" ="দয়া করে পরিষেবার শর্তাদি নির্বাচন করুন।";
+"RP_MNAME_MSG"                ="মোবাইল নম্বরের একটি কম 10 টি সংখ্যা থাকা উচিত।";
+"RP_SIGNUP" ="নিবন্ধন করুন";
+"TC_TERMCONDITION"                    ="সেবা পাবার শর্ত";
+"TC_SKIP"                ="অস্বীকার করুন";
+"TC_IAGREE"                 ="আমি রাজী";
+"LP_UNAME_PLACEHOLDER"        ="ইমেল আইডি / ইউজারনেম";
+"LP_PWD"                    ="পাসওয়ার্ড";
+"LP_LOSTPWD"                        ="পাসওয়ার্ড ভুলে গেছেন?";
+"LP_LOGIN"                    ="প্রবেশ কর";
+"LP_UNAME_MSG"                        ="দয়া করে ইমেল আইডি লিখুন";
+"LP_PWD_MSG"                        ="পাসওয়ার্ড লিখুন দয়া করে";
+"LP_INVALID_PWD"                    ="অবৈধ ইমেইল আইডি বা পাসওয়ার্ড";
+"CLP_TITLE" ="আমার কোর্স";
+"CLP_COURSES"="কোর্স";
+"CLP_STATUS"="স্থিতি";
+"MENU_MCP"="আমার সামগ্রী প্যাক";
+"MENU_ACP"="সামগ্রী প্যাক যোগ করুন";
+"MENU_ABOUNTUS"="আমাদের সম্পর্কে";
+"MENU_FEEDBACK"="সাহায্য ডেস্ক";
+"MENU_LOGOUT"="প্রস্থান";
+"MENU_MCP_TEXT"="একটি বিষয়বস্তু প্যাক নির্বাচন করুন।";
+"MENU_AUTH_MSG"="আপনি এই ডিভাইসে সামগ্রী প্যাক অ্যাক্সেস করতে অনুমোদিত নন।";
+"MENU_DEACTIVTAED_MSG"="সামগ্রী প্যাক নিষ্ক্রিয়। প্রশাসকের সাথে যোগাযোগ করুন দয়া করে।";
+"MENU_EXPIRE_MSG"="সামগ্রী প্যাক মেয়াদ শেষ হয়ে গেছে।";
+"MENU_LIMIT_MSG"="এই সামগ্রী প্যাকের জন্য ডিভাইস সীমা অতিক্রম করেছে";
+"SHARETITLE" ="বন্ধুদের সাথে ভাগাভাগি করা";
+"H_PROFILE"                    ="আমার অগ্রগতি";
+"H_CHAPTERS"                    ="অধ্যায়";
+"DOWNLOAD_MSG"              ="আপনি ডাউনলোড করতে চান?";
+"DOWNLOAD_LATER"            ="পরে হতে পারে";
+"DOWNLOAD_NOW"              ="হাঁ";
+"DLOAD_CHAP_MSG"            ="ডাউনলোড হচ্ছে। অনুগ্রহপূর্বক অপেক্ষা করুন…";
+"DOWNLOAD_CNL_MSG"          ="আপনি কি অধ্যায়ের ডাউনলোডটি বাতিল করতে চান?";
+"CHAP_DEL_CONT_TEXT" ="সামগ্রী মুছে ফেলার জন্য একটি অধ্যায় নির্বাচন করুন।";
+"CHAP_DEL_TITLE" ="বিষয়বস্তু মুছুন";
+"CHAP_DEL_NO_TEXT"="বর্তমানে মুছে ফেলার জন্য কোন অধ্যায় নেই।";
+"CHAP_DEL_CON_MSG"="আপনি কি এই অধ্যায়ের বিষয়বস্তু মুছে ফেলতে চান?";
+"MCQ_CORRECTANSS"="সঠিক উত্তরসমূহ";
+"ASSES_DETAIL_MSG" ="আপনি আপনার নিবন্ধিত ইমেল আইডি একটি বিস্তারিত রিপোর্ট পাবেন।";
+"VV_FULL_TRANS"                ="সম্পূর্ণ প্রতিলিপি দেখান";
+"VV_TRANS"                    ="প্রতিলিপি";
+"VV_HIDE_TRANS"                ="প্রতিলিপি লুকান";
+"INSTRUCTION_MSG_FR_VR"        ="ভিডিও দেখুন এবং তারপরে প্রদত্ত প্রম্পটগুলি ব্যবহার করে নিজের রেকর্ড করুন।";
+"INSTRUCTION_STEP"="ধাপ";
+"INSTRUCTION_WATCH"            ="ঘড়ি";
+"INSTRUCTION_ENACT"            ="নথি";
+"INSTRUCTION_REVIEW"            ="পর্যালোচনা";
+"POP_MSG_FR_CLOSE_VIDEO"        ="আপনি প্রস্থান করতে চান?";
+"POP_MSG_FR_CLOSE_VIDEO_F"      = "আপনি রেকর্ডিং ছাড়া প্রস্থান করতে চান আপনি কি নিশ্চিত?";
+"SETTING"    ="সেটিংস";
+"SETTING_MSG" ="রেকর্ডিং মোড নির্বাচন করুন";
+"SETTINGVIDEO"              ="ভিডিও";
+"SETTINGAUDIO"              ="অডিও";
+"PRACTICE_YOUR_TURN"            ="তোমার পালা";
+"MCQ_INS"="নির্দেশনা";
+"MCQ_RIGHT_ANS_HAI"         ="সঠিক উত্তর হল: %@";
+"MCQ_RESULT"="ফলে";
+"MCQ_RPLAYT"="আবার চেষ্টা কর!";
+"MCQ_SUBMITSCORE" ="স্কোর জমা দিন";
+"MCQ_WELLDONE"="সাবাশ!";
+"VOCAB_MSG"  ="আসুন এখন আমরা নির্দিষ্ট শব্দগুলির অনুবাদ অনুশীলন করি।";
+"VOCAB_EXPERT"                ="1.বিশেষজ্ঞ ভয়েস";
+"VOCAB_RECORD"                ="2.নথি";
+"VOCAB_REVIEW"                ="3.শোনা";
+"VOCAB_COMPARE"                ="4.তুলনা করা";
+"VOCAB_MEANING"                ="অর্থ";
+"VOCAB_USAGE"                ="ব্যবহার";
+"VOCAB_PRONOUNCIATION"                    ="উচ্চারণ";
+"VOCAB_ETYMOLOGIES"                    ="ব্যুৎপত্তি";
+"GAME_INS" ="একটি কম্পোনেন্ট চালু করতে ট্যাপ করুন";
+"CURRENT_CHAP"            ="বর্তমান অধ্যায়";
+"IR" ="কয়েন";
+"BADGE" ="ব্যাজ";
+"COURSECOM" ="সময় অতিবাহিত";
+"DB_PRO_COMP"                ="উন্নতি";
+"DB_YOUR"                    ="সময় (মিনিট) / অধ্যায়";
+"CHOOSE_PHOTO"  ="একটি প্রোফাইল ছবি চয়ন করুন";
+"CHOOSE_GALLERY"  ="গ্যালারি থেকে";
+"CHOOSE_CAMERA"  ="ছবিটি ক্লিক করুন";
+"NW_EMSG"                    ="আপনার নেটওয়ার্ক সংযোগ চেক করুন।";
+"CONTENT_UPDATE"        ="হালনাগাদ";
+"UPDATE_MSG"              ="আপনি কি আপডেট করতে চান?";
+"UPDATE_NOW"              ="হাঁ";
+"UPDATE_LATER"            ="পরে হতে পারে";
+"PLEASE_WAIT"                ="অনুগ্রহপূর্বক অপেক্ষা করুন...";
+"BACK"                        ="পিছনে";
+"SEND"                    ="পাঠান";
+"YES"                        ="হ্যাঁ";
+"NO"                        ="কোন";
+"NEXT"                        ="পরবর্তী";
+"SKIP"                    ="লাফালাফি করা";
+"CHAP_START"  ="শুরু";
+"CANCEL"                    ="বাতিল";
+"SUBMIT"                     ="জমা";
+"OK"                                ="ঠিক আছে";
+"BUY"                        ="Buy";
+"DOWNLOAD"   ="ডাউনলোড";
+"MCP_LOGOUT_TEXT"           ="লগ আউট করার আগে আপনি কি অগ্রগতি ডেটা সিঙ্ক্রোনাইজ করতে চান?\n\nদ্রষ্টব্য: ডেটা সিঙ্ক্রোনাইজ করার জন্য আপনার ডিভাইসটি ইন্টারনেটের সাথে সংযুক্ত হওয়া আবশ্যক।";
+"MCP_LOGOUT_WLOGOUT" ="এখন সিঙ্ক্রোনাইজ করুন এবং লগ আউট করুন";
+"MCP_LOGOUT_WOLOGOUT" ="সিঙ্ক্রোনাইজেশনের বাইরে লগ আউট করুন";
+"WARNING"="সতর্কতা";
+"ERROR"="এরর";
+"ALRDY_ADDED_CONTENT"="বিষয়বস্তু প্যাক ইতিমধ্যে যোগ করা।";
+"VALID_CONTENT_PACK"="বৈধ বিষয়বস্তু প্যাক লিখুন দয়া করে।";
+"COURSE_FILE_NA" ="আপনার কোর্স কোড চেক করুন।";
+"ENTER_CONTENT_PACK"="কন্টেন্ট প্যাক লিখুন দয়া করে";
+"CURRENT_CHAP_NA"="বর্তমান অধ্যায় উপলব্ধ নেই।";
+"VOCAB_PART_SPEECH"            ="বক্তৃতা অংশ";
+"CONTINUE"="চালিয়ে";
+"MCQ_CORRECTANS"="সঠিক উত্তর";
+"PURCHASE_MSG"="সব কোর্স ক্রয় ওয়েবমাস্টে দেখার জন্য";
+"RP_SUCCESSREGISTERED_MSG"    ="আপনি সফলভাবে রেজিস্টার করা হয়।";
+"RP_SUCCESSFORGOTPASSWORD_MSG" ="আপনার পাসওয়ার্ড আপনার ইমেল আইডি পাঠানো হয়";
+"LOCKED"="লক";
+
+
+
+
+
+
+
+
+
+
+
+"CONFIRM"                    ="Confirm";
+"JOIN"                         ="Join";
+"PLAY"                         ="Play";
+"DROPOUT"                    ="Dropout";
+"BOOKING_DETAIL"            ="Booking Detail";
+"BOOKED_ALERT"                 ="Booked Alert";
+"ACTIVITY_BUY_MSG"            ="Please click BUY to proceed to Payment Options or click CANCEL to go back";
+"ACTIVITY_CANCEL_BOOKING"    ="Cancel Booking";
+"ACTIVITY_CANCEL_REG_MSG"    ="Click CANCEL BOOKING to cancel your registered slot for the live webinar with our expert %s on %s scheduled for %s. Click BACK to go back";
+"ACTIVITY_CANCEL_SHD_MSG"    ="Please cancel booking of already scheduled session for %s at %s to schedule a new one.";
+"ACTIVITY_ERROR_MSG"         ="Server not responding";
+"ACTIVITY_FETCH_MSG"         ="Fetching data from server. Please wait.";
+"ACTIVITY_REG_MSG"           ="Your are registering for a live webinar session with our expert %s on %s scheduled for %s. Click CONFIRM to book your slot or CANCEL to go back";
+"ACTIVITY_NO_AVAIL_ROOM"    ="No room available.";
+"ACTIVITY_REC_VIDEOS"         ="Recorded Videos";
+"ACTIVITY_LIVE_WEBINAR"         ="Live Webinar";
+"ACTIVITY_NOT_FOUND_CLASSLIST"  ="Class list not found.";
+"ACTIVITY_NOT_FOUND_CLASS"      ="No class found.";
+"ACTIVITY_NOT_FOUND_CLASS_EMSG" ="The ACTIVITY sessions are Instructor led Virtual classroom based or contact class based sessions that focus on learner activities like role plays, mock interviews, group discussions, query resolution etc. For further details, please drop a mail to the email Id : <i>englishedge@liqvid.com</i>";
+
+"ACTIVITY_RECORDED"        ="Recording";
+"ACTIVITY_UPCOMING"      ="Upcoming";
+"ACTIVITY_ENROLL_NOW"    ="Enroll Now" ;
+"ACTIVITY_ENROLL_LATER"    ="Enroll Later" ;
+"ACTIVITY_ENROLL_MSG"    ="Do you want to enroll webinar?" ;
+"RP_BEC_IAGREETEXT"            ="I agree with the Cambridge Assessment English<em>Privacy Policy</em>";
+
+
+"LP_UNAME_TEXT"                ="";
+
+"LP_DIFF_USR_MSG"                    ="This is a personalized app and hence each installation can be used by a single user only. To use this app on this device with your user name, first uninstall and then re-install";
+
+"DB_AVG"                        ="AVG IR";
+"H_HOME"                        ="Home";
+"INSTRUCTION_REVIEW_MSG"        ="Please complete the enact scenario";
+"LOCK_MODULE_EMSG"            ="This Section is as yet locked for you. Please complete the previous Section(s) first.";
+"VOCAB_GRAPH"                ="Audio Graph";
+
+"ACTIVITY"   ="Webinar";
+"MCQ_RIGHT_ANS"             ="";
+"MCQ_WRONG_ANS"             ="";
+"COMPLETE"   ="Complete";
+"MDB_REFRESH" ="Refresh";
+"UPDATE_AVAIL"              ="Update available...";
+"UPDATING"   ="Updating ...";
+"SHAREFACEBOOK"             ="Facebook";
+"SHAREWHATSAPP"             ="WhatsApp";
+"SHARETWITTER"              ="Twitter";
+"SHAREGOOGLEPLUS"           ="Google Plus";
+"SHAREGMAIL" ="Mail";
+"YOUGOT"     ="You got %s points";
+"COMPLETE"      ="Completed";
+"CONGRATS"      ="Congratulations !";
+
+
+
+"LP_UNIQUECODE" ="Licence key";
+"RP_ENTERUNIQUECODE"="Please enter Licence key.";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

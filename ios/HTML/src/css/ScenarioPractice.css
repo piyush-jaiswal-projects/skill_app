@@ -1,0 +1,140 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 7 Jul, 2014, 11:42:19 PM
+    Author     : liqmac
+*/
+
+.headerDiv
+{
+    background:white;//#52b266;//#de5e00;
+    height: 60px; 
+    font-size: 19px;
+    //color :black;
+    font-family: "Helvetica";
+    padding-top:10px;
+    padding-left: 10px;
+    
+    
+    
+}
+
+.headerDivPhone
+{
+    background:white;//#52b266;//#de5e00;
+    height: 60px; 
+    font-size: 16px;
+    font-family: "Helvetica";
+    //color :black;
+    padding-top:7px;
+    padding-left: 10px;
+    
+    
+    
+}
+
+.headerDivTab
+{
+    background:white;//#52b266;//#de5e00;
+    height: 80px; 
+    font-size: 20px;
+    font-family: "Helvetica";
+    //color :black;
+    padding-top:10px;
+    padding-left: 10px;
+    
+    
+    
+}
+
+.SubheaderDiv
+{
+    height :40px;
+    font-size: 1.2em;
+    padding-top: 18px;
+    font-family: "Helvetica";
+    //background: white;
+    padding-left: 25px;
+    
+}
+
+.SubheaderDivPhone
+{
+    height :40px;
+    font-size: 18px;
+    padding-top: 6px;
+    background: #f5f5f5;
+    font-family: "Helvetica";
+    padding-left: 25px;
+    color:#4EBAE7;
+}
+
+.SubheaderDivTab
+{
+    height :40px;
+    font-size: 20px;
+    font-family: "Helvetica";
+    padding-top:6px;
+    background:#f5f5f5;
+    padding-left: 25px;
+    color:#4EBAE7;
+}
+
+
+
+.overallcontainer
+{
+    background: white;
+}
+
+.middleElementDivPhone
+{
+    height :120px;
+    font-size: 17px;
+    font-family: "Helvetica";
+    padding-top: 40px;
+    padding-left: 30px;
+    //background: white;
+}
+.middleElementDivTab
+{
+    height :120px;
+    font-size: 21px;
+    padding-top: 40px;
+    font-family: "Helvetica";
+    padding-left: 30px;
+    //background: white;
+}
+.middleElementDiv
+{
+    height :120px;
+    font-size: 1.2em;
+    font-family: "Helvetica";
+    padding-top: 40px;
+    padding-left: 30px;
+    //background: white;
+}
+
+.dotBorder
+{
+    height :1px;
+    background:#eeeeee;
+    //padding-left:20px;
+    
+  
+}
+
+.imgStyle
+{
+   font-size:35px;
+   
+}
+
+.textStyle
+{
+    padding-top:5px;
+}
+

@@ -1,0 +1,139 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 6 Jul, 2014, 5:46:10 PM
+    Author     : liqmac
+*/
+
+.Scenario
+{
+    //padding-top: 20px;
+    height: 60px;
+    background:#ffffff; //#52b266;
+    //font-size: 15px;
+    font-weight:normal;
+    font-family: "Helvetica";
+    /* font-family: "HelveticaNeueLTCom"; */
+     padding-top:15px;
+    
+    
+}
+
+.capData
+{
+    
+    height: 40px;
+    background: #f5f5f5; //#52b266 //#4EBAE7; //#F07083;//
+    //font-size: 21px;
+    font-weight:normal;
+    font-family: "Helvetica";
+    //font-family: "HelveticaNeueLTCom";
+    padding-left:50px;
+    padding-top:9px;
+    font-size:18px;
+    color:#4EBAE7; //#919191;
+    
+    
+}
+
+
+.headerFontStyle{
+    
+    padding-left: auto;
+    
+    
+    //font-color :"#353535";
+    
+}
+
+.learningItemImage
+{
+    padding-top:15px;
+    padding-left:5px;
+}
+
+.listMtext
+{
+ 
+  color:#000000;
+  font-size:22px;
+  font-family: "Helvetica";
+  /* font-family: "HelveticaNeueLTCom"; */
+}
+
+.listMArrow
+{
+    
+    color:#000000;
+}
+
+.textHeader{
+    padding-top:10px;
+}
+
+.learningItem{
+    padding-left: 50px;
+    background-color : white;
+    //padding : 0px;
+}
+
+
+.learningHeader {
+    font-size : 19px;
+    font-style : normal;
+    font-family: "Helvetica";
+    color : #919191;
+    text-align: left;
+    padding-top:10px;
+}
+
+.CuslearningItemTextHeader {
+	font-size : 18px;
+	font-style : normal;
+        font-family: "Helvetica";
+	color : #919191;
+	text-align: left;
+        margin-bottom:20px;
+        margin-top:28px;
+}
+
+.CuslearningItemTextHeaderup {
+	font-size : 18px;
+	font-style : normal;
+        font-family: "Helvetica";
+	color : #919191;
+	text-align: left;
+        margin-bottom:41px;
+        margin-top:13px;
+}
+.CuslearningItemTextHeaderdown {
+	font-size : 18px;
+	font-style : normal;
+        font-family: "Helvetica";
+	color : #919191;
+	text-align: left;
+        margin-bottom:22px;
+        margin-top:30px;
+}
+.CuslearningItemTextHeadermiddle {
+	font-size : 18px;
+	font-style : normal;
+        font-family: "Helvetica";
+	color : #919191;
+	text-align: left;
+        margin-bottom:20px;
+        margin-top:28px;
+}
+
+
+.learningItemHeader {
+	font-size : 18px;
+	font-style : normal;
+        font-family: "Helvetica";
+	color : #919191;
+	text-align: left;
+        padding-top:10px;
+}

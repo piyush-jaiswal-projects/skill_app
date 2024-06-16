@@ -1,0 +1,2197 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" class="app">
+    <head>
+        <script type="text/javascript">
+            function getParam(name)
+            {
+                name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+                var regexS = "[\\?&]" + name + "=([^&#]*)";
+                var regex = new RegExp(regexS);
+
+                var results = regex.exec(window.location.href);
+                if (results === null)
+                    return "";
+                else
+                    return results[1];
+
+            }
+        </script>
+        <meta charset="utf-8" />
+        <title>Interview Prep</title>
+        <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=0.9" /> 
+        <link rel="stylesheet" href="../css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="../css/animate.css" type="text/css" />
+        <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css" />
+        <link rel="stylesheet" href="../css/font.css" type="text/css" />
+        <link rel="stylesheet" href="../js/fuelux/fuelux.css" type="text/css" />
+        <link rel="stylesheet" href="../css/app.css" type="text/css" />
+        <link rel="stylesheet" href="../css/AssismentTest.css" type="text/css" />
+        <link rel="stylesheet" href="../js/nestable/nestable.css" type="text/css" />
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/bootstrap.js"></script>
+        <!-- App -->
+        <script src="../js/app.js"></script>
+        <script src="../js/app.plugin.js"></script>
+        <script src="../js/slimscroll/jquery.slimscroll.min.js"></script>
+        <!-- fuelux -->
+        <script src="../js/fuelux/fuelux.js"></script>
+        <!--[if lt IE 9]>
+        <script src="js/ie/html5shiv.js"></script>
+        <script src="js/ie/respond.min.js"></script>
+        <script src="js/ie/excanvas.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <!--        <div class="text-center">
+                    <ul class="pagination pagination">
+                        <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+                        
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li class="active"><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        
+                         <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+                    </ul>
+                </div>-->
+
+
+        <script language="javascript">
+
+
+
+
+         window.onerror = function (err) {
+                //log('window.onerror: ' + err)
+            }
+
+            function connectWebViewJavascriptBridge(callback) {
+                if (window.WebViewJavascriptBridge) {
+                    callback(WebViewJavascriptBridge)
+                } else {
+                    document.addEventListener('WebViewJavascriptBridgeReady', function () {
+                        callback(WebViewJavascriptBridge)
+                    }, false);
+                }
+            }
+
+            connectWebViewJavascriptBridge(function (bridge) {
+                
+                JSInterface =bridge;
+                
+                
+               
+                
+                var uniqueId = 1;
+                var Data;
+                var jsObject = new Object();
+                jsObject.type = "msg";
+                jsObject.data = 12;
+                var dataval = JSON.stringify(jsObject);
+                bridge.send(dataval, function (responseData) {
+                    messageObj = JSON.parse(responseData);
+                    //loadMessage(messageObj);
+                    
+                   
+                });
+                
+                //initialise();
+                var jsObject = new Object();
+                jsObject.type = "drawData";
+                jsObject.data = 12;
+                var dataval = JSON.stringify(jsObject);
+                bridge.send(dataval, function (responseData) {
+                    //messageObj = JSON.parse(responseData);
+                    //loadMessage(messageObj);
+                    var msg = responseData;
+                    initialise(msg); 
+                    
+                });
+            
+            function log(message, data) {
+                    var log = document.getElementById('log')
+                    var el = document.createElement('div')
+                    el.className = 'logLine'
+                    el.innerHTML = uniqueId++ + '. ' + message + ':<br/>' + JSON.stringify(data)
+                    if (log.children.length) {
+                        log.insertBefore(el, log.children[0])
+                    }
+                    else {
+                        log.appendChild(el)
+                    }
+                }
+                bridge.init(function (message, responseCallback) {
+
+                    
+                    //log('JS got a message', message)
+                    var data = {'Javascript Responds': 'Wee!'}
+                    //log('JS responding with', data)
+                    responseCallback(data)
+                });
+
+                bridge.registerHandler('testJavascriptHandler', function (data, responseCallback) {
+
+                    var responseData = {'Javascript Says': 'Right back atcha!'}
+
+                    responseCallback(responseData)
+                });
+            });
+            
+            
+            
+            
+            var JSInterface =null;
+
+
+            // final Var 
+            var AssismentObj = null;
+
+
+
+
+            var QuestionsArr = new Array();
+            var SelectedQuestion = null;
+            var FinalQues = new Array();
+            var AnswerArr = null;
+            var Selected_Id = 0;
+            var variableDiv = null;
+            var CompleteDivUi = null;
+            var liqvidVar = {};
+            var NumberOfQuestion = 0;
+            var VisibleDiv = 3;
+            var PrevVisibleDiv = 0;
+            liqvidVar.webdb = {};
+            liqvidVar.webdb.db = null;
+            var edgeId = null;
+            var xmlPath = "";
+            var xmlName = "";
+            var assisId = "";
+            var userName = "";
+            var Password = "";
+            var tokenValue = null;
+            var checkQues = 0;
+            var messageObj;
+
+            liqvidVar.webdb.open = function() {
+                var dbSize = 5 * 1024 * 1024; // 5MB
+                try
+                {
+                    liqvidVar.webdb.db = openDatabase("Assismentdb", "1.0", "Assisment manager", dbSize);
+                } catch (err)
+                {
+                    alert(err.message);
+                }
+            }
+
+            liqvidVar.webdb.createTable = function() {
+                var db = liqvidVar.webdb.db;
+                db.transaction(function(tx) {
+                    tx.executeSql("CREATE TABLE IF NOT EXISTS Assessments(uid VARCHAR PRIMARY KEY ,name TEXT,description TEXT,pid VARCHAR)", []);
+                    tx.executeSql("CREATE TABLE IF NOT EXISTS Questions(uid VARCHAR PRIMARY KEY, content TEXT, instruction TEXT,pid VARCHAR)", []);
+                    tx.executeSql("CREATE TABLE IF NOT EXISTS Answers(uid VARCHAR PRIMARY KEY, content TEXT, isCorrect INTEGER,pid VARCHAR)", []);
+                    tx.executeSql("CREATE TABLE IF NOT EXISTS delivery(uid INTEGER PRIMARY KEY, time INTEGER, noOfQuestion INTEGER,pid VARCHAR)", []);
+                    tx.executeSql("CREATE TABLE IF NOT EXISTS xml(uid VARCHAR , name VARCHAR,path VARCHAR)", []);
+
+
+
+
+                });
+            }
+
+            liqvidVar.webdb.insertAssessment = function(AssesId, Name, Description, pid) {
+                var db = liqvidVar.webdb.db;
+                db.transaction(function(tx) {
+
+                    tx.executeSql("INSERT INTO Assessments(uid, name,description,pid) VALUES (?,?,?,?)",
+                            [AssesId, Name, Description, pid],
+                            liqvidVar.webdb.onSuccess,
+                            liqvidVar.webdb.onError);
+                });
+            }
+
+
+            liqvidVar.webdb.insertXml = function(uid, name, path)
+            {
+                var db = liqvidVar.webdb.db;
+                db.transaction(function(tx) {
+
+                    tx.executeSql("INSERT INTO xml(uid, name,path) VALUES (?,?,?)",
+                            [uid, name, path],
+                            liqvidVar.webdb.onSuccess,
+                            liqvidVar.webdb.onError);
+                });
+            }
+
+            liqvidVar.webdb.insertQuestion = function(quesTionId, instruction, content, pid) {
+                var db = liqvidVar.webdb.db;
+                db.transaction(function(tx) {
+
+                    tx.executeSql("INSERT INTO Questions(uid, instruction,content,pid) VALUES (?,?,?,?)",
+                            [quesTionId, instruction, content, pid],
+                            liqvidVar.webdb.onSuccess,
+                            liqvidVar.webdb.onError);
+                });
+            }
+
+
+            liqvidVar.webdb.InsertAnswer = function(uid, isCorrect, content, pid) {
+                var db = liqvidVar.webdb.db;
+                db.transaction(function(tx) {
+
+                    tx.executeSql("INSERT INTO Answers(uid,content,isCorrect,pid) VALUES (?,?,?,?)",
+                            [uid, content, isCorrect, pid],
+                            liqvidVar.webdb.onSuccess,
+                            liqvidVar.webdb.onError);
+                });
+            }
+
+            liqvidVar.webdb.Insertdelivery = function(time, NuOfQuestion, pid) {
+                var db = liqvidVar.webdb.db;
+                db.transaction(function(tx) {
+
+                    tx.executeSql("INSERT INTO delivery(time,noOfQuestion,pid) VALUES (?,?,?)",
+                            [time, NuOfQuestion, pid],
+                            liqvidVar.webdb.onSuccess,
+                            liqvidVar.webdb.onError);
+                });
+            }
+
+
+            liqvidVar.webdb.getAssismentId = function(getAssisId, localedgeId) {
+                var db = liqvidVar.webdb.db;
+                db.transaction(function(tx) {
+
+                    tx.executeSql("SELECT * FROM Assessments WHERE pid =?", [localedgeId], getAssisId,
+                            liqvidVar.webdb.onError);
+                });
+            }
+
+
+            function getAssisId(tx, rs)
+            {
+                if (rs.rows.length > 0)
+                {
+                    assisId = rs.rows.item(0).uid;
+                    liqvidVar.webdb.getNumberOfQues(getNumber, assisId);
+                    createSliderUI();
+                    // alert(QuestionsArr);
+
+                    liqvidVar.webdb.getTenRandomQuestion(getQuestions, assisId);
+                }
+                else
+                {
+
+                }
+
+
+            }
+            liqvidVar.webdb.onError = function(tx, e) {
+                console.error(e.message);
+                console.log(e.message);
+            }
+
+            liqvidVar.webdb.onSuccess = function(tx, r) {
+                // re-render the data.
+                //liqvidVar.webdb.getAllTodoItems(loadTodoItems);
+                console.log("SuccessFully Inserted");
+            }
+
+
+            liqvidVar.webdb.getAllTodoItems = function(renderFunc) {
+                var db = liqvidVar.webdb.db;
+                db.transaction(function(tx) {
+                    tx.executeSql("SELECT * FROM todo", [], renderFunc,
+                            liqvidVar.webdb.onError);
+                });
+            }
+
+            liqvidVar.webdb.checkxml = function(check, uid) {
+                var db = liqvidVar.webdb.db;
+                db.transaction(function(tx) {
+                    tx.executeSql("SELECT * FROM  xml WHERE uid =?", [uid], check,
+                            liqvidVar.webdb.onError);
+                });
+            }
+
+
+            liqvidVar.webdb.getTenRandomQuestion = function(getQuestions, uid) {
+                var db = liqvidVar.webdb.db;
+                db.transaction(function(tx) {
+                    tx.executeSql("SELECT * FROM Questions WHERE pid =?", [uid], getQuestions,
+                            liqvidVar.webdb.onError);
+                });
+            }
+
+            liqvidVar.webdb.getNumberOfQues = function(getNumber, uid) {
+                var db = liqvidVar.webdb.db;
+                db.transaction(function(tx) {
+                    tx.executeSql("SELECT * FROM delivery WHERE pid =?", [uid], getNumber,
+                            liqvidVar.webdb.onError);
+                });
+            }
+
+
+            liqvidVar.webdb.getTenRandomQuestionAnswer = function(uid) {
+                var db = liqvidVar.webdb.db;
+                db.transaction(function(tx) {
+                    tx.executeSql("SELECT * FROM Answers WHERE pid =?", [uid], getAnswer,
+                            liqvidVar.webdb.onError);
+                });
+            }
+
+            liqvidVar.webdb.deleteTodo = function(id) {
+                var db = liqvidVar.webdb.db;
+                db.transaction(function(tx) {
+                    tx.executeSql("DELETE FROM todo WHERE ID=?", [id],
+                            liqvidVar.webdb.onSuccess,
+                            liqvidVar.webdb.onError);
+                });
+            }
+
+            function getQuestions(tx, rs) {
+
+                var nuArr = null;
+
+                for (var i = 0; i < rs.rows.length; i++) {
+                    var checkValue = true;
+
+                    while (checkValue)
+                    {
+                        console.log("In While Loop.");
+                        var j = Math.floor(Math.random() * rs.rows.length) + 0;
+                        if (nuArr == null)
+                        {
+                            nuArr = new Array();
+                            nuArr.push(j);
+                            checkValue = false;
+                        }
+                        else
+                        {
+                            var length = nuArr.length;
+                            for (var local = 0; local < length; local++)
+                            {
+                                if (j == parseInt(nuArr[local], 10))
+                                {
+                                    checkValue = true;
+                                    break;
+                                }
+                                if (j != parseInt(nuArr[local], 10) && local == parseInt(nuArr.length, 10) - 1)
+                                {
+                                    checkValue = false;
+                                    nuArr.push(j);
+                                }
+
+                            }
+
+                        }
+                    }
+                    var QuestionObj = new Object();
+                    QuestionObj.uid = rs.rows.item(j).uid;
+                    QuestionObj.instruction = rs.rows.item(j).instruction;
+                    QuestionObj.content = rs.rows.item(j).content;
+                    QuestionObj.pid = rs.rows.item(j).pid;
+                    QuestionObj.userAns = 0;
+                    QuestionObj.AnsArray = null;
+                    if (i < 10)
+                    {
+                        QuestionsArr.push(QuestionObj);
+                    }
+                }
+                MakeQuestionUi(0);
+            }
+
+
+            function randomFunction()
+            {
+                var nuArr = null;
+
+                for (var i = 0; i < AssismentObj.QuestionArray.length; i++) {
+                    var checkValue = true;
+
+                    while (checkValue)
+                    {
+                        //console.log("In While Loop.");
+                        var j = Math.floor(Math.random() * AssismentObj.QuestionArray.length) + 0;
+                        if (nuArr == null)
+                        {
+                            nuArr = new Array();
+                            nuArr.push(j);
+                            checkValue = false;
+                        }
+                        else
+                        {
+                            var length = nuArr.length;
+                            for (var local = 0; local < length; local++)
+                            {
+                                if (j == parseInt(nuArr[local], 10))
+                                {
+                                    checkValue = true;
+                                    break;
+                                }
+                                if (j != parseInt(nuArr[local], 10) && local == parseInt(nuArr.length, 10) - 1)
+                                {
+                                    checkValue = false;
+                                    nuArr.push(j);
+                                }
+
+                            }
+
+                        }
+                    }
+
+                    if (i < AssismentObj.deliveryNoOfQuestion)
+                    {
+                        QuestionsArr.push(AssismentObj.QuestionArray[j]);
+                    }
+                }
+            }
+
+
+            function getNumber(tx, rs) {
+
+
+                for (var i = 0; i < rs.rows.length; i++) {
+                    var delivery = new Object();
+                    delivery.time = rs.rows.item(i).time;
+                    delivery.noOfQuestion = rs.rows.item(i).noOfQuestion;
+
+                }
+                NumberOfQuestion = delivery.noOfQuestion;
+            }
+            function check(tx, rs) {
+
+                if (rs.rows.length > 0)
+                {
+                    createAssismentUI();
+                }
+                else
+                {
+                    liqvidVar.webdb.insertXml(edgeId, xmlName, xmlPath);
+                    parseXml();
+                    createSliderUI();
+
+                }
+
+            }
+
+            function getAnswer(tx, rs) {
+
+                AnswerArr = new Array();
+                for (var i = 0; i < rs.rows.length; i++)
+                {
+                    var AnswerObj = new Object();
+                    AnswerObj.uid = rs.rows.item(i).uid;
+                    AnswerObj.content = rs.rows.item(i).content;
+                    AnswerObj.isCorrect = rs.rows.item(i).isCorrect;
+                    AnswerObj.pid = rs.rows.item(i).pid;
+                    if (parseInt(SelectedQuestion.userAns, 10) === parseInt(i, 10) + 1)
+                    {
+
+                        document.getElementById("checkbox" + (parseInt(i) + 1)).setAttribute("class", "fa fa-check-square-o cusCheckBox");
+                        document.getElementById("checkbox" + (parseInt(i) + 1)).setAttribute("style", "color:#de5e00;");
+                    }
+
+                    document.getElementById("AnswerID" + (parseInt(i) + 1)).innerHTML = AnswerObj.content;
+                    AnswerArr.push(AnswerObj);
+                    SelectedQuestion.AnsArray = AnswerArr;
+                }
+                //document.getElementById("AnswerID1").innerHTML = 
+
+            }
+
+            function renderTodo(row) {
+                return "<li>" + row.todo + " [<a href='javascript:void(0);'  onclick='html5rocks.webdb.deleteTodo(" + row.ID + ");'>Delete</a>]</li>";
+            }
+
+            function initDatabase() {
+                liqvidVar.webdb.open();
+                liqvidVar.webdb.createTable();
+
+                //liqvidVar.webdb.getAllTodoItems(loadTodoItems);
+            }
+
+    //    ;(function($, window, document, undefined)
+    //        {
+
+            function initialise(msg)
+            {
+//                var jsonval = JSInterface.initialise(18);
+//                 messageObj = JSON.parse(JSInterface.getScreenMsg(18));
+//                var raw = JSON.parse(jsonval);
+//                var msg = raw.json;
+//                var uri_dec = decodeURIComponent(msg);
+//                msg = uri_dec;
+//               //var msg = "{\"edgeId\":123456, \"path\":\"text1.xml\",\"name\":\"text1.xml\",\"userName\":\"neerajrathore\",\"password\":\"123456\",\"token\":\"123456\"}";
+                 //msg = "{\"edgeId\":\"15626\",\"name\":null,\"path\":"test1.xml\"}";
+//                var regex = new RegExp('%22', 'g');
+//                var regex1 = new RegExp('%20', 'g');
+//                msg = msg.replace(regex, '"');
+//                msg = msg.replace(regex1, ' ');
+                 //alert(msg); 
+                var listJsonData = JSON.parse(msg);
+                document.getElementById("loadingId").innerHTML = messageObj.LOADING;
+                document.getElementById("assessID").innerHTML = messageObj.ASSESSMENT_TEST;
+                document.getElementById("OkId").innerHTML = messageObj.LP_OK;
+                //var listData = listJsonData["course"];
+                checkXmlDataExistOrNot(listJsonData);
+            }
+
+
+    //        initialise();
+    //    })(window.jQuery || window.Zepto, window, document);
+    //   
+
+
+            function checkXmlDataExistOrNot(listData)
+            {
+                showModal("Xml Parsing.....");
+                //initDatabase();
+                //alert(listData.path);
+                xmlName = listData.name;
+                //alert(listData.path);
+                xmlPath = listData.path;
+                //alert(listData);
+                
+                edgeId = listData.uid;
+                //liqvidVar.webdb.checkxml(check,edgeId);
+                userName = listData.userName;
+                password = listData.password;
+                tokenValue = listData.token;
+
+                parseXml();
+                
+                //setParseXmlNotification(xmlPath);
+                
+                createSliderUI();
+                NumberOfQuestion = AssismentObj.deliveryNoOfQuestion;
+                randomFunction();
+                MakeQuestionUi(0);
+
+
+
+
+            }
+
+            function createAssismentUI()
+            {
+
+                liqvidVar.webdb.getAssismentId(getAssisId, edgeId);
+
+            }
+            function createSliderUI()
+            {
+                var width =$(document).width();
+                var fontSize = 21;
+                if(width <= 450)
+                {
+                    fontSize = 18;
+                }
+                else if (width > 450 && width < 786 )
+                {
+                  fontSize = 21; 
+                }
+                
+                document.body.style.fontSize = fontSize+"px";
+                document.body.style.background = "white";
+                var container = document.getElementById("containerDivId");
+                //alert("Heght :"+$(document).width());
+//                var topHeight = 0.25 * $(document).height();
+//                var botHeight = 0.20 * $(document).height();
+//                if(botHeight > 100)
+//                    botHeight = 100;
+//                var midHeight = $(document).height();
+                container.setAttribute("style", "position:relative; height:" + $(document).height() + "px;");
+                
+                
+                //document.getElementById("topDiv").setAttribute("style"," height:"+topHeight+"px");
+                //document.getElementById("midDiv").setAttribute("style"," height:"+midHeight+"px");
+                //document.getElementById("bottomDiv").setAttribute("style"," height:"+botHeight+"px");
+              
+                
+                
+                
+                
+                CompleteDivUi = "completeId";
+                var sliderUi = document.createElement("div");
+                sliderUi.setAttribute("id", CompleteDivUi);
+                var topDiv = document.getElementById("topDiv");
+                topDiv.appendChild(sliderUi);
+                //container.appendChild(topDiv);
+                
+                var headerDiv = document.createElement("div");
+                headerDiv.setAttribute("id", "headerdivId");
+                headerDiv.setAttribute("class", "AssismentHeader col-lg-12 col-xs-12 col-sm-12");
+                headerDiv.innerHTML = "Instruction";
+                sliderUi.appendChild(headerDiv);
+                
+                
+                
+                var progressbardiv = document.createElement("div");
+
+                          progressbardiv.setAttribute("class", "progressDiv AssessProgress progress-sm m-t-sm");
+
+                          document.getElementById("sliderDiv").appendChild(progressbardiv);
+                          var progressbar = document.createElement("div");
+                          progressbar.setAttribute("id", "ProgressDiv");
+                          var percent = 0 * 100;
+                            var proNum = parseInt(percent);
+                          proNum = proNum + "%";
+                          progressbar.setAttribute("class", " progress-bar AssessProgress-bar-info");
+                          progressbar.setAttribute("data-toggle", "tooltip");
+                          progressbar.setAttribute("data-original-title", proNum);
+                          
+
+                          progressbar.style.width =  proNum;
+
+                          progressbardiv.appendChild(progressbar);
+                
+                
+                
+                
+                
+                var sliderDiv = document.createElement("div");
+                var SliderDivCons = document.getElementById("sliderDiv");
+                sliderDiv.setAttribute("class", "text-center");
+                var LabelDiv = document.createElement("div");
+                LabelDiv.setAttribute("class", "LabelDiv");
+                LabelDiv.innerHTML = "Question Attempted";
+                //sliderDiv.appendChild(LabelDiv);
+                //SliderDivCons.appendChild(sliderDiv);
+
+                var sliderDivInner = document.createElement("div");
+                sliderDivInner.setAttribute("id", "sliderDiv");
+                sliderDivInner.setAttribute("class", "pagination pagination-lg");
+                sliderDiv.appendChild(sliderDivInner);
+
+
+                var sliderDiv_li = document.createElement("li");
+                sliderDiv_li.setAttribute("onclick", "clickPrev()");
+                sliderDivInner.appendChild(sliderDiv_li);
+
+                var sliderDiv_a = document.createElement("a");
+                sliderDiv_a.setAttribute("href", "#");
+                sliderDiv_li.appendChild(sliderDiv_a);
+
+                var sliderDiv_i = document.createElement("i");
+                sliderDiv_i.setAttribute("class", "fa fa-chevron-left");
+                sliderDiv_a.appendChild(sliderDiv_i);
+
+
+                for (var i = 0; i < 4; /*parseInt(NumberOfQuestion,10)*/  ++i)
+                {
+                    var blockNo = document.createElement("li");
+                    var numId = i;
+                    blockNo.setAttribute("id", numId);
+                    if (i === 0)
+                    {
+                        blockNo.setAttribute("class", "active");
+                        //blockNo.style.backgroundColor = "#de5e00";
+                    }
+                    blockNo.setAttribute("onclick", "clickOn('" + numId + "')");
+                    //if(i < 4)
+                    //{
+                    sliderDivInner.appendChild(blockNo);
+                    //}
+                    var blockNoinner = document.createElement("a");
+                    var ID = "in" + i;
+                    blockNoinner.setAttribute("id", ID);
+                    blockNoinner.innerHTML = i + 1;
+
+                    blockNo.appendChild(blockNoinner);
+
+
+                }
+
+
+
+
+
+
+                var sliderDiv_li_right = document.createElement("li");
+                sliderDivInner.appendChild(sliderDiv_li_right);
+                sliderDiv_li_right.setAttribute("onclick", "clickPost()");
+                var sliderDiv_a_right = document.createElement("a");
+                sliderDiv_a_right.setAttribute("href", "#");
+                sliderDiv_li_right.appendChild(sliderDiv_a_right);
+
+                var sliderDiv_i_right = document.createElement("i");
+                sliderDiv_i_right.setAttribute("class", "fa fa-chevron-right");
+                sliderDiv_a_right.appendChild(sliderDiv_i_right);
+
+
+
+
+
+
+                drawbottomUi();
+
+            }
+            function clickOn(clickNo)
+            {
+                if( parseInt(clickNo) > (parseInt(AssismentObj.deliveryNoOfQuestion))-1) return ;
+                var date = new Date();
+                
+                SelectedQuestion.outTime = date.getTime();
+                SelectedQuestion.trackingTime = parseInt (SelectedQuestion.trackingTime) + parseInt(SelectedQuestion.outTime - SelectedQuestion.inTime);
+
+                if (Selected_Id !== null)
+                {
+                    //if(Selected_Id - PrevVisibleDiv == 0)
+                    var TempId = 0;
+                    if (VisibleDiv - Selected_Id == 0)
+                    {
+                        TempId = 3;
+
+                    }
+                    else if (VisibleDiv - Selected_Id == 1)
+                    {
+                        TempId = 2;
+                    }
+                    else if (VisibleDiv - Selected_Id == 2)
+                    {
+                        TempId = 1;
+                    }
+                    else if (VisibleDiv - Selected_Id == 3)
+                    {
+                        TempId = 0;
+                    }
+
+
+                    if (QuestionsArr[parseInt(Selected_Id)].userAns != 0)
+                    {
+                        document.getElementById(TempId).removeAttribute("class");
+                        document.getElementById(TempId).setAttribute("class", "complete");
+                    }
+                    else
+                    {
+                        document.getElementById(TempId).removeAttribute("class");
+                    }
+
+                }
+
+
+                document.getElementById(clickNo).setAttribute("class", "active");
+                //document.getElementById(pre).style.backgroundColor = "#de5e00";
+                Selected_Id = PrevVisibleDiv + parseInt(clickNo, 10);
+                document.getElementById("NumberDiv").innerHTML = Selected_Id+1+"/"+AssismentObj.deliveryNoOfQuestion;
+                MakeQuestionUi(Selected_Id);
+            }
+            function clickPost()
+            {
+                
+                var date = new Date();
+                
+                SelectedQuestion.outTime = date.getTime();
+                SelectedQuestion.trackingTime = parseInt(SelectedQuestion.trackingTime) + parseInt(SelectedQuestion.outTime - SelectedQuestion.inTime);
+                
+                if (parseInt(Selected_Id, 10) === NumberOfQuestion - 1)
+                {
+                    return;
+                }
+                if (Selected_Id !== null)
+                {
+                    var post = parseInt(Selected_Id) + 1;
+
+                    //document.getElementById(Selected_Id).removeAttribute("class");
+                    if (VisibleDiv == Selected_Id)
+                    {
+//                        VisibleDiv++;
+//                        PrevVisibleDiv++;
+//                        document.getElementById("in0").innerHTML = parseInt(PrevVisibleDiv, 10) + 1;
+//                        document.getElementById("in1").innerHTML = parseInt(PrevVisibleDiv, 10) + 2;
+//                        document.getElementById("in2").innerHTML = parseInt(PrevVisibleDiv, 10) + 3;
+//                        document.getElementById("in3").innerHTML = parseInt(PrevVisibleDiv, 10) + 4;
+//
+//                        if (QuestionsArr[parseInt(PrevVisibleDiv)].userAns != 0)
+//                        {
+//                            document.getElementById(VisibleDiv - PrevVisibleDiv - 3).setAttribute("class", "complete");
+//                        }
+//                        else
+//                        {
+//                            document.getElementById(VisibleDiv - PrevVisibleDiv - 3).removeAttribute("class");
+//                        }
+//                        if (QuestionsArr[parseInt(PrevVisibleDiv) + 1].userAns != 0)
+//                        {
+//                            document.getElementById(parseInt(VisibleDiv - PrevVisibleDiv - 2)).setAttribute("class", "complete");
+//                        }
+//                        else
+//                        {
+//                            document.getElementById(VisibleDiv - PrevVisibleDiv - 2).removeAttribute("class");
+//                        }
+//                        if (QuestionsArr[parseInt(PrevVisibleDiv) + 2].userAns != 0)
+//                        {
+//                            document.getElementById(parseInt(VisibleDiv - PrevVisibleDiv - 1)).setAttribute("class", "complete");
+//                        }
+//                        else
+//                        {
+//                            document.getElementById(VisibleDiv - PrevVisibleDiv - 1).removeAttribute("class");
+//                        }
+//                        if (QuestionsArr[parseInt(PrevVisibleDiv) + 3].userAns != 0)
+//                        {
+//                            document.getElementById(parseInt(VisibleDiv - PrevVisibleDiv)).setAttribute("class", "complete");
+//                            document.getElementById(parseInt(VisibleDiv - PrevVisibleDiv)).setAttribute("class", "active");
+//                        }
+//                        else
+//                        {
+//                            document.getElementById(VisibleDiv - PrevVisibleDiv).removeAttribute("class");
+//                            document.getElementById(parseInt(VisibleDiv - PrevVisibleDiv)).setAttribute("class", "active");
+//                        }
+
+                    }
+                    else
+                    {
+//                        var TempId = 0;
+//                        if (VisibleDiv - Selected_Id == 0)
+//                        {
+//                            TempId = 3;
+//
+//                        }
+//                        else if (VisibleDiv - Selected_Id == 1)
+//                        {
+//                            TempId = 2;
+//                        }
+//                        else if (VisibleDiv - Selected_Id == 2)
+//                        {
+//                            TempId = 1;
+//                        }
+//                        else if (VisibleDiv - Selected_Id == 3)
+//                        {
+//                            TempId = 0;
+//                        }
+//                        if (QuestionsArr[parseInt(Selected_Id)].userAns != 0)
+//                        {
+//                            //document.getElementById(TempId).removeAttribute("class");
+//                            document.getElementById(TempId).setAttribute("class", "complete");
+//                        }
+//                        else
+//                        {
+//                            document.getElementById(TempId).removeAttribute("class");
+//                        }
+//                        //document.getElementById(TempId).removeAttribute("class"); 
+//                        document.getElementById(TempId + 1).setAttribute("class", "active");
+                    }
+    //                
+    //               document.getElementById(Selected_Id).removeAttribute("class"); 
+    //               document.getElementById("sliderDiv").appendChild(document.getElementById(parseInt(Selected_Id,10)+1));
+    //               VisibleDiv ++;
+    //               PrevVisibleDiv ++;
+    //            }
+    //            else
+    //            {
+
+                    //}
+
+                }
+
+                //document.getElementById(post).setAttribute("class","active");
+                //document.getElementById(post).style.backgroundColor = "#de5e00";
+                Selected_Id = post;
+                document.getElementById("NumberDiv").innerHTML = Selected_Id+1+"/"+AssismentObj.deliveryNoOfQuestion;
+                MakeQuestionUi(Selected_Id);
+            }
+            function clickPrev()
+            {
+                var date = new Date();
+                
+                SelectedQuestion.outTime = date.getTime();
+                SelectedQuestion.trackingTime = parseInt(SelectedQuestion.trackingTime) + parseInt(SelectedQuestion.outTime - SelectedQuestion.inTime);
+
+                if (parseInt(Selected_Id, 10) === 0)
+                {
+                    return;
+                }
+                if (Selected_Id !== null)
+                {
+                    var pre = parseInt(Selected_Id, 10) - 1;
+                    if (PrevVisibleDiv == Selected_Id)
+                    {
+
+//                        VisibleDiv--;
+//                        PrevVisibleDiv--;
+//                        document.getElementById("in3").innerHTML = parseInt(PrevVisibleDiv, 10) + 4;
+//
+//                        document.getElementById("in2").innerHTML = parseInt(PrevVisibleDiv, 10) + 3;
+//                        document.getElementById("in1").innerHTML = parseInt(PrevVisibleDiv, 10) + 2;
+//                        document.getElementById("in0").innerHTML = parseInt(PrevVisibleDiv, 10) + 1;
+//
+//                        if (QuestionsArr[parseInt(PrevVisibleDiv)].userAns != 0)
+//                        {
+//                            document.getElementById(VisibleDiv - PrevVisibleDiv - 3).setAttribute("class", "complete");
+//                            document.getElementById(parseInt(VisibleDiv - PrevVisibleDiv - 3)).setAttribute("class", "active");
+//                        }
+//                        else
+//                        {
+//                            document.getElementById(VisibleDiv - PrevVisibleDiv - 3).removeAttribute("class");
+//                            document.getElementById(parseInt(VisibleDiv - PrevVisibleDiv - 3)).setAttribute("class", "active");
+//                        }
+//                        if (QuestionsArr[parseInt(PrevVisibleDiv) + 1].userAns != 0)
+//                        {
+//                            document.getElementById(parseInt(VisibleDiv - PrevVisibleDiv - 2)).setAttribute("class", "complete");
+//                        }
+//                        else
+//                        {
+//                            document.getElementById(VisibleDiv - PrevVisibleDiv - 2).removeAttribute("class");
+//                        }
+//                        if (QuestionsArr[parseInt(PrevVisibleDiv) + 2].userAns != 0)
+//                        {
+//                            document.getElementById(parseInt(VisibleDiv - PrevVisibleDiv - 1)).setAttribute("class", "complete");
+//                        }
+//                        else
+//                        {
+//                            document.getElementById(VisibleDiv - PrevVisibleDiv - 1).removeAttribute("class");
+//                        }
+//                        if (QuestionsArr[parseInt(PrevVisibleDiv) + 3].userAns != 0)
+//                        {
+//
+//                            document.getElementById(parseInt(VisibleDiv - PrevVisibleDiv)).setAttribute("class", "complete");
+//                        }
+//                        else
+//                        {
+//                            document.getElementById(VisibleDiv - PrevVisibleDiv).removeAttribute("class");
+//
+//                        }
+
+                    }
+                    else
+                    {
+//                        var TempId = 0;
+//                        if (VisibleDiv - Selected_Id == 0)
+//                        {
+//                            TempId = 3;
+//
+//                        }
+//                        else if (VisibleDiv - Selected_Id == 1)
+//                        {
+//                            TempId = 2;
+//                        }
+//                        else if (VisibleDiv - Selected_Id == 2)
+//                        {
+//                            TempId = 1;
+//                        }
+//                        else if (VisibleDiv - Selected_Id == 3)
+//                        {
+//                            TempId = 0;
+//                        }
+//                        if (QuestionsArr[parseInt(Selected_Id)].userAns != 0)
+//                        {
+//                            //document.getElementById(TempId).removeAttribute("class");  
+//                            document.getElementById(TempId).setAttribute("class", "complete");
+//                        }
+//                        else
+//                        {
+//                            document.getElementById(TempId).removeAttribute("class");
+//                        }
+//                        //document.getElementById(TempId).removeAttribute("class"); 
+//                        document.getElementById(TempId - 1).setAttribute("class", "active");
+                    }
+                }
+
+                //document.getElementById(pre).setAttribute("class","active");
+                //document.getElementById(pre).style.backgroundColor = "#de5e00";
+                Selected_Id = pre;
+                 document.getElementById("NumberDiv").innerHTML = Selected_Id+1+"/"+AssismentObj.deliveryNoOfQuestion;
+                MakeQuestionUi(Selected_Id);
+                //parseXml();
+            }
+
+            function MakeQuestionUi(val)
+            {
+
+                if (val === 0)
+                {
+                    document.getElementById("backbtn").style.background = "#e8e8e8"; //"#A7DDEE";
+                    document.getElementById("backbtn").style.color = "#f2f2f2";
+                    document.getElementById("nextbtn").style.background = "#5dc9e6"; //"#5DC9E6";
+
+                }
+                else if (val === NumberOfQuestion - 1)
+                {
+                    document.getElementById("nextbtn").style.background = "#e8e8e8"; //"#A7DDEE";
+                    document.getElementById("nextbtn").style.color = "#f2f2f2";
+                    document.getElementById("backbtn").style.background = "#5dc9e6"; //"#5DC9E6";
+                }
+                else
+                {
+                    document.getElementById("nextbtn").style.background = "#5dc9e6";//"#5DC9E6";//
+                    document.getElementById("backbtn").style.background = "#5dc9e6"; //"#5DC9E6";//
+                }
+
+
+
+                var middleDiv = document.getElementById("midDiv");
+                middleDiv.scrollIntoView();
+                if (variableDiv !== null)
+                {
+                    middleDiv.removeChild(variableDiv);
+                }
+                //var container = document.getElementById("containerDivId");
+                variableDiv = document.createElement("div");
+                //var middleDiv = document.getElementById("midDiv");
+                
+                middleDiv.appendChild(variableDiv);
+                
+                //container.appendChild(middleDiv);
+
+                variableDiv.setAttribute("class", "AssismentQuestionDiv");
+
+                var headerRediv = document.getElementById("headerdivId");
+                var Object = QuestionsArr[val];
+                if(Object["QuestionInstructionVar"] == "")
+                {
+                  headerRediv.innerHTML = "N/A";
+                }
+                else
+                {
+                  headerRediv.innerHTML = Object["QuestionInstructionVar"];  
+                }
+                
+                //headerRediv.innerHTML = messageObj.CORRECT_OPTION;
+                //alert(JSON.stringify(Object));
+                SelectedQuestion = QuestionsArr[val];
+                var date = new Date();
+                var time = date.getTime();
+                SelectedQuestion.inTime = time;
+                
+                var NumberDiv =document.getElementById("NumberDiv");
+                NumberDiv.setAttribute("id","NumberDiv");
+                NumberDiv.innerHTML = Selected_Id+1+"/"+AssismentObj.deliveryNoOfQuestion;
+                NumberDiv.setAttribute("class"," col-lg-12 col-xs-12 NumberDiv "); 
+                //variableDiv.appendChild(NumberDiv);
+           
+                var QuestionDiv = document.createElement("div");
+                QuestionDiv.setAttribute("class", "col-lg-12 col-xs-12 col-sm-12 comQuesDiv");
+                //QuestionDiv.innerHTML = "Instruction";
+                variableDiv.appendChild(QuestionDiv);
+
+                var QuestionPart1Div = document.createElement("div");
+                QuestionPart1Div.setAttribute("id", "questionID");
+
+                QuestionPart1Div.setAttribute("class", "col-lg-1 col-xs-1 col-sm-1 text-right quesDiv");
+                //QuestionPart1Div.style.fontSize = 20px;
+                QuestionPart1Div.innerHTML = "Q" + (parseInt(val, 10) + 1) + ".";
+                QuestionDiv.appendChild(QuestionPart1Div);
+
+
+
+                var QuestionPart2Div = document.createElement("div");
+                QuestionPart2Div.setAttribute("class", "col-lg-10 col-xs-10 col-sm-10 text-left quesDetailDiv");
+                if(QuestionsArr[val].QuestionContentVar == "")
+                {
+                  QuestionPart2Div.innerHTML = "N/A"; 
+                }
+                else
+                {
+                   QuestionPart2Div.innerHTML = QuestionsArr[val].QuestionContentVar;
+                }
+                QuestionDiv.appendChild(QuestionPart2Div);
+
+
+
+
+
+                
+
+
+
+
+                var Answer1Div = document.createElement("div");
+                
+                Answer1Div.setAttribute("class", "col-lg-12 col-xs-12 compAnsweDiv");
+                //QuestionDiv.innerHTML = "Instruction";
+                variableDiv.appendChild(Answer1Div);
+
+                var Answer1Part1Div = document.createElement("div");
+                Answer1Part1Div.setAttribute("class", "col-lg-1 col-xs-1 col-sm-1 text-right quesDiv");
+                //QuestionPart1Div.style.fontSize = 20px;
+                //Answer1Part1Div.innerHTML = "Q"+(parseInt(val,10)+1)+".";
+                Answer1Div.appendChild(Answer1Part1Div);
+
+
+                var Answer1Part2Div = document.createElement("div");
+                //Answer1Part2Div.setAttribute("class","col-lg-11 col-xs-11 col-sm-11");
+                //Answer1Part2Div.innerHTML = QuestionsArr[val].content;
+                Answer1Div.appendChild(Answer1Part2Div);
+
+                var Answer1PartClick = document.createElement("div");
+                Answer1PartClick.setAttribute("class", "col-lg-1 col-xs-1 col-sm-1 text-left");
+                Answer1Div.setAttribute("onclick", "javascript:clickOption1()");
+                var cb = document.createElement('div');
+                cb.setAttribute("id", "checkbox1");
+                cb.setAttribute("class", "fa fa-square-o cusCheckBox");
+                cb.setAttribute("style", "padding-top:5px;");
+                //cb.type = 'checkbox';
+                //cb.value = 1;
+                //Answer1PartClick.setAttribute("style","type = checkbox;");
+               
+
+                Answer1Part2Div.appendChild(Answer1PartClick);
+
+                var Answer1Part2text = document.createElement("div");
+                Answer1Part2text.setAttribute("id", "AnswerID1");
+                Answer1Part2text.setAttribute("class", "col-lg-9 col-xs-9 col-sm-9 text-left answertext");
+                if( QuestionsArr[val].AnsArray.length > 0)
+                {
+                  //Answer1Part2text.innerHTML = "N/A" ;  
+                  Answer1Part2text.innerHTML = QuestionsArr[val].AnsArray[0].AnswerContentVar;
+                   Answer1PartClick.appendChild(cb);
+                   Answer1Part2Div.appendChild(Answer1Part2text);
+                }
+                else
+                {
+                    
+                }
+                
+                if (parseInt(SelectedQuestion.userAns, 10) === parseInt(0, 10) + 1)
+                {
+
+                    cb.setAttribute("class", "fa fa-check-square-o");
+                    cb.setAttribute("style", "sfont-size:20px;color:#de5e00;");
+                }
+                
+
+
+
+
+
+
+                var Answer1Div = document.createElement("div");
+                Answer1Div.setAttribute("class", "col-lg-12 col-xs-12 compAnsweDiv");
+                //QuestionDiv.innerHTML = "Instruction";
+                variableDiv.appendChild(Answer1Div);
+
+                var Answer1Part1Div = document.createElement("div");
+                Answer1Part1Div.setAttribute("class", "col-lg-1 col-xs-1 col-sm-1 text-right quesDiv");
+                //QuestionPart1Div.style.fontSize = 20px;
+                //Answer1Part1Div.innerHTML = "Q"+(parseInt(val,10)+1)+".";
+                 Answer1Div.appendChild(Answer1Part1Div);
+
+
+                var Answer1Part2Div = document.createElement("div");
+                //Answer1Part2Div.setAttribute("class","col-lg-11 col-xs-11 col-sm-11");
+                //Answer1Part2Div.innerHTML = QuestionsArr[val].content;
+                Answer1Div.appendChild(Answer1Part2Div);
+
+                var Answer1PartClick = document.createElement("div");
+                Answer1PartClick.setAttribute("class", "col-lg-1 col-xs-1 col-sm-1 text-left");
+                Answer1Div.setAttribute("onclick", "javascript:clickOption2()");
+                var cb = document.createElement('div');
+                cb.setAttribute("id", "checkbox2");
+                cb.setAttribute("class", "fa fa-square-o cusCheckBox");
+                //cb.setAttribute("style", "sfont-size:20px;");
+                //Answer1PartClick.setAttribute("style","type = checkbox;");
+                
+
+                Answer1Part2Div.appendChild(Answer1PartClick);
+
+                var Answer1Part2text = document.createElement("div");
+                Answer1Part2text.setAttribute("id", "AnswerID2");
+                Answer1Part2text.setAttribute("class", "col-lg-9 col-xs-9 col-sm-9 text-left answertext");
+                
+                if(QuestionsArr[val].AnsArray.length > 1)
+                {
+                  //Answer1Part2text.innerHTML = "N/A" ;  
+                  Answer1Part2text.innerHTML = QuestionsArr[val].AnsArray[1].AnswerContentVar; 
+                  Answer1PartClick.appendChild(cb);
+                  Answer1Part2Div.appendChild(Answer1Part2text);
+                }
+                else
+                {
+                   
+                }
+                
+                //Answer1Part2text.innerHTML = "HI Amit";
+                if (parseInt(SelectedQuestion.userAns, 10) === parseInt(1, 10) + 1)
+                {
+
+                    cb.setAttribute("class", "fa fa-check-square-o");
+                    cb.setAttribute("style", "sfont-size:20px;color:#de5e00;");
+                }
+                
+
+
+
+
+
+
+
+
+                var Answer1Div = document.createElement("div");
+                Answer1Div.setAttribute("class", "col-lg-12 col-xs-12 compAnsweDiv");
+                //QuestionDiv.innerHTML = "Instruction";
+                variableDiv.appendChild(Answer1Div);
+
+                var Answer1Part1Div = document.createElement("div");
+                Answer1Part1Div.setAttribute("class", "col-lg-1 col-xs-1 col-sm-1 text-right quesDiv");
+                //QuestionPart1Div.style.fontSize = 20px;
+                //Answer1Part1Div.innerHTML = "Q"+(parseInt(val,10)+1)+".";
+                Answer1Div.appendChild(Answer1Part1Div);
+
+
+                var Answer1Part2Div = document.createElement("div");
+                // Answer1Part2Div.setAttribute("class","col-lg-11 col-xs-11 col-sm-11");
+                //Answer1Part2Div.innerHTML = QuestionsArr[val].content;
+                Answer1Div.appendChild(Answer1Part2Div);
+
+                var Answer1PartClick = document.createElement("div");
+                Answer1PartClick.setAttribute("class", "col-lg-1 col-xs-1 col-sm-1 text-left");
+                Answer1Div.setAttribute("onclick", "javascript:clickOption3()");
+
+                var cb = document.createElement('div');
+                cb.setAttribute("id", "checkbox3");
+                cb.setAttribute("class", "fa fa-square-o cusCheckBox");
+                //cb.setAttribute("style", "sfont-size:20px;");
+                //Answer1PartClick.setAttribute("style","type = checkbox;");
+               
+
+                Answer1Part2Div.appendChild(Answer1PartClick);
+
+                var Answer1Part2text = document.createElement("div");
+                Answer1Part2text.setAttribute("id", "AnswerID3");
+                Answer1Part2text.setAttribute("class", "col-lg-9 col-xs-9 col-sm-9 text-left answertext");
+                if(QuestionsArr[val].AnsArray.length > 2)
+                {
+                  //Answer1Part2text.innerHTML = "N/A" ;  
+                  Answer1Part2text.innerHTML = QuestionsArr[val].AnsArray[2].AnswerContentVar;
+                  Answer1Part2Div.appendChild(Answer1Part2text);
+                   Answer1PartClick.appendChild(cb);
+                }
+                else
+                {
+                    
+                }
+                
+                if (parseInt(SelectedQuestion.userAns, 10) === parseInt(2, 10) + 1)
+                {
+
+                    cb.setAttribute("class", "fa fa-check-square-o");
+                    cb.setAttribute("style", "sfont-size:20px;color:#de5e00;");
+                }
+                
+
+
+
+
+
+
+
+                var Answer1Div = document.createElement("div");
+                Answer1Div.setAttribute("class", "col-lg-12 col-xs-12 compAnsweDiv");
+                //QuestionDiv.innerHTML = "Instruction";
+                variableDiv.appendChild(Answer1Div);
+
+                var Answer1Part1Div = document.createElement("div");
+                Answer1Part1Div.setAttribute("class", "col-lg-1 col-xs-1 col-sm-1 text-right quesDiv");
+                //QuestionPart1Div.style.fontSize = 20px;
+                //Answer1Part1Div.innerHTML = "Q"+(parseInt(val,10)+1)+".";
+                Answer1Div.appendChild(Answer1Part1Div);
+
+
+                var Answer1Part2Div = document.createElement("div");
+                //Answer1Part2Div.setAttribute("class","col-lg-11 col-xs-11 col-sm-11");
+                //Answer1Part2Div.innerHTML = QuestionsArr[val].content;
+                Answer1Div.appendChild(Answer1Part2Div);
+
+                var Answer1PartClick = document.createElement("div");
+
+                Answer1PartClick.setAttribute("class", "col-lg-1 col-xs-1 col-sm-1 text-left");
+                Answer1Div.setAttribute("onclick", "javascript:clickOption4()");
+                var cb = document.createElement('div');
+                cb.setAttribute("id", "checkbox4");
+                cb.setAttribute("class", "fa fa-square-o cusCheckBox");
+                //cb.setAttribute("style", "sfont-size:20px;");
+                //Answer1PartClick.setAttribute("style","type = checkbox;");
+                
+
+                Answer1Part2Div.appendChild(Answer1PartClick);
+
+                var Answer1Part2text = document.createElement("div");
+                Answer1Part2text.setAttribute("id", "AnswerID4");
+                Answer1Part2text.setAttribute("class", "col-lg-9 col-xs-9 col-sm-9 text-left answertext ");
+                if(QuestionsArr[val].AnsArray.length > 3)
+                {
+                  //Answer1Part2text.innerHTML = "N/A" ; 
+                  Answer1PartClick.appendChild(cb);
+                   Answer1Part2text.innerHTML = QuestionsArr[val].AnsArray[3].AnswerContentVar;
+                    Answer1Part2Div.appendChild(Answer1Part2text);
+                }
+                else
+                {
+                   
+                }
+                if (parseInt(SelectedQuestion.userAns, 10) === parseInt(3, 10) + 1)
+                {
+
+                    cb.setAttribute("class", "fa fa-check-square-o cusCheckBox");
+                    cb.setAttribute("style", "color:#de5e00;");
+                }
+               
+
+
+
+
+
+
+    //        var color = "#30"+val+"04"+val;
+    //        variableDiv.style.backgroundColor = color;
+    //        variableDiv.innerHTML = "Amit Gupta"+val;
+    //        //alert(CompleteDivUi);
+                //document.getElementById(CompleteDivUi).appendChild(variableDiv);
+                //liqvidVar.webdb.getTenRandomQuestionAnswer(QuestionsArr[val].uid);
+
+                closeModal();
+            }
+
+
+            function clickOption1()
+            {
+
+                
+                document.getElementById("checkbox1").setAttribute("class", "fa fa-check-square-o cusCheckBox");
+                document.getElementById("checkbox1").setAttribute("style", "color:#de5e00;");
+
+                document.getElementById("checkbox2").setAttribute("class", "fa fa-square-o cusCheckBox");
+                document.getElementById("checkbox2").setAttribute("style", "color:gray;");
+                document.getElementById("checkbox3").setAttribute("class", "fa fa-square-o cusCheckBox");
+                document.getElementById("checkbox3").setAttribute("style", "color:gray;");
+                document.getElementById("checkbox4").setAttribute("class", "fa fa-square-o cusCheckBox");
+                document.getElementById("checkbox4").setAttribute("style", "color:gray;");
+//                var TempId = 0;
+//                if (VisibleDiv - Selected_Id == 0)
+//                {
+//                    TempId = 3;
+//
+//                }
+//                else if (VisibleDiv - Selected_Id == 1)
+//                {
+//                    TempId = 2;
+//                }
+//                else if (VisibleDiv - Selected_Id == 2)
+//                {
+//                    TempId = 1;
+//                }
+//                else if (VisibleDiv - Selected_Id == 3)
+//                {
+//                    TempId = 0;
+//                }
+//
+//                document.getElementById(parseInt(TempId)).setAttribute("class", "complete");
+
+                 
+                          if(SelectedQuestion.userAns == 0)
+                        {
+                        var progressbar = document.getElementById("ProgressDiv");
+                          checkQues ++;
+                          var percent = (checkQues/NumberOfQuestion) * 100;
+                            var proNum = parseInt(percent);
+                          proNum = proNum + "%";
+                          progressbar.setAttribute("class", " progress-bar AssessProgress-bar-info");
+                          progressbar.setAttribute("data-toggle", "tooltip");
+                         
+                          progressbar.setAttribute("data-original-title", proNum);
+                          progressbar.style.width = proNum;
+                      }
+                      SelectedQuestion.userAns = 1;
+            }
+
+            function clickOption2()
+            {
+                
+                document.getElementById("checkbox1").setAttribute("class", "fa fa-square-o cusCheckBox");
+                document.getElementById("checkbox1").setAttribute("style", "color:gray;");
+                document.getElementById("checkbox2").setAttribute("class", "fa fa-check-square-o cusCheckBox");
+                document.getElementById("checkbox2").setAttribute("style", "color:#de5e00;");
+                document.getElementById("checkbox3").setAttribute("class", "fa fa-square-o cusCheckBox");
+                document.getElementById("checkbox3").setAttribute("style", "color:gray;");
+                document.getElementById("checkbox4").setAttribute("class", "fa fa-square-o cusCheckBox");
+                document.getElementById("checkbox4").setAttribute("style", "color:gray;");
+
+//                var TempId = 0;
+//                if (VisibleDiv - Selected_Id == 0)
+//                {
+//                    TempId = 3;
+//
+//                }
+//                else if (VisibleDiv - Selected_Id == 1)
+//                {
+//                    TempId = 2;
+//                }
+//                else if (VisibleDiv - Selected_Id == 2)
+//                {
+//                    TempId = 1;
+//                }
+//                else if (VisibleDiv - Selected_Id == 3)
+//                {
+//                    TempId = 0;
+//                }
+//
+//                document.getElementById(parseInt(TempId)).setAttribute("class", "complete");
+
+                        if(SelectedQuestion.userAns === 0)
+                        {
+                        var progressbar = document.getElementById("ProgressDiv");
+                          checkQues ++;
+                          var percent = (checkQues/NumberOfQuestion) * 100;
+                            var proNum = parseInt(percent);
+                          proNum = proNum + "%";
+                          progressbar.setAttribute("class", " progress-bar AssessProgress-bar-info");
+                          progressbar.setAttribute("data-toggle", "tooltip");
+                         
+                          progressbar.setAttribute("data-original-title", proNum);
+                          progressbar.style.width = proNum;
+                      }
+                      SelectedQuestion.userAns = 2;
+            }
+
+            function clickOption3()
+            {
+                
+                document.getElementById("checkbox1").setAttribute("class", "fa fa-square-o cusCheckBox");
+                document.getElementById("checkbox1").setAttribute("style", "color:gray;");
+                document.getElementById("checkbox2").setAttribute("class", "fa fa-square-o cusCheckBox");
+                document.getElementById("checkbox2").setAttribute("style", "color:gray;");
+                document.getElementById("checkbox3").setAttribute("class", "fa fa-check-square-o cusCheckBox");
+                document.getElementById("checkbox3").setAttribute("style", "color:#de5e00;");
+                document.getElementById("checkbox4").setAttribute("class", "fa fa-square-o cusCheckBox");
+                document.getElementById("checkbox4").setAttribute("style", "color:gray;");
+
+//                var TempId = 0;
+//                if (VisibleDiv - Selected_Id == 0)
+//                {
+//                    TempId = 3;
+//
+//                }
+//                else if (VisibleDiv - Selected_Id == 1)
+//                {
+//                    TempId = 2;
+//                }
+//                else if (VisibleDiv - Selected_Id == 2)
+//                {
+//                    TempId = 1;
+//                }
+//                else if (VisibleDiv - Selected_Id == 3)
+//                {
+//                    TempId = 0;
+//                }
+//
+//                document.getElementById(parseInt(TempId)).setAttribute("class", "complete");
+                           if(SelectedQuestion.userAns == 0)
+                        {
+                        var progressbar = document.getElementById("ProgressDiv");
+                          checkQues ++;
+                          var percent = (checkQues/NumberOfQuestion) * 100;
+                            var proNum = parseInt(percent);
+                          proNum = proNum + "%";
+                          progressbar.setAttribute("class", " progress-bar AssessProgress-bar-info");
+                          progressbar.setAttribute("data-toggle", "tooltip");
+                         
+                          progressbar.setAttribute("data-original-title", proNum);
+                          progressbar.style.width = proNum;
+                      }
+                      SelectedQuestion.userAns = 3;
+            }
+
+
+            function clickOption4()
+            {
+                
+                document.getElementById("checkbox1").setAttribute("class", "fa fa-square-o cusCheckBox");
+                document.getElementById("checkbox1").setAttribute("style", "color:gray;");
+                document.getElementById("checkbox2").setAttribute("class", "fa fa-square-o cusCheckBox");
+                document.getElementById("checkbox2").setAttribute("style", "color:gray;");
+                document.getElementById("checkbox3").setAttribute("class", "fa fa-square-o cusCheckBox");
+                document.getElementById("checkbox3").setAttribute("style", "color:gray;");
+                document.getElementById("checkbox4").setAttribute("class", "fa fa-check-square-o cusCheckBox");
+                document.getElementById("checkbox4").setAttribute("style", "color:#de5e00;");
+
+//                var TempId = 0;
+//                if (VisibleDiv - Selected_Id == 0)
+//                {
+//                    TempId = 3;
+//
+//                }
+//                else if (VisibleDiv - Selected_Id == 1)
+//                {
+//                    TempId = 2;
+//                }
+//                else if (VisibleDiv - Selected_Id == 2)
+//                {
+//                    TempId = 1;
+//                }
+//                else if (VisibleDiv - Selected_Id == 3)
+//                {
+//                    TempId = 0;
+//                }
+//
+//                document.getElementById(parseInt(TempId)).setAttribute("class", "complete");
+                        if(SelectedQuestion.userAns == 0)
+                        {
+                        var progressbar = document.getElementById("ProgressDiv");
+                          checkQues ++;
+                          var percent = (checkQues/NumberOfQuestion) * 100;
+                            var proNum = parseInt(percent);
+                          proNum = proNum + "%";
+                          progressbar.setAttribute("class", " progress-bar AssessProgress-bar-info");
+                          progressbar.setAttribute("data-toggle", "tooltip");
+                         
+                          progressbar.setAttribute("data-original-title", proNum);
+                          progressbar.style.width = proNum;
+                      }
+                      SelectedQuestion.userAns = 4;
+            }
+
+
+
+
+            function parseXml()
+            {
+                //alert("text");
+                AssismentObj = new Object();
+                var AssisUidVar, AssisNameVar, AssisDescriptionVar;
+                var QuestionUidVar, QuestionInstructionVar, QuestionContentVar, QuestionPidVar;
+                var AnswerUidVar, AnswerIsCorrectVar, AnswerContentVar, AnswerPidVar;
+                var deliveryId, deliveryTime, deliveryNoOfQuestion;
+                //var xmlhttp = new XMLHttpRequest();
+                 //alert(xmlPath);
+                 
+//                 var xmlhttp; 
+//                 
+//                 
+////                 xmlhttp.open("GET","http://www.w3schools.com/XML/cd_catalog.xml", true);
+////                 xmlhttp.onreadystatechange=function() 
+////                    {
+////                        
+////                        if(xmlhttp.readyState==4)
+////                        
+////                    }
+////                    alert("status " + xmlhttp.status);
+////                    xmlhttp.send();
+//                 
+//                 
+//                 
+//                 
+//                  xmlhttp = new XMLHttpRequest();
+//                  alert(xmlhttp);
+//                   alert(xmlPath);
+//                   
+//                   
+//                xmlhttp.open("GET", xmlPath, false);
+//                xmlhttp.send();
+//                var myRequestStatus = xmlhttp.status;
+//                var  status = xmlhttp.readyState;
+//                alert(myRequestStatus);
+//                alert(status);
+//                
+//                var xmlDoc = xmlhttp.responseXML;
+                 var parser=new DOMParser();
+                var xmlDoc=parser.parseFromString(xmlPath,"text/xml");
+                
+                //var xmlDoc = xmlhttp.responseText;
+               // alert(xmlDoc);
+                if(xmlDoc == null)
+                {
+                    //alert("Xml not load. properly");
+                    closeModal();
+                    return;
+                }
+                //alert(xmlDoc);
+                var data = xmlDoc.getElementsByTagName("assess");
+                //alert(data[0].getAttribute("uniqid")); 
+                AssismentObj.AssisUidVar = data[0].getAttribute("uniqid");
+                //alert( AssismentObj.AssisUidVar);
+                //alert("text21");
+                AssismentObj.AssisNameVar = xmlDoc.getElementsByTagName("name")[0].textContent;
+                AssismentObj.AssisDescriptionVar = xmlDoc.getElementsByTagName("description")[0].textContent;
+                AssismentObj.edgeId = edgeId;
+                // insertQuery in to database 
+                //liqvidVar.webdb.insertAssessment(AssisUidVar,AssisNameVar,AssisDescriptionVar,edgeId);
+
+                //va= xmlDoc.getElementsByTagName("delivery")[0].innerHTML;
+                AssismentObj.deliveryTime = xmlDoc.getElementsByTagName("max_minutes")[0].textContent;
+                AssismentObj.deliveryNoOfQuestion = xmlDoc.getElementsByTagName("selection")[0].textContent;
+                // NumberOfQuestion = deliveryNoOfQuestion;
+                //liqvidVar.webdb.Insertdelivery(deliveryTime,deliveryNoOfQuestion,AssisUidVar);
+
+
+                var QuesArray = xmlDoc.getElementsByTagName("question");
+                //alert(JSON.stringify(QuesArray));
+                var QuestionArray = new Array();
+                var QuesCount = QuesArray.length;
+                
+                for (var i = 0; i < QuesCount; ++i)
+                {
+                    // alert(JSON.stringify(QuesArray));
+                    var QuestionObject = new Object();
+                    QuestionObject.QuestionUidVar = QuesArray[i].getAttribute("uniqid");
+                    //alert(QuestionObject.QuestionUidVar);
+                    var Obj = QuesArray[i].getElementsByTagName("instruction")[0];
+                    //alert(Obj.toString());
+                    QuestionObject.QuestionInstructionVar =  Obj.textContent;
+                    QuestionObject.userAns = 0;
+                    QuestionObject.trackingTime = 0;
+                    QuestionObject.inTime = 0;
+                    QuestionObject.outTime = 0;
+                    
+                    //alert(JSON.stringify(QuesArray[i].getElementsByTagName("instruction")[0].));
+                    //alert(JSON.stringify(QuesArray[i].getElementsByTagName("instruction")[0]))
+                    //alert(QuesArray[i].toString().le);
+                    QuestionObject.QuestionContentVar = QuesArray[i].getElementsByTagName("content")[parseInt(0)].textContent;
+                    QuestionArray.push(QuestionObject);
+                    //QuestionPidVar = AssisUidVar;
+
+                    // Add into database all data 
+                    //liqvidVar.webdb.insertQuestion(QuestionUidVar,QuestionInstructionVar,QuestionContentVar,QuestionPidVar);
+                    var AnsArray = QuesArray[i].getElementsByTagName("answer");
+                    var AnsCount = AnsArray.length;
+                    var AnswerArray = new Array();
+                    for (var j = 0; j < AnsCount; ++j)
+                    {
+                        var AnswerObject = new Object();
+                        AnswerObject.AnswerUidVar = AnsArray[j].getAttribute("uniqid");
+                        AnswerObject.AnswerIsCorrectVar = AnsArray[j].getElementsByTagName("is_correct")[0].textContent;
+                        AnswerObject.AnswerContentVar = AnsArray[j].getElementsByTagName("content")[0].textContent;
+                        AnswerObject.AnswerPidVar = QuestionObject.QuestionUidVar;
+                        //liqvidVar.webdb.InsertAnswer(AnswerUidVar,AnswerIsCorrectVar,AnswerContentVar,AnswerPidVar);
+
+                        // Add into database 
+                        AnswerArray.push(AnswerObject);
+
+                    }
+                    QuestionObject.AnsArray = AnswerArray;
+
+                }
+                AssismentObj.QuestionArray = QuestionArray;
+             
+            }
+
+            function RandomCompleteArray()
+            {
+                for (var count = 0; count < 10; ++count)
+                {
+                    FinalQues[count] = QuestionsArr[parseInt(count, 10) + 1];
+                    // FinalQues[count].Answers = 
+
+                }
+            }
+            function drawbottomUi()
+            {
+               // var container = document.getElementById("containerDivId");
+               var devWidth = $(document).width();
+               var div2 = document.createElement("div");
+               if( devWidth <= 400)
+               {
+                 
+                div2.setAttribute("class"," col-lg-12 col-xs-12");
+                var bottomDiv = document.getElementById("buttonDiv");
+                bottomDiv.appendChild(div2);  
+               }else
+               {
+                 var div1 = document.createElement("div");
+                div1.setAttribute("class"," col-lg-4 col-xs-4");
+                var bottomDiv = document.getElementById("buttonDiv");
+                bottomDiv.appendChild(div1); 
+                
+                div2.setAttribute("class"," col-lg-8 col-xs-8");
+                var bottomDiv = document.getElementById("buttonDiv");
+                bottomDiv.appendChild(div2);
+               }
+                
+                //container.appendChild(bottomDiv);
+                
+                var LeftSpace = document.createElement("div");
+                LeftSpace.setAttribute("class", "col-lg-4 col-xs-4 col-sm-4 spaceDiv");
+                LeftSpace.setAttribute("style", "padding-left:" + getCenterPadding(80,3) + "px;");
+                div2.appendChild(LeftSpace);
+                
+                var midSpace = document.createElement("div");
+                
+                midSpace.setAttribute("class", "col-lg-4 col-xs-4 col-sm-4 spaceDiv");
+                midSpace.setAttribute("style", "padding-left:" + getCenterPadding(80,3) + "px;");
+                
+                div2.appendChild(midSpace);
+                
+                var RightSpace = document.createElement("div");
+                RightSpace.setAttribute("class", "col-lg-4 col-xs-4 col-sm-4 spaceDiv");
+                RightSpace.setAttribute("style", "padding-left:" + getCenterPadding(80,3) + "px;");
+                div2.appendChild(RightSpace);
+                
+                
+                
+                
+
+                var button1 = document.createElement("div");
+                button1.setAttribute("onclick", "prevQuestion()");
+                button1.setAttribute("class", "text-center");
+                var inbutton = document.createElement("div");
+                inbutton.setAttribute("id", "backbtn");
+                if( devWidth <= 400)
+               {
+                 inbutton.setAttribute("class", " text-center  buttonStyle");  
+               }else
+               {
+                 inbutton.setAttribute("class", " text-center  buttonStyleTab");  
+               }
+                
+                inbutton.innerHTML = messageObj.BACK;//"BACK";
+                button1.appendChild(inbutton);
+
+                LeftSpace.appendChild(button1);
+
+                
+                var button2 = document.createElement("div");
+                button2.setAttribute("onclick", "submitScore()");
+                button2.setAttribute("class", "text-center ");
+                var inbutton = document.createElement("div");
+                inbutton.setAttribute("id", "submitbtn");
+                if( devWidth <= 400)
+               {
+                 inbutton.setAttribute("class", " text-center  buttonStyle");  
+               }else
+               {
+                 inbutton.setAttribute("class", " text-center  buttonStyleTab");  
+               }
+                inbutton.innerHTML = messageObj.SUBMIT;//"SUBMIT";
+                button2.appendChild(inbutton);
+                midSpace.appendChild(button2);
+                
+                
+
+                var button3 = document.createElement("div");
+                button3.setAttribute("onclick", "nextQuestion()");
+                button3.setAttribute("class", "text-center");
+                var inbutton = document.createElement("div");
+                inbutton.setAttribute("id", "nextbtn");
+                if( devWidth <= 400)
+               {
+                 inbutton.setAttribute("class", " text-center  buttonStyle");  
+               }else
+               {
+                 inbutton.setAttribute("class", " text-center  buttonStyleTab");  
+               }
+                inbutton.innerHTML = messageObj.NEXT;//"NEXT";
+                button3.appendChild(inbutton);
+                RightSpace.appendChild(button3);
+                if( devWidth <= 400)
+               {
+                   
+               }else
+               {
+                   
+               }
+
+
+            }
+
+            function prevQuestion()
+            {
+                
+                clickPrev();
+            }
+            function nextQuestion()
+            {
+                
+                clickPost();
+            }
+
+            function submitScore()
+            {
+                var date = new Date();
+                
+                SelectedQuestion.outTime = date.getTime();
+                SelectedQuestion.trackingTime = parseInt(SelectedQuestion.trackingTime) + parseInt(SelectedQuestion.outTime - SelectedQuestion.inTime);
+                
+                var right_Score = 0;
+                var wrong_Score = 0;
+
+                for (var i = 0; i < QuestionsArr.length; i++)
+                {
+                    if (QuestionsArr[i].userAns != 0)
+                    {
+                        var Num = QuestionsArr[i].userAns;
+                        if (QuestionsArr[i].AnsArray[parseInt(Num) - 1].AnswerIsCorrectVar == "true")
+                        {
+                            right_Score = right_Score + 1;
+                        }
+                        else
+                        {
+                            wrong_Score = wrong_Score + 1;
+                        }
+                    }
+                }
+                showModalAlert(QuestionsArr.length, parseInt(right_Score) + parseInt(wrong_Score), right_Score, wrong_Score);
+
+
+            }
+
+            function makeJsonRequest()
+            {
+                if (edgeId === null)
+                {
+                    closeModal();
+                    return;
+                }
+
+                var logInPassword = new Object();
+                logInPassword.login = userName;
+                logInPassword.password = password;
+                ;
+                var request = new Object();
+                request.token = null;
+                request.decree = 'token';
+                request.param = logInPassword;
+                var jsonString = JSON.stringify(request);
+                return jsonString;
+
+            }
+            function sendtoServerRequest(jsonString, requestType)
+            {
+                if (requestType === "auth")
+                {
+                    var encStr = rc4("p1^bil", jsonString);
+                    //alert("Encrypted String is "+encStr);
+                    $.post("http://dev.englishedge.in/live/service.php",
+                            {obj: encStr},
+                    decryptAndConvertJson)
+                            .error(function(StatusCode) {
+                                if (StatusCode !== 200)
+                                {
+                                    closeModal();
+                                    status(0,"SERVER NOT RESPONDING..");
+                                    //alert("Network not available. or Server is down.");
+                                }
+
+                            });
+                }
+                else if (requestType === "submitScore")
+                {
+                    var encStr = rc4("p1^bil", jsonString);
+                    $.post("http://dev.englishedge.in/live/service.php",
+                            {obj: encStr},
+                    decryptAndConvertJsonPushData)
+                            .error(function(StatusCode) {
+                                if (StatusCode !== 200)
+                                {
+                                    closeModal();
+                                    status(0,"SERVER NOT RESPONDING.."); 
+                                    //alert("Network not available. or Server is down.");
+                                }
+                            });
+                }
+
+            }
+
+
+            function rc4(key, str) {
+                var s = [], j = 0, x, res = '';
+                for (var i = 0; i < 256; i++) {
+                    s[i] = i;
+                }
+                for (i = 0; i < 256; i++) {
+                    j = (j + s[i] + key.charCodeAt(i % key.length)) % 256;
+                    x = s[i];
+                    s[i] = s[j];
+                    s[j] = x;
+                }
+                i = 0;
+                j = 0;
+                for (var y = 0; y < str.length; y++) {
+                    i = (i + 1) % 256;
+                    j = (j + s[i]) % 256;
+                    x = s[i];
+                    s[i] = s[j];
+                    s[j] = x;
+                    res += String.fromCharCode(str.charCodeAt(y) ^ s[(s[i] + s[j]) % 256]);
+                }
+                return res;
+            }
+    //function error()
+    //{
+    //    alert('Test Error in Post');
+    //}
+
+            function decryptAndConvertJson(resData)
+            {
+                if (resData === null)
+                {
+                    closeModal();
+                    status(0,"SERVER NOT RESPONDING..");
+                    //alert("Network not available. or Server is down.");
+                    return;
+                }
+
+                var decryptData = rc4("p1^bil", resData);
+
+                var responseJson = JSON.parse(decryptData);
+                if (responseJson.retCode === 'SUCCESS')
+                {
+                    tokenValue = responseJson.retVal;
+                    var reqData = makePushDataReqJson();
+                    sendtoServerRequest(reqData, "submitScore");
+
+                }
+                else
+                {
+                    status(0,"SERVER NOT RESPONDING..");
+                    //alert("Server is down.");
+                    closeModal();
+                }
+                //return responseJson;
+            }
+
+
+            function makePushDataReqJson()
+            {
+
+                var tokenReq = new Object();
+                tokenReq.token = tokenValue;
+                tokenReq.decree = "pushanswer"; // need to be change here ?
+                var QuesArr = makeAnsArray();
+                request[0] = activityId;
+                var token = new Object();
+                token.topic_ids = request;
+                tokenReq.param = QuesArr;
+                var tokenJsonReq = JSON.stringify(tokenReq);
+                return tokenJsonReq;
+            }
+
+
+            function makeAnsArray()
+            {
+                var quesArray = new Array();
+                for (var quesNo = 0; quesNo < QuestionsArr.length; quesNo++)
+                {
+                    var tempObj = QuestionsArr[quesNo];
+                    var Number = tempObj.userAns;
+                    var Obj = new Object();
+                    Obj.date_ms = tempObj.trackingTime;
+                    Obj.test_uniqid = AssismentObj.AssisUidVar;
+                    Obj.ques_uniqid = tempObj.QuestionUidVar;
+                    var opt = 0;
+                    if(parseInt(Number) == 0)
+                    {
+                        opt = parseInt(Number);
+                    }
+                    else
+                    {
+                       opt = parseInt(Number) - 1;
+                    }
+                        
+                    if (tempObj.AnsArray[opt].AnswerIsCorrectVar == "true" && tempObj.userAns != 0)
+                    {
+                        Obj.ans_uniqid = "1";//tempObj.AnsArray[Number - 1].AnswerUidVar;
+                    }
+                    else
+                    {
+                        Obj.ans_uniqid = "0";
+                    }
+                    quesArray.push(Obj);
+                }
+                return  quesArray;
+            }
+            function  decryptAndConvertJsonPushData(resData)
+            {
+                if (resData === null)
+                {
+                    status(0,"SERVER NOT RESPONDING..");
+                    //alert("Server is down.");
+                    closeModal();
+                    return;
+                }
+
+                var decryptData = rc4("p1^bil", resData);
+
+                var responseJson = JSON.parse(decryptData);
+                if (responseJson.retCode === 'SUCCESS')
+                {
+                    closeModal();
+                    var Score = 0;
+                    for (var i = 0; i < QuestionsArr.length; i++)
+                    {
+                        if (QuestionsArr[i].userAns != 0)
+                        {
+                            var Num = QuestionsArr[i].userAns;
+                            if (QuestionsArr[i].AnsArray[parseInt(Num) - 1].AnswerIsCorrectVar == "true")
+                            {
+                                Score = Score + 1;
+                            }
+                        }
+                    }
+
+                    var obj = new Object();
+                    obj.uid = edgeId;
+                    var lastScore = (Score*5)/QuestionsArr.length;
+                    obj.score = lastScore;
+                    var stringObj = JSON.stringify(obj);
+                    JSInterface.setAssissmentScore(stringObj);
+
+                }
+                else if(responseJson.retCode === 'TOKEN_EXPIRED')
+                {
+                   var jsonData = makeJsonRequest();
+                   sendtoServerRequest(jsonData, "auth"); 
+                }
+                //return responseJson;
+            }
+
+            function showModal(text)
+            {
+                document.getElementById("modal").style.display = "block";
+                document.getElementById("fadeout").style.display = "block";
+                //document.getElementById("finput").value = "";
+                //var text = "You are registering for a live webinar session with our expert '"+name+"' on'"+data+"' scheduled for '"+time+"'. Click CONFIRM to book your slot or CANCEL to go back.";
+                document.getElementById("modalDynamicText").innerHTML = text;
+            }
+
+            function closeModal()
+            {
+                //document.getElementById("resultSpan").innerHTML = document.getElementById("finput").value;
+                document.getElementById("modal").style.display = "none";
+                document.getElementById("fadeout").style.display = "none";
+            }
+
+
+            function showModalAlert(QuestionNumber, AttemptNumber, RightAnswer, wronganswer)
+            {
+
+                document.getElementById("modal1").style.display = "block";
+                document.getElementById("fadeout").style.display = "block";
+                //document.getElementById("finput").value = "";
+                //var text = "You are registering for a live webinar session with our expert '"+name+"' on'"+data+"' scheduled for '"+time+"'. Click CONFIRM to book your slot or CANCEL to go back.";
+                document.getElementById("totel_Questions").innerHTML =     messageObj.A_TOTEL_NUMBER_OF_QUESTION +"  :" +QuestionNumber;
+                document.getElementById("Number_question").innerHTML =     messageObj.A_NUMBER_OF_QUESTION_ATTEMPTED+"  :"+ AttemptNumber;
+                document.getElementById("Number_Answer").innerHTML =       messageObj.A_NUMBER_OF_CORRECT_ANSWER +"  :"+RightAnswer;
+                document.getElementById("Number_wrong_Answer").innerHTML = messageObj.A_NUMBER_OF_INCORRECT_ANSWER +"  :"+ wronganswer;
+
+            }
+
+            function closeModalAlert()
+            {
+                //document.getElementById("resultSpan").innerHTML = document.getElementById("finput").value;
+                document.getElementById("modal1").style.display = "none";
+                document.getElementById("fadeout").style.display = "none";
+
+//                showModal("submit score on server");
+//                if(tokenValue == null)
+//                {  
+//                  var jsonData = makeJsonRequest();
+//                  sendtoServerRequest(jsonData, "auth");
+//                }
+//                else
+//                {
+                    var reqData = makeAnsArray();//makePushDataReqJson();
+                    var Score = 0;
+                    for (var i = 0; i < QuestionsArr.length; i++)
+                    {
+                        if (QuestionsArr[i].userAns != 0)
+                        {
+                            var Num = QuestionsArr[i].userAns;
+                            if (QuestionsArr[i].AnsArray[parseInt(Num) - 1].AnswerIsCorrectVar == "true")
+                            {
+                                Score = Score + 1;
+                            }
+                        }
+                    }
+                    
+                     var jsObject = new Object();
+                        jsObject.type = "submitScore";
+                        
+                    
+                    var obj = new Object();
+                    obj.edgeId = edgeId;
+                    obj.score = Score;
+                    obj.param = reqData;
+                    jsObject.data = obj;
+                    var stringObj = JSON.stringify(jsObject);
+                    JSInterface.send(stringObj);
+                    //sendtoServerRequest(reqData, "submitScore");  
+                //}
+            }
+            function status(stat, msg)
+                  {
+                      var statusObj = new Object();
+                      statusObj.status = stat;
+                      statusObj.msg = msg;
+                      var JsonReq = JSON.stringify(statusObj);
+                      JSInterface.send(JsonReq);
+                  }
+            function getCenterPadding(width,partition)
+            {
+               var devWidth = $(document).width();
+               var remain = (2/3)*devWidth/partition;
+               
+               var pixel = (remain - width)/2;
+               return pixel;
+            }
+            
+//            function setParseXmlNotification(XmlPath)
+//            {
+//              var pathObj = new Object();
+//              pathObj.filePath = XmlPath;
+//              var pathStr = JSON.stringify(pathObj);
+//              JSInterface.fileRemoveFromSdCard(pathStr);  
+//            }
+
+        </script>
+        <section id="containerDivId" style="position : relative; height: 100%">
+        <div id="topDiv" class="header" style="background-color: #f2f2f2;" ></div>
+        <div id="sliderDiv" class = "col-lg-12 col-xs-12 col-sm-12" style="background-color: white; height: 102px;padding-top: 62px;"></div>
+        <div id="NumberDiv" class = "col-lg-12 col-xs-12 col-sm-12" style="background-color: white;"></div>
+        <div class="content scrollable" style="width:100%" >    
+            <!--<div class="gap"></div>-->
+            <div id="midDiv" style="height:100%"></div>
+            <div class="gap"></div>
+        </div> 
+        <div id="bottomDiv" style="" class="footer">
+            <div id="buttonDiv" style=" width:100%;height: 60px; padding-top: 19px;"></div>
+            
+            
+        </div>
+        
+        
+        
+        </section>
+        <div id="modal" class="modalWindow"> 
+            <div id="loadingId" class = "text-center" style="sfont-size:21px; padding-bottom: 5px">Loading... </div>
+
+            <div style="background: #de5e00;height: 1px;width: 100%;"></div>
+            <div class="text-center">
+                <img src="../images/loading.gif" class ="divElement">
+            </div>
+            <div id="modalDynamicText" style="sfont-size:16px; padding-top: 5px;padding-bottom: 5px;height:135px" class="scrollable text-center">
+
+            </div>     
+        </div>
+        <div id="fadeout"></div>
+
+
+        <div id="modal1" class="modalWindow"> 
+            <div id = "assessID" class = "text-center" style="sfont-size:21px; padding-bottom: 5px">Assessment Test </div>
+
+            <div style="background: #5dc9e6;height: 1px;width: 100%;"></div>
+
+            <div id="totel_Questions" style="font-size:16px; padding-top: 5px;padding-bottom: 5px;height:25px"></div>
+            <div id="Number_question" style="font-size:16px; padding-top: 5px;padding-bottom: 5px;height:25px"></div>
+            <div id="Number_Answer" style="font-size:16px; padding-top: 5px;padding-bottom: 5px;height:25px" ></div>
+            <div id="Number_wrong_Answer" style="font-size:16px; padding-top: 5px;padding-bottom: 45px;height:25px"></div>
+
+
+
+            <div style="background: #5dc9e6;height: 1px;width: 100%;"></div>
+            <div style="padding-top:5px;"> 
+                <a id="OkId" onclick=closeModalAlert() class = "col-lg-12 col-xs-12 col-sm-12 text-center dd-handle dd-hover" style = "color: white; background: #5dc9e6;" >
+                    OK
+                </a>
+
+            </div>      
+        </div>
+
+
+
+    </body>
+</html>

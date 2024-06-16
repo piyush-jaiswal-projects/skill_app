@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" class="app">
+    <head >
+        <script type="text/javascript">
+            function getParam(name)
+            {
+                name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+                var regexS = "[\\?&]"+name+"=([^&#]*)";
+                var regex = new RegExp( regexS );
+                var results = regex.exec(window.location.href);
+                if(results === null)
+                return "";
+                else
+                return results[1];
+            }
+            
+        </script>
+        <meta charset="utf-8" />
+        <title>Interview Preparation</title>
+        <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <link rel="stylesheet" href="../css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="../css/animate.css" type="text/css" />
+        <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css" />
+        <link rel="stylesheet" href="../css/font.css" type="text/css" />
+        <link rel="stylesheet" href="../js/calendar/bootstrap_calendar.css" type="text/css" />
+        <link rel="stylesheet" href="../css/app.css" type="text/css" />
+        <link rel="stylesheet" href="../css/home.css" type="text/css" />
+        
+        <script src="../js/jquery.min.js"></script>
+        
+        
+        <!--[if lt IE 9]>
+         <script src="js/ie/html5shiv.js"></script>
+         <script src="js/ie/respond.min.js"></script>
+         <script src="js/ie/excanvas.js"></script>
+         <![endif]-->
+    </head>
+    <body  onload ="DrawUI();">
+        <div id="overContain"> 
+        
+        
+        <div id="graph" class ="col-lg-12 col-xs-12 col-sm-12" style="height:20%;" > 
+            <div class ="col-lg-8 col-xs-8 col-sm-8" id="graphTextdiv" style="height:25px; font-size:1.5em;color:black">Progress Comparison</div>
+            <div class ="col-lg-4 col-xs-4 col-sm-4" id="graphlegend" style="height:25px; color:black"></div>
+        </div>
+        
+        <div id="graphdiv" style="height: 50%;margin-left:20px;margin-right: 20px; "></div>
+        <div id="scorediv" style="height: 30%;"> </div>
+       </div> 
+        
+<!--        <div class="panel-body">
+            <div id="flot-1ine" style="height:210px">
+            </div>
+        </div>-->
+<!--            <div class= "col-lg-12">
+                <div class="col-lg-4 col-xs-4 col-sm-4">
+                  <section class="panel panel-default">
+                    <div class="panel-body">col-lg-4</div>
+                  </section>
+                </div>
+                <div class="col-lg-4 col-xs-4 col-sm-4"> 
+                  <section class="panel panel-default">
+                    <div class="panel-body">col-lg-4</div>
+                  </section>
+                </div>
+                <div class="col-lg-4 col-xs-4 col-sm-4"> 
+                  <section class="panel panel-default">
+                    <div class="panel-body">col-lg-4</div>
+                  </section>
+                </div>
+            </div>    -->
+  <script src="../js/bootstrap.js"></script>
+  
+<script src="../js/app.js"></script>
+  <script src="../js/app.plugin.js"></script>
+  
+  <script src="../js/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../js/charts/easypiechart/jquery.easy-pie-chart.js"></script>
+  <script src="../js/charts/sparkline/jquery.sparkline.min.js"></script>
+  <script src="../js/charts/flot/jquery.flot.min.js"></script>
+  <script src="../js/charts/flot/jquery.flot.tooltip.min.js"></script>
+  <script src="../js/charts/flot/jquery.flot.resize.js"></script>
+  <script src="../js/charts/flot/jquery.flot.grow.js"></script>
+  <script src="../js/charts/flot/demo.js"></script>
+  <script src="../js/charts/flot/jquery.liqvid.js"></script>
+  
+  
+  
+
+  <script src="../js/calendar/bootstrap_calendar.js"></script>
+  <script src="../js/calendar/demo.js"></script>
+
+  <script src="../js/sortable/jquery.sortable.js"></script>
+      <script language="javascript">
+//;(function($, window, document, undefined)
+//{
+            function DrawUI(){
+                  var msg = getParam("json");
+                  var uri_dec = decodeURIComponent(msg);
+                  msg = uri_dec;
+                  var regex = new RegExp('%22', 'g');
+                  var regex1 = new RegExp('%20', 'g');
+                  msg = msg.replace(regex, '"');
+                  msg = msg.replace(regex1, ' ');
+                  msg = "{\"avgIR\":[0.0,3.0,5.0,8.0,9.0],\"badgeNo\":1,\"irData\":3,\"irPercData\":3,\"percentage\":50,\"yourIR\":[0.0,2.0,4.0,6.0,8.0]}";
+                  var jsonObj = JSON.parse(msg);
+                  creatingUi(jsonObj);
+                
+            }
+//  DrawUI();
+//  })(window.jQuery || window.Zepto, window, document);
+//  
+   function showAndroidToast(v) {
+   // Call native Function
+   AndroidFunction.showToast(jsonString);
+   }
+   
+   function creatingUi(jsonObj)
+   {
+       if(jsonObj.scoreData !== null)
+       {
+           drawUserScoreUI(jsonObj);
+           drawUserGraphUI(jsonObj);
+           
+       }
+       if(jsonObj !== null)
+       {
+           
+           
+       }
+   }
+   
+   function drawUserScoreUI( userScore)
+   {
+       
+      var container = document.getElementById("overContain");
+      
+      container.setAttribute("style","height:"+$(document).height()+"px;");
+      container.appendChild(document.getElementById("scorediv"));
+      
+      var userScoreContainer = document.createElement("div");
+      userScoreContainer.setAttribute("class","userScore col-lg-12 col-xs-12");
+      
+      //userScoreContainer.innerHTML = userScore;
+      //document.getElementsByTagName("body")[0].appendChild(userScoreContainer);
+      document.getElementById("scorediv").appendChild(userScoreContainer);
+      
+      
+      var irDiv = document.createElement("div");
+      irDiv.setAttribute("class","col-lg-4 col-xs-4 col-sm-4 text-center");// padder-v b-r b-light lt");
+      userScoreContainer.appendChild(irDiv);
+      
+      var irUI = document.createElement("span");
+      irUI.setAttribute("class","fa-stack fa-3x m-r-sm");
+      irDiv.appendChild(irUI);
+      
+      var ircircle = document.createElement("i");
+      ircircle.setAttribute("class","fa fa-circle fa-stack-2x");
+      //text-warning
+      irUI.appendChild(ircircle);
+      
+      var irwhitecircle = document.createElement("i");
+      irwhitecircle.innerHTML = userScore.irData;
+      irwhitecircle.setAttribute("class","fa fa-stack-1x text-white");
+      //fa-bug
+      irUI.appendChild(irwhitecircle);
+      
+      var irinnerSpan = document.createElement("span");
+      irinnerSpan.setAttribute("class","easypiechart pos-abt");
+      irinnerSpan.setAttribute("data-percent",userScore.irPercData);
+      irinnerSpan.setAttribute("data-line-width","4");
+      irinnerSpan.setAttribute("data-track-color","#fff");
+      irinnerSpan.setAttribute("data-scale-color","false");
+      irinnerSpan.setAttribute("data-size","77");
+      irinnerSpan.setAttribute("data-update","3000");
+      irinnerSpan.setAttribute("data-style","width: 50px; height: 50px;");
+      irUI.appendChild(irinnerSpan);
+      
+      var badgeDiv = document.createElement("div");
+      badgeDiv.setAttribute("class","col-lg-4 col-xs-4 col-sm-4 text-center ");//padder-v b-r b-light lt text-center");
+      userScoreContainer.appendChild(badgeDiv);
+      
+      var badgeimg = document.createElement("img");
+      badgeimg.setAttribute("class","badgeImg");
+      if(userScore.badgeNo === 1)
+      {
+          badgeimg.setAttribute("src","../images/Badgesicon.png");
+      }
+      else if(userScore.badgeNo === 2)
+      {
+         badgeimg.setAttribute("src","../images/Badgesicon.png");
+         
+      }
+      else if(userScore.badgeNo === 3)
+      {
+          badgeimg.setAttribute("src","../images/Badgesicon.png");
+      }
+      else
+      {
+        console.log("Unknown badgeNo."+userScore.badgeNo);  
+      }
+      
+      
+      badgeDiv.appendChild(badgeimg);
+      
+      
+      
+      
+      
+      
+      var CourseCmplteDiv = document.createElement("div");
+      CourseCmplteDiv.setAttribute("class","col-lg-4 col-xs-4 col-sm-4 text-center");// padder-v b-r b-light lt");
+      userScoreContainer.appendChild(CourseCmplteDiv);
+      
+      
+      var irUI = document.createElement("span");
+      irUI.setAttribute("class","fa-stack fa-3x m-r-sm");
+      CourseCmplteDiv.appendChild(irUI);
+      
+      var ircircle = document.createElement("i");
+      ircircle.setAttribute("class","fa fa-circle fa-stack-2x ");
+      //text-warning
+      irUI.appendChild(ircircle);
+      
+      var irwhitecircle = document.createElement("i");
+      irwhitecircle.innerHTML= userScore.percentage;
+      irwhitecircle.setAttribute("class","fa  fa-stack-1x text-white");
+      //fa-bug
+      irUI.appendChild(irwhitecircle);
+      
+      var irinnerSpan = document.createElement("span");
+      irinnerSpan.setAttribute("class","easypiechart pos-abt");
+      irinnerSpan.setAttribute("data-percent",userScore.percentage);
+      irinnerSpan.setAttribute("data-line-width","4");
+      irinnerSpan.setAttribute("data-track-color","#fff");
+      irinnerSpan.setAttribute("data-scale-color","false");
+      irinnerSpan.setAttribute("data-size","77");
+      irinnerSpan.setAttribute("data-line","butt");
+      //irinnerSpan.setAttribute("data-animate","2000");
+      //irinnerSpan.setAttribute("data-target","#bug");
+      irinnerSpan.setAttribute("data-update","3000");
+      irinnerSpan.setAttribute("data-style","width: 50px; height: 50px; line-height: 50px;");
+      irUI.appendChild(irinnerSpan);
+      
+      
+      
+      
+   }
+   function drawUserGraphUI(userGraph)
+   {
+     // var userGraphContainer = document.createElement("div");
+      //userGraphContainer.setAttribute("id","#graphDiv");
+      //document.getElementsByTagName("body")[0].appendChild(userGraphContainer);
+      var vals1 = userGraph.yourIR;//[0,2,3,4,5,6];
+      var vals2 = userGraph.avgIR;//[0,6,9,12,15,18];
+      var chartLbl1 = ' Your IR';
+      var chartlbl2 = ' Avg. IR';
+     // var module1 = 6;
+      //liqChartIRGraph(vals1,vals2,chartLbl1,chartlbl2,userGraphContainer,module);
+      //liqChartIRGraph(vals1,vals2,chartLbl1,chartlbl2,userGraphContainer,module1);
+      
+      liqChartIRGraph(vals1,vals2,chartLbl1,chartlbl2,'IR value :','#graphdiv');
+//      var graphUI = document.createElement("div");
+//      graphUI.setAttribute("class","panel-body");
+//       
+//      userGraphContainer.appendChild(graphUI);
+//      
+//      var graphUIInner = document.createElement("div");
+//      graphUIInner.setAttribute("id","flot-1ine");
+//      graphUIInner.setAttribute("style","height:210px");
+//       
+//      graphUI.appendChild(graphUIInner);
+   }
+   
+   
+ 
+
+function liqChartIRGraph(vals1,vals2,chartLabel1,chartLabel2,pointLabel,container) {
+    console.log('test Start Function');
+    //var todayDt= (new Date()).getTime();
+    var d1 = [];
+    var d2 = [];
+    //var startDt = todayDt - 24*60*60*1000*vals1.length;
+    //var sum =0;
+    var num_modules = vals2.length;
+    for(i=1;i<num_modules;i++) {
+        var arr = new Array();
+        arr[0] =i;
+        arr[1] =vals1[i-1];
+        d1.push(arr);
+        var arr2 = new Array();
+        arr2[0] =i;
+        arr2[1] =vals2[i-1];
+        d2.push(arr2);
+    }
+    
+    var colorGreen = "#008040";
+    var colorRed = "#ff3b30";
+  $(container).length && $.plot($(container), [{
+          data: d1,
+          label: chartLabel1,
+           lines : {show:true, fill:false, lineWidth:2},
+           points : {show: true, radius: 2},
+           color :colorGreen
+      }, {
+          data: d2,
+          color : colorRed,
+          label: chartLabel2,
+      lines : {show:true, fill:false, lineWidth:2},
+      points : {show: true, radius: 2}
+      }] ,
+      {
+        grid: {
+            hoverable: true,
+            clickable: true,
+            tickColor: "#f0f0f0",
+            borderWidth: 0,
+            color: 'black',
+            opacity:1
+            
+            
+        },
+        colors: ["#00B6D6"],
+        xaxis: { minTickSize: 1,
+        tickLength: 0
+        },
+        yaxis: {
+          ticks: (function (axis) {
+        var res =[];
+        var space = axis.max - axis.min;
+        space /=5;
+        for(var i=0;i<5;i++) { res[i] = space*i;}
+        return res;
+        }) },
+    legend : {
+        backgroundOpacity : 1,
+        container:"#graphlegend",
+        
+    },
+        tooltip: true,
+        tooltipOpts: {
+          content: pointLabel+" = %y.4",
+          defaultTheme: false,
+          shifts: {
+            x: 0,
+            y: 20
+          }
+        }
+      }
+  );
+  console.log('test End Function');
+}   
+</script>
+
+  <!-- Bootstrap -->
+
+</body>
+</html>
+
+
+
+
+
+
+    

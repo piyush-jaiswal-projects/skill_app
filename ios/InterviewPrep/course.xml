@@ -1,0 +1,390 @@
+
+
+<course>
+    <name>Interview Preparation App</name>
+    <description>Interview Preparation App</description>
+    <edgeId>15933</edgeId>
+    <catlog>
+        <assessment>
+            <irtrack>15934</irtrack>
+            <name>Pre Assessment</name>
+            <edgeId>15934</edgeId>
+            <data>PracticeApp/course/pre_assess.xml</data>
+        </assessment>
+        <module>
+            <irtrack>15935</irtrack>
+            <name>Module 1</name>
+            <edgeId>15935</edgeId>
+            <data>PracticeApp/course/module1</data>
+            <scenario>
+                <name>Talking About Yourself</name>
+                <edgeId>15936</edgeId>
+                <concept>
+                    <name>Talking About Yourself : Concept</name>
+                    <edgeId>15937</edgeId>
+                    <data>PracticeApp/course/module1/scenario1/concept1.xml</data>
+                </concept>
+                <activity>
+                    <name>Talking About Yourself : Live Webinar </name>
+                    <edgeId>15938</edgeId>
+                </activity>
+                <practice>
+                    <edgeId>15939</edgeId>
+                    <scenario_practice>
+                        <edgeId>15940</edgeId>
+                        <name>Talking About Yourself : Scenario Practice</name>
+                        <data>PracticeApp/course/module1/scenario1/practice1.xml</data>
+                        <watch>
+                            <edgeId>15941</edgeId>
+                        </watch>
+                        <enact>
+                            <edgeId>15942</edgeId>
+                        </enact>
+                        <review>
+                            <edgeId>15943</edgeId>
+                        </review>
+                    </scenario_practice>
+                    <vocab_practice>
+                            <name>Talking About Yourself : Vocabulary Practice</name>
+                            <edgeId>15944</edgeId>
+                            <data>PracticeApp/course/module1/scenario1/vocabulary.xml</data>
+                    </vocab_practice>
+                    <mcq_practice>
+                            <name>Talking About Yourself : MCQ Practice</name>
+                            <edgeId>15945</edgeId>
+                            <data>PracticeApp/course/module1/scenario1/practice_mcq1.xml</data>
+                    </mcq_practice>
+                </practice>
+            </scenario>
+            <scenario>
+                <name>Talking About Long Term Career Goals</name>
+                <edgeId>15946</edgeId>
+                <concept>
+                    <name>Talking About Long Term Career Goals : Concep</name>
+                    <edgeId>15947</edgeId>
+                    <data>PracticeApp/course/module1/scenario2/concept2.xml</data>
+                </concept>
+                <activity>
+                    <name>Talking About Long Term Career Goals : Live W</name>
+                    <edgeId>15948</edgeId>
+                </activity>
+                <practice>
+                    <edgeId>15949</edgeId>
+                    <scenario_practice>
+                        <edgeId>15950</edgeId>
+                        <name>Talking About Long Term Career Goals : Scenar</name>
+                        <data>PracticeApp/course/module1/scenario2/practice2.xml</data>
+                        <watch>
+                            <edgeId>15951</edgeId>
+                        </watch>
+                        <enact>
+                            <edgeId>15952</edgeId>
+                        </enact>
+                        <review>
+                            <edgeId>15953</edgeId>
+                        </review>
+                    </scenario_practice>
+                    <vocab_practice>
+                            <name>Talking About Long Term Career Goals : Vocabu</name>
+                            <edgeId>15954</edgeId>
+                            <data>PracticeApp/course/module1/scenario2/vocabulary.xml</data>
+                    </vocab_practice>
+                    <mcq_practice>
+                            <name>Talking About Long Term Career Goals : MCQ Pr</name>
+                            <edgeId>15955</edgeId>
+                            <data>PracticeApp/course/module1/scenario2/practice_mcq2.xml</data>
+                    </mcq_practice>
+                </practice>
+            </scenario>
+            <game>
+                <name>Module 1 Game</name>
+                <edgeId>15956</edgeId>
+            </game>
+        </module>
+        <module>
+            <irtrack>15957</irtrack>
+            <name>Module 2</name>
+            <edgeId>15957</edgeId>
+            <data>PracticeApp/course/module2</data>
+            <scenario>
+                <name>Strengths and Weaknesses</name>
+                <edgeId>15958</edgeId>
+                <concept>
+                    <name>Strengths and Weaknesses : Concept</name>
+                    <edgeId>15959</edgeId>
+                    <data>PracticeApp/course/module2/scenario3/concept3.xml</data>
+                </concept>
+                <activity>
+                    <name>Strengths and Weaknesses : Live Webinar </name>
+                    <edgeId>15960</edgeId>
+                </activity>
+                <practice>
+                    <edgeId>15961</edgeId>
+                    <scenario_practice>
+                        <edgeId>15962</edgeId>
+                        <name>Strengths and Weaknesses : Scenario Practice</name>
+                        <data>PracticeApp/course/module2/scenario3/practice3.xml</data>
+                        <watch>
+                            <edgeId>15963</edgeId>
+                        </watch>
+                        <enact>
+                            <edgeId>15964</edgeId>
+                        </enact>
+                        <review>
+                            <edgeId>15965</edgeId>
+                        </review>
+                    </scenario_practice>
+                    <vocab_practice>
+                            <name>Strengths and Weaknesses : Vocabulary Practic</name>
+                            <edgeId>15966</edgeId>
+                            <data>PracticeApp/course/module2/scenario3/vocabulary.xml</data>
+                    </vocab_practice>
+                    <mcq_practice>
+                            <name>Strengths and Weaknesses : MCQ Practice</name>
+                            <edgeId>15967</edgeId>
+                            <data>PracticeApp/course/module2/scenario3/practice_mcq3.xml</data>
+                    </mcq_practice>
+                </practice>
+            </scenario>
+            <scenario>
+                <name>Your Key Differentiator </name>
+                <edgeId>15968</edgeId>
+                <concept>
+                    <name>Your Key Differentiator  : Concept</name>
+                    <edgeId>15969</edgeId>
+                    <data>PracticeApp/course/module2/scenario4/concept4.xml</data>
+                </concept>
+                <activity>
+                    <name>Your Key Differentiator  : Live Webinar </name>
+                    <edgeId>15970</edgeId>
+                </activity>
+                <practice>
+                    <edgeId>15971</edgeId>
+                    <scenario_practice>
+                        <edgeId>15972</edgeId>
+                        <name>Your Key Differentiator  : Scenario Practice</name>
+                        <data>PracticeApp/course/module2/scenario4/practice4.xml</data>
+                        <watch>
+                            <edgeId>15973</edgeId>
+                        </watch>
+                        <enact>
+                            <edgeId>15974</edgeId>
+                        </enact>
+                        <review>
+                            <edgeId>15975</edgeId>
+                        </review>
+                    </scenario_practice>
+                    <vocab_practice>
+                            <name>Your Key Differentiator  : Vocabulary Practic</name>
+                            <edgeId>15976</edgeId>
+                            <data>PracticeApp/course/module2/scenario4/vocabulary.xml</data>
+                    </vocab_practice>
+                    <mcq_practice>
+                            <name>Your Key Differentiator  : MCQ Practice</name>
+                            <edgeId>15977</edgeId>
+                            <data>PracticeApp/course/module2/scenario4/practice_mcq4.xml</data>
+                    </mcq_practice>
+                </practice>
+            </scenario>
+            <game>
+                <name>Module 2 Game</name>
+                <edgeId>15978</edgeId>
+            </game>
+        </module>
+        <assessment>
+            <irtrack>15979</irtrack>
+            <name>Mid Assessment </name>
+            <edgeId>15979</edgeId>
+            <data>PracticeApp/course/mid_assess.xml</data>
+        </assessment>
+        <module>
+            <irtrack>15980</irtrack>
+            <name>Module 3</name>
+            <edgeId>15980</edgeId>
+            <data>PracticeApp/course/module3</data>
+            <scenario>
+                <name>Talking About The Company</name>
+                <edgeId>15981</edgeId>
+                <concept>
+                    <name>Talking About The Company : Concept</name>
+                    <edgeId>15982</edgeId>
+                    <data>PracticeApp/course/module3/scenario5/concept5.xml</data>
+                </concept>
+                <activity>
+                    <name>Talking About The Company : Live Webinar </name>
+                    <edgeId>15983</edgeId>
+                </activity>
+                <practice>
+                    <edgeId>15984</edgeId>
+                    <scenario_practice>
+                        <edgeId>15985</edgeId>
+                        <name>Talking About The Company : Scenario Practice</name>
+                        <data>PracticeApp/course/module3/scenario5/practice5.xml</data>
+                        <watch>
+                            <edgeId>15986</edgeId>
+                        </watch>
+                        <enact>
+                            <edgeId>15987</edgeId>
+                        </enact>
+                        <review>
+                            <edgeId>15988</edgeId>
+                        </review>
+                    </scenario_practice>
+                    <vocab_practice>
+                            <name>Talking About The Company : Vocabulary Practi</name>
+                            <edgeId>15989</edgeId>
+                            <data>PracticeApp/course/module3/scenario5/vocabulary.xml</data>
+                    </vocab_practice>
+                    <mcq_practice>
+                            <name>Talking About The Company : MCQ Practice</name>
+                            <edgeId>15990</edgeId>
+                            <data>PracticeApp/course/module3/scenario5/practice_mcq5.xml</data>
+                    </mcq_practice>
+                </practice>
+            </scenario>
+            <scenario>
+                <name>Discussing Salaries</name>
+                <edgeId>15991</edgeId>
+                <concept>
+                    <name>Discussing Salaries : Concept</name>
+                    <edgeId>15992</edgeId>
+                    <data>PracticeApp/course/module3/scenario6/concept6.xml</data>
+                </concept>
+                <activity>
+                    <name>Discussing Salaries : Live Webinar </name>
+                    <edgeId>15993</edgeId>
+                </activity>
+                <practice>
+                    <edgeId>15994</edgeId>
+                    <scenario_practice>
+                        <edgeId>15995</edgeId>
+                        <name>Discussing Salaries : Scenario Practice</name>
+                        <data>PracticeApp/course/module3/scenario6/practice6.xml</data>
+                        <watch>
+                            <edgeId>15996</edgeId>
+                        </watch>
+                        <enact>
+                            <edgeId>15997</edgeId>
+                        </enact>
+                        <review>
+                            <edgeId>15998</edgeId>
+                        </review>
+                    </scenario_practice>
+                    <vocab_practice>
+                            <name>Discussing Salaries : Vocabulary Practice</name>
+                            <edgeId>15999</edgeId>
+                            <data>PracticeApp/course/module3/scenario6/vocabulary.xml</data>
+                    </vocab_practice>
+                    <mcq_practice>
+                            <name>Discussing Salaries : MCQ Practice</name>
+                            <edgeId>16000</edgeId>
+                            <data>PracticeApp/course/module3/scenario6/practice_mcq6.xml</data>
+                    </mcq_practice>
+                </practice>
+            </scenario>
+            <game>
+                <name>Module 3 Game</name>
+                <edgeId>16001</edgeId>
+            </game>
+        </module>
+        <module>
+            <irtrack>16002</irtrack>
+            <name>Module 4</name>
+            <edgeId>16002</edgeId>
+            <data>PracticeApp/course/module4</data>
+            <scenario>
+                <name>Asking questions</name>
+                <edgeId>16003</edgeId>
+                <concept>
+                    <name>Asking questions : Concept</name>
+                    <edgeId>16004</edgeId>
+                    <data>PracticeApp/course/module4/scenario7/concept7.xml</data>
+                </concept>
+                <activity>
+                    <name>Asking questions : Live Webinar </name>
+                    <edgeId>16005</edgeId>
+                </activity>
+                <practice>
+                    <edgeId>16006</edgeId>
+                    <scenario_practice>
+                        <edgeId>16007</edgeId>
+                        <name>Asking questions : Scenario Practice</name>
+                        <data>PracticeApp/course/module4/scenario7/practice7.xml</data>
+                        <watch>
+                            <edgeId>16008</edgeId>
+                        </watch>
+                        <enact>
+                            <edgeId>16009</edgeId>
+                        </enact>
+                        <review>
+                            <edgeId>16010</edgeId>
+                        </review>
+                    </scenario_practice>
+                    <vocab_practice>
+                            <name>Asking questions : Vocabulary Practice</name>
+                            <edgeId>16011</edgeId>
+                            <data>PracticeApp/course/module4/scenario7/vocabulary.xml</data>
+                    </vocab_practice>
+                    <mcq_practice>
+                            <name>Asking questions : MCQ Practice</name>
+                            <edgeId>16012</edgeId>
+                            <data>PracticeApp/course/module4/scenario7/practice_mcq7.xml</data>
+                    </mcq_practice>
+                </practice>
+            </scenario>
+            <scenario>
+                <name>After The Interview</name>
+                <edgeId>16013</edgeId>
+                <concept>
+                    <name>After The Interview : Concept</name>
+                    <edgeId>16014</edgeId>
+                    <data>PracticeApp/course/module4/scenario8/concept8.xml</data>
+                </concept>
+                <activity>
+                    <name>After The Interview : Live Webinar </name>
+                    <edgeId>16015</edgeId>
+                </activity>
+                <practice>
+                    <edgeId>16016</edgeId>
+                    <scenario_practice>
+                        <edgeId>16017</edgeId>
+                        <name>After The Interview : Scenario Practice</name>
+                        <data>PracticeApp/course/module4/scenario8/practice8.xml</data>
+                        <watch>
+                            <edgeId>16018</edgeId>
+                        </watch>
+                        <enact>
+                            <edgeId>16019</edgeId>
+                        </enact>
+                        <review>
+                            <edgeId>16020</edgeId>
+                        </review>
+                    </scenario_practice>
+                    <vocab_practice>
+                            <name>After The Interview : Vocabulary Practice</name>
+                            <edgeId>16021</edgeId>
+                            <data>PracticeApp/course/module4/scenario8/vocabulary.xml</data>
+                    </vocab_practice>
+                    <mcq_practice>
+                            <name>After The Interview : MCQ Practice</name>
+                            <edgeId>16022</edgeId>
+                            <data>PracticeApp/course/module4/scenario8/practice_mcq8.xml</data>
+                    </mcq_practice>
+                </practice>
+            </scenario>
+            <game>
+                <name>Module 4 Game</name>
+                <edgeId>16023</edgeId>
+            </game>
+        </module>
+        <assessment>
+            <irtrack>16024</irtrack>
+            <name>Post Assessment</name>
+            <edgeId>16024</edgeId>
+            <data>PracticeApp/course/post_assess.xml</data>
+        </assessment>
+
+    </catlog>
+</course>
+
+

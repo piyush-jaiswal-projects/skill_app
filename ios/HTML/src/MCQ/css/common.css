@@ -1,0 +1,1935 @@
+@import url('circle.css');
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 23, 2015, 12:43:03 PM
+    Author     : ram.gupta
+*/
+
+
+
+.quesAudioType .faIcon,.quesImageAudioType .faIcon{
+    position: relative;
+    top: 1px;
+    border: solid 3px #E2DFDF;
+    border-radius: 100px;
+    height:60px;
+    width:60px;
+    background:#4d4c49;
+    opacity:0.7;
+}
+.quesAudioType .faIcon .fa,.quesImageAudioType .faIcon .fa{
+/*    border: solid thin #E2DFDF;
+    border-radius: 100px;
+    font-size: 30px;
+    color: #4D99DC;*/
+font-size: 30px;
+padding: 12px 5px 12px 6px;color:#fff;
+}
+/*.quesAudioType .faIcon .fa-play,.quesImageAudioType .faIcon .fa-play{
+    padding: 12px 15px;
+}
+.quesAudioType .faIcon .fa-pause,.quesImageAudioType .faIcon .fa-pause{    
+    padding: 12px 14px;
+}*/
+.quesImageAudioType .txt{
+    position:relative;
+    top:-90px;
+    font-size:80%;color: #4D99DC;
+    background-color: #eeeeee;
+    padding: 0px 8px;
+    border-radius: 5px;
+    opacity: 0.8;
+    
+}
+.quesAudioType .txt{
+    position:relative;
+    top:40px;
+    font-size:80%;color: #4D99DC;
+}
+.quesAudioType .easyPieChart{
+    position: relative;
+text-align: center;
+top: 28%;
+}
+/*.easyPieChart{width:50px;height:50px;line-height: 50px;}*/
+#fillblanks .fillTxt{
+    font-size:80%;
+    text-align:left;
+padding-bottom: 10px;
+padding-left:7px;
+color: #4D99DC;}
+.rightScoreID,.starScoreID{font-weight:bold;color:#242e3a;}
+
+::-webkit-scrollbar {
+    width: 3px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(216,216,216,0.5); 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    -webkit-box-shadow: inset 0 0 6px rgba(177,177,177,0.5); 
+}
+*{
+    margin:0;padding:0;
+}
+html,body
+{
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+body {
+    /* font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica, Arial", "Lucida Grande", "sans-serif"; */
+    font-weight: 300;
+    position : relative;
+    height : 100%;
+    width : 100%;
+    background: #f8f9fa;
+    /*   background-image :  url("../images/bg1_1.png");
+       background-size:   cover;
+       background-repeat: no-repeat;*/
+}
+header,footer,div
+{ 
+    width: 100%; 
+}
+header
+{
+    height: 24px;
+    position: relative;
+    z-index:1;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 5px 15px 5px 15px;
+}
+footer
+{
+    height: 35px;
+    position: relative;
+    z-index:1;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0px 15px 0px 15px;
+    text-align: center;
+    bottom: 0px;
+}
+.container-fluid{
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.mainDicId
+{
+    height: 100%;
+    padding: 0px 0px;
+}
+.containerMid
+{
+    width: 100%;
+    height: 100%;
+    margin: -44px auto -90px auto;
+    padding: 44px 15px 90px 15px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.containerMid p{
+    font-size: 100%;}
+
+.topProgress {
+    text-align : center;
+    width : 100%;
+    height : 10%;
+    padding-top: 5px;
+}
+
+.topProgressLeft {
+    width: 85%;
+    float : left;
+    padding: 4px 0px 0px 0px;
+}
+
+.topProgressRight {
+    width: 15%;
+    float: right;
+    font-size: 90%;
+    text-align: right;
+    top: -6px;
+    position: relative;
+}
+
+.topProgressFilled {
+    color : #EDECE1;
+    background-color: #EDECE1
+}
+
+.topProgressEmpty {
+    color : #EDECE1;
+    padding: 2px 0px;
+    background-color: #EDECE1;
+    border-radius: 10px;
+}
+.progressField{ 
+    display: none;
+    padding: 2px 0px;
+    background-color: #ed5565; 
+    border-radius: 10px;
+    position: relative;
+    top: -4px;}
+.contentTopDiv{
+    height: 30%;
+    min-height: 30px;
+    overflow-y: auto;
+    color: #000;
+}
+.contentMidQuesDiv {
+    height: 50%;
+    color: #3B4350;
+}
+.contentMidAnsDiv {
+    height: 50%;
+    color: #3B4350;
+    z-index: 99999;
+}
+.quesOptionType{
+    width: 100%;
+    /* overflow:auto; */
+    height: 65%;
+    color: #3B4350;
+    position: relative;
+    margin-bottom: 4%;
+}
+.quesImageType,.quesAudioType,.quesImageAudioType,.quesVideoType
+{
+    width:100%;
+    height: 100%;
+    text-align:center;
+    margin:0px auto;
+    position:relative;
+    overflow:hidden;
+}
+.quesImageType
+{
+    display:block;
+}
+.quesAudioType
+{
+    display:block;
+/*    padding: 12% 39% 12% 39%;*/
+background:#eeeeee;
+}
+.quesImageAudioType
+{
+    display:block;
+    position: relative;
+}
+.quesVideoType
+{
+    /* display:block; */
+    /* height: 100%; */
+    /* width: 100%; */
+    /* object-fit: fill; */
+    overflow: hidden;
+    position: absolute;
+}
+.videoShow{
+     object-fit: fill;left: 0px;overflow: hidden;      position: relative; max-width:100%;max-height:100%;}
+.playBg{/* padding:0px 40%; */position: relative;      z-index: 99;/* top: -60px; */left: 8px;}
+.playAudioBg{position: relative;top: -100px;}
+div#iconId{
+    /* background:url("../images/playIcon.png") no-repeat; */
+    width: 50px;
+    /* height: 60px; */
+    border-radius: 100%;
+    /* position: relative; */
+    text-align: center;
+    vertical-align: middle;
+    font-size: 25px;
+    color: #4D99DC;
+}
+.pauseImg{
+    background:url("../images/pauseIcon.png") no-repeat;width:60px;height:60px}
+.quesImageType img
+{
+    max-width: 100%;max-height: 100%;
+    //min-width: 100%;min-height: 100%;
+}
+.quesAudioType img
+{
+    padding: 20px 0px;
+}
+.quesImageAudioType .img
+{
+    max-width: 100%;max-height: 100%;
+    //min-width: 100%;min-height: 100%;
+}
+.quesImageAudioType .audioImg{
+    position: relative;
+    top: -90px;
+}
+.ansType{
+    color: #3B4350;
+    overflow: hidden;
+    display: table;
+    padding: 5px 0px 0px 0px;
+}
+
+.ansType .div{
+        padding-right: 5px;
+}
+#quesDiv{
+    width: 92%;
+    display: inline-block;
+    padding-left: 2px;
+}
+#quesNoDiv{
+    /* width: 8%; */
+    line-height: 18px;
+}
+.ansCircle{
+    width: 7%;padding-top: 8px;}
+.fa-circle{color :#91A6A6;font-size: 20px;}
+
+.fa-dot-circle-o{color : #ed5565;font-size: 20px;}
+.ansSelect{
+    width: 93%;
+    margin-bottom: 8px;}
+
+
+
+.ansDndDiv,.ansDndBoxFillDiv{
+    float: left;
+    display: inline-block;
+}
+.ansDndBoxFillDiv{
+    height: 120px;
+    /* overflow-y:scroll;*/
+    padding: 0px 5px 0px 5px;
+    margin: 20px 0px 10px 0px;
+}
+.ansDndDiv a,.ansDndBoxFillDiv a{
+    text-decoration:none;
+    display: inline-block;
+    width:auto;
+    margin:0px 3px 5px 3px;
+}
+.ansDndWhiteDiv{
+    width : 90%;
+    height: 70px;
+    float : left;
+    margin: 5px 0px;
+    border-radius:10px;
+    /* background: -webkit-linear-gradient(top,#f0f0f0 0%,white 5%) 0 0; */
+    background: -moz-linear-gradient(top,#f0f0f0 0%,white 5%) 0 0;
+    background: linear-gradient(top,#f0f0f0 0%,white 5%) 0 0;
+    /* -webkit-background-size: 100% 30px; */
+    -moz-background-size: 100% 30px;
+    -ms-background-size: 100% 30px;
+    /* background-size: 100% 18px; */
+    border: dashed 1px #A9A3A3;
+}
+.ansDndWhiteDiv a{text-decoration:none;
+                  padding: 2px 0px 5px 15px;
+                  display: inline-block;
+}
+.ansDndWhiteDiv .drag_item{
+    text-decoration:none;
+    padding: 2px 5px 5px 5px;
+    display: inline-block;
+    width: auto;
+}
+.refreshDiv{
+    display:none;
+    width: 10%;
+    float: right;
+    text-align: center;}
+.fa-refresh{color:#5AC1DC;}
+.ansDndBoxFillDiv .drag_item{
+    text-align:center;
+    display: inline-table;
+    width: 130px;
+    padding: 5px 12px;
+    margin: 2px 3px;
+    line-height: 24px;
+    color: #555;
+    background-color: #EDECE1;
+    background-image: none;
+    /* border: 1px solid #ccc; */
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 -1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+} .ansDndDiv .drag_item{
+    display: inline-table;
+    width: auto;
+    padding: 5px 12px;
+    margin: 2px 5px;
+    line-height: 24px;
+    color: #555;
+    background-color: #EDECE1;
+    background-image: none;
+    /* border: 1px solid #ccc; */
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 -1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+} 
+.ansDndGrayBoxFillDiv{
+    background: #EAEBEF;
+    border: dashed 1px #A9A3A3;
+    padding: 10px 5px;
+    /*    height: 85px;
+        overflow-y: scroll;*/
+    border-radius:10px;
+}
+.ansDndGrayBoxFillDiv a{ 
+    display: inline-block;
+    width:auto;}
+.ansDndGrayBoxFillDiv .drag_item{
+    text-align:center;
+    display: inline-block;
+    margin: 0px 3px 5px 3px;
+    width: 130px;
+    padding: 5px 5px;
+    line-height: 25px;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    /* border: 1px solid #ccc; */
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 -1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+.ansDndGrayBoxFillDiv .drag_item_blank{
+    text-align:center;
+    display: inline-block;
+    margin: 0px 3px 5px 3px;
+    width: 130px;
+    padding: 5px 5px;
+    line-height: 24px;
+    color: #555;
+    background-color: #A9A3A3;
+    background-image: none;
+    /* border: 1px solid #ccc; */
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 -1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+.ansDndGrayBoxFillDiv .drag_item_blankNotempty{
+    color: #3E3333;
+    background-color: #c4f3ff;
+}
+/*fill inth blank*/
+.fillblanks{
+    vertical-align: middle;
+    padding: 30px 2px 30px 2px;
+    /* vertical-align: middle; */
+    border: dashed 1px #A9A3A3;
+    background: #F3F3F3;
+    border-radius:10px;
+}
+.fillblanks .form-control{
+    display:inline-block;
+    width: auto;
+    height: 38px;
+    padding: 5px 6px;
+    margin: 0px 5px;
+    line-height: 1.0;
+    color: #000;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    /*    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;*/
+}
+.fillblanks .form-control:focus {padding: 5px 6px;
+                                 /*    border-color: #66afe9;
+                                     outline: 0;
+                                     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);*/
+                                 /* box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6); */
+}
+.form-control {
+    display: block;
+    height: 38px;
+    padding: 5px 6px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #000;
+    background-color: #EDECE1;
+    background-image: none;
+    border: none;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 -1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+#midDnDBoxFillDiv{
+    /* display:none; overflow:auto;height:100%;*/
+}
+#midMCQAnsTypeDiv,#midDnDTypeDiv{
+    /* display:none; */overflow:auto;height:100%;}
+.ansDndGrayBoxFillDiv,#ansDndBoxFillDiv{height:50%;text-align: center;}
+.fillblanks
+{/* overflow:hidden; *//* height: 50%; *//* vertical-align: middle; */}
+#midDnDTypeDiv{display:block;}
+
+.ansSelected{
+    background-color: #f5f5f5;
+}
+
+/*.buttonStyle
+{
+   width: 80px; 
+   color: white; 
+   background: #5dc9e6;//#de5e00;// #5DC9E6;//;
+   font-size:17px; 
+   font-family: "Helvetica";
+   padding-top: 1px;
+   height: 25px;
+}
+
+.buttonStyleDisable
+{
+   width: 80px; 
+   color: #f2f2f2; 
+   background: #e8e8e8;//#de5e00;// #5DC9E6;//;
+   font-size:17px; 
+   font-family: "Helvetica";
+   padding-top: 1px;
+   height: 25px;
+}*/
+
+@media(min-width:300px) and (max-width:600px)
+{
+    .buttonStyle
+{
+   width: 80px; 
+   color: white; 
+   background: #5dc9e6;//#de5e00;// #5DC9E6;//;
+   font-size:17px; 
+   font-family: "Helvetica";
+   padding-top: 1px;
+   height: 25px;
+}
+
+.buttonStyleDisable
+{
+   width: 80px; 
+   color: #f2f2f2; 
+   background: #e8e8e8;//#de5e00;// #5DC9E6;//;
+   font-size:17px; 
+   font-family: "Helvetica";
+   padding-top: 1px;
+   height: 25px;
+}
+}
+ @media (min-width:600px) and (max-width:1200px)
+{
+    .buttonStyle
+{
+   width: 100px; 
+   color: white; 
+   font-family: "Helvetica";
+   background: #5dc9e6;//#de5e00;// #5DC9E6;//;
+   font-size:20px; 
+   padding-top: 5px;
+   height: 40px;
+/*   -moz-border-radius: 10px / 10px;
+   border-radius: 10px / 10px;*/
+}
+.buttonStyleDisable
+{
+  width: 100px; 
+   color: #f2f2f2; 
+   font-family: "Helvetica";
+   background: #e8e8e8;//#de5e00;// #5DC9E6;//;
+   font-size:20px; 
+   padding-top: 5px;
+   height: 40px;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.btnSubmit
+{
+    border-bottom-color : #EB4F5E;
+    border-bottom-width : 2px;
+    border-radius : 10px;
+    font-size : 15px;
+    background-color: #242e3a;
+    color:white;
+    padding: 2% 5%;  
+    width: 100%;
+    font-size: 16px;
+}
+.btnDisable{
+    border-color: #ABABAB;
+    background-color: #ABABAB;
+}
+.showquesAttempt{
+    display:none;
+    position: fixed;
+    /* z-index: 999; */
+    color: white;
+    width: 100%;
+    /* height: 100%; */
+    /* background: #fff; */
+    padding: 2px;
+    box-sizing: border-box;
+    /* bottom: -20px; */
+}
+.starBar{
+    padding: 2px 10px 3px 10px;
+    height: 15%;
+    overflow: hidden;
+}
+.answer_progress_graph {
+    position:relative;
+    height: 15px;
+    background: #999;
+    position: relative;
+    width: 80px;
+    float : right;
+    margin-top: 2px;
+    border-radius:5px;
+    text-align: center;
+}
+.answer_progress_graphEmpty {
+    display: none;
+    position:relative;
+    height: 15px;
+    background: #ed5565;
+    position: relative;
+    width: 80px;
+    float : right;
+    right: 10px;
+    margin-top: 2px;
+    border-radius:5px;
+    text-align: center;
+    top: 0px;
+    right: -80px;
+}
+.answer_progress_star {
+    position : relative;
+    float:left;
+    margin-left :-8px;
+    color: rgba(249, 224, 29, 0.92);
+}
+.answer_progress_star .fa-star{
+    font-size: 20px;
+}
+
+.answer_progress_bar span {
+    text-align: center;
+    font-size: 90%;
+    padding: 0px 10px 0px 10px;
+    margin: 0;
+}
+.rightCount{font-size: 90%;position: relative;padding: 0px 10px;bottom: 4px;text-align: center;}
+.iconWrong{
+    padding:10px 10px;
+    color: #ed5565;
+}
+.iconRight{
+    padding: 5px 10px 10px 10px;
+    color : #fff;
+}    
+.iconRight .fa-check-circle,.iconWrong .fa-times-circle{
+    font-size: 40px;
+}
+.popupContent{
+    height: 40%;
+}
+.imgPilo{
+    height: 60%;
+    position: relative;
+}
+.showAnsDiv .ansPara{
+    text-align: center}
+.showAnsDiv{
+    background: #5AC1DC;
+    position: relative;
+    color: #111;
+    opacity: 1;
+    height: 75%;
+    padding: 0px 0px;
+    /*    border-radius: 10px;*/
+}
+
+.showWrongAnsDiv,.showCorrectAnsDiv {
+    display:none;
+    background: #5AC1DC none repeat scroll 0% 0%;
+    position: relative;
+    color: #111;
+    opacity: 1;
+    height: 100%;
+}
+.imgRightAns,.imgWrongAns{
+    position: relative;
+    width: 80%;
+    height: auto;
+    /* height: 100%; */
+    top: -4px;
+}
+
+.nextBtnDiv{
+    position: relative;
+    /*background:#fff;*/
+    width:100%;
+    /* height: 20%; */
+    opacity: 1;
+    z-index: 99999;
+    bottom: 0px;
+    text-align: center;
+    padding: 0px 0px 0px 0px;
+}
+.nextBtn{
+    border-bottom-color : #EB4F5E;
+    border-bottom-width : 2px;
+    border-radius : 10px;
+    font-size : 15px;
+    background-color: #242e3a;
+    color:white;
+    padding: 2% 5%;  
+    width: 100%;
+    font-size: 16px;
+    /* font-size: 23px; */
+    position: relative;
+    /*top: -50px;*/
+}
+/*   #############  end model window ############## */
+.modalWindowBg{
+    background: #fff;
+    width:100%;
+    height:100%;
+    display: none;
+    position: absolute;
+    top: 0px;
+    z-index: 100;
+}
+.modalWindow {//
+              display: none;/* ensures it?s invisible until it?s called */
+              margin: 0px auto;
+              position: relative;/* makes the div go into a position that?s absolute to the browser viewing area *//* positions the div half way horizontally */
+              margin-top: 15%;/* positions the div half way vertically */
+              padding: 10px;
+              border: 2px solid white;
+              background-color:  #5ac1dc;
+              width: 70%;
+              height: 70%;
+              z-index: 101;/* makes the div the top layer, so it?ll lay on top of the other content */
+              border-radius: 20px;
+              box-shadow: 0 0 1em #888888;
+              font-size: 90%;
+}
+.imageWindow {
+    display: none;/* ensures it?s invisible until it?s called */
+    position: absolute;/* makes the div go into a position that?s absolute to the browser viewing area *///
+    left: 15%;/* positions the div half way horizontally *///
+    top: 15%;/* positions the div half way vertically *///
+    padding: 10px;//
+    border: 2px solid white;//
+    background-color:  #5ac1dc;
+    width: 100%;
+    height: 100%;
+    z-index: 50;/* makes the div the top layer, so it?ll lay on top of the other content *///
+    border-radius: 20px;//
+    background-image: url('../images/sparky_happy.png');
+}
+
+.image
+{
+    width: 64%;
+    position: absolute;//
+    height: 88%;
+    margin-left: -20%;
+    margin-top:25%;
+    z-index: 100;
+    background-image: url('../images/sparky_happy.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.ribbon {
+    font-size: 16px !important;/* This ribbon is based on a 16px font side and a 24px vertical rhythm. I've used em's to position each element for scalability. If you want to use a different font size you may have to play with the position of the ribbon elements */
+    width: 70%;
+    position: relative;
+    background: #ed5565;//#ba89b6;
+    color: #fff;
+    text-align: center;
+    padding: 1em 2em;/* Adjust to suit */
+    margin: 2em auto;//3em;/* Based on 24px vertical rhythm. 48px bottom margin - normally 24 but the ribbon 'graphics' take up 24px themselves so we double it. */
+    margin-top: -40px;
+}
+.ribbon:before, .ribbon:after {
+    content: "";
+    position: absolute;
+    display: block;
+    bottom: -1em;
+    border: 1.5em solid #ff5d6e;//#986794; ////#ed5565;
+    z-index: -1;
+}
+.ribbon:before {
+    left: -2em;
+    border-right-width: 1.5em;
+    border-left-color: transparent;
+}
+.ribbon:after {
+    right: -2em;
+    border-left-width: 1.5em;
+    border-right-color: transparent;
+}
+.ribbon .ribbon-content:before, .ribbon .ribbon-content:after {
+    content: "";
+    position: absolute;
+    display: block;
+    border-style: solid;
+    border-color: #c24452 /*#804f7c*/ transparent transparent transparent;
+    bottom: -1em;
+}
+.ribbon .ribbon-content:before {
+    left: 0;
+    border-width: 1em 0 0 1em;
+}
+.ribbon .ribbon-content:after {
+    right: 0;
+    border-width: 1em 1em 0 0;
+}
+.textBox
+{//
+ margin-top: -6%;
+ margin: 30px auto;
+ padding-top: 5px;//
+ margin-left:40px;
+ background-color: black;
+ height: 35px;
+ width:60%;
+ border-radius: 15px;
+ color: white;
+ font-size: 15px;
+ font-weight:bold;
+ margin-bottom: 30px;
+}
+
+.pillowID{
+    position:relative;z-index:1000;/* bottom: 100px; */height: 25%;left:0px;/* height: 100%; */}
+.pillowImageId{
+    /* float:left; */
+    /* width: 100%; */
+    text-align: center;
+    /* height: 50%; */
+    /* position: relative; */
+    vertical-align: bottom;
+    padding-top: 15%;
+}
+
+
+.imgPillo{
+    /* width: 50%; */
+    /* float: left; */
+    /* position: absolute; */
+    /* bottom: 20%; */
+    /* left: 5px; */
+}
+.pilloRightSide{
+    float: right;
+    right: -5px;
+    width: 50%;
+    bottom: 25px;
+    position: relative;
+}
+.imgHome{width: 22%;}
+.imgPause{
+    width: 28%;
+}
+.imgRefresh{
+    width: 22%;
+}
+#nameId,#starScoreID,#rightScoreID{
+    /* font-size: 40px; */
+}
+#starScoreID{
+    /* position: relative; */
+    /* top: -15px; */
+    /* left: 25px; */
+}
+#rightScoreID{
+    /* position: relative; */
+    /* top: -15px; */
+    /* left: 15px; */
+}
+/*Complete Page*/
+.quizBg{
+    height: 100%;
+}
+.quizBg .quizSummery{
+    Padding: 20px;
+    height: 12%;
+    overflow: hidden;
+}
+.quizBg .scoreBg{    height: 19%;}
+.quizBg .quizScore{
+    width:100%;
+    background: #c4f3ff;
+    text-align:center;
+    display: inline-block;
+    float: left;
+    font-size: 90%;
+    height: 100%;
+    padding-top: 5%;
+}
+
+.quizBg .quizStar{
+    width:50%;
+    background: #aae9fa;
+    text-align:center;
+    display: inline-block;
+    float: right;
+    font-size: 90%;
+    height: 100%;
+    padding-top: 5%;
+}
+.quizBg .rightScoreID,.quizBg .starScoreID{font-size: 250%;}
+
+.quizBg .scoreTxt{
+    position:relative;
+    top: -5px;
+}
+.quizBg .pillowBg{height: 40%;width:100%;}
+.quizBg .imgPillo{
+    /* width: 40%; */
+    /* bottom: 10%; */
+    text-align: center;
+    /* height: 19%; */
+    /* position: relative; */
+    vertical-align: bottom;
+}
+.quizBg .btnTryAgain{
+    width: 90%;
+    background: #ed5565;//#ba89b6;
+    text-align: center;
+    border-radius : 10px;
+    font-size : 15px;
+    border: none;
+    color:white;
+    padding: 2% 5%;
+    font-size: 16px;
+    position: relative;
+}
+.quizBg .btnContinue{
+    margin-top: 10px;
+    width: 90%;//#ba89b6;
+    text-align: center;
+    border-radius : 10px;
+    border: none;
+    background: #5ac1dc;
+    color:white;
+    padding: 2% 5%;
+    font-size: 16px;
+    position: relative;
+}
+/*########## media query ############*/
+
+@media only screen and (orientation:portrait){
+    #container-fluid {  
+
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+}
+@media only screen and (orientation:landscape){
+    #container-fluid {  
+        height: 100vw; 
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+}
+
+@media (min-device-width: 320px) and (max-device-width: 479px){
+    .quesAudioType .faIcon .fa, .quesImageAudioType .faIcon .fa {
+        font-size: 30px;
+padding: 12px 0px 12px 0px;
+    }
+    html,body{
+        font-size: 100%;
+    }
+    .containerMid
+    {
+        width: 100%;
+        height: 100%;
+        margin: -28px auto -40px auto;
+        padding: 28px 15px 42px 15px;
+    }
+    .topProgressLeft {
+        padding: 2px 0px 0px 0px;
+    }
+    #quesNoDiv {
+        line-height: 18px;
+    }
+    #quesDiv {
+        /* width: 92%; */
+        line-height: 18px;
+    }
+    .contentTopDiv {
+        height: 30%;
+        vertical-align: top;
+        padding-top: 6px;
+        min-height: 30px;
+        overflow-y: auto;
+    }
+    .fa-circle{font-size: 20px;}
+    .fa-dot-circle-o{font-size: 20px;}
+    .ansCircle{padding-top: 8px;}
+    .ansSelect{margin-bottom: 10px;}
+    #midMCQAnsTypeDiv .form-control {
+        height: auto;
+        line-height: 20px;
+    }   
+    .ansDndBoxFillDiv{
+        height: 50%;
+        padding: 0px 5px 0px 5px;
+        margin: 10px 0px 0px 0px;
+    }
+    .ansDndGrayBoxFillDiv {
+        padding: 10px 5px;
+        margin: 0px auto;
+        /* height: 85px; */
+        text-align: center;
+    }
+    .fillblanks .form-control{
+        min-width: 0px;
+        width: 95%;
+        height: 35px;
+        padding: 2px 2px;
+        margin: 0px 2px;
+        line-height: 1.42857143;
+    }
+    .form-control {
+        height: 30px;
+        font-size: 95%;
+        line-height: 24px;
+    }   
+    .form-control span {
+        display: inline-block;
+
+    }
+    .btnSubmit{
+        padding: 2% 5%;
+        font-size: 100%;
+    }
+    .showAnsDiv .ansPara{
+        height:auto;
+        overflow-y:scroll;
+        padding: 0px 4px;
+    }
+    .showAnsDiv p{
+        font-size: 95%;} 
+    .nextBtn {
+        width: 100%;
+        /*    top: 32px;*/
+        font-size: 100%;
+    }
+    .modalWindow {
+        margin-top: 20%;
+        padding: 10px;
+        width: 70%;
+        height: 60%;
+    }
+    .ribbon:before, .ribbon:after {  
+        display: block;
+        bottom: -1em;
+    }
+    .textBox
+    {//
+     margin-top: -6%;
+     margin: 20px auto 10px auto;
+     padding-top: 5px;
+     margin-left:40px;
+     height: 20px;
+     width:60%;
+     font-size: 15px;
+
+    }
+    .textBox .fa-3x {
+        font-size: 2em;
+    }
+    .imgPillo {
+        width: 35%;
+        /* height: 60%; */
+        /* bottom: 35%; */
+        /* left: 5px; */
+    }
+    .imgRightAns, .imgWrongAns {
+        /*    width: 75%;
+            top: -9px;*/position: relative;width: 80%;/* height: 90%; */height: 100%;top: 0px;}
+    .iconRight {
+        padding: 5px 10px 10px 10px;
+    }
+    #nameId,#starScoreID,#rightScoreID{
+        /* font-size: 16px; */
+    }
+    #starScoreID{
+        /* position: relative; */
+        /* top: -15px; */
+        /* left: 25px; */
+    }
+    #rightScoreID{
+        /* position: relative; */
+        /* top: -15px; */
+        /* left: 15px; */
+    }
+    header
+    {
+        /* height: 28px; */
+        padding: 10px 15px 0px 15px;
+    }
+    footer
+    {
+        height: 35px;  
+        padding: 0px 15px 0px 15px;
+    }
+    .playBg{
+        /* padding: 15% 40%; */
+        text-align: center;
+        vertical-align: middle;
+    }
+    .playAudioBg{
+        top: -100px;
+        
+    }
+    .quizBg .btnTryAgain{
+       
+       
+       font-size: 100%;
+       
+       }
+.quizBg .btnContinue{
+       
+       font-size: 100%;
+       
+}
+.topProgressLeft {
+    width: 80%;
+    }
+
+.topProgressRight {
+    width: 20%;
+    
+ }
+}
+
+
+
+@media (max-device-width: 767px) and (min-device-width: 480px){
+    .quesAudioType .faIcon .fa, .quesImageAudioType .faIcon .fa {
+        font-size: 30px;
+padding: 12px 0px 12px 0px;
+    }
+    html,body{
+        font-size: 100%;
+    }
+    .topProgressLeft {
+        padding: 8px 0px 0px 0px;
+    }
+    .containerMid {
+        margin: -44px auto -100px auto;
+        padding: 44px 15px 100px 15px;
+    }
+    .contentTopDiv {
+        height: 30%;
+        padding-top: 6px;
+        min-height: 30px;
+        overflow-y: auto;
+    }
+    .contentMidQuesDiv {
+        height: 50%;
+        padding-top: 5px;
+    }
+    #quesNoDiv {line-height: 40px;width: 8%;}
+
+    .contentMidAnsDiv{
+        height: 38%;
+    }
+    .fa-circle{
+        font-size: 20px;
+        /* padding-top: 0px; */
+    }
+
+    .fa-dot-circle-o{font-size: 20px;}
+    .ansCircle{padding-top: 5px;}
+
+    .ansSelect{margin-bottom: 12px;}
+    #midMCQAnsTypeDiv .form-control {
+        height: auto;
+        line-height: 28px;
+    } 
+    .form-control {
+        height: 74px;
+        font-size: 100%;
+        line-height: 64px;
+    }
+    .form-control span {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+    }
+    .ansDndDiv .drag_item{
+        width: auto;
+        padding: 5px 12px;
+        margin: 2px 5px;
+        line-height: 24px;
+
+    } 
+    .ansDndBoxFillDiv .drag_item{
+        display: inline-table;
+        width: 150px;
+        padding: 10px 10px;
+        margin: 0px 5px 15px 5px;
+        line-height: 24px;
+    } 
+    .ansDndBoxFillDiv{
+        padding: 10px 10px;
+        height: 120px;
+        /*    overflow-y: scroll;*/
+    }
+    .ansDndGrayBoxFillDiv{
+        padding: 10px 7px;
+        height: 140px;
+        /*    overflow-y: scroll;*/
+    }
+
+    .ansDndGrayBoxFillDiv .drag_item{
+        margin: 0px 2px 10px 15px;
+        width: auto;
+        padding: 10px 10px;
+        line-height: 25px;
+    }
+    .ansDndGrayBoxFillDiv .drag_item_blank{
+        margin: 0px 2px 10px 15px;
+        width: auto;
+        padding: 10px 10px;
+        line-height: 25px;
+    }
+    .fillblanks .form-control {
+        min-width: 0px;
+        width: 90%;
+        height: 35px;
+        padding: 2px 6px;
+        margin: 0px 5px;
+        /* line-height: 2; */
+    }
+    .btnSubmit{
+        padding: 2% 5%;
+        font-size: 100%;
+    }
+    .showAnsDiv .ansPara{
+        height:75px;overflow-y:scroll}
+    .showAnsDiv p{font-size: 100%;}
+    .nextBtn {
+        padding: 2% 5%;
+        font-size: 100%;
+        /* padding: 10px 0px; */
+        /*    top: -20px;*/
+        /* font-size: 135%; */
+    }
+    .modalWindow {
+        left: 0;
+        margin-top: 20%;
+        padding: 10px;
+        width: 70%;
+        height: 60%;
+    }
+    .answer_progress_graph {
+        height: 24px;
+        width: 120px;
+        margin-top: 12px;
+    }
+    .answer_progress_graphEmpty {
+        height: 24px;
+        width: 120px;
+        margin-top: 12px;
+        top:-6px
+    }
+    .answer_progress_star .fa-star{
+        font-size: 28px;
+    }
+
+    .answer_progress_bar span {
+        font-size: 90%;
+        padding: 0px 10px 0px 10px;
+        margin: 0;
+    }
+    .rightCount{font-size: 90%;bottom: 0px;}
+    .iconRight .fa-check-circle, .iconWrong .fa-times-circle {
+        font-size: 40px;
+    }
+    .imgPillo {
+        /* width: 60%; */
+        /* bottom: 20%; */
+        /* left: 5px; */
+    }
+    .imgRightAns, .imgWrongAns {
+        width: 80%;
+        /* top: -30px; */
+    }
+
+    .iconRight {
+        padding: 5px 10px 10px 10px;
+    }
+    #nameId,#starScoreID,#rightScoreID{
+        font-size: 250%;
+    }
+    #starScoreID{
+        /* position: relative; */
+        /* top: -15px; */
+        /* left: 25px; */
+    }
+    #rightScoreID{
+        /* position: relative; */
+        /* top: -15px; */
+        /* left: 15px; */
+    }
+    header
+    {
+        height: 28px;
+        padding: 10px 15px 5px 15px;
+    }
+    footer
+    {
+        height: 35px; 
+        padding: 0px 15px 0px 15px;
+        bottom: 0px;
+    }
+    .playBg{padding:0px 40%;}
+    .playAudioBg{position: relative;
+                 top: -100px;
+                 
+    }
+    .quizBg .btnTryAgain{
+       
+       font-size: 100%;
+       
+       }
+.quizBg .btnContinue{
+       
+       font-size: 100%;
+      
+       }
+.topProgressLeft {
+    width: 80%;
+}
+
+.topProgressRight {
+    width: 20%;
+    
+}
+}
+
+
+
+
+@media (max-device-width: 1280px) and (min-device-width: 768px){
+   
+
+    html,body{
+        font-size: 130%;
+    }
+
+    .topProgressLeft {
+        padding: 8px 0px 0px 0px;
+    } 
+.topProgressEmpty {
+padding: 3px 0px;
+}
+.progressField{
+padding: 3px 0px;
+top: -6px;
+}
+    .contentTopDiv {
+        height: 30%;
+        padding-top: 15px;
+        min-height: 30px;
+        overflow-y: auto;
+    }
+    .containerMid {
+        margin: -28px auto -80px auto;
+        padding: 48px 15px 80px 15px;
+    }
+    #quesNoDiv {
+        line-height: 33px;
+    }
+    #quesDiv {
+        width: 92%;
+        line-height: 35px;
+        padding-left: 4px;
+    }
+    .quesOptionType {
+        margin-bottom: 5px;
+    }
+    .ansType {
+        padding: 0px 0px;
+    }
+    .contentMidAnsDiv{
+        height: 48%;
+        color: #3B4350;
+    }
+    .fa-circle{
+        font-size: 30px;
+    }
+
+    .fa-dot-circle-o{font-size: 30px;}
+    .ansCircle{padding-top: 15px;}
+    .ansSelect{margin-bottom: 15px;}
+    #midMCQAnsTypeDiv .form-control {
+        height: auto;
+        line-height: 56px;
+    } 
+    .form-control {
+        height: 64px;
+        font-size: 100%;
+        padding: 3px 12px;
+        line-height: 56px;
+    }  
+    .form-control span {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+    }
+    .ansDndDiv .drag_item{
+        display: inline-table;
+        width: auto;
+        padding: 10px 12px;
+        margin: 2px 5px;
+        line-height: 24px;
+    } 
+    .ansDndBoxFillDiv .drag_item{
+        margin: 0px 30px 10px 30px;
+        width: 250px;
+        padding: 15px 15px;
+        line-height: 25px;
+    } 
+    .ansDndBoxFillDiv{
+        padding: 30px 20px 15px 50px;
+        height: 145px;
+        /* overflow-y: scroll; */
+        margin: 10px 0px 10px 0px;
+    }
+    .ansDndGrayBoxFillDiv{
+        padding: 35px 20px 10px 50px;
+        /* height: 145px; */
+        /* overflow-y: scroll; */
+        margin: 10px 0px 10px 0px;
+    }
+
+    .ansDndGrayBoxFillDiv .drag_item{
+        display: inline-block;
+        margin: 0px 30px 10px 30px;
+        width: 250px;
+        padding: 15px 15px;
+        line-height: 25px;
+    }
+    .ansDndGrayBoxFillDiv .drag_item_blank{
+        display: inline-block;
+        margin: 0px 30px 10px 30px;
+        width: 250px;
+        padding: 15px 15px;
+    }
+    .fillblanks {
+        padding: 120px 5px 120px 5px;
+    }
+    .fillblanks .form-control {
+        width: 90%;
+        height: 52px;
+        padding: 5px 6px;
+        margin: 0px 5px;
+        line-height: 1.0;
+    }
+
+    .ansDndWhiteDiv{
+        width: 90%;
+        height: 100px;
+        margin: 5px 0px;
+        padding: 0px 15px;border-radius:10px;
+        -moz-background-size: 100% 30px;
+        -ms-background-size: 100% 30px;
+        background-size: 100% 28px;
+    }
+    .ansDndDiv{padding:20px 0px;
+
+    }
+    .btnSubmit{
+        width:80%;
+        padding: 2% 5%;
+        font-size: 100%;
+    }
+    .showAnsDiv .ansPara{
+        height:100px;overflow-y:scroll}
+    .showAnsDiv p{
+        font-size: 100%;}
+    .nextBtn {
+        width: 80%;
+        padding: 2% 5%;
+        /*    top: 75px;*/
+        font-size: 100%;
+    }
+    .modalWindow {
+        margin-top: 15%;
+        padding: 10px;
+        width: 70%;
+        height: 60%;
+    }
+
+    .answer_progress_graph {
+        height: 30px;
+        width: 150px;
+        margin-top: 12px;
+    }
+    .answer_progress_graphEmpty {
+        height: 30px;
+        width: 150px;
+        margin-top: 12px;
+        top:-6px
+    }
+    .answer_progress_star {
+        margin-left: -15px;
+    }
+    .starBar {
+        padding: 2px 10px 5px;
+        height: 20%;
+    }
+    .answer_progress_star .fa-star{
+        font-size: 40px;
+    }
+
+    .answer_progress_bar span {
+        text-align: center;
+        font-size: 90%;
+        padding: 0px 10px 0px 10px;
+        margin: 0;
+    }
+    .rightCount{
+        bottom: 3px;
+    }
+    .iconRight {
+        padding: 5px 10px 10px 10px;
+    }
+    .iconRight .fa-check-circle,.iconWrong .fa-times-circle{
+        font-size: 60px;
+    }
+    .imgRightAns, .imgWrongAns {
+        width: 60%;
+        top: -10px;
+    }
+    .imgPillo {
+        width: 30%;
+        bottom: 40%;
+        left: 5px;
+    }
+    .pilloRightSide{
+        right: -30px;
+        width: 60%;
+        bottom: 85px;
+    }
+    .imgHome{
+        width: 22%;}
+    .imgPause{
+        width: 28%;
+    }
+    .imgRefresh{
+        width: 22%;
+    }
+    #nameId,#starScoreID,#rightScoreID{
+        /* font-size: 30px; */
+    }
+    #starScoreID{
+        /* position: relative; */
+        /* top: -15px; */
+        /* left: 85px; */
+    }
+    #rightScoreID{
+        /* position: relative; */
+        /* top: -15px; */
+        /* left: 70px; */
+    }
+    header
+    {
+        height: 28px;
+        padding: 10px 15px 10px 15px;
+    }
+    footer
+    {
+        height: 35px;   
+        padding: 0px 15px 0px 15px;
+        bottom: 0px;
+    }
+    .playBg{
+        //padding:15% 45%;
+    }
+    .playAudioBg{
+        position: relative;
+        top: -180px;
+        
+    }
+    .quesImageAudioType .txt{
+        top:-130px;
+        left: 0px;
+    }
+    .quesAudioType .txt{
+        top:120px;
+        //left: -30px;
+    }
+    .quesAudioType .faIcon,.quesImageAudioType .faIcon{
+    
+    height:80px;
+    width:80px;
+    
+}
+ .quesAudioType .faIcon .fa, .quesImageAudioType .faIcon .fa {
+       
+padding: 24px 0px 12px 0px;
+    }
+    .quizBg .quizScore,.quizBg .quizStar {
+        padding-top: 5%;
+    }
+    .quizBg .btnTryAgain{
+       width: 80%;
+       
+       font-size: 100%;
+       
+       }
+.quizBg .btnContinue{
+       width: 80%;
+       
+       font-size: 100%;
+       }
+       .pillowImageId .welldone h1{font-size:60px}
+       
+}
+
+@media (min-device-width: 1281px) and (max-device-width: 1600px){
+    html,body{
+        font-size: 125%;
+    }
+    .topProgressLeft {
+        padding: 8px 0px 0px 0px;
+    } 
+    .contentTopDiv {
+        height: 30%;
+        padding-top: 15px;
+        min-height: 30px;
+        overflow-y: auto;
+    }
+    .containerMid {
+        margin: -28px auto -100px auto;
+        padding: 28px 15px 100px 15px;
+    }
+    #quesNoDiv {
+        line-height: 25px;
+    }
+    #quesDiv {
+        width: 92%;
+        line-height: 25px;
+        padding-left: 2px;
+    }
+    .ansType {
+        padding: 50px 0px;
+    }
+    .contentMidAnsDiv{
+        height: 45%;
+        color: #3B4350;
+    }
+    .fa-circle{
+        font-size: 30px;
+    }
+
+    .fa-dot-circle-o{font-size: 30px;}
+    .ansCircle{padding-top: 15px;}
+    .ansSelect{margin-bottom: 15px;}
+    .form-control {
+        height: 64px;
+        font-size: 100%;
+        padding: 3px 12px;
+        line-height: 56px;
+    }  
+    .form-control span {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+    }
+    .ansDndDiv .drag_item{
+        display: inline-table;
+        width: auto;
+        padding: 10px 12px;
+        margin: 2px 5px;
+        line-height: 24px;
+    } 
+    .ansDndBoxFillDiv .drag_item{
+        margin: 0px 10px 10px 10px;
+        width: auto;
+        padding: 15px 15px;
+        line-height: 25px;
+    } 
+    .ansDndBoxFillDiv{
+        padding: 15px 20px 15px 50px;
+        height: 145px;
+        /*    overflow-y: scroll;*/
+        margin: 10px 0px 10px 0px;
+    }
+    .ansDndGrayBoxFillDiv{
+        padding: 10px 20px 10px 50px;
+        height: 145px;
+        /*    overflow-y: scroll;*/
+        margin: 10px 0px 10px 0px;
+    }
+
+    .ansDndGrayBoxFillDiv .drag_item{
+        display: inline-block;
+        margin: 0px 10px 10px 10px;
+        width: auto;
+        padding: 15px 15px;
+        line-height: 25px;
+    }
+    .ansDndGrayBoxFillDiv .drag_item_blank{
+        display: inline-block;
+        margin: 0px 10px 10px 10px;
+        width: auto;
+        padding: 15px 15px;
+    }
+    .fillblanks {
+        vertical-align: middle;
+        padding: 23% 2px;
+    }
+    .btnSubmit{
+        width:80%;
+        padding: 2% 5%;
+        font-size: 100%;
+    }
+    .showAnsDiv .ansPara{
+        height:100px;overflow-y:scroll}
+    .showAnsDiv p{
+        font-size: 100%;}
+    .nextBtn {
+        width: 80%;
+        padding: 10px 0px;
+        /*    top: -20px;*/
+        font-size: 135%;
+    }
+    .modalWindow {
+        margin-top: 15%;
+        padding: 10px;
+        width: 70%;
+        height: 60%;
+    }
+
+    .answer_progress_graph {
+        height: 30px;
+        width: 150px;
+        margin-top: 12px;
+    }
+    .answer_progress_graphEmpty {
+        height: 30px;
+        width: 150px;
+        margin-top: 12px;
+        top:-6px
+    }
+    .answer_progress_star {
+        margin-left: -15px;
+    }
+    .starBar {
+        padding: 2px 10px;
+        height: 20%;
+    }
+    .answer_progress_star .fa-star{
+        font-size: 40px;
+    }
+
+    .answer_progress_bar span {
+        text-align: center;
+        font-size: 90%;
+        padding: 0px 10px 0px 10px;
+        margin: 0;
+    }
+    .rightCount{
+        bottom: 3px;
+    }
+    .iconRight {
+        padding: 5px 10px 10px 10px;
+    }
+    .iconRight .fa-check-circle,.iconWrong .fa-times-circle{
+        font-size: 50px;
+    }
+    .imgRightAns, .imgWrongAns {
+        /*    width: 60%;*/
+        top: -10px;
+    }
+    .imgPillo {
+        width: 40%;
+        bottom: 40%;
+        left: 5px;
+    }
+    .pilloRightSide{
+        right: -30px;
+        width: 60%;
+        bottom: 85px;
+    }
+    .imgHome{
+        width: 22%;}
+    .imgPause{
+        width: 28%;
+    }
+    .imgRefresh{
+        width: 22%;
+    }
+    #nameId,#starScoreID,#rightScoreID{
+        font-size: 30px; }
+    #starScoreID{
+        position: relative;
+        top: -15px;
+        left: 85px;
+    }
+    #rightScoreID{
+        position: relative;
+        top: -15px;
+        left: 70px;
+    }
+    header
+    {
+        height: 28px;
+        padding: 10px 15px 10px 15px;
+    }
+    footer
+    {
+        height: 35px;   
+        padding: 0px 15px 0px 15px;
+        bottom: 0px;
+    }
+    .quizBg .btnTryAgain{
+       width: 80%;
+       
+       font-size: 100%;
+       
+       }
+.quizBg .btnContinue{
+       width: 80%;
+       
+       font-size: 100%;
+       }
+       .pillowImageId .welldone h1{font-size:60px}
+
+}
+#either-gif-or-video video { display: none; }
+@media (-webkit-video-playable-inline) {
+    #either-gif-or-video img { display: none; }
+    #either-gif-or-video video { display: initial; }
+}
+video::-webkit-media-controls-fullscreen-button {
+    display: none;
+}
+video::-webkit-media-controls-play-button {
+    display: block !important;
+}
+video::-webkit-media-controls-timeline {
+    display: block !important;
+}
+/*video::-webkit-media-controls-current-time-display{
+    display: block;
+}
+video::-webkit-media-controls-time-remaining-display {
+    display: block;
+}*/
+/*video::-webkit-media-controls-mute-button {
+    display: none;
+}
+video::-webkit-media-controls-toggle-closed-captions-button {
+    display: none;
+}
+video::-webkit-media-controls-volume-slider {
+    display: none;
+}*/
+
+*:not(input):not(textarea) {
+    -webkit-user-select: none; /* disable selection/Copy of UIWebView */
+    -webkit-touch-callout: none; /* disable the IOS popup when long-press on a link */
+    
+}
+
+.pillowImageId .welldone h1{color: #5ac1dc;
+font-weight: bold}
+.pillowImageId .welldone p{color: #5ac1dc;
+}
+
+.shadow-top {
+    
+    -webkit-box-shadow: 0px -5px 5px -5px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px -5px 5px -5px rgba(0,0,0,0.2);
+    box-shadow: 0px -5px 5px -5px rgba(0,0,0,0.2);
+}
+.shadow-bottom {
+    
+    -webkit-box-shadow: 0px 5px 5px -5px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 5px 5px -5px rgba(0,0,0,0.2);
+    box-shadow: 0px 5px 5px -5px rgba(0,0,0,0.2);
+}
+
+

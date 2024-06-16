@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" >
+    <head>
+<!--        <meta charset="utf-8" />-->
+        <title>Interview Prep</title>
+        <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+        <link rel="stylesheet" href="../css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="../css/animate.css" type="text/css" />
+        <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css" />
+        <link rel="stylesheet" href="../css/font.css" type="text/css" />
+        <link rel="stylesheet" href="../js/fuelux/fuelux.css" type="text/css" />
+        <link rel="stylesheet" href="../css/app.css" type="text/css" />
+        <link rel="stylesheet" href="../css/DashboardMCQ.css" type="text/css" />
+        <!--<link rel="stylesheet" href="../css/Module.css" type="text/css" />-->
+        
+        
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/bootstrap.js"></script>
+         
+        <script src="../js/app.js"></script>
+        <script src="../js/app.plugin.js"></script>
+        <script src="../js/slimscroll/jquery.slimscroll.min.js"></script>
+         
+        <script src="../js/fuelux/fuelux.js"></script>
+
+
+    </head>
+
+    <body style="overflow: hidden">
+
+        <script language="javascript">
+            window.onerror = function (err) {
+                //log('window.onerror: ' + err)
+            }
+
+            function connectWebViewJavascriptBridge(callback) {
+                if (window.WebViewJavascriptBridge) {
+                    callback(WebViewJavascriptBridge)
+                } else {
+                    document.addEventListener('WebViewJavascriptBridgeReady', function () {
+                        callback(WebViewJavascriptBridge)
+                    }, false);
+                }
+            }
+
+            connectWebViewJavascriptBridge(function (bridge) {
+                var uniqueId = 1;
+                var Data;
+                JSInterface = bridge;
+                var jsObject = new Object();
+                jsObject.type = "msg";
+                jsObject.data = 29;
+                var dataval = JSON.stringify(jsObject);
+                bridge.send(dataval, function (responseData) {
+                    messageObj = JSON.parse(responseData);
+                    //loadMessage(messageObj);
+                    
+                    
+                });
+                
+                 var jsObject = new Object();
+                jsObject.type = "getCurrentUid";
+                //jsObject.data = 2;
+                var dataval = JSON.stringify(jsObject);
+                bridge.send(dataval, function (responseData) {
+                    if(responseData == "")
+                    {
+                        current = 0;
+                    }
+                    else
+                    {
+                      current = parseInt(responseData,10);  
+                    }
+                    
+                    
+                });
+                
+                
+                var jsObject = new Object();
+                jsObject.type = "drawData";
+                //jsObject.data = 2;
+                var dataval = JSON.stringify(jsObject);
+                bridge.send(dataval, function (responseData) {
+                    //messageObj = JSON.parse(responseData);
+                    //loadMessage(messageObj);
+                   // alert(responseData);
+                    var msg = responseData;
+                    initialise(msg);
+                    
+                });
+                
+                
+                function log(message, data) {
+                    var log = document.getElementById('log')
+                    var el = document.createElement('div')
+                    el.className = 'logLine'
+                    el.innerHTML = uniqueId++ + '. ' + message + ':<br/>' + JSON.stringify(data)
+                    if (log.children.length) {
+                        log.insertBefore(el, log.children[0])
+                    }
+                    else {
+                        log.appendChild(el)
+                    }
+                }
+                bridge.init(function (message, responseCallback) {
+                    
+                    var dictJSON = JSON.parse(message);
+                    if(dictJSON.type == "showProgress")
+                    {
+                       showDownloadPrgressBar(); 
+                    }
+                    else if(dictJSON.type == "closeProgress")
+                    {
+                        closeDownloadPrgressBar();
+                    }
+                    else if(dictJSON.type == "percentage")
+                    {
+                    document.getElementById("fillprogressID").style.width = dictJSON.number+"%";
+                    //document.getElementById("msgTextId").style.display = 'none';
+//                    if(parseInt(dictJSON.number,10) >= 83)
+//                        {
+//                            
+//                            //document.getElementById("msgTextId").style.display = 'block';
+//                           document.getElementById("progressCancelId").disabled = true; 
+//                           document.getElementById("progressCancelId").style.color ='#e8e8e8';
+//                        }
+                    }
+                    else if(dictJSON.type == "error")
+                    {
+                       closeDownloadPrgressBar();
+                       //document.getElementById(collapseID).setAttribute("class", "collapse");
+                       showAlert(messageObj.NW_EMSG);
+                    }
+                    //log('JS got a message', message)
+                    //var data = {'Javascript Responds': 'Wee!'}
+                    //log('JS responding with', data)
+                    //responseCallback(data)
+                });
+                
+                bridge.registerHandler('testJavascriptHandler', function (data, responseCallback) {
+
+                    var responseData = {'Javascript Says': 'Right back atcha!'}
+
+                    responseCallback(responseData)
+                });
+            });
+            
+            
+            
+            var triggerElementID = null; // this variable is used to identity the triggering element
+            var fingerCount = 0;
+            var startX = 0;
+            var startY = 0;
+            var curX = 0;
+            var curY = 0;
+            var deltaX = 0;
+            var deltaY = 0;
+            var horzDiff = 0;
+            var vertDiff = 0;
+            var minLength = 72; // the shortest distance the user may swipe
+            var swipeLength = 0;
+            var swipeAngle = null;
+            var swipeDirection = null;
+            var messageObj = null;
+            var SIGNING_MESSAGE = null;
+            var listData = null;
+            var counter = 0;
+            var audio = 0;
+            var current = 0;
+            var next_click_sound; 
+            var JSInterface;
+            function createSound(fpath) {
+                var aud = document.createElement("audio");
+                aud.src=fpath;
+                aud.load();
+                return aud;
+               }
+            function initialise(msg)
+            {
+                   //var message =  "{\"MDB_REFRESH\":\"Refresh\",\"CHAP_START\":\"Start\",\"MDB_HOME\":\"Home\",\"MDB_MY_LESSION\":\"My Lesson\",\"MDB_SETTINGS\":\"Setting\"}";
+                   //messageObj = JSON.parse(message);
+                    //audio = JSInterface.getMcqSound();
+                    next_click_sound = createSound("../McqDnd/liqvid/next_click.mp3");
+                    //messageObj = JSON.parse(JSInterface.getScreenMsg(26));
+                    //current = parseInt(JSInterface.getEdgeIDOfCompleteMcqPractice(),10);
+                  // alert(current);
+//                    var jsonval = JSInterface.initialise(26);
+//                   
+//                    var raw = JSON.parse(jsonval);
+//                    
+//                    var msg = raw.json;
+//                    //alert(msg);
+//                    var uri_dec = decodeURIComponent(msg);
+//                    msg = uri_dec;
+//                    var regex = new RegExp('%22', 'g');
+//                    var regex1 = new RegExp('%20', 'g');
+//                    msg = msg.replace(regex, '"');
+//                    msg = msg.replace(regex1, ' ');
+                    //var msg = "{\"mcq\":[{\"desc\":\" Tell me about  your self  \",\"practiceName\":\"Give Introduction 1\",\"name\":\"Practice 1\",\"type\":21,\"uid\":\"15945\",\"score\":\"3\",\"scnEdgeID\":97574},{\"desc\":\" Tell me about our  self \",\"practiceName\":\"Give Introduction 2\",\"name\":\"Practice 2\",\"type\":21,\"uid\":\"15945\",\"score\":\"2\",\"scnEdgeID\":97575},{\"desc\":\" Tell me about  india\",\"practiceName\":\"Give Introduction 3\",\"name\":\"Practice 3\",\"type\":21,\"uid\":\"15945\",\"score\":\"5\",\"scnEdgeID\":97576},{\"desc\":\" Tell me about  universe \",\"practiceName\":\"Give Introduction 4\",\"name\":\"Practice 4\",\"type\":21,\"uid\":\"15945\",\"score\":\"0\",\"scnEdgeID\":97577},{\"desc\":\" Tell me about  company \",\"practiceName\":\"Give Introduction 5\",\"name\":\"Practice 5\",\"type\":21,\"uid\":\"15945\",\"score\":\"4\",\"scnEdgeID\":97578},{\"desc\":\" Tell me about  organisation \",\"practiceName\":\"Give Introduction 6\",\"name\":\"Practice 6\",\"type\":21,\"uid\":\"15945\",\"score\":\"1\",\"scnEdgeID\":97579}]}";
+                    var listJsonData = JSON.parse(msg);
+                   listData = listJsonData["mcq"];
+                    //assistModuleUI(listData);    
+                craeteDashBoard();
+            }
+
+            function touchStart(event,passedName) {
+		// disable the standard ability to select the touched object
+		event.preventDefault();
+		// get the total number of fingers touching the screen
+		fingerCount = event.touches.length;
+		// since we're looking for a swipe (single finger) and not a gesture (multiple fingers),
+		// check that only one finger was used
+		if ( fingerCount == 1 ) 
+                {
+			// get the coordinates of the touch
+			startX = event.touches[0].pageX;
+			startY = event.touches[0].pageY;
+			// store the triggering element ID
+			triggerElementID = passedName;
+		} else {
+			// more than one finger touched so cancel
+			touchCancel(event);
+		}
+	}
+
+	function touchMove(event) {
+		event.preventDefault();
+		if ( event.touches.length == 1 ) {
+			curX = event.touches[0].pageX;
+			curY = event.touches[0].pageY;
+		} else {
+			touchCancel(event);
+		}
+	}
+	
+	function touchEnd(event) {
+		event.preventDefault();
+		// check to see if more than one finger was used and that there is an ending coordinate
+		if ( fingerCount == 1 && curX != 0 ) {
+			// use the Distance Formula to determine the length of the swipe
+			swipeLength = Math.round(Math.sqrt(Math.pow(curX - startX,2) + Math.pow(curY - startY,2)));
+			// if the user swiped more than the minimum length, perform the appropriate action
+			if ( swipeLength >= minLength ) {
+				caluculateAngle();
+				determineSwipeDirection();
+				processingRoutine();
+				touchCancel(event); // reset the variables
+			} else {
+				touchCancel(event);
+			}	
+		} else {
+			touchCancel(event);
+		}
+	}
+
+	function touchCancel(event) {
+		// reset the variables back to default values
+		fingerCount = 0;
+		startX = 0;
+		startY = 0;
+		curX = 0;
+		curY = 0;
+		deltaX = 0;
+		deltaY = 0;
+		horzDiff = 0;
+		vertDiff = 0;
+		swipeLength = 0;
+		swipeAngle = null;
+		swipeDirection = null;
+		triggerElementID = null;
+	}
+	
+	function caluculateAngle() {
+		var X = startX-curX;
+		var Y = curY-startY;
+		var Z = Math.round(Math.sqrt(Math.pow(X,2)+Math.pow(Y,2))); //the distance - rounded - in pixels
+		var r = Math.atan2(Y,X); //angle in radians (Cartesian system)
+		swipeAngle = Math.round(r*180/Math.PI); //angle in degrees
+		if ( swipeAngle < 0 ) { swipeAngle =  360 - Math.abs(swipeAngle); }
+	}
+	
+	function determineSwipeDirection() {
+		if ( (swipeAngle <= 45) && (swipeAngle >= 0) ) {
+			swipeDirection = 'left';
+		} else if ( (swipeAngle <= 360) && (swipeAngle >= 315) ) {
+			swipeDirection = 'left';
+		} else if ( (swipeAngle >= 135) && (swipeAngle <= 225) ) {
+			swipeDirection = 'right';
+		} else if ( (swipeAngle > 45) && (swipeAngle < 135) ) {
+			swipeDirection = 'down';
+		} else {
+			swipeDirection = 'up';
+		}
+	}
+	
+	function processingRoutine() {
+		var swipedElement = document.getElementById(triggerElementID);
+		if ( swipeDirection == 'left' ) {
+                   // alert("amit left");
+                    counter ++;
+                    swiping(counter);
+                    playSound(next_click_sound);
+			//LiqFlexiSS.loadNextSlide();
+		} else if ( swipeDirection == 'right' ) {
+                    //alert("amit right");
+                    
+                    counter --;
+                    swiping(counter);
+                    playSound(next_click_sound);
+			//LiqFlexiSS.loadPreviousSlide();
+		} else if ( swipeDirection == 'up' ) {
+			// REPLACE WITH YOUR ROUTINES
+		} else if ( swipeDirection == 'down' ) {
+			// REPLACE WITH YOUR ROUTINES
+		}
+	}
+            function getCounter()
+            {
+                if(current == 0)
+                {
+                  counter = 0; 
+                  return;
+                }  
+                for(var i=0;i<listData.length;i++ )
+                {
+                    counter++;
+                    if(current == parseInt(listData[i].uid,10))
+                    {
+                        //counter ++;
+                        return;
+                    }
+                    
+                }
+            }
+            
+            function craeteDashBoard()
+            {
+               
+               //document.getElementById("refreshId").innerHTML= messageObj.MDB_REFRESH;
+               document.getElementById("startId").innerHTML=messageObj.CHAP_START;
+               document.getElementById("homeTextId").innerHTML=messageObj.MDB_HOME;
+               document.getElementById("lessonTextId").innerHTML=messageObj.MDB_MY_LESSION;
+               //document.getElementById("settingTextId").innerHTML=messageObj.MDB_SETTINGS;
+               document.getElementById("soundSettingId").innerHTML=messageObj.MDB_SOUND_SETTING;
+               document.getElementById("okid").innerHTML=messageObj.OK;
+               document.getElementById("downloadMSGID").innerHTML = messageObj.DLOAD_CHAP_MSG;
+               
+               
+               getCounter();
+               if(counter > listData.length)
+                   counter =0;
+               swiping(counter);
+               var Containerouter = document.createElement("div");
+                Containerouter.setAttribute("id","overAll");
+                Containerouter.setAttribute("style", "height:" + $(document).height() + "px;");
+                var width =$(document).height();
+                //alert(width);
+                if(width == 960)
+                {
+                  
+                  document.getElementById("modal").style.top = '30%';
+                  document.getElementById("str1Id").style.fontSize = '37px';
+                  document.getElementById("str2Id").style.fontSize = '37px'; 
+                  document.getElementById("str3Id").style.fontSize = '37px'; 
+                  document.getElementById("str4Id").style.fontSize = '37px'; 
+                  document.getElementById("str5Id").style.fontSize = '37px'; 
+                  
+                  
+                  document.getElementById("homeCircleId").style.fontSize = '100px';
+                   document.getElementById("homeId").style.fontSize = '60px'; 
+                   document.getElementById("homeId").style.marginTop = '-85px';
+                   
+                   
+                   document.getElementById("circleListId").style.fontSize = '100px';
+                   document.getElementById("listId").style.fontSize = '50px'; 
+                   document.getElementById("listId").style.marginTop = '-75px';
+                   document.getElementById("homeAngleId").style.marginLeft = '90px';
+                   document.getElementById("lessonAngleId").style.marginLeft = '90px';
+                   document.getElementById("startandRefreshId").style.marginBottom = '10px';
+                   
+                   
+                   //margin-bottom: 15px;
+                   
+//                   document.getElementById("circleSettingId").style.fontSize = '100px';
+//                   document.getElementById("settingId").style.fontSize = '50px'; 
+//                   document.getElementById("settingId").style.marginTop = '-75px';
+                }
+                else 
+                {
+                  
+
+
+
+
+
+                    document.getElementById("str1Id").style.fontSize = '30px';
+                  document.getElementById("str2Id").style.fontSize = '30px'; 
+                  document.getElementById("str3Id").style.fontSize = '30px'; 
+                  document.getElementById("str4Id").style.fontSize = '30px'; 
+                  document.getElementById("str5Id").style.fontSize = '30px'; 
+                  
+                  
+                  
+                   document.getElementById("homeCircleId").style.fontSize = '60px';
+                   document.getElementById("homeId").style.fontSize = '35px'; 
+                   document.getElementById("homeId").style.marginTop = '-50px';
+                   
+                   
+                   document.getElementById("circleListId").style.fontSize = '60px';
+                   document.getElementById("listId").style.fontSize = '30px'; 
+                   document.getElementById("listId").style.marginTop = '-45px';
+                   
+                   
+                   //document.getElementById("circleSettingId").style.fontSize = '60px';
+//                   document.getElementById("settingId").style.fontSize = '35px'; 
+//                   document.getElementById("settingId").style.marginTop = '-47px';
+                   document.getElementById("modal").style.top = '20%';
+
+
+
+
+                }
+//                else
+//                {
+//                  document.getElementById("modal").style.top = '30%';
+//                  document.getElementById("str1Id").style.fontSize = '37px';
+//                  document.getElementById("str2Id").style.fontSize = '37px'; 
+//                  document.getElementById("str3Id").style.fontSize = '37px'; 
+//                  document.getElementById("str4Id").style.fontSize = '37px'; 
+//                  document.getElementById("str5Id").style.fontSize = '37px'; 
+//                  
+//                  
+//                  document.getElementById("homeCircleId").style.fontSize = '100px';
+//                   document.getElementById("homeId").style.fontSize = '60px'; 
+//                   document.getElementById("homeId").style.marginTop = '-85px';
+//                   
+//                   
+//                   document.getElementById("circleListId").style.fontSize = '100px';
+//                   document.getElementById("listId").style.fontSize = '50px'; 
+//                   document.getElementById("listId").style.marginTop = '-75px';  
+//                }
+                
+                
+                 Containerouter.setAttribute("class", "overAll");
+                 document.getElementsByTagName("body")[0].appendChild(Containerouter);
+
+                 
+
+            }
+            
+            function clickOnHome()
+            {
+                
+                    // click on Home
+                    //alert('amit');
+                    hideSetting();
+                    //document.getElementById("settingAngleId").style.display ='none';
+                    document.getElementById("lessonAngleId").style.display ='none';
+                    document.getElementById("homeAngleId").style.display ='block';
+                    counter = 0;
+                    swiping(counter);
+           }        
+            function clickOnLesson()
+            {
+                hideSetting();
+                    // click on lesson
+                    //document.getElementById("settingAngleId").style.display ='none';
+                    document.getElementById("lessonAngleId").style.display ='block';
+                    document.getElementById("homeAngleId").style.display ='none';
+                    var jsComObject = new Object();
+                    jsComObject.type = "menu";
+                    jsComObject.data = 10;
+                    var jsonString = JSON.stringify(jsComObject);
+                    JSInterface.send(jsonString);
+             }
+            function clickOnSetting()
+            {
+                    //  click on setting
+                    showSetting();
+                    document.getElementById("settingAngleId").style.display ='block';
+                    document.getElementById("lessonAngleId").style.display ='none';
+                    document.getElementById("homeAngleId").style.display ='none';
+                    
+            }
+            
+            function clickOnStart()
+            {
+                
+               //alert(counter);
+               var str = JSON.stringify(listData[counter]);
+               //alert(str);
+               playSound(next_click_sound);
+               
+               var lobj = JSON.parse(str);
+                var obj1 = new Object();
+                obj1.uid = lobj.uid;
+                obj1.scnEdgeID = lobj.scnEdgeID;
+                obj1.type = lobj.type;
+                var jsonString = JSON.stringify(obj1);
+                //alert(jsonString);
+                JSInterface.send(jsonString);
+               
+               
+               //JSInterface.startMcqPractice(str);
+               //JS
+               
+            }
+            function showSetting()
+            {
+                document.getElementById("soundsettingId").style.display ='block';
+                document.getElementById("modal").style.display ='none';
+            }
+            
+            function hideSetting()
+            {
+              document.getElementById("soundsettingId").style.display ='none';
+               document.getElementById("modal").style.display ='block';
+            }
+            
+            function setValue()
+            {
+             hideSetting();
+             if(audio == 0)
+             {
+               audio = 1;
+               //JSInterface.setMcqSound(1);
+               
+             }
+             else
+             {
+                audio = 0;
+                //JSInterface.setMcqSound(0); 
+             }
+           
+             
+             
+             
+            }
+            function swiping(i)
+            {
+               if( i < 0 )
+               {
+                 i = 0; 
+                 counter = 0;
+               }
+               if(i > listData.length -1 )
+               {
+                  i =  listData.length -1; 
+                  counter = listData.length -1; 
+               }
+               //alert(i);
+              document.getElementById("nameId").innerHTML =  listData[i].name;
+               document.getElementById("practiceNameId").innerHTML = listData[i].practiceName;
+               document.getElementById("descId").innerHTML =  listData[i].desc;
+               var value = parseInt(listData[i].score,10);
+               //alert(listData[i].score);
+               if(value < 1)
+               {
+                   document.getElementById("str1Id").style.color = "#e7e7e7";
+                  document.getElementById("str2Id").style.color  = '#e7e7e7'; 
+                  document.getElementById("str3Id").style.color  = '#e7e7e7'; 
+                  document.getElementById("str4Id").style.color ='#e7e7e7'; 
+                  document.getElementById("str5Id").style.color = '#e7e7e7';
+               }
+               else if(value < 2 && value >= 1 )
+               {
+                  document.getElementById("str1Id").style.color = 'yellow';
+                  document.getElementById("str2Id").style.color = '#e7e7e7'; 
+                  document.getElementById("str3Id").style.color = '#e7e7e7'; 
+                  document.getElementById("str4Id").style.color = '#e7e7e7'; 
+                  document.getElementById("str5Id").style.color = '#e7e7e7'; 
+               }
+               else if(value < 3 && value >= 2 )
+               {
+                  document.getElementById("str1Id").style.color = 'yellow';
+                  document.getElementById("str2Id").style.color = 'yellow'; 
+                  document.getElementById("str3Id").style.color ='#e7e7e7'; 
+                  document.getElementById("str4Id").style.color ='#e7e7e7'; 
+                  document.getElementById("str5Id").style.color = '#e7e7e7'; 
+               }
+               else if(value < 4 && value >= 3 )
+               {
+                 document.getElementById("str1Id").style.color = 'yellow';
+                  document.getElementById("str2Id").style.color = 'yellow'; 
+                  document.getElementById("str3Id").style.color = 'yellow'; 
+                  document.getElementById("str4Id").style.color ='#e7e7e7'; 
+                  document.getElementById("str5Id").style.color ='#e7e7e7';  
+               }
+               
+               
+               else if(value < 5 && value >= 4 )
+               {
+                   
+                 document.getElementById("str1Id").style.color = 'yellow';
+                  document.getElementById("str2Id").style.color = 'yellow'; 
+                  document.getElementById("str3Id").style.color = 'yellow'; 
+                  document.getElementById("str4Id").style.color ='yellow'; 
+                  document.getElementById("str5Id").style.color = '#e7e7e7';  
+               }
+               else if(value >= 5 )
+               {
+                   
+                  document.getElementById("str1Id").style.color = 'yellow';
+                  document.getElementById("str2Id").style.color = 'yellow'; 
+                  document.getElementById("str3Id").style.color = 'yellow'; 
+                  document.getElementById("str4Id").style.color = 'yellow'; 
+                  document.getElementById("str5Id").style.color = 'yellow'; 
+               }
+            }
+            
+            function playSound(sndTag) 
+            {
+             sndTag.play();
+
+            }
+            
+        
+        
+         function showModalAlert()
+            {
+
+                document.getElementById("modal").style.display = "block";
+                document.getElementById("fadeout").height = $(document).height();;
+                document.getElementById("fadeout").style.display = "block";
+                
+                
+                //var text = "You are registering for a live webinar session with our expert '"+name+"' on'"+data+"' scheduled for '"+time+"'. Click CONFIRM to book your slot or CANCEL to go back.";
+                document.getElementById("modalDynamicText").innerHTML =  "Please complete previous Module.";''  
+               
+            }
+
+            function closeModalAlert()
+            {
+                //document.getElementById("resultSpan").innerHTML = document.getElementById("finput").value;
+                document.getElementById("modal").style.display = "none";
+                document.getElementById("fadeout").style.display = "none";
+
+                showModal("submit score on server");
+                if(tokenValue == null)
+                {  
+                  var jsonData = makeJsonRequest();
+                  sendtoServerRequest(jsonData, "auth");
+                }
+                else
+                {
+                    var reqData = makePushDataReqJson();
+                    sendtoServerRequest(reqData, "submitScore");  
+                }
+            }
+            
+            
+            
+            function showDownloadPrgress()
+            {
+
+                document.getElementById("Modelbar").style.display = "block";
+                document.getElementById("fadeout").height = $(document).height();;
+                document.getElementById("fadeout").style.display = "block";
+                
+            }
+
+            function closeDownloadPrgress()
+            {
+               
+                document.getElementById("Modelbar").style.display = "none";
+                document.getElementById("fadeout").style.display = "none";
+
+                
+            }
+            
+            
+            function showDownloadPrgressBar()
+            {
+                //document.getElementById("progressCancelId").disabled = false; 
+                document.getElementById("progressID").style.display = "block";
+                //document.getElementById("progressCancelId").style.color ='#5dc9e6';
+                document.getElementById("fadeout").height = $(document).height();;
+                document.getElementById("fadeout").style.display = "block";
+                document.getElementById("fillprogressID").style.width = "0%";
+                
+            }
+            function closeDownloadPrgressBarCall()
+            {
+               var obj = new Object();
+                obj.uid =""
+                obj.type = "cancel";
+                var jsonString = JSON.stringify(obj);
+                //  dbgAlert("handleLearningClick called final"+jsonString);
+                 //JSInterface.setMCatLogResp(jsonString);
+               JSInterface.send(jsonString);
+           }
+            function closeDownloadPrgressBar()
+            {
+               
+               
+                document.getElementById("progressID").style.display = "none";
+                document.getElementById("fadeout").style.display = "none";
+
+                
+            }
+            
+            function showAlert(text)
+            {
+                document.getElementById("alertID").style.display = "block";
+                document.getElementById("fadeout").height = $(document).height();
+                document.getElementById("fadeout").style.display = "block";
+                
+                document.getElementById("displayMSG").innerHTML = text;
+            }
+
+            function closeAlert()
+            {
+                //document.getElementById("resultSpan").innerHTML = document.getElementById("finput").value;
+                document.getElementById("alertID").style.display = "none";
+                document.getElementById("fadeout").style.display = "none";
+            }
+            
+            
+            
+
+        </script>
+        
+        <div id="progressID" class="progressModel"> 
+            <!--data-toggle="tooltip" data-original-title="30%"-->
+            <div id="downloadMSGID" class = "text-center" style="margin-left: 5%;margin-top: 2%;font-size:16px; padding-bottom: 15px">Downloading.... </div>
+            <div class="progress progress-sm progress-striped  active text-center" style="margin-left: 5%;width: 90%;">
+                
+                <div id ="fillprogressID" class="progress-bar progress-bar-success" style="width:1%"></div>
+                
+            </div>
+            <div class="col-lg-12 col-xs-12">
+                   <div class="col-lg-2 col-xs-2 col-sm-2">
+                   
+                  </div>
+                
+                <div class="col-lg-8 col-xs-8 col-sm-8">
+<!--                   <div id="progressCancelId" onclick=closeDownloadPrgressBarCall(); class = "text-center" style = "color:#5dc9e6; background: white; font-size: 18px;">
+                       <div id="msgTextId" class="text-center" style="display:none;">wait....</div>      
+                    </div> -->
+                </div>
+                
+                <div class="col-lg-2 col-xs-2 col-sm-2">
+                   
+                </div>
+                     
+                    
+                </div>
+      </div>
+        
+        
+        
+
+        
+        
+            
+     
+        
+        
+        
+        
+        
+        
+        
+        <div id="alertID" class="alertIDModel">
+            
+            <div id="displayMSG" style="font-size:16px; padding-top: 30px;padding-bottom: 5px;height:100px" class="text-center scrollable">
+
+            </div>
+            <div class="col-lg-12 col-xs-12">
+                   <div class="col-lg-4 col-xs-4 col-sm-4">
+                   
+                  </div>
+                
+                <div class="col-lg-4 col-xs-4 col-sm-4">
+                   <div id="okId" onclick=closeAlert() class = "text-center dd-handle" style = "color: black; background: #5dc9e6;">
+                         
+                    </div> 
+                </div>
+                
+                <div class="col-lg-4 col-xs-4 col-sm-4">
+                   
+                </div>
+                     
+                    
+                </div>
+        </div>
+        
+        
+        
+        
+       
+        
+        
+     
+        
+        
+      
+        
+        <div id="modal" class="modalWindow">
+            <div id="swipeBox" ontouchstart="touchStart(event,'swipeBox');" ontouchend="touchEnd(event);" ontouchmove="touchMove(event);" ontouchcancel="touchCancel(event);">
+            <h1 class="ribbon">
+                <strong id = "nameId" class="ribbon-content"></strong>
+            </h1>
+            <div class="text-center " style="margin-top: -10px;">
+                
+                    <div id="str1Id"  class="fa fa-star"> </div>
+                    <div id="str2Id"  class=" fa fa-star"> </div>
+                    <div id="str3Id" class=" fa fa-star"> </div>
+                    <div id="str4Id"  class=" fa fa-star"> </div>
+                    <div id="str5Id"  class=" fa fa-star"> </div>
+            </div>
+                
+               <div class="text-center" style="margin-top: 20px; font-size: 22px;font-weight:bold " id="practiceNameId"> </div>
+               
+                 
+              <div id="descId" class="text-center col-lg-12 col-xs-12 col-sm-12" style="margin-top: 10px; font-size: 15px; height: 80px" > </div> 
+            </div>
+            
+            <div id = "startandRefreshId" class="refreshAndStart">
+                <div  class="col-lg-3 col-xs-3 col-sm-3 "  >
+<!--                    <div class="popupButton " onclick="javascript:clickOnHome();" >
+                    
+                    <div id="refreshId" class="text-center col-lg-9 col-xs-9 col-sm-9" ></div>
+                    <div class="fa fa-repeat"></div>
+                    
+                    </div>-->
+                </div>
+                
+                
+                <div class="col-lg-6 col-xs-6 col-sm-6  ">
+                    <div class="popupButton" onclick="javascript:clickOnStart();">
+                    <div id="startId" class="text-center col-lg-9 col-xs-9 col-sm-9 " ></div>
+                    <div class="fa fa-arrow-circle-right" ></div>
+                    </div>
+                </div>
+               <div class="text-center  col-lg-3 col-xs-3 col-sm-3 "></div>
+                
+            </div>
+<!--            <div id="productNameId" style="background: #ed5565;width: 100%;height:30px;">
+                <div class="col-lg-4 col-xs-4 col-sm-4"></div>
+                <div style="font-size:20px;color:white;" class="col-lg-4 col-xs-4 col-sm-4 text-center">Lession 5</div>
+                <div class="text-right col-lg-4 col-xs-4 col-sm-4" style="margin-top: 5px;">
+                    <div style="font-size:15px; color:yellow" class="text-right fa fa-star"> </div>
+                    <div style="font-size:15px; color:yellow" class="text-right fa fa-star"> </div>
+                    <div style="font-size:15px; color:white" class="text-right fa fa-star"> </div>
+                    <div style="font-size:15px; color:white" class="text-right fa fa-star"> </div>
+                </div>
+            </div>-->
+            <div class="col-lg-12 col-xs-12 col-sm-12 ">
+                <div class="text-center  col-lg-6 col-xs-6 col-sm-6 ">
+                    <div id ="homeAngleId"class =" triangle-down" > </div>
+                </div> 
+                <div class="text-center col-lg-6 col-xs-6 col-sm-6 ">
+                     <div id ="lessonAngleId" class ="triangle-down" style="display: none"> </div>
+                </div> 
+<!--                <div class="text-center col-lg-4 col-xs-4 col-sm-4 ">
+                    
+                     <div id ="settingAngleId" class ="triangle-down" style="display: None"> </div>
+                </div> -->
+            </div>
+              
+            <div class="col-lg-12 col-xs-12 col-sm-12 ">
+                <div class=" text-center col-lg-6 col-xs-6 col-sm-6  " onclick="javascript:clickOnHome()">
+                   <div id = "homeCircleId" class ="fa fa-circle" style="color:#1d252e;" >
+                       <div id = "homeId" class="fa-home " style="color:#ebebeb;"></div>
+                   </div>
+                   <div id = "homeTextId" class=" text-center" style="color:white; margin-top:10px;"></div> 
+                </div> 
+                <div class="text-center col-lg-6 col-xs-6 col-sm-6 " onclick = "javascript:clickOnLesson()">
+                     <div id = "circleListId" class ="fa fa-circle" style="color:#1d252e;">
+                         <div id = "listId" class="fa-list fa-1x" style="color:#ebebeb;"></div>
+                     </div>
+                    <div id = "lessonTextId" class=" text-center" style="color:white; margin-top:10px; "></div> 
+                </div> 
+<!--`                <div class="text-center col-lg-4 col-xs-4 col-sm-4 " onclick="javascript:clickOnSetting()">
+                    
+                     <div id = "circleSettingId" class ="fa fa-circle " style="color:#1d252e;">
+                         <div id = "settingId" class="fa-gear " style="color:#ebebeb;"></div>
+                      </div>
+                    <div id = "settingTextId" class=" text-center" style="color:white; margin-top:10px;"></div> 
+                </div>  -->
+            </div>
+            
+            
+         
+        </div>
+       <div id= "soundsettingId" class="setting">
+           <div class="col-sm-12" style="padding-left: 30px;" >
+               <div id= "soundSettingId" class="col-sm-6 text-center" style="color:white ;font-size:18px;">Sound Setting</div>
+               <div class="col-sm-6 " style="padding-left: 50px; padding-top: 20px;">
+                   <label class=" switch" >
+                       <input type="checkbox" value="1">
+                          <span></span>
+                        </label>
+                      </div>
+           </div>
+           <div class="text-center">
+           <button id="okid" type="submit" class="btn btn-primary" onclick="setValue()" style="width:80px">  Ok  </button>
+           </div>
+       </div>
+        <div id="fadeout"></div>
+
+    </body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,837 @@
+<!--<!DOCTYPE html>
+
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+
+<html lang="en" class="app">
+    <head >
+        <script type="text/javascript">
+            function getParam(name)
+            {
+                name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+                var regexS = "[\\?&]" + name + "=([^&#]*)";
+                var regex = new RegExp(regexS);
+
+                var results = regex.exec(window.location.href);
+                if (results === null)
+                    return "";
+                else
+                    return results[1];
+
+            }
+        </script>
+        <meta charset="utf-8" />
+        <title>InterView Prep</title>
+        <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <link rel="stylesheet" href="../css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="../css/animate.css" type="text/css" />
+        <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css" />
+        <link rel="stylesheet" href="../css/font.css" type="text/css" />
+        <link rel="stylesheet" href="../js/nestable/nestable.css" type="text/css" />
+        <link rel="stylesheet" href="../css/Module.css" type="text/css" />
+        <link rel="stylesheet" href="../css/app.css" type="text/css" />
+        <script src="../js/jquery.min.js"></script>
+         Bootstrap 
+        <script src="../js/bootstrap.js"></script>
+         App 
+        <script src="../js/app.js"></script>
+        <script src="../js/app.plugin.js"></script>
+        <script src="../js/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="../js/sortable/jquery.sortable.js"></script>
+        <script src="../js/nestable/jquery.nestable.js"></script>
+        <script src="../js/nestable/demo.js"></script>
+
+    </head>
+    <body >
+        <script language="javascript">
+            var cUid = null;
+            var cNumI = null;
+            var cType = null;
+            var cIsLock = null;
+            ;
+            (function ($, window, document, undefined)
+            {
+
+
+                function initialise()
+                {
+
+                    var jsonval = JSInterface.initialise(26);
+                   
+                    var raw = JSON.parse(jsonval);
+                    
+                    var msg = raw.json;
+                    //alert(msg);
+                    var uri_dec = decodeURIComponent(msg);
+                    msg = uri_dec;
+                    var regex = new RegExp('%22', 'g');
+                    var regex1 = new RegExp('%20', 'g');
+                    msg = msg.replace(regex, '"');
+                    msg = msg.replace(regex1, ' ');
+
+                    //var msg = "{\"mcq\":[{\"desc\":\" Tell me about  your self  \",\"practiceName\":\"Give Introduction 1\",\"name\":\"Practice 1\",\"type\":21,\"uid\":\"15945\",\"score\":\"300\",\"scnEdgeID\":97574},{\"desc\":\" Tell me about our  self \",\"practiceName\":\"Give Introduction 2\",\"name\":\"Practice 2\",\"type\":21,\"uid\":\"15945\",\"score\":\"100\",\"scnEdgeID\":97575},{\"desc\":\" Tell me about  india\",\"practiceName\":\"Give Introduction 3\",\"name\":\"Practice 3\",\"type\":21,\"uid\":\"15945\",\"score\":\"200\",\"scnEdgeID\":97576},{\"desc\":\" Tell me about  universe \",\"practiceName\":\"Give Introduction 4\",\"name\":\"Practice 4\",\"type\":21,\"uid\":\"15945\",\"score\":\"000\",\"scnEdgeID\":97577},{\"desc\":\" Tell me about  company \",\"practiceName\":\"Give Introduction 5\",\"name\":\"Practice 5\",\"type\":21,\"uid\":\"15945\",\"score\":\"400\",\"scnEdgeID\":97578},{\"desc\":\" Tell me about  organisation \",\"practiceName\":\"Give Introduction 6\",\"name\":\"Practice 6\",\"type\":21,\"uid\":\"15945\",\"score\":\"500\",\"scnEdgeID\":97579}]}";
+
+                    //var msg = "{\"mcq\":[{\"desc\":\"\",\"name\":\"MCQ Practice1\",\"type\":21,\"uid\":\"15945\"},{\"desc\":\"\",\"isComp\":0,\"name\":\"MCQ Practice2\",\"type\":21,\"uid\":\"15946\"},{\"desc\":\"\",\"isComp\":0,\"name\":\"MCQ Practice3\",\"type\":21,\"uid\":\"15947\"},{\"desc\":\"\",\"isComp\":0,\"name\":\"MCQ Practice4\",\"type\":21,\"uid\":\"15948\"},{\"desc\":\"\",\"isComp\":0,\"name\":\"MCQ Practice5\",\"type\":21,\"uid\":\"15949\"}]}";
+                    var listJsonData = JSON.parse(msg);
+                    var listData = listJsonData["mcq"];
+                    assistModuleUI(listData);
+                }
+
+
+                initialise();
+            })(window.jQuery || window.Zepto, window, document);
+
+            var cUid;
+            var cNumI;
+            var cType;
+            var cIsLock;
+            function assistModuleUI(modl_Data)
+            {
+                var width = $(document).width();
+                if (modl_Data !== null)
+                {
+                    var numberOfListItems = modl_Data.length;
+                    var overallContainer = document.createElement("div");
+                    overallContainer.setAttribute("class", "scrollable");
+                    document.getElementsByTagName("body")[0].appendChild(overallContainer);
+                    for (var i = 0; i < numberOfListItems; ++i)
+                    {
+
+                        var listMItem = document.createElement("div");
+                        var divid = "sectionli" + modl_Data[i].uid;
+                        listMItem.setAttribute("id", divid);
+
+                        listMItem.setAttribute("class", "mainContainerBG col-lg-12 col-xs-12");
+
+                        listMItem.setAttribute("style", "padding-top:5px;");
+                        overallContainer.appendChild(listMItem);
+                        var listItemModuleHeaderAnchor = document.createElement("a");
+                        listItemModuleHeaderAnchor.setAttribute("class", "accordion-toggle ");
+                        listItemModuleHeaderAnchor.setAttribute("data-toggle", "collapse");
+                        listItemModuleHeaderAnchor.setAttribute("data-parent", divid);
+                        listItemModuleHeaderAnchor.setAttribute("href", "#sectionContents" + modl_Data[i].uid);
+
+
+                        listMItem.appendChild(listItemModuleHeaderAnchor);
+                        var listItemModuleHeaderContent = document.createElement("div");
+                        var div = "main" + i;
+                        listItemModuleHeaderContent.setAttribute("id", div);
+                        listItemModuleHeaderContent.setAttribute("onclick", "javascript:changeColor('" + JSON.stringify(modl_Data[i])+ "')");
+                        if (parseInt(modl_Data[i].type, 10) === 21)
+                        {
+                            if (width <= 400)
+                            {
+                                listItemModuleHeaderContent.setAttribute("class", "dd-handleModule col-lg-12 col-xs-12 headerFontStylePhone ");
+
+                            }
+                            else if (width > 400 && width < 786)
+                            {
+                                listItemModuleHeaderContent.setAttribute("class", "dd-handleModule col-lg-12 col-xs-12 headerFontStyleTab ");
+
+                            }
+                            else
+                            {
+                                listItemModuleHeaderContent.setAttribute("class", "dd-handleModule col-lg-12 col-xs-12 headerFontStyle ");
+
+                            }
+
+
+                        }
+                        else
+                        {
+                        }
+                        listItemModuleHeaderContent.textContent = modl_Data[i].name;
+                        listItemModuleHeaderAnchor.appendChild(listItemModuleHeaderContent);
+                        var updownImage = document.createElement("div");
+                        var dId = "su" + i;
+                        updownImage.setAttribute("id", dId);
+                        if (parseInt(modl_Data[i].type, 10) === 21)
+                        {
+                            updownImage.setAttribute("class", "   fa fa-angle-right fa-stack-2x  pull-right updownImage");
+                            listItemModuleHeaderContent.appendChild(updownImage);
+                        }
+                        else
+                        {
+                            updownImage.setAttribute("class", "   fa fa-angle-right fa-stack-2x  pull-right updownImage");
+                            listItemModuleHeaderContent.appendChild(updownImage);
+                        }
+
+                    }
+                }
+
+            }
+
+            function changeColor( obj)
+            {
+
+                
+                var jsonString = JSON.stringify(obj);
+               // alert(obj);
+                JSInterface.startMcqPractice(obj);
+
+            }
+
+        </script>
+
+        <span id=dbgsp></span>
+
+
+        <div id="Modelbar" class="modalWindow"> 
+            <div class = "text-center" style="sfont-size:21px; padding-bottom: 5px">Downloading.... </div>
+
+            <div style="background: #de5e00;;height: 1px;width: 100%;"></div>
+            <div class="text-center">
+                <img src="../images/loading.gif" class ="divElement">
+            </div>
+        </div>     
+
+
+
+        <div id="modal" class="modalWindow"> 
+            <div class = "text-center" style="font-size:21px; padding-bottom: 5px">Interview Prep </div>
+            <div style="background: #5dc9e6;height: 1px;width: 100%;"></div>
+            <div class="text-center">
+
+            </div>
+            <div id="modalDynamicText" style="font-size:16px; padding-top: 5px;padding-bottom: 5px;height:135px" class="scrollable text-center">
+
+            </div>
+            <div style="padding-top:5px;"> 
+                <a onclick=closeModalAlert() class = "col-lg-12 col-xs-12 col-sm-12 text-center dd-handle dd-hover" style = "color: white; background: #5dc9e6;" >
+                    OK
+                </a>
+
+            </div>
+        </div>
+        <div id="fadeout"></div>
+    </body>
+</html>-->
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" class="app">
+    <head >
+        <script type="text/javascript">
+            function getParam(name)
+            {
+                name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+                var regexS = "[\\?&]" + name + "=([^&#]*)";
+                var regex = new RegExp(regexS);
+
+                var results = regex.exec(window.location.href);
+                if (results === null)
+                    return "";
+                else
+                    return results[1];
+
+            }
+        </script>
+        <meta charset="utf-8" />
+        <title>InterView Prep</title>
+        <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <link rel="stylesheet" href="../css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="../css/animate.css" type="text/css" />
+        <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css" />
+        <link rel="stylesheet" href="../css/font.css" type="text/css" />
+        <link rel="stylesheet" href="../js/nestable/nestable.css" type="text/css" />
+        <link rel="stylesheet" href="../css/Module.css" type="text/css" />
+        <link rel="stylesheet" href="../css/app.css" type="text/css" />
+        <script src="../js/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="../js/bootstrap.js"></script>
+        <!-- App -->
+        <script src="../js/app.js"></script>
+        <script src="../js/app.plugin.js"></script>
+        <script src="../js/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="../js/sortable/jquery.sortable.js"></script>
+        <script src="../js/nestable/jquery.nestable.js"></script>
+        <script src="../js/nestable/demo.js"></script>
+        <!--[if lt IE 9]>
+         <script src="js/ie/html5shiv.js"></script>
+         <script src="js/ie/respond.min.js"></script>
+         <script src="js/ie/excanvas.js"></script>
+         <![endif]-->
+    </head>
+    <body >
+        <script language="javascript">
+             var cUid= null;
+             var cNumI= null;
+             var cType= null;
+             var cIsLock= null;
+            // var collapseID = null;
+             
+             
+             
+             window.onerror = function (err) {
+                //log('window.onerror: ' + err)
+            }
+
+            function connectWebViewJavascriptBridge(callback) {
+                if (window.WebViewJavascriptBridge) {
+                    callback(WebViewJavascriptBridge)
+                } else {
+                    document.addEventListener('WebViewJavascriptBridgeReady', function () {
+                        callback(WebViewJavascriptBridge)
+                    }, false);
+                }
+            }
+
+
+
+
+            connectWebViewJavascriptBridge(function (bridge) {
+                
+                JSInterface =bridge;
+                
+                
+               var jsObject = new Object();
+                jsObject.type = "getcookie";
+                
+                var dataval = JSON.stringify(jsObject);
+                bridge.send(dataval, function (responseData) {
+                    
+                    jsonvalCookie = responseData;
+                     
+                    
+                });
+                
+                
+                var uniqueId = 1;
+                var Data;
+                var jsObject = new Object();
+                jsObject.type = "msg";
+                jsObject.data = 10;
+                var dataval = JSON.stringify(jsObject);
+                bridge.send(dataval, function (responseData) {
+                    messageObj = JSON.parse(responseData);
+                    //loadMessage(messageObj);
+                    
+                   
+                });
+                
+                //initialise();
+                var jsObject = new Object();
+                jsObject.type = "drawData";
+                jsObject.data = 10;
+                var dataval = JSON.stringify(jsObject);
+                bridge.send(dataval, function (responseData) {
+                    //messageObj = JSON.parse(responseData);
+                    //loadMessage(messageObj);
+                    //alert(responseData);
+                    var msg = responseData;
+                    initialise(msg); 
+                    
+                });
+            
+            
+            
+            
+            function log(message, data) {
+                    var log = document.getElementById('log')
+                    var el = document.createElement('div')
+                    el.className = 'logLine'
+                    el.innerHTML = uniqueId++ + '. ' + message + ':<br/>' + JSON.stringify(data)
+                    if (log.children.length) {
+                        log.insertBefore(el, log.children[0])
+                    }
+                    else {
+                        log.appendChild(el)
+                    }
+                }
+                bridge.init(function (message, responseCallback) {
+                    
+                    var dictJSON = JSON.parse(message);
+                    if(dictJSON.type == "showProgress")
+                    {
+                       showDownloadPrgressBar(); 
+                    }
+                    else if(dictJSON.type == "closeProgress")
+                    {
+                        closeDownloadPrgressBar();
+                    }
+                    else if(dictJSON.type == "percentage")
+                    {
+                    document.getElementById("fillprogressID").style.width = dictJSON.number+"%";
+                    //document.getElementById("msgTextId").style.display = 'none';
+//                    if(parseInt(dictJSON.number,10) >= 83)
+//                        {
+//                            
+//                            //document.getElementById("msgTextId").style.display = 'block';
+//                           document.getElementById("progressCancelId").disabled = true; 
+//                           document.getElementById("progressCancelId").style.color ='#e8e8e8';
+//                        }
+                    }
+                    else if(dictJSON.type == "error")
+                    {
+                       closeDownloadPrgressBar();
+                       //document.getElementById(collapseID).setAttribute("class", "collapse");
+                       showAlert(messageObj.NW_EMSG);
+                    }
+                    //log('JS got a message', message)
+                    //var data = {'Javascript Responds': 'Wee!'}
+                    //log('JS responding with', data)
+                    //responseCallback(data)
+                });
+
+                bridge.registerHandler('testJavascriptHandler', function (data, responseCallback) {
+
+                    var responseData = {'Javascript Says': 'Right back atcha!'}
+
+                    responseCallback(responseData)
+                });
+            });
+            
+            
+            
+            
+            var JSInterface = null;
+            var jsonvalCookie = null;
+            
+//            ;
+//            (function($, window, document, undefined)
+//            {
+                
+                
+                function initialise(msg)
+                {
+                    
+                   //msg =  " %7B%22course%22%3A%5B%7B%22isComp%22%3A0%2C%22isLock%22%3A0%2C%22name%22%3A%22Pre%20Assessment%22%2C%22scnArray%22%3Anull%2C%22type%22%3A3%2C%22uid%22%3A%2215934%22%7D%2C%7B%22isComp%22%3A0%2C%22isLock%22%3A0%2C%22name%22%3A%22Module%201%22%2C%22scnArray%22%3A%5B%7B%22desc%22%3A%22Talking%20About%20Yourself%22%2C%22isComp%22%3A0%2C%22name%22%3A%22Scenario1%22%2C%22type%22%3A5%2C%22uid%22%3A%2215936%22%7D%2C%7B%22desc%22%3A%22Long%20Term%20Career%20Goals%22%2C%22isComp%22%3A0%2C%22name%22%3A%22Scenario2%22%2C%22type%22%3A5%2C%22uid%22%3A%2215946%22%7D%2C%7B%22desc%22%3A%22Game%22%2C%22isComp%22%3A0%2C%22name%22%3A%22Game%22%2C%22type%22%3A11%2C%22uid%22%3A%2215956%22%7D%5D%2C%22type%22%3A4%2C%22uid%22%3A%2215935%22%7D%2C%7B%22isComp%22%3A0%2C%22isLock%22%3A0%2C%22name%22%3A%22Module%202%22%2C%22scnArray%22%3A%5B%7B%22desc%22%3A%22Strengths%20and%20Weaknesses%22%2C%22isComp%22%3A0%2C%22name%22%3A%22Scenario1%22%2C%22type%22%3A5%2C%22uid%22%3A%2215958%22%7D%2C%7B%22desc%22%3A%22Your%20Key%20Differentiator%20%22%2C%22isComp%22%3A0%2C%22name%22%3A%22Scenario2%22%2C%22type%22%3A5%2C%22uid%22%3A%2215968%22%7D%2C%7B%22desc%22%3A%22Game%22%2C%22isComp%22%3A0%2C%22name%22%3A%22Game%22%2C%22type%22%3A11%2C%22uid%22%3A%2215978%22%7D%5D%2C%22type%22%3A4%2C%22uid%22%3A%2215957%22%7D%2C%7B%22isComp%22%3A0%2C%22isLock%22%3A0%2C%22name%22%3A%22Mid%20Assessment%20%22%2C%22scnArray%22%3Anull%2C%22type%22%3A3%2C%22uid%22%3A%2215979%22%7D%2C%7B%22isComp%22%3A0%2C%22isLock%22%3A0%2C%22name%22%3A%22Module%203%22%2C%22scnArray%22%3A%5B%7B%22desc%22%3A%22Talking%20About%20The%20Company%22%2C%22isComp%22%3A0%2C%22name%22%3A%22Scenario1%22%2C%22type%22%3A5%2C%22uid%22%3A%2215981%22%7D%2C%7B%22desc%22%3A%22Discussing%20Salaries%22%2C%22isComp%22%3A0%2C%22name%22%3A%22Scenario2%22%2C%22type%22%3A5%2C%22uid%22%3A%2215991%22%7D%2C%7B%22desc%22%3A%22Game%22%2C%22isComp%22%3A0%2C%22name%22%3A%22Game%22%2C%22type%22%3A11%2C%22uid%22%3A%2216001%22%7D%5D%2C%22type%22%3A4%2C%22uid%22%3A%2215980%22%7D%2C%7B%22isComp%22%3A0%2C%22isLock%22%3A0%2C%22name%22%3A%22Module%204%22%2C%22scnArray%22%3A%5B%7B%22desc%22%3A%22Asking%20questions%22%2C%22isComp%22%3A0%2C%22name%22%3A%22Scenario1%22%2C%22type%22%3A5%2C%22uid%22%3A%2216003%22%7D%2C%7B%22desc%22%3A%22After%20The%20Interview%22%2C%22isComp%22%3A0%2C%22name%22%3A%22Scenario2%22%2C%22type%22%3A5%2C%22uid%22%3A%2216013%22%7D%2C%7B%22desc%22%3A%22Game%22%2C%22isComp%22%3A0%2C%22name%22%3A%22Game%22%2C%22type%22%3A11%2C%22uid%22%3A%2216023%22%7D%5D%2C%22type%22%3A4%2C%22uid%22%3A%2216002%22%7D%2C%7B%22isComp%22%3A0%2C%22isLock%22%3A0%2C%22name%22%3A%22Post%20Assessment%22%2C%22scnArray%22%3Anull%2C%22type%22%3A3%2C%22uid%22%3A%2216024%22%7D%5D%7D";
+                    
+                    //var jsonval = JSInterface.initialise(10);
+                    //alert(jsonval);
+//                    var raw = JSON.parse(jsonval);
+//                    //alert(JSON.stringify(raw));
+//                    var msg = raw.json;
+//                    //alert(msg);
+//                    //var msg = getParam("json");
+//                    var uri_dec = decodeURIComponent(msg);
+//                    msg = uri_dec;
+//                    //var msg = "{\"course\":[{\"isComp\":1,\"isLock\":0,\"name\":\"Pre Assessment\",\"scnArray\":null,\"type\":3,\"uid\":\"15934\"},{\"isComp\":0,\"isLock\":0,\"name\":\"Module 1\",\"scnArray\":[{\"desc\":\"Talking About Yourself\",\"isComp\":0,\"name\":\"Scenario1\",\"type\":5,\"uid\":\"15936\"},{\"desc\":\"Long Term Career Goals\",\"isComp\":0,\"name\":\"Scenario2\",\"type\":5,\"uid\":\"15946\"},{\"desc\":\"Game\",\"isComp\":0,\"name\":\"Game\",\"type\":11,\"uid\":\"15956\"}],\"type\":4,\"uid\":\"15935\"},{\"isComp\":0,\"isLock\":0,\"name\":\"Module 2\",\"scnArray\":[{\"desc\":\"Strengths and Weaknesses\",\"isComp\":0,\"name\":\"Scenario1\",\"type\":5,\"uid\":\"15958\"},{\"desc\":\"Your Key Differentiator \",\"isComp\":0,\"name\":\"Scenario2\",\"type\":5,\"uid\":\"15968\"},{\"desc\":\"Game\",\"isComp\":0,\"name\":\"Game\",\"type\":11,\"uid\":\"15978\"}],\"type\":4,\"uid\":\"15957\"},{\"isComp\":0,\"isLock\":0,\"name\":\"Mid Assessment \",\"scnArray\":null,\"type\":3,\"uid\":\"15979\"},{\"isComp\":0,\"isLock\":0,\"name\":\"Module 3\",\"scnArray\":[{\"desc\":\"Talking About The Company\",\"isComp\":0,\"name\":\"Scenario1\",\"type\":5,\"uid\":\"15981\"},{\"desc\":\"Discussing Salaries\",\"isComp\":0,\"name\":\"Scenario2\",\"type\":5,\"uid\":\"15991\"},{\"desc\":\"Game\",\"isComp\":0,\"name\":\"Game\",\"type\":11,\"uid\":\"16001\"}],\"type\":4,\"uid\":\"15980\"},{\"isComp\":0,\"isLock\":0,\"name\":\"Module 4\",\"scnArray\":[{\"desc\":\"Asking questions\",\"isComp\":0,\"name\":\"Scenario1\",\"type\":5,\"uid\":\"16003\"},{\"desc\":\"After The Interview\",\"isComp\":0,\"name\":\"Scenario2\",\"type\":5,\"uid\":\"16013\"},{\"desc\":\"Game\",\"isComp\":0,\"name\":\"Game\",\"type\":11,\"uid\":\"16023\"}],\"type\":4,\"uid\":\"16002\"},{\"isComp\":0,\"isLock\":0,\"name\":\"Post Assessment\",\"scnArray\":null,\"type\":3,\"uid\":\"16024\"}]}";
+//                    var regex = new RegExp('%22', 'g');
+//                    var regex1 = new RegExp('%20', 'g');
+//                    msg = msg.replace(regex, '"');
+//                    msg = msg.replace(regex1, ' ');
+                    if($(document).height() == 960 && $(document).width() == 768)
+                    {
+                    document.getElementById("alertID").style.top = "45%";
+                    document.getElementById("alertID").style.left = "25%";
+                    document.getElementById("alertID").style.height = "150px";
+                    document.getElementById("alertID").style.width = "50%";
+                    }
+                    else
+                    {
+                      document.getElementById("alertID").style.top = "25%";
+                    document.getElementById("alertID").style.left = "10px";
+                    document.getElementById("alertID").style.height = "150px";
+                    document.getElementById("alertID").style.width = "300px"; 
+                    }
+                    document.getElementById("okId").innerHTML = messageObj.OK;
+                    //document.getElementById("progressCancelId").innerHTML = messageObj.CANCEL;
+                    //var msg = "{\"mcq\":[{\"desc\":\"\",\"name\":\"MCQ Practice1\",\"type\":21,\"uid\":\"15945\"},{\"desc\":\"\",\"isComp\":0,\"name\":\"MCQ Practice2\",\"type\":21,\"uid\":\"15946\"},{\"desc\":\"\",\"isComp\":0,\"name\":\"MCQ Practice3\",\"type\":21,\"uid\":\"15947\"},{\"desc\":\"\",\"isComp\":0,\"name\":\"MCQ Practice4\",\"type\":21,\"uid\":\"15948\"},{\"desc\":\"\",\"isComp\":0,\"name\":\"MCQ Practice5\",\"type\":21,\"uid\":\"15949\"}]}";
+                   
+                    var listJsonData = JSON.parse(msg);
+                    var listData = listJsonData["mcq"];
+                    //alert(listData);
+                    document.getElementById("downloadMSGID").innerHTML = messageObj.DLOAD_CHAP_MSG;
+                    assistModuleUI(listData);
+                    
+                }
+
+
+                //initialise();
+           // })(window.jQuery || window.Zepto, window, document);
+
+             var cUid;
+             var cNumI;
+             var cType;
+             var cIsLock;
+            function handleLearningItemClick(v, v1)
+            {
+                // dbgAlert("handleLearningClick called"+v+v1);
+                showAndroidToast(v, v1);
+            }
+
+            function showAndroidToast(v, v1) {
+                var obj = new Object();
+                obj.uid = v;
+                obj.type = v1;
+                var jsonString = JSON.stringify(obj);
+                //  dbgAlert("handleLearningClick called final"+jsonString);
+                JSInterface.setMCatLogResp(jsonString);
+            }
+
+            function openAndroidDialog() {
+                JSInterface.openAndroidDialog();
+            }
+
+            function callFromActivity(msg) {
+                makelist1(msg);
+                document.getElementById("mytext").innerHTML = msg;
+            }
+
+
+
+
+
+            function assistModuleUI(modl_Data)
+            {
+                var width = $(document).width();
+                if (modl_Data !== null)
+                {
+                    var numberOfListItems = modl_Data.length;
+                    var overallContainer = document.createElement("div");
+                    overallContainer.setAttribute("class", "scrollable");
+                    document.getElementsByTagName("body")[0].appendChild(overallContainer);
+                    for (var i = 0; i < numberOfListItems; ++i)
+                    {
+
+                        var listMItem = document.createElement("div");
+                        var divid = "sectionli" + modl_Data[i].uid;
+                        listMItem.setAttribute("id", divid);
+
+                        listMItem.setAttribute("class", "mainContainerBG col-lg-12 col-xs-12");
+
+                        listMItem.setAttribute("style", "padding-top:5px;");
+                        overallContainer.appendChild(listMItem);
+                        var listItemModuleHeaderAnchor = document.createElement("a");
+                        listItemModuleHeaderAnchor.setAttribute("class", "accordion-toggle ");
+                        listItemModuleHeaderAnchor.setAttribute("data-toggle", "collapse");
+                        listItemModuleHeaderAnchor.setAttribute("data-parent", divid);
+                        listItemModuleHeaderAnchor.setAttribute("href", "#sectionContents" + modl_Data[i].uid);
+
+
+                        listMItem.appendChild(listItemModuleHeaderAnchor);
+                        var listItemModuleHeaderContent = document.createElement("div");
+                        var div = "main" + i;
+                        listItemModuleHeaderContent.setAttribute("id", div);
+                        listItemModuleHeaderContent.setAttribute("onclick", "javascript:changeColor('" + JSON.stringify(modl_Data[i])+ "')");
+                        if (parseInt(modl_Data[i].type, 10) === 21)
+                        {
+                            if (width <= 400)
+                            {
+                                listItemModuleHeaderContent.setAttribute("class", "dd-handleModule col-lg-12 col-xs-12 headerFontStylePhone ");
+
+                            }
+                            else if (width > 400 && width < 786)
+                            {
+                                listItemModuleHeaderContent.setAttribute("class", "dd-handleModule col-lg-12 col-xs-12 headerFontStyleTab ");
+
+                            }
+                            else
+                            {
+                                listItemModuleHeaderContent.setAttribute("class", "dd-handleModule col-lg-12 col-xs-12 headerFontStyle ");
+
+                            }
+
+
+                        }
+                        else
+                        {
+                        }
+                        listItemModuleHeaderContent.textContent = modl_Data[i].name;
+                        listItemModuleHeaderAnchor.appendChild(listItemModuleHeaderContent);
+                        var updownImage = document.createElement("div");
+                        var dId = "su" + i;
+                        updownImage.setAttribute("id", dId);
+                        if (parseInt(modl_Data[i].type, 10) === 21)
+                        {
+                            updownImage.setAttribute("class", "   fa fa-angle-right fa-stack-2x  pull-right updownImage");
+                            listItemModuleHeaderContent.appendChild(updownImage);
+                        }
+                        else
+                        {
+                            updownImage.setAttribute("class", "   fa fa-angle-right fa-stack-2x  pull-right updownImage");
+                            listItemModuleHeaderContent.appendChild(updownImage);
+                        }
+
+                    }
+                }
+
+            }
+            function createCookie(value) 
+             {
+//            var day  = (1 * 24 * 60 * 60 * 1000);
+//            var date = new Date();
+//            date.setTime(date.getTime() + (20 * 365 * day));
+//            var expires = "; expires=" + date.toGMTString();
+//
+//            document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+//            document.cookie = name + "=" + value + expires + "; path=/";
+//            
+//            
+//var day  = (1 * 24 * 60 * 60 * 1000);
+//            var date = new Date();
+//            date.setTime(date.getTime() + (20 * 365 * day));
+//            var expires = "; expires=" + date.toGMTString();
+//
+//            document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            //document.cookie = name + "=" + value ;
+            var jsObject = new Object();
+                jsObject.type = "setcookie";
+                var obj = new Object();
+                obj.numI = value;
+                jsObject.data = obj;
+                var dataval = JSON.stringify(jsObject);
+                JSInterface.send(dataval,function (responseData) {
+                    
+                    
+                     
+                    
+                });
+            }
+
+            function readCookie() 
+            {
+
+             //jsonvalCookie = JSInterface.readCookie();
+             
+             
+             if(jsonvalCookie != null && jsonvalCookie != ""  )
+             {
+                 var raw = JSON.parse(jsonvalCookie);
+                 return raw.numI;
+             }
+             else
+             {
+                 return -1;
+             }
+                 
+            }
+            
+            
+            
+            function changeColor(obj)
+            {
+                var lobj = JSON.parse(obj);
+                var obj1 = new Object();
+                obj1.uid = lobj.uid;
+                obj1.scnEdgeID = lobj.scnEdgeID;
+                obj1.type = lobj.type;
+                var jsonString = JSON.stringify(obj1);
+                //alert(jsonString);
+                JSInterface.send(jsonString);
+              
+
+
+
+            }
+            function handleLearningItemClick(data)
+            {
+                //alert('hello');
+            }
+           function showModalAlert()
+            {
+
+                document.getElementById("modal").style.display = "block";
+                document.getElementById("fadeout").height = $(document).height();;
+                document.getElementById("fadeout").style.display = "block";
+                
+                
+                //var text = "You are registering for a live webinar session with our expert '"+name+"' on'"+data+"' scheduled for '"+time+"'. Click CONFIRM to book your slot or CANCEL to go back.";
+                document.getElementById("modalDynamicText").innerHTML =  "Please complete previous Module.";''  
+               
+            }
+
+            function closeModalAlert()
+            {
+                //document.getElementById("resultSpan").innerHTML = document.getElementById("finput").value;
+                document.getElementById("modal").style.display = "none";
+                document.getElementById("fadeout").style.display = "none";
+
+                showModal("submit score on server");
+                if(tokenValue == null)
+                {  
+                  var jsonData = makeJsonRequest();
+                  sendtoServerRequest(jsonData, "auth");
+                }
+                else
+                {
+                    var reqData = makePushDataReqJson();
+                    sendtoServerRequest(reqData, "submitScore");  
+                }
+            }
+            
+            
+            
+            function showDownloadPrgress()
+            {
+
+                document.getElementById("Modelbar").style.display = "block";
+                document.getElementById("fadeout").height = $(document).height();;
+                document.getElementById("fadeout").style.display = "block";
+                
+            }
+
+            function closeDownloadPrgress()
+            {
+               
+                document.getElementById("Modelbar").style.display = "none";
+                document.getElementById("fadeout").style.display = "none";
+
+                
+            }
+            
+            
+            function showDownloadPrgressBar()
+            {
+                //document.getElementById("progressCancelId").disabled = false; 
+                document.getElementById("progressID").style.display = "block";
+                //document.getElementById("progressCancelId").style.color ='#5dc9e6';
+                document.getElementById("fadeout").height = $(document).height();;
+                document.getElementById("fadeout").style.display = "block";
+                document.getElementById("fillprogressID").style.width = "0%";
+                
+            }
+            function closeDownloadPrgressBarCall()
+            {
+               var obj = new Object();
+                obj.uid =""
+                obj.type = "cancel";
+                var jsonString = JSON.stringify(obj);
+                //  dbgAlert("handleLearningClick called final"+jsonString);
+                 //JSInterface.setMCatLogResp(jsonString);
+               JSInterface.send(jsonString);
+           }
+            function closeDownloadPrgressBar()
+            {
+               
+               
+                document.getElementById("progressID").style.display = "none";
+                document.getElementById("fadeout").style.display = "none";
+
+                
+            }
+            
+            function showAlert(text)
+            {
+                document.getElementById("alertID").style.display = "block";
+                document.getElementById("fadeout").height = $(document).height();
+                document.getElementById("fadeout").style.display = "block";
+                
+                document.getElementById("displayMSG").innerHTML = text;
+            }
+
+            function closeAlert()
+            {
+                //document.getElementById("resultSpan").innerHTML = document.getElementById("finput").value;
+                document.getElementById("alertID").style.display = "none";
+                document.getElementById("fadeout").style.display = "none";
+            }
+            
+            
+            
+
+        </script>
+        
+        <div id="progressID" class="progressModel"> 
+            <!--data-toggle="tooltip" data-original-title="30%"-->
+            <div id="downloadMSGID" class = "text-center" style="margin-left: 5%;margin-top: 2%;font-size:16px; padding-bottom: 15px">Downloading.... </div>
+            <div class="progress progress-sm progress-striped  active text-center" style="margin-left: 5%;width: 90%;">
+                
+                <div id ="fillprogressID" class="progress-bar progress-bar-success" style="width:1%"></div>
+                
+            </div>
+            <div class="col-lg-12 col-xs-12">
+                   <div class="col-lg-2 col-xs-2 col-sm-2">
+                   
+                  </div>
+                
+                <div class="col-lg-8 col-xs-8 col-sm-8">
+<!--                   <div id="progressCancelId" onclick=closeDownloadPrgressBarCall(); class = "text-center" style = "color:#5dc9e6; background: white; font-size: 18px;">
+                       <div id="msgTextId" class="text-center" style="display:none;">wait....</div>      
+                    </div> -->
+                </div>
+                
+                <div class="col-lg-2 col-xs-2 col-sm-2">
+                   
+                </div>
+                     
+                    
+                </div>
+      </div>
+        
+        
+        
+
+        
+        
+        <div id="Modelbar" class="modalWindow"> 
+            <div class = "text-center" style="sfont-size:21px; padding-bottom: 5px">Downloading.... </div>
+
+            <div style="background: #de5e00;;height: 1px;width: 100%;"></div>
+            <div class="text-center">
+                <img src="../images/loading.gif" class ="divElement">
+            </div>
+           </div>     
+     
+        
+        
+        
+        
+        
+        
+        
+        <div id="alertID" class="alertIDModel">
+            
+            <div id="displayMSG" style="font-size:16px; padding-top: 30px;padding-bottom: 5px;height:100px" class="text-center scrollable">
+
+            </div>
+            <div class="col-lg-12 col-xs-12">
+                   <div class="col-lg-4 col-xs-4 col-sm-4">
+                   
+                  </div>
+                
+                <div class="col-lg-4 col-xs-4 col-sm-4">
+                   <div id="okId" onclick=closeAlert() class = "text-center dd-handle" style = "color: black; background: #5dc9e6;">
+                         
+                    </div> 
+                </div>
+                
+                <div class="col-lg-4 col-xs-4 col-sm-4">
+                   
+                </div>
+                     
+                    
+                </div>
+        </div>
+        
+        
+        
+        <div id="modal" class="modalWindow"> 
+            <div class = "text-center" style="font-size:21px; padding-bottom: 5px">Interview Prep </div>
+            <div style="background: #5dc9e6;height: 1px;width: 100%;"></div>
+            <div class="text-center">
+                
+            </div>
+            <div id="modalDynamicText" style="font-size:16px; padding-top: 5px;padding-bottom: 5px;height:135px" class="scrollable text-center">
+
+            </div>
+            <div style="padding-top:5px;"> 
+                <a onclick=closeModalAlert() class = "col-lg-12 col-xs-12 col-sm-12 text-center dd-handle dd-hover" style = "color: white; background: #5dc9e6;" >
+                    OK
+                </a>
+
+            </div>
+        </div>
+        <div id="fadeout"></div>
+    </body>
+</html>
+

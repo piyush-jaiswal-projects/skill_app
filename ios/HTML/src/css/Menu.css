@@ -1,0 +1,387 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+
+ 
+    Created on : 8 Jul, 2014, 11:28:32 AM
+    Author     : liqmac
+
+body{
+    background-image: url('../images/bg-2.png');
+ background-repeat: no-repeat;
+ background-size: 100%;
+}
+.imgbackGround
+{
+ width:100%;
+ height:100%;
+ 
+ 
+ 
+}
+
+
+.menuitem {
+  width: 100%;
+  height: 28%;
+  
+}
+
+.profile
+{
+    
+  
+  background-color: #0072bc;
+  opacity:0.8;
+  filter:alpha(opacity=60);  For IE8 and earlier 
+}
+
+
+
+.iconimg
+{
+  font-size:70px;
+  //color:white;
+  
+
+}
+
+.course
+{
+    
+  
+  background-color: #f2f2f2;
+  //border: 1px solid black;
+  opacity:0.8;
+  filter:alpha(opacity=60);  For IE8 and earlier 
+}
+
+.programOverview
+{
+ 
+  
+  background-color: #5fa917;
+  //border: 1px solid black;
+  opacity:0.8;
+  filter:alpha(opacity=60);  For IE8 and earlier 
+}
+
+.hiddendiv
+{
+ 
+  width: 100%;
+  height: 4%;
+ 
+  opacity:0.0;
+  filter:alpha(opacity=60);  For IE8 and earlier 
+}
+
+.iconText
+{
+    font-size:25px;
+    padding-top:10px;
+    font-family:"HelveticaNeueLTCom";
+}
+ 
+body
+{
+//height:100%;
+width:100%;
+//min-height:100%; padding:0; margin:0;
+
+}
+
+.paddigDiv
+{
+   height:35%;
+   opacity:0.0;
+   filter:alpha(opacity=60);
+}*/
+
+
+
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 8 Jul, 2014, 11:28:32 AM
+    Author     : liqmac
+*/
+body{
+    //background-image: url('../images/bg.png');
+ background-repeat: no-repeat;
+ background-size: 100%;
+ 
+}
+.imgbackGround
+{
+ width:100%;
+ height:100%;
+ 
+ 
+ 
+}
+
+
+.menuitem {
+  width: 100%;
+  height: 10%;
+  
+}
+
+.profile
+{
+    
+  
+  background-color: #4EBAE7;
+  opacity:0.8;
+  filter:alpha(opacity=60); /* For IE8 and earlier */
+}
+.profile:hover
+{
+    
+  
+  background-color: #44acc8;
+/*  opacity:0.8;
+  filter:alpha(opacity=60);  For IE8 and earlier */
+}
+.profile:active
+{
+    
+  
+  background-color: #44acc8;
+/*  opacity:0.8;
+  filter:alpha(opacity=60);  For IE8 and earlier */
+}
+
+
+
+
+.iconimg
+{
+  font-size:2.0em;
+  //color:white;
+  
+
+}
+
+.iconText
+{
+    font-size:1.4em;
+    //padding-top:10px;
+    font-family:"Helvetica";
+    color:white;
+}
+
+
+.iconimgPhone
+{
+  font-size:30px;
+  //color:white;
+  
+
+}
+
+.iconTextPhone
+{
+    font-size:20px;
+    //padding-top:10px;
+    font-family:"Helvetica";
+    color:white;
+}
+
+.iconimgTab
+{
+  font-size:45px;
+  //color:white;
+  
+
+}
+
+.iconTextTab
+{
+    font-size:25px;
+    //padding-top:10px;
+    font-family:"Helvetica";
+    color:white;
+}
+
+.course
+{
+    
+  
+  background-color: #ADADAD;
+  //border: 1px solid black;
+  opacity:0.8;
+  filter:alpha(opacity=60); /* For IE8 and earlier */
+}
+
+
+.course:hover
+{
+    
+  
+  background-color: #969696;
+/*  opacity:0.8;
+  filter:alpha(opacity=60);  For IE8 and earlier */
+}
+.course:active
+{
+    
+  
+  background-color: #969696;
+/*  opacity:0.8;
+  filter:alpha(opacity=60);  For IE8 and earlier */
+}
+.programOverview
+{
+ 
+  
+  background-color: #F07083;
+  //border: 1px solid black;
+  opacity:0.8;
+  filter:alpha(opacity=60); /* For IE8 and earlier */
+}
+
+.programOverview:hover
+{
+    
+  
+  background-color: #d47780;
+/*  opacity:0.8;
+  filter:alpha(opacity=60);  For IE8 and earlier */
+}
+.programOverview:active
+{
+    
+  
+  background-color: #d47780;
+/*  opacity:0.8;
+  filter:alpha(opacity=60);  For IE8 and earlier */
+}
+.hiddendiv
+{
+ 
+  width: 100%;
+  height: 2%;
+ 
+  opacity:0.0;
+  filter:alpha(opacity=60); /* For IE8 and earlier */
+}
+
+.hideDiv
+{
+ 
+  width: 100%;
+  height:53%;
+ 
+  opacity:0.0;
+  filter:alpha(opacity=60); /* For IE8 and earlier */
+}
+
+.iconText
+{
+    font-size:1.4em;
+    //padding-top:10px;
+    font-family:"Helvetica";
+    color:white;
+}
+ 
+body
+{
+//height:100%;
+width:100%;
+//min-height:100%; padding:0; margin:0;
+
+}
+
+.paddigDiv
+{
+   height:30%;
+   opacity:0.0;
+   filter:alpha(opacity=60);
+}
+
+
+.paddigDivIphone
+{
+   height:20%;
+   opacity:0.0;
+   filter:alpha(opacity=60);
+}
+
+
+
+.Hbottomsub2Div:hover{
+                  height: 30px;
+                  padding-top:3px;  
+                  width: 100px;
+                 // height: 1%;
+                  font-size: 18px;
+                  //color:#de5e00;
+                 // margin: 0 auto;
+
+                  background-color: #5dc9e6;
+                  color:white;
+                  -moz-border-radius: 10px / 10px;
+                   border-radius: 10px / 10px;
+            }
+             
+.Hbottomsub2Div:active{
+/*                -o-box-shadow: 2px 2px 19px #FFCC00;
+                -webkit-box-shadow: 2px 2px 19px #FFCC00;
+                -moz-box-shadow: 2px 2px 19px #FFCC00;*/
+                      height: 30px;
+                      padding-top:3px;  
+                      width: 100px;
+                     // height: 1%;
+                      font-size: 18px;
+                      //color:#de5e00;
+                     // margin: 0 auto;
+
+                      background-color: #44acc8;
+                      color:white;
+                      -moz-border-radius: 10px / 10px;
+                       border-radius: 10px / 10px;
+            }
+            
+ .loadingModel{
+    display: none; /* ensures itâ€™s invisible until itâ€™s called */
+    position: absolute; /* makes the div go into a position thatâ€™s absolute to the browser viewing area */
+    left: 20%;
+    background-color:white;
+    top: 40%;
+    width:60%;
+    height: 100px;
+    z-index: 100;
+    -moz-border-radius: 10px / 10px;
+   border-radius: 10px / 10px;
+}
+
+
+#resultSpan {
+    color : #ff0000;
+}
+#fadeout {
+    display: none;  /* ensures itâ€™s invisible until itâ€™s called */
+    position: absolute;  /* makes the div go into a position thatâ€™s absolute to the browser viewing area */
+    left: 0%; /* makes the div span all the way across the viewing area */
+    top: 0%; /* makes the div span all the way across the viewing area */
+    background-color: black;
+    -moz-opacity: 0.7; /* makes the div transparent, so you have a cool overlay effect */
+    opacity: .70;
+    filter: alpha(opacity=70);
+    width: 100%;
+    height: 100%;
+    z-index: 10; /* makes the div the second most top layer, so itâ€™ll lay on top of everything else EXCEPT for divs with a higher z-index (meaning the #overlay ruleset) */
+}
+.divElement{
+    height:40px;
+    width:40px;
+    
+    
+  }

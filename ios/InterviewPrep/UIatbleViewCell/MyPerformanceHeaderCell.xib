@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyPerformanceHeaderCell" rowHeight="196" id="KGk-i7-Jjw" customClass="MyPerformanceHeaderCell">
+            <rect key="frame" x="0.0" y="0.0" width="345" height="196"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="345" height="196"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6sb-PI-veb">
+                        <rect key="frame" x="0.0" y="0.0" width="345" height="196"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="round-header.png" translatesAutoresizingMaskIntoConstraints="NO" id="bi9-bj-MIh">
+                                <rect key="frame" x="0.0" y="-5" width="345" height="111"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="about_us.png" translatesAutoresizingMaskIntoConstraints="NO" id="vfp-Hb-KJq">
+                                <rect key="frame" x="122" y="53" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="2O3-V0-TxO"/>
+                                    <constraint firstAttribute="height" constant="100" id="34R-ik-qLO"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zahid Hussain" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1WM-9a-lAy">
+                                <rect key="frame" x="39" y="163" width="268" height="13"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="13" id="GMu-rg-fEK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="1WM-9a-lAy" secondAttribute="bottom" constant="20" id="7RX-94-lKf"/>
+                            <constraint firstItem="1WM-9a-lAy" firstAttribute="top" secondItem="bi9-bj-MIh" secondAttribute="bottom" constant="57" id="Ek0-Od-lF2"/>
+                            <constraint firstAttribute="trailing" secondItem="1WM-9a-lAy" secondAttribute="trailing" constant="38" id="HUR-fe-s3z"/>
+                            <constraint firstItem="bi9-bj-MIh" firstAttribute="top" secondItem="6sb-PI-veb" secondAttribute="top" constant="-5" id="IVd-fh-sQj"/>
+                            <constraint firstItem="bi9-bj-MIh" firstAttribute="leading" secondItem="6sb-PI-veb" secondAttribute="leading" id="MxC-DR-8GV"/>
+                            <constraint firstItem="vfp-Hb-KJq" firstAttribute="leading" secondItem="6sb-PI-veb" secondAttribute="leading" constant="122" id="cAU-LB-Fc6"/>
+                            <constraint firstItem="1WM-9a-lAy" firstAttribute="leading" secondItem="6sb-PI-veb" secondAttribute="leading" constant="39" id="ikn-sQ-tUD"/>
+                            <constraint firstAttribute="trailing" secondItem="bi9-bj-MIh" secondAttribute="trailing" id="lH2-JJ-6YJ"/>
+                            <constraint firstAttribute="trailing" secondItem="vfp-Hb-KJq" secondAttribute="trailing" constant="123" id="qAw-Q3-5Up"/>
+                            <constraint firstItem="1WM-9a-lAy" firstAttribute="top" secondItem="vfp-Hb-KJq" secondAttribute="bottom" constant="10" id="ucp-Mc-o8X"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="6sb-PI-veb" secondAttribute="bottom" id="N2S-r2-Crh"/>
+                    <constraint firstItem="6sb-PI-veb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Sxx-P4-dnq"/>
+                    <constraint firstAttribute="trailing" secondItem="6sb-PI-veb" secondAttribute="trailing" id="UNk-Mu-hBD"/>
+                    <constraint firstItem="6sb-PI-veb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="qy6-rp-msm"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="backgroundImgView" destination="bi9-bj-MIh" id="iEC-Py-ksb"/>
+                <outlet property="circleImageView" destination="vfp-Hb-KJq" id="Wv9-uK-iQz"/>
+                <outlet property="mainView" destination="6sb-PI-veb" id="Mmu-fD-4Nx"/>
+                <outlet property="nameLbl" destination="1WM-9a-lAy" id="rJg-55-s4l"/>
+            </connections>
+            <point key="canvasLocation" x="155.79710144927537" y="115.17857142857142"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="about_us.png" width="88" height="88"/>
+        <image name="round-header.png" width="771" height="245"/>
+    </resources>
+</document>

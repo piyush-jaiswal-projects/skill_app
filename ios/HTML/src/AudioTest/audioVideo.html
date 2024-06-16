@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" class="app">
+    <head >
+        <script type="text/javascript">
+            function getParam(name)
+            {
+                name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+                var regexS = "[\\?&]" + name + "=([^&#]*)";
+                var regex = new RegExp(regexS);
+
+                var results = regex.exec(window.location.href);
+                if (results === null)
+                    return "";
+                else
+                    return results[1];
+
+
+            }
+        </script>
+        <script src="../js/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="../js/bootstrap.js"></script>
+        <!-- App -->
+        <script src="../js/app.js"></script>
+        <script src="../js/app.plugin.js"></script>
+        <script src="../js/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="../js/sortable/jquery.sortable.js"></script>
+        <script src="../js/nestable/jquery.nestable.js"></script>
+        <script src="../js/nestable/demo.js"></script>
+        <meta charset="utf-8" />
+        <title>InterView Prep</title>
+        <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+        <meta name="viewport"  content="width=device-width, nitial-scale=1, maximum-scale=1" />
+        <link rel="stylesheet" href="../css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="../css/animate.css" type="text/css" />
+        <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css" />
+        <link rel="stylesheet" href="../css/font.css" type="text/css" />
+        <link rel="stylesheet" href="../js/nestable/nestable.css" type="text/css" />
+        <link rel="stylesheet" href="../css/app.css" type="text/css" />
+        <link rel="stylesheet" href="../css/Menu.css" type="text/css" />
+        <!--[if lt IE 9]>
+         <script src="js/ie/html5shiv.js"></script>
+         <script src="js/ie/respond.min.js"></script>
+         <script src="js/ie/excanvas.js"></script>
+         <![endif]-->
+        <script language="javascript">
+            
+            
+            
+            
+            window.onerror = function (err) {
+                //log('window.onerror: ' + err)
+            }
+
+            function connectWebViewJavascriptBridge(callback) {
+                if (window.WebViewJavascriptBridge) {
+                    callback(WebViewJavascriptBridge)
+                } else {
+                    document.addEventListener('WebViewJavascriptBridgeReady', function () {
+                        callback(WebViewJavascriptBridge)
+                    }, false);
+                }
+            }
+
+            connectWebViewJavascriptBridge(function (bridge) {
+                
+                iOSInterface =bridge;
+                
+                
+               
+                
+                var uniqueId = 1;
+                var Data;
+                var jsObject = new Object();
+                jsObject.type = "drawData";
+                jsObject.data = 9;
+                var dataval = JSON.stringify(jsObject);
+                bridge.send(dataval, function (responseData) {
+                    //messageObj = responseData; //JSON.parse(data);
+                    //loadMessage(messageObj);
+                    document.getElementById("testId").innerHTML= responseData;//.mp3messageObj;
+                    
+                   initialise(); 
+                });
+                
+//                var jsObject = new Object();
+//                jsObject.type = "drawData";
+//                jsObject.data = 2;
+//                var dataval = JSON.stringify(jsObject);
+//                bridge.send(dataval, function (responseData) {
+//                    //messageObj = JSON.parse(responseData);
+//                    //loadMessage(messageObj);
+//                    var msg = responseData;
+//                    
+//                    
+//                });
+            
+            function log(message, data) {
+                    var log = document.getElementById('log')
+                    var el = document.createElement('div')
+                    el.className = 'logLine'
+                    el.innerHTML = uniqueId++ + '. ' + message + ':<br/>' + JSON.stringify(data)
+                    if (log.children.length) {
+                        log.insertBefore(el, log.children[0])
+                    }
+                    else {
+                        log.appendChild(el)
+                    }
+                }
+                bridge.init(function (message, responseCallback) {
+
+                    
+                    //log('JS got a message', message)
+                    var data = {'Javascript Responds': 'Wee!'}
+                    //log('JS responding with', data)
+                    responseCallback(data)
+                });
+
+                bridge.registerHandler('testJavascriptHandler', function (data, responseCallback) {
+
+                    var responseData = {'Javascript Says': 'Right back atcha!'}
+
+                    responseCallback(responseData)
+                });
+            });
+            
+            
+            
+            
+            var iOSInterface;
+            function initialise()
+            {
+
+                craeteMenuUI();
+            }
+
+            function craeteMenuUI()
+            {
+                
+                    
+            }
+            
+        </script>
+        
+        
+        
+        
+    </head>
+
+    <body style="overflow: hidden">
+        
+    <div id="testId"> </img>
+        
+
+    
+    </body>
+</html>
+
+
+
+
+
+
+
+
+

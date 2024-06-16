@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" class="app">
+    <head >
+        <script type="text/javascript">
+            function getParam(name)
+            {
+                name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+                var regexS = "[\\?&]" + name + "=([^&#]*)";
+                var regex = new RegExp(regexS);
+
+                var results = regex.exec(window.location.href);
+                if (results === null)
+                    return "";
+                else
+                    return results[1];
+
+            }
+        </script>
+        <meta charset="utf-8" />
+        <title>InterView Prep</title>
+        <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <link rel="stylesheet" href="../css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="../css/animate.css" type="text/css" />
+        <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css" />
+        <link rel="stylesheet" href="../css/font.css" type="text/css" />
+        <link rel="stylesheet" href="../js/nestable/nestable.css" type="text/css" />
+        <link rel="stylesheet" href="../css/app.css" type="text/css" />
+        <link rel="stylesheet" href="../css/ScenarioPracticeModule.css" type="text/css" />
+        <script src="../js/jquery.min.js"></script>
+        <!--[if lt IE 9]>
+         <script src="js/ie/html5shiv.js"></script>
+         <script src="js/ie/respond.min.js"></script>
+         <script src="js/ie/excanvas.js"></script>
+         <![endif]-->
+    </head>
+    <body >
+        <script language="javascript">
+//            ;
+//            (function($, window, document, undefined)
+//            {
+                
+                
+                
+                window.onerror = function (err) {
+                //log('window.onerror: ' + err)
+            }
+
+            function connectWebViewJavascriptBridge(callback) {
+                if (window.WebViewJavascriptBridge) {
+                    callback(WebViewJavascriptBridge)
+                } else {
+                    document.addEventListener('WebViewJavascriptBridgeReady', function () {
+                        callback(WebViewJavascriptBridge)
+                    }, false);
+                }
+            }
+
+
+
+
+            connectWebViewJavascriptBridge(function (bridge) {
+                
+                JSInterface =bridge;
+                
+                
+               var jsObject = new Object();
+                jsObject.type = "getcookie";
+                
+                var dataval = JSON.stringify(jsObject);
+                bridge.send(dataval, function (responseData) {
+                    
+                    jsonvalCookie = responseData;
+                     
+                    
+                });
+                
+                
+                var uniqueId = 1;
+                var Data;
+                var jsObject = new Object();
+                jsObject.type = "msg";
+                jsObject.data = 12;
+                var dataval = JSON.stringify(jsObject);
+                bridge.send(dataval, function (responseData) {
+                    messageObj = JSON.parse(responseData);
+                    //loadMessage(messageObj);
+                    
+                   
+                });
+                
+                //initialise();
+                var jsObject = new Object();
+                jsObject.type = "drawData";
+                jsObject.data = 12;
+                var dataval = JSON.stringify(jsObject);
+                bridge.send(dataval, function (responseData) {
+                    //messageObj = JSON.parse(responseData);
+                    //loadMessage(messageObj);
+                    //alert(responseData);
+                    var msg = responseData;
+                    initialise(msg); 
+                    
+                });
+            
+            
+            
+            
+            function log(message, data) {
+                    var log = document.getElementById('log')
+                    var el = document.createElement('div')
+                    el.className = 'logLine'
+                    el.innerHTML = uniqueId++ + '. ' + message + ':<br/>' + JSON.stringify(data)
+                    if (log.children.length) {
+                        log.insertBefore(el, log.children[0])
+                    }
+                    else {
+                        log.appendChild(el)
+                    }
+                }
+                bridge.init(function (message, responseCallback) {
+
+                    
+                    //log('JS got a message', message)
+                    var data = {'Javascript Responds': 'Wee!'}
+                    //log('JS responding with', data)
+                    responseCallback(data)
+                });
+
+                bridge.registerHandler('testJavascriptHandler', function (data, responseCallback) {
+
+                    var responseData = {'Javascript Says': 'Right back atcha!'}
+
+                    responseCallback(responseData)
+                });
+            });
+            
+            
+            
+            
+            var JSInterface = null;
+            
+                function initialise(msg)
+                {
+//                    var jsonval = JSInterface.initialise(12);
+//                    var raw = JSON.parse(jsonval);
+//                    var msg = raw.json;
+//                    var uri_dec = decodeURIComponent(msg);
+//                    msg = uri_dec;
+                   //var msg = "{\"capArray\":[{\"capType\":\"6\",\"contentArray\":[{\"desc\":\"Hi this is Amit Gupta\",\"isComp\":0,\"name\":\"Concept\",\"type\":6,\"uid\":\"15937\"}],\"name\":\"CONCEPT\",\"uid\":\"15936\"},{\"capType\":\"7\",\"contentArray\":[{\"desc\":\"\",\"isComp\":0,\"name\":\"Live Webinar\",\"type\":7,\"uid\":\"15938\"}],\"name\":\"ACTIVITY\",\"uid\":\"15936\"},{\"capType\":\"8\",\"contentArray\":[{\"desc\":\"\",\"isComp\":0,\"name\":\"Scenario Practice\",\"type\":8,\"uid\":\"15940\"},{\"desc\":\"\",\"isComp\":1,\"name\":\"Vocabulary Practice\",\"type\":10,\"uid\":\"15944\"},{\"desc\":\"\",\"isComp\":0,\"name\":\"MCQ Practice\",\"type\":21,\"uid\":\"15945\"}],\"name\":\"PRACTICE\",\"uid\":\"15936\"}],\"name\":\"Module 1\",\"uid\":\"15935\"}";
+//                    var regex = new RegExp('%22', 'g');
+//                    var regex1 = new RegExp('%20', 'g');
+//                    msg = msg.replace(regex, '"');
+//                    msg = msg.replace(regex1, ' ');
+
+                    var listJsonData = JSON.parse(msg);
+                    //var listData = listJsonData["course"];
+                    ScenarioPractice(listJsonData);
+                    //assistModuleUI(listData);
+                }
+
+
+//                initialise();
+//            })(window.jQuery || window.Zepto, window, document);
+
+
+            function handleLearningItemClick(v, v1)
+            {
+                // dbgAlert("handleLearningClick called"+v+v1);
+                showAndroidToast(v, v1);
+            }
+
+            function showAndroidToast(v, v1) {
+                var obj = new Object();
+                obj.uid = v;
+                obj.type = v1;
+                var jsonString = JSON.stringify(obj);
+                //  dbgAlert("handleLearningClick called final"+jsonString);
+                JSInterface.send(jsonString);
+            }
+
+            function openAndroidDialog() {
+                JSInterface.openAndroidDialog();
+            }
+
+            function callFromActivity(msg) {
+                makelist1(msg);
+                document.getElementById("mytext").innerHTML = msg;
+            }
+
+
+            function ScenarioPractice(listData)
+            {
+                var width =$(document).width();
+                if (listData !== null)
+                {
+                    var overallContainer = document.createElement("div");
+                    overallContainer.setAttribute("class", "scrollable col-lg-12 col-xs-12 col-sm-12");
+                    document.getElementsByTagName("body")[0].appendChild(overallContainer);
+                    var listMItem = document.createElement("div");
+                    listMItem.setAttribute("class", "Scenario dd-handleModuleScenario col-lg-12 col-xs-12");
+                    listMItem.setAttribute("style","margin-top:5px;");
+                    //listMItem.innerHTML = listData.name;
+                    overallContainer.appendChild(listMItem);
+
+                    var listMtext = document.createElement("div");
+                    listMtext.setAttribute("class", " listMtext col-lg-10 col-xs-10 col-sm-10");
+                    //listMtext.setAttribute("style","");
+                    listMtext.innerHTML = listData.name;
+                    listMItem.appendChild(listMtext);
+
+
+
+                    var listMArrow = document.createElement("div");
+                    listMArrow.setAttribute("class", " listMArrow col-lg-2 col-xs-2 col-sm-2 text-center");
+                    //listMArrow.setAttribute("style","");
+                    //listMArrow.innerHTML = listData.name;
+                    listMItem.appendChild(listMArrow);
+
+                    var listMArrowimg = document.createElement("div");
+                    listMArrowimg.setAttribute("class", " fa fa-angle-up fa-stack-2x");
+                    listMArrowimg.setAttribute("style", "color:#cccccc;");
+                    //listMArrow.innerHTML = listData.name;
+                    listMArrow.appendChild(listMArrowimg);
+
+
+                    var capData = listData.capArray;
+                    var numberOfListItems = capData.length;
+                    for (var i = 0; i < numberOfListItems; ++i)
+                    {
+                        var listItemModuleHeaderContent = document.createElement("div");
+                        listItemModuleHeaderContent.setAttribute("class", " capData col-lg-12 col-xs-12");
+                        
+                        
+               if ($(document).height() == 416 && $(document).width() == 320)
+                {
+                    
+                    
+                  listMtext.setAttribute("style", "font-size:17px");  
+                    
+                   
+                    
+                }
+                else if ($(document).height() == 504 && $(document).width() == 320)
+                {
+                  listMtext.setAttribute("style", "font-size:17px");  
+                    
+                }
+                else if ($(document).height() == 603 && $(document).width() == 375)
+                {
+                  listMtext.setAttribute("style", "font-size:17px");  
+                }
+                else if ($(document).height() == 672 && $(document).width() == 414)
+                {
+                    
+                  listMtext.setAttribute("style", "font-size:17px");  
+                    
+                }
+                else if ($(document).height() == 960 && $(document).width() == 768)
+                {
+                   //listItemModuleHeaderContent.setAttribute("style", "font-size:15px"); 
+                }
+                else
+                {
+                   listMtext.setAttribute("style", "font-size:17px"); 
+                }
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        listItemModuleHeaderContent.innerHTML = capData[i].name;
+                        overallContainer.appendChild(listItemModuleHeaderContent);
+                        var capDatainner = capData[i].contentArray;
+                        var numberOfcapItems = capDatainner.length;
+                        for (var j = 0; j < numberOfcapItems; ++j)
+                        {
+                            var learningItem = document.createElement("div");
+                            learningItem.setAttribute("class", "lg-col-12 col-lg-12 col-xs-12 whitebackGround");
+                            learningItem.setAttribute("style", "padding-left:50px;height:90px;");
+                            var learningItemAnchor = document.createElement("a");
+                            learningItemAnchor.setAttribute("href", "javascript:handleLearningItemClick('" + capDatainner[j].uid + "','" + capDatainner[j].type + "')");
+                            overallContainer.appendChild(learningItemAnchor);
+                            learningItemAnchor.appendChild(learningItem);
+                            if (parseInt(capData[i].capType) === 6)
+                            {
+
+                                var learningItemImage = document.createElement("div");
+
+                                learningItemImage.setAttribute("class", " learningItemImage  col-lg-2 col-xs-2 col-sm-2");
+                                learningItemImage.setAttribute("style", "padding-top:25px;");
+                                var learningImage = document.createElement("img");
+
+                                if (parseInt(capDatainner[j].isComp) === 1)
+                                {
+                                    learningImage.setAttribute("src", "../images/scenario_orange.png");
+                                }
+                                else
+                                {
+                                    learningImage.setAttribute("src", "../images/scenario_grey.png");
+                                }
+
+                                //learningImage.setAttribute("class","containerimg");
+                                learningImage.setAttribute("class", "Conceptcontainerimg");
+                                learningItemImage.appendChild(learningImage);
+
+                                learningItem.appendChild(learningItemImage);
+
+                                var learningItemText = document.createElement("div");
+                                learningItemText.setAttribute("class", "col-lg-10 col-xs-10 col-sm-10 ");
+                                learningItemText.setAttribute("style", "padding-top:5px;");
+                                var textHeader = document.createElement("div");
+                                //textHeader.setAttribute("style","padding-top:10px;");
+                               // capDatainner[j].desc = "Hi this is Testing apps Hi this is Testing apps Hi this is Testing apps Hi this is Testing apps ";
+                                if(capDatainner[j].desc == "")
+                                {
+                                 textHeader.setAttribute("class", " CuslearningItemTextHeader");   
+                                }
+                                else
+                                {
+                                  textHeader.setAttribute("class", "learningItemHeader");  
+                                }
+                                textHeader.innerHTML = capDatainner[j].name;
+                                learningItemText.appendChild(textHeader);
+
+                                var textSubtitle = document.createElement("div");
+                                //textSubtitle.setAttribute("class","scrollable");
+                                
+                                if(width <= 400)
+                                {
+                                    textSubtitle.setAttribute("class", "learningItemSubtitlePhone");
+                                }
+                                else if (width > 400 && width < 786 )
+                                {
+                                    textSubtitle.setAttribute("class", "learningItemSubtitleTab");
+                                }
+                                else 
+                                {
+                                   textSubtitle.setAttribute("class", "learningItemSubtitle");
+                                } 
+                                
+                                
+                                
+                                textSubtitle.innerHTML = capDatainner[j].desc;
+                                learningItemText.appendChild(textSubtitle);
+
+
+
+                                learningItem.appendChild(learningItemText);
+
+                            }
+                            else if (parseInt(capData[i].capType) === 7)
+                            {
+                                var learningItemImage = document.createElement("div");
+                                learningItemImage.setAttribute("class", " learningItemImage col-lg-2 col-xs-2 col-sm-2");
+                                learningItemImage.setAttribute("style", "padding-top:25px;");
+                                //learningItemImage.setAttribute("style","padding-top:15px;");
+                                var learningImage = document.createElement("img");
+
+                                if (parseInt(capDatainner[j].isComp) === 1)
+                                {
+                                    learningImage.setAttribute("src", "../images/webinar_icon_orange.png");
+                                }
+                                else
+                                {
+                                    learningImage.setAttribute("src", "../images/webinar_icon_grey.png");
+                                }
+
+                                learningImage.setAttribute("class", "activitycontainerimg");
+                                learningItemImage.appendChild(learningImage);
+
+                                learningItem.appendChild(learningItemImage);
+
+                                var learningItemText = document.createElement("div");
+                                learningItemText.setAttribute("class", " col-lg-10 col-xs-10 col-sm-10");
+                                learningItemText.setAttribute("style", "padding-top:5px;");
+                                var textHeader = document.createElement("div");
+                                //capDatainner[j].desc = "Hi this is Testing apps";
+                                if(capDatainner[j].desc == "")
+                                {
+                                 textHeader.setAttribute("class", " CuslearningItemTextHeader");   
+                                }
+                                else
+                                {
+                                  textHeader.setAttribute("class", " learningItemHeader");  
+                                }
+                                
+                                textHeader.innerHTML = capDatainner[j].name;
+                                learningItemText.appendChild(textHeader);
+
+                                var textSubtitle = document.createElement("div");
+                                if(width <= 400)
+                                {
+                                    textSubtitle.setAttribute("class", "learningItemSubtitlePhone");
+                                }
+                                else if (width > 400 && width < 786 )
+                                {
+                                    textSubtitle.setAttribute("class", "learningItemSubtitleTab");
+                                }
+                                else 
+                                {
+                                   textSubtitle.setAttribute("class", "learningItemSubtitle");
+                                } 
+                                //textSubtitle.setAttribute("class", " learningItemSubtitle");
+                                textSubtitle.innerHTML = capDatainner[j].desc;
+                                learningItemText.appendChild(textSubtitle);
+
+
+
+                                learningItem.appendChild(learningItemText);
+
+                            }
+                            else if (parseInt(capData[i].capType) === 8)
+                            {
+
+
+                                var learningItemImage = document.createElement("div");
+                                learningItemImage.setAttribute("class", " col-lg-2 col-xs-2 col-sm-2");
+                                    
+
+                                var learningImage = document.createElement("img");
+                                if (j % 2 === 0)
+                                {
+                                    learningItemImage.setAttribute("style", "padding-left:5px;padding-top:25px");
+                                    if (parseInt(capDatainner[j].isComp) === 1)
+                                    {
+                                        if(parseInt(capDatainner[j].type) === 21)
+                                        {
+                                          learningImage.setAttribute("class", "activitycontainerimg");
+                                          //learningImage.setAttribute("style","margin-top:15px;");
+                                          learningImage.setAttribute("src", "../images/practice_icon_orange.png");  
+                                        }else
+                                        {
+                                            learningImage.setAttribute("class", "activitycontainerimg");
+                                            learningImage.setAttribute("src", "../images/scenario_orange.png");
+                                        }
+                                    }
+                                    else
+                                    {   if(parseInt(capDatainner[j].type) === 21)
+                                        {
+                                         learningImage.setAttribute("class", "activitycontainerimg"); 
+                                         //learningImage.setAttribute("style","margin-top:15px;");
+                                         learningImage.setAttribute("src", "../images/practice_icon.png"); 
+                                        }else
+                                        {
+                                        learningImage.setAttribute("class", "Conceptcontainerimg");    
+                                        learningImage.setAttribute("src", "../images/scenario_grey.png");
+                                        }
+                                        
+                                    }  
+                                    
+                                }
+                                else
+                                {
+                                    learningItemImage.setAttribute("style", "padding-left:5px;padding-top:25px");
+                                    if (parseInt(capDatainner[j].isComp) === 1)
+                                    {   
+                                        
+                                      if(parseInt(capDatainner[j].type) === 21)
+                                        {
+                                         learningImage.setAttribute("class", "activitycontainerimg"); 
+                                         //learningImage.setAttribute("style","margin-top:22px;");
+                                         learningImage.setAttribute("src", "../images/practice_icon_orange.png"); 
+                                        }else
+                                        {
+                                        learningImage.setAttribute("class", "activitycontainerimg");
+                                        learningImage.setAttribute("src", "../images/vocab_practice_selected.png");
+                                        }
+                                    }
+                                    else
+                                    {   
+                                        if(parseInt(capDatainner[j].type) === 21)
+                                        {
+                                         learningImage.setAttribute("class", "activitycontainerimg");  
+                                         //learningImage.setAttribute("style","margin-top:22px;");
+                                         learningImage.setAttribute("src", "../images/practice_icon.png");   
+                                        }else
+                                        {
+                                        learningImage.setAttribute("class", "activitycontainerimg");
+                                        learningImage.setAttribute("src", "../images/vocab_practice-1.png");
+                                        }
+                                    }
+
+                                }
+                                
+                                learningItemImage.appendChild(learningImage);
+
+                                learningItem.appendChild(learningItemImage);
+
+                                var learningItemText = document.createElement("div");
+                                learningItemText.setAttribute("class", " col-lg-10 col-xs-10 col-sm-10");
+                                learningItemText.setAttribute("style", " padding-top:5px;");
+                                var textHeader = document.createElement("div");
+                                //textHeader.setAttribute("style","")
+                                //capDatainner[j].desc = "Hi this is Testing apps";
+                                if(capDatainner[j].desc == "")
+                                {
+                                  if (j % 2 === 0)
+                                   {
+                                       
+                                       if(parseInt(capDatainner[j].type) === 21)
+                                        {
+                                            textHeader.setAttribute("class", " CuslearningItemTextHeader");
+                                        }else
+                                        {
+                                          textHeader.setAttribute("class", " CuslearningItemTextHeader");  
+                                        }
+                                   }
+                                   else
+                                   {
+                                      if(parseInt(capDatainner[j].type) === 21)
+                                        {
+                                           textHeader.setAttribute("class", " CuslearningItemTextHeader"); 
+                                        }else
+                                        {
+                                          textHeader.setAttribute("class", " CuslearningItemTextHeader");  
+                                        }  
+                                   }
+                                     
+                                      
+                                }
+                                else
+                                {
+                                  textHeader.setAttribute("class", " CuslearningItemTextHeader");  
+                                }
+                                //textHeader.setAttribute("class", "whiteb learningItemTextHeader");
+                                textHeader.innerHTML = capDatainner[j].name;
+                                learningItemText.appendChild(textHeader);
+                                if(capDatainner[j].desc == "")
+                                {
+                                 
+                                    if (j !== numberOfcapItems - 1)
+                                    {
+                                        var divideborder = document.createElement("div");
+                                        divideborder.setAttribute("class", "blackb");
+                                        learningItemText.appendChild(divideborder);
+                                    }
+                                }
+                                else
+                                {
+                                    
+                                }
+                                var textSubtitle = document.createElement("div");
+                                if(width <= 400)
+                                {
+                                    textSubtitle.setAttribute("class", "learningItemSubtitlePhone");
+                                }
+                                else if (width > 400 && width < 786 )
+                                {
+                                    textSubtitle.setAttribute("class", "learningItemSubtitleTab");
+                                }
+                                else 
+                                {
+                                   textSubtitle.setAttribute("class", "learningItemSubtitle");
+                                } 
+                                //textSubtitle.setAttribute("class", " learningItemSubtitle");
+                                //textSubtitle.setAttribute("style", "padding-left:20px;  ");
+                                textSubtitle.innerHTML = capDatainner[j].desc;
+                                learningItemText.appendChild(textSubtitle);
+                                if (j % 2 === 0)
+                                {
+                                    textSubtitle.setAttribute("style", "padding-top:5px;");
+                                }
+                                else
+                                {
+
+                                }
+                                if (j !== numberOfcapItems - 1)
+                                {
+                                    var divideborder = document.createElement("div");
+                                    divideborder.setAttribute("class", "blackb");
+                                    //learningItemText.appendChild(divideborder);
+                                }
+                                learningItem.appendChild(learningItemText);
+
+                            }
+                            else if (capData[i].name === 'END OF WEEK ACTIVITY')
+                            {
+                                var learningItemImage = document.createElement("div");
+                                learningItemImage.setAttribute("class", " col-lg-2 col-xs-2 col-sm-2");
+                                learningItemImage.setAttribute("style", "padding-left:20px padding-left : 10px;");
+                                var learningImage = document.createElement("img");
+
+                                if (parseInt(capDatainner[j].isComp) === "1")
+                                {
+                                    learningImage.setAttribute("src", "../images/game_icon_orange.png");
+                                }
+                                else
+                                {
+                                    learningImage.setAttribute("src", "../images/game_icon.png");
+                                }
+
+
+                                learningImage.setAttribute("class", "activitycontainerimg");
+                                learningItemImage.appendChild(learningImage);
+
+                                learningItem.appendChild(learningItemImage);
+
+                                var learningItemText = document.createElement("div");
+                                learningItemText.setAttribute("class", "col-lg-10 col-xs-10 col-sm-10");
+
+                                var textHeader = document.createElement("p");
+                                textHeader.setAttribute("class", " learningItemTextHeader");
+                                textHeader.innerHTML = capDatainner[j].name;
+                                learningItemText.appendChild(textHeader);
+
+                                var textSubtitle = document.createElement("p");
+                                textSubtitle.setAttribute("class", " learningItemSubtitle");
+                                textSubtitle.innerHTML = capDatainner[j].desc;
+                                learningItemText.appendChild(textSubtitle);
+
+                                learningItem.appendChild(learningItemText);
+                            }
+
+                        }
+                    }
+                }
+            }
+
+
+    //   function assistModuleUI(modl_Data)
+    //   {
+    //       if(modl_Data !== null)
+    //       {
+    //            var numberOfListItems = modl_Data.length;
+    //            var overallContainer = document.createElement("div");
+    //            overallContainer.setAttribute("class","scrollable");
+    //            document.getElementsByTagName("body")[0].appendChild(overallContainer);
+    //            for( var i =  0 ; i < numberOfListItems ; ++i)
+    //            {
+    //                
+    //                    var ModulesArr = modl_Data[i].modules;
+    //                    var numOfModule = ModulesArr.length;
+    //                    
+    //                    for(var j= 0; j < numOfModule; ++j)
+    //                    {
+    //                        var listMItem = document.createElement("div");
+    //                        var divid = "sectionli"+j;
+    //                        listItem.setAttribute("id",divid);
+    //                        
+    //                        listMItem.setAttribute("class","whiteb col-lg-12 col-xs-12");
+    //                        //listItem.setAttribute("CusId",modl_Data[i].uid);
+    //                        overallContainer.appendChild(listMItem);
+    //                        var listItemModuleHeaderAnchor =  document.createElement("a");
+    //                        listItemModuleHeaderAnchor.setAttribute("class","accordion-toggle");
+    //                        listItemModuleHeaderAnchor.setAttribute("data-toggle","collapse");
+    //                        listItemModuleHeaderAnchor.setAttribute("data-parent","sectionli"+j);
+    //                        listItemModuleHeaderAnchor.setAttribute("href","#sectionContents"+j);
+    //                        
+    //                        listMItem.appendChild(listItemModuleHeaderAnchor);
+    //                        var listItemModuleHeaderContent = document.createElement("div");
+    //                        var div = "contain"+j;
+    //                        listItemModuleHeaderContent.setAttribute("id",div );
+    //                        listItemModuleHeaderContent.setAttribute("onclick","javascript:changeColor('"+div+"')");
+    //                        listItemModuleHeaderContent.setAttribute("class","dd-handle");
+    //                        listItemModuleHeaderContent.setAttribute("style","font-size:20px;color:black");
+    //                        listItemModuleHeaderContent.innerHTML =  ModulesArr[j].name;
+    //                        listItemModuleHeaderAnchor.appendChild(listItemModuleHeaderContent);
+    //                        var listItemMeat = document.createElement("div");
+    //                        listItemMeat.setAttribute("id","sectionContents"+j);
+    //                        listItemMeat.setAttribute("class","collapse");
+    //                        listMItem.appendChild(listItemMeat);
+    //                        
+    //                        
+    //                        var ScenarioDataList = ModulesArr[j].scenario;
+    //                        if(ScenarioDataList !== null)
+    //                        {
+    //                            var numofScenario = ScenarioDataList.length;
+    //                            for( var k = 0 ; k < numofScenario ; ++k)
+    //                                {
+    //                                
+    //                                var learningItemAnchor = document.createElement("a");
+    //                                learningItemAnchor.setAttribute("href","javascript:handleLearningItemClick('"+ScenarioDataList[k].uid+"')");
+    //                                listItemMeat.appendChild(learningItemAnchor);
+    //                                var learningItem = document.createElement("div");
+    //                                learningItem.setAttribute("class","lg-col-12 whiteb");
+    //                                learningItemAnchor.appendChild(learningItem);
+    //                                
+    //                                var learningItemImage = document.createElement("div");
+    //                                learningItemImage.setAttribute("class","whiteb col-lg-1 col-xs-1 col-sm-1");
+    //                                var learningImage = document.createElement("img");
+    //                                if(k%2 === 0)
+    //                                    {
+    //                                    if(ScenarioDataList[k].isComplete === "1")
+    //                                        {
+    //                                            learningImage.setAttribute("src","../images/icon_orange.png");
+    //                                        }
+    //                                    else
+    //                                        {
+    //                                                learningImage.setAttribute("src","../images/icon_grey_down.png");
+    //                                        }
+    //                                    }
+    //                                else
+    //                                    {
+    //                                    if(ScenarioDataList[k].isComplete === "1")
+    //                                        {
+    //                                            learningImage.setAttribute("src","../images/icon_grey_up.png");
+    //                                        }
+    //                                     else
+    //                                        {
+    //                                            learningImage.setAttribute("src","../images/icon_grey.png");
+    //                                        }
+    //
+    //                                    }
+    //                                learningImage.setAttribute("class","containerimg");
+    //                                learningItemImage.appendChild(learningImage);
+    //                                learningItem.appendChild(learningItemImage);
+    //                                var learningItemText = document.createElement("div");
+    //                                learningItemText.setAttribute("class","whitebitem col-lg-11 col-xs-11 col-sm-11");
+    //                                var textHeader = document.createElement("p");
+    //                                textHeader.setAttribute("class","whiteb learningItemTextHeader");
+    //                                textHeader.innerHTML =ScenarioDataList[k].name;
+    //                                learningItemText.appendChild(textHeader);
+    //                                var textSubtitle = document.createElement("p");
+    //                                textSubtitle.setAttribute("class","whiteb learningItemSubtitle");
+    //                                textSubtitle.innerHTML = ScenarioDataList[k].desc;
+    //                                learningItemText.appendChild(textSubtitle);
+    //
+    //                                var divideborder = document.createElement("div");
+    //                                divideborder.setAttribute("class","blackb");
+    //                                learningItemText.appendChild(divideborder);
+    //
+    //                                learningItem.appendChild(learningItemText);
+    //                                
+    //                            }
+    //                       
+    //                        }
+    //                    }
+    //                    var listItem = document.createElement("div");
+    //                    //listItem.setAttribute("id","sectionli"+i);
+    //                    listItem.setAttribute("class","whiteb col-lg-12 col-xs-12");
+    //                    listItem.setAttribute("CusId",modl_Data[i].uid);
+    //                    overallContainer.appendChild(listItem);
+    //                    var listItemHeaderAnchor =  document.createElement("a");
+    //                    listItemHeaderAnchor.setAttribute("class","accordion-toggle");
+    //                    listItemHeaderAnchor.setAttribute("data-toggle","collapse");
+    //                    //listItemHeaderAnchor.setAttribute("data-parent","sectionli"+i);
+    //                    //listItemHeaderAnchor.setAttribute("href","#sectionContents"+i);
+    //                    listItem.appendChild(listItemHeaderAnchor);
+    //                    var listItemHeaderContent = document.createElement("div");
+    //                    var divuid = "sec"+i;
+    //                    listItemHeaderContent.setAttribute("id",divuid );
+    //                    listItemHeaderContent.setAttribute("onclick","javascript:changeColor('"+divuid+"')");
+    //                    listItemHeaderContent.setAttribute("class","dd-handle");
+    //                    listItemHeaderContent.setAttribute("style","font-size:20px;color:black");
+    //                    listItemHeaderContent.innerHTML =  modl_Data[i].name;
+    //                    listItemHeaderAnchor.appendChild(listItemHeaderContent);
+    //                    var listItemMeat = document.createElement("div");
+    //                    listItemMeat.setAttribute("id","sectionContents"+i);
+    //                    listItemMeat.setAttribute("class","collapse");
+    //                    listItem.appendChild(listItemMeat);
+    //                   
+    //            }
+    //               
+    //                    
+    //        }
+    //   }
+            function handleLearningItemClick(varId, varType)
+            {
+                var obj = new Object();
+                obj.uid = varId;
+                obj.type = varType;
+                var jsonString = JSON.stringify(obj);
+                //  dbgAlert("handleLearningClick called final"+jsonString);
+                JSInterface.send(jsonString);
+            }
+            function changeColor(divId)
+            {
+                //alert(document.getElementById(divId).style.backgroundColor);
+                if (document.getElementById(divId).style.background !== "rgb(82, 178, 102)")
+                {
+                    document.getElementById(divId).style.background = "#52b266";
+                }
+                else
+                {
+                    document.getElementById(divId).style.background = "#f2f2f2";
+                }
+
+                //divId.setAttribute("background-color","#52b266");
+            }
+
+
+
+        </script>
+        
+        <!-- Bootstrap -->
+        <script src="../js/bootstrap.js"></script>
+        <!-- App -->
+        <script src="../js/app.js"></script>
+        <script src="../js/app.plugin.js"></script>
+        <script src="../js/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="../js/sortable/jquery.sortable.js"></script>
+        <script src="../js/nestable/jquery.nestable.js"></script>
+        <script src="../js/nestable/demo.js"></script>
+        <span id=dbgsp></span>
+
+    </body>
+</html>
+
+
+
+
+
+
+

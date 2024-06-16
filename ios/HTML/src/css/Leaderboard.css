@@ -1,0 +1,39 @@
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 7 Jul, 2014, 11:38:03 AM
+    Author     : liqmac
+*/
+
+.leaderboard
+{
+    height: 100px;
+    font-style: normal;
+    font-weight:bold;
+    background: white;
+    padding-top: 30px;
+    font-size:20px;
+}
+
+.leaderboardcheck
+{
+    height: 100px;
+    font-style: normal;
+    font-weight:bold;
+    background: white;
+    font-size:35px;
+    padding-top: 20px;
+    padding-left: 20px;
+    color:white;
+    
+}
+
+.lbDivider
+{
+    height:1px;
+    background: #f2f2f2;
+}

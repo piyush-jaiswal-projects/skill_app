@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+        <title>MCQ template</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="css/animate.css" />
+        <link rel="stylesheet" href="css/font-awesome.min.css" />
+        <link rel="stylesheet" href="css/font.css"/>
+        <link rel="stylesheet" href="css/app.css" type="text/css" />
+        <link rel="stylesheet" href="css/common.css"/>         
+        <script src="js/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="js/bootstrap.min.js"></script>
+        <!-- App -->
+        <script src="js/app.js"></script>
+        <script src="js/app.plugin.js"></script>     
+        <script src="js/common.js"></script>
+        <!-- Easy Pie Chart -->
+        <!--        <script src="js/jquery.easy-pie-chart.js"></script>-->
+
+        <script>
+
+
+            var totelNumberOfQuestion = 0;
+            var currentQuestion = 1;
+            var currentObject;
+            var questionArray;
+            var JSInterface;
+            var messageObj;
+            var xmlObject;
+            var practiceName;
+            var right_answer_sound;
+            var wrong_answer_sound;
+            var click_sound;
+            var next_click_sound;
+            var dd_sound;
+            var sizeWidth = 0;
+            var totelNumberofRightQuestion = 0;
+            var responseObject;
+            var edgeId;
+            var renderTime;
+            var MARKS = 5;
+            var stat = 0; // 0 // pause // 1 play
+            var isQuiz;
+            window.onerror = function (err) {
+                //log('window.onerror: ' + err)
+            };
+
+            function connectWebViewJavascriptBridge(callback) {
+                if (window.WebViewJavascriptBridge) {
+                    callback(WebViewJavascriptBridge)
+                } else {
+                    document.addEventListener('WebViewJavascriptBridgeReady', function () {
+                        callback(WebViewJavascriptBridge)
+                    }, false)
+                }
+            }
+
+            connectWebViewJavascriptBridge(function (bridge) {
+                JSInterface = bridge;
+
+                function log(message, data) {
+                    var log = document.getElementById('log')
+                    var el = document.createElement('div')
+                    el.className = 'logLine'
+                    el.innerHTML = uniqueId++ + '. ' + message + ':<br/>' + JSON.stringify(data)
+                    if (log.children.length) {
+                        log.insertBefore(el, log.children[0])
+                    }
+                    else {
+                        log.appendChild(el)
+                    }
+                }
+
+                bridge.init(function (message, responseCallback) {
+
+                });
+
+
+
+                bridge.registerHandler('testJavascriptHandler', function (data, responseCallback) {
+
+                    var responseData = {'Javascript Says': 'Right back atcha!'}
+
+                    responseCallback(responseData)
+                })
+                var jsObject = new Object();
+                jsObject.type = "msg";
+                jsObject.data = 28;
+                var dataval = JSON.stringify(jsObject);
+                bridge.send(dataval, function (responseData) {
+                    messageObj = JSON.parse(responseData);
+                    //loadMessage(messageObj);
+                    // alert(JSON.stringify(messageObj));
+
+
+                });
+                var jsObject = new Object();
+                jsObject.event = "ccvid_getXmlFileData";
+                jsObject.eventData = "";
+                var dataval = JSON.stringify(jsObject);
+                bridge.send(dataval, function (responseData) {
+
+                    //alert(xmlObject);
+                    var data = JSON.parse(responseData);
+                    isQuiz = data.isQuiz;
+                    if (isQuiz == 3)
+                    {
+                        document.getElementById("footerDiv").style.display = "none";
+                        document.getElementById("assFooterDiv").style.display = "block";
+                        document.getElementById("reloadId").style.display = "none";
+                        
+
+                    }
+                    else
+                    {
+                        document.getElementById("footerDiv").style.display = "block";
+                        document.getElementById("assFooterDiv").style.display = "none";
+                    }
+                    xmlObject = data.path;
+                    practiceName = data.name;
+                    edgeId = data.uid;
+                    parseXmlData(xmlObject);
+
+
+
+
+                });
+
+
+
+            });
+        </script>
+        <style>.easyPieChart {
+                position: relative;
+                text-align: center;
+            }
+
+            .easyPieChart canvas {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }</style>
+    </head>
+
+
+
+
+    <body onLoad="osCall();">
+        <!--        <div style="height: 64px;background:black ;color: white" class="text-center">MCQ Template</div>-->
+        <div id="mainDivId" class="mainDicId">
+            <header id="headerDiv">
+                <div id="topProgress">
+                    <div  id="progressLine" class="topProgressLeft">
+                        <div class="topProgressEmpty"></div>
+                        <div class="progressField"></div>
+                    </div>
+                    <div id="progressAvg" class="topProgressRight"> <span id="attmAnsNo">1</span> of <span id="tQuesNo"></span></div>
+                </div>
+            </header>
+            <div id="midContentDiv" class="containerMid container-fluid">
+                <div id="midShowQuesDiv" class="contentMidQuesDiv">
+
+                    <div id="quesOptionDiv" class="quesOptionType">
+                        <input id="cAudioPlayTime" type="hidden" value="0" />
+                        <input id="totalAudioDuration"  type="hidden" value="0" />
+                        <!--          <div class='quesImageAudioType'>
+                                      <img   src='images/topic1.png'  class='img' onclick='clickImg();' /> 
+                                       <div  id="audioProgress" class='easyPieChart playAudioBg'   onclick='pausePlay();hideShow();'><span class='faIcon'><i class='fa fa-play'></i></span></div>      
+                                          <div class='playBg'> <audio onended='endPlay()' id='playAudioId' class='playAudio'><source src='media/testAudio.mp3'  type='audio/mp3'></audio>
+                                          </div>
+                                      </div>
+                                  </div>-->
+                        <!--                        <div class="quesAudioType" >     
+                                                    <div  id="audioProgress" class='easyPieChart'   onclick='pausePlay();'><span class='faIcon'><i class='fa fa-play'></i></span></div>      
+                                                          <div class='playBg'>
+                                                              <audio id='playAudioId' class='playAudio'><source src="media/testAudio.mp3"  type="audio/mp3"></audio>
+                                                          </div>
+                                                      </div>-->
+                    </div>  
+                    <div id="quesParentDiv" class="contentTopDiv">
+                        <span id="quesNoDiv" class="pull-left"></span>
+                        <span id="quesDiv"  class="pull-left"></span>
+                    </div>
+                </div>
+                <div id="midShowAnsDiv" class="contentMidAnsDiv">
+
+                    <!-- MCQ-->
+                    <div id="midMCQAnsTypeDiv" class="ansType">
+
+                    </div>
+                    <!-- DND-->
+                    <div id="midDnDTypeDiv" class="ansType">
+                        <div id="ansDndWhiteDiv" class="ansDndWhiteDiv"></div>
+                        <div id="refreshId" class="refreshDiv" onClick="reArrage();"><i class="fa fa-refresh"></i></div>
+                        <div class="clear"></div>
+                        <div id="ansDndDiv" class="ansDndDiv"></div>
+                    </div>
+                    <!-- DND Block fill-->
+                    <div id="midDnDBoxFillDiv" class="">
+
+
+                        <div class="clear"></div>
+                        <div id="upperDivId" class="ansDndGrayBoxFillDiv"></div>
+                        <div id="ansDndBoxFillDiv" class="ansDndBoxFillDiv"> <!-- class="ansType ansDndBoxFillDiv"-->
+
+                        </div>
+                    </div>
+                    <div id="fillblanks" class="fillblanks">
+
+
+
+                        <div id="fillblanksfield" class="text-center" onscroll="scroll();"> <!-- class="ansType ansDndBoxFillDiv"-->
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+            <footer  id="footerDiv" style="display: none">
+                <div id="submitDiv">
+                    <button id="submitBtn" class="btnSubmit btnDisable" onClick="showQuesAttempt();">SUBMIT</button>
+
+                </div>
+                <div id="nextBtnDiv" class="nextBtnDiv">
+                    <button id="nextBtn" onClick="clickNext();" class="nextBtn">Next</button>
+                </div>
+
+
+
+
+
+            </footer>
+
+            <footer  id="assFooterDiv" style="display: none">
+                <div id="assSubmitDiv" class="col-sm-12 col-xs-12 col-lg-12">
+                    <div class="col-sm-4 col-xs-4 col-lg-4">
+                        <div id="submitpre" class="buttonStyle" onClick="showAssessmentQuesAttemptPrev();">Prev</div>
+                    </div>
+                    <div class="col-sm-4 col-xs-4 col-lg-4">
+                        <div id="submit" class="buttonStyle " onClick="showAssessmentQuesAttemptSubmit();">Submit</div>
+                    </div>
+                    <div class="col-sm-4 col-xs-4 col-lg-4">
+                        <div id="submitnext" class="buttonStyle " onClick="showAssessmentQuesAttemptNext();">Next</div>
+                    </div>
+                       
+                </div>
+            </footer>
+
+
+
+        </div>
+        <div id="showquesAttempt" class="showquesAttempt fadeInUp animated"> 
+
+            <div class="showAnsDiv">
+                <div class="text-right starBar">
+                    <div class=answer_progress_graph>
+                        <span class="full_star  answer_progress_star">
+                            <i class='fa fa-star'></i></span>
+                        <span id="starcountid" class="rightCount">100/100</span>
+                    </div>
+
+                </div>
+                <div class="showCorrectAnsDiv">
+                    <div  class="text-center popupContent">
+                        <div class="iconRight"><i class="fa fa-check-circle"></i></div>
+                        <p class="ansPara" id="ansRightPara">
+
+                        </p>
+                    </div>                      
+                    <!--<div class="text-center imgPilo"><img src="images/win_cup.gif" alt="" class="imgRightAns"/></div> -->
+                </div>
+                <div class="showWrongAnsDiv">  
+
+                    <div  class="text-center popupContent">
+                        <div class="iconWrong"><i class="fa fa-times-circle "></i></div>
+                        <p class="ansPara" id="ansWrongPara"></p>
+                    </div>            
+                    <!--<div class="text-center imgPilo"><img src="images/wrong_answer.gif" alt="" class="imgRightAns"/></div> -->
+                </div>
+            </div>
+
+
+        </div>
+        <div  id="complete" class="modalWindowBg fadeInRight animated">
+            <div class="quizBg" >
+                <div class="text-center quizSummery">Quiz Summary </div>
+                <div class="scoreBg">
+                    <div class="text-center quizScore ">
+                        <div><span class="rightScoreID" id="rightScoreID" >05</span>/<span id="totalScoreID">10</span> </div>
+                        <div class="scoreTxt">Correct Answer</div>
+                    </div>
+<!--                    <div class="text-center quizStar"> -->
+<!--                        <span id="starScoreID" class="starScoreID">20</span> -->
+<!--                        <div class="scoreTxt"> <i class="fa fa-star" style="z-index: 1; color: yellow"></i> Star</div>-->
+<!--                    </div>-->
+                </div>
+                <div class="text-center pillowBg">
+                    <div id="pillowImageId" class="pillowImageId">
+
+
+                        <!-- <img src="images/sparky_happy.png" alt="" class="imgPillo"/> -->
+                    </div></div>
+                <div id="reloadId" class="text-center"><button id="btnTryagian" onClick="location.reload();" class="btnTryAgain">Attempt Again</button> </div>
+                <div class="text-center"><button id="btnContinue" onClick="javascript:submitAnswer();" class="btnContinue">Submit Score</button> </div>
+            </div>
+            <div class="modalWindow" style="display: none"> 
+                <h1 class="ribbon">
+                    <span class="ribbon-content"></span>
+                    <span id = "nameId"></span>
+                </h1>
+
+                <div id ="checkID" class="textBox">
+                    <i class="fa fa-check fa-3x" style="z-index: 1; color: green"></i>
+                    <span id="rightScoreID" class="text-center"> </span>
+                    <br>
+                </div>
+                <div id ="starID" class="textBox">
+                    <i class="fa fa-star fa-3x" style="z-index: 1; color: yellow"></i>
+                    <span id="starScoreID" class="text-center"> </span>
+                </div>
+                <div id= "conttrolId" class="col-lg-12 col-xs-12" >
+
+
+                </div>
+
+
+            </div>
+            <div id="pillowID" class="pillowID" style="display: none">
+                <div id="pillowImageId" class="pillowImageId">
+                    <img src="images/sparky_happy.png" alt="" class="imgPillo"/> 
+                </div>
+                <div id="rightIcon" class="pilloRightSide">
+                    <img src="images/Home1.png" alt="" class="imgHome" onClick="javascript:submitAnswer();"/> 
+                    <img src="images/Aage_Jaye1.png" alt="" class="imgPause" onClick="javascript:submitAnswer();"/>
+                    <img src="images/referesh1.png" alt="" class="imgRefresh" onClick="location.reload();"/> 
+                </div>
+            </div >
+        </div>
+        <script>
+            
+            var el;
+            //var nxt;
+            window.onresize = window.onscroll = function () {
+                
+                var lowerleft = [window.pageXOffset, (window.pageYOffset + window.innerHeight)];
+                var lowerright = [(lowerleft[0] + window.innerWidth), lowerleft[1]];
+                var lowerheight = [(lowerleft[0] + window.innerHeight), lowerleft[1]];
+                //var zoomFactor = window.innerWidth/document.documentElement.clientWidth;
+
+                el.style.width = lowerright[0] - lowerleft[0] + 'px';
+                el.style.height = lowerheight[0] - lowerleft[0] + 'px';
+                if ($(window).height() >= 950)
+                {
+                    el.style.paddingTop = '500px';
+                }
+                else if ($(window).height() == 504)
+                {
+                    el.style.paddingTop = '266px';
+                }
+                else
+                {
+                    el.style.paddingTop = (lowerheight[0] - lowerleft[0]) / 4 + 'px';
+                }
+                el.style.top = '0px';
+                //el.style.bottom= (lowerheight[0] - lowerleft[0])/8 + 'px';
+                //nxt.style.bottom= (lowerheight[0] - lowerleft[0])/1 + 'px';
+                //alert(el.style.height)
+                //alert(el.style.top)
+                //alert(el.style.bottom)
+                //el.style.height = parseInt(window.innerHeight/10) + 'px';
+                el.style.left = lowerleft[0] + 'px';
+                //el.style.top = lowerleft[1]-el.offsetHeight + 'px';
+                //el.style.fontSize = parseInt(zoomFactor*60) + 'px';
+
+            };
+            
+
+        </script>   
+    </body>
+</html>
+

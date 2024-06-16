@@ -1,0 +1,214 @@
+///*
+// language.strings
+// InterviewPrep
+// 
+// Created by Amit Gupta on 19/11/14.
+// Copyright (c) 2014 Liqvid. All rights reserved.
+// */
+
+//
+//"APP_NOT_INITILIAZE"	    = "应用程序失败";
+//"NW_MSG"					= "Please check your network connection";
+//"NW_EMSG"					= "Please check your network connection.";
+//"AUDROSR_EMSG"        		= "Problem connecting with the Audro server. Please check your network connection.";
+//"ASR_EMSG "                  = "Problem connecting with the speech server. Please check your network connection. You may continue to practice but will not be scored";
+//"DLOAD_COURSE_MSG"			= "Downloading the course catalog from the server. Please wait";
+//"DLOAD_COURSE_EMSG"			= "Unable to download course catalog from the server. Please check your network connection and try later.";
+//"DLOAD_CHAP_MSG"			= "Downloading...";
+//"DLOAD_MODULE_EMSG"			= "Unable to download module catalog from the server. Please check your network connection and try later.";
+//"DLOAD_VOCABULARY_MSG"		= "Downloading the vocabulary practice words from the server. Please wait";
+//"DLOAD_VOCABULARY_EMSG"		= "Unable to download vocabulary words from the server. Please check your network connection and try later.";
+//"SERVER_URL_EMSG"			= "Server url is invalid";
+//"SPEECH_SERVER_MSG"			= "Connecting to speech recognition server";
+//"TRY_AGAIN"					= "Please try again.";
+//"PLEASE_WAIT"				= "Please wait.";
+//
+//"LOADING" 					= "加载...";
+//"YES"						= "是";
+//"NO"							= "否";
+//"BACK"						= "返回";
+//"NEXT"						= "下一个";
+//"BUY"						= "购买";
+//"CANCEL"					= "取消";
+//"SUBMIT" 					= "提交";
+//"CONFIRM"					= "确认 ";
+//"JOIN" 						= "加入";
+//"PLAY" 						= "玩";
+//"DROPOUT"					= "辍学";
+//"BOOKING_DETAIL"            = "预订细节";
+//"BOOKED_ALERT" 			    = "预订警报";
+//"BUY_CLASS"                  = "预定类";
+//"DOWNLOAD"                  = "Download.";
+//"DOWNLOAD_MSG"              ="Do you want to download ?" ;
+//"DOWNLOAD_CNL_MSG"          ="Do you want to stop download ?";
+//"DOWNLOAD_NOW"          = "Download Now";
+//"DOWNLOAD_LATER"         ="Download Later";
+//
+//
+//
+//
+//"ONE"						= "1";
+//"TWO"						= "2";
+//"THREE"						= "3";
+//"FOUR"						= "4";
+//"FIVE"   					= "5";
+//"SIX"						= "6";
+//"SEVEN"						= "7";
+//"EIGHT"						= "8";
+//"NINE"						= "9";
+//"TEN"						= "10";
+//
+//"ACTIVITY_BUY_MSG"			= "请点击“购买”以处理支付选项，或点击“返回”以便返回";
+//"ACTIVITY_CANCEL_BOOKING"	= "取消预订";
+//"ACTIVITY_CANCEL_REG_MSG"    = "点击“取消”，以取消您注册的定于%s的专家%s的%s现场网络研讨会议。点击“返回”以便返回";
+//"ACTIVITY_CANCEL_SHD_MSG"    = "请取消已定于%s的%s会议，以便安排一个新的会议。";
+//"ACTIVITY_ERROR_MSG"         = "服务器没有响应";
+//"ACTIVITY_FETCH_MSG"         = "Fetching data from server. Please wait.";
+//"ACTIVITY_REG_MSG"           = "您将注册定于%s的专家%s的%s现场网络研讨会议。点击“确认”以便预订，或点击“取消”以便取消预订并返回";
+//"ACTIVITY_NO_AVAIL_ROOM"	= "没有可用的地方.";
+//"ACTIVITY_REC_VIDEOS" 		= "录制视频";
+//"ACTIVITY_LIVE_WEBINAR" 		= "现场网络研讨会";
+//"ACTIVITY_NOT_FOUND_CLASSLIST"  = "类列表中没有找到";
+//"ACTIVITY_NOT_FOUND_CLASS"      = "类未找到";
+//"ACTIVITY_NOT_FOUND_CLASS_EMSG" = "The ACTIVITY sessions are Instructor led Virtual classroom based or contact class based sessions that focus on learner activities like role plays, mock interviews, group discussions, query resolution etc. For further details, please drop a mail to the email Id : <i>englishedge@liqvid.com</i>";
+//
+//
+//
+//
+//"RP_REGISTRATION"          = "Registration";
+//"RP_REGISTRATIONALREADY"   = "Already Signed Up?";
+//"RP_TEXT"                  = "Please fill the information to continue";
+//"RP_FIRSTNAME"             = "First Name";
+//"RP_LASTNAME"              = "Last Name";
+//"RP_EMAILID"               = "EmailId";
+//"RP_PASSWORD"              = "Password";
+//"RP_MOBILENO"              = "Mobile No";
+//"RP_IAGREETEXT"            = "I agree to the <em>Terms of Service</em>";
+//"RP_SIGNUP"                = "Submit";
+//
+//"RP_FNAME_MSG"				= "Please enter the First name";
+//"RP_LNAME_MSG"				= "Please enter the Last  name";
+//"RP_ENAME_MSG"				= "Please enter the Email ID";
+//"RP_MNAME_MSG"				= "Please enter the Mobile No";
+//"RP_PNAME_MSG"				= "Please enter the Password";
+//
+//"RP_SUCCESSREGISTERED_MSG"				= "you are successfully registered.";
+//"RP_SUCCESSFORGOTPASSWORD_MSG"				= "your password sent into your email.";
+//
+//"RP_VALIDEMAIL_MSG"         = "Please enter valid emailid.";
+//"RP_MOBILE_MSG"             = "Please enter valid Mobile No.";
+//
+//
+//
+//"LP_APPNAME"			   = "访谈准备课程";
+//"LP_LOGIN"					= "登入";
+//"LP_UNAME_PLACEHOLDER"		= "用户名";
+//"LP_UNAME_TEXT"				= "";
+//"LP_PWD"					= "密码";
+//"BACK"					= "返回";
+//"SEND"					= "Send";
+//"RP_REGISTRATION"					= "Registration";
+//"LP_LOSTPWD"					= "忘记密码";
+//"LP_LOGIN"					= "登入";
+//"LP_UNAME_MSG"				= "请输入用户名";
+//"LP_PWD_MSG"					= "请输入密码";
+//"LP_INVALID_PWD"				= "Invalid Username or Password";
+//"LP_DIFF_USR_MSG"			= "这是一款个性化的应用程序，因此每次安装只能由单个用户使用。如果要在本设备上使用这个应用程序，需输入您的用户名，首次安装后要重新启动安装";
+//"OK"						= "正确";
+//"RP_REGISTRATION"					= "Registration";
+//"TC_TERMCONDITION"					= "Term and Condition";
+//
+//
+//
+//"NW_EMSG" = "Please check your Internet connectivity.";
+//
+//"HONOR_SIGN" 				= "签约";
+//"HONOR_CODE" 				= "荣誉代码";
+//"TC_SKIP"				= "I Decline";
+//"TC_IAGREE" 				= "我同意";
+//
+//"DB_AVG"						= "AVG IR";
+//"CURRENT_CHAP"			= "当前会话";
+//"DB_DASH_BOARD"				= "控制板";
+//"DB_PRO_COMP"				= "进度对比";
+//"DB_YOUR"					= "Your IR";
+//
+//"SKIP"					= "跳过";
+//
+//"H_CHAPTERS"					= "课程";
+//"H_HOME"						= "首页";
+//"H_PRO_OVER"					= "程序概况";
+//"H_PROFILE"					= "我的个人资料";
+//
+//"PO_JOB_IP"					= "Job Interview Preperation";
+//
+//
+//
+//"ASSESSMENT"		 				= "评估";
+//"ASSESSMENT_TEST"		 		= "Assessments Test";
+//"A_TOTEL_NUMBER_OF_QUESTION"		= "Total number of questions:";
+//"A_NUMBER_OF_QUESTION_ATTEMPTED"	= "Number of questions attempted:";
+//"A_NUMBER_OF_CORRECT_ANSWER"	= "Number of correct answers:";
+//"A_NUMBER_OF_INCORRECT_ANSWER"	= "Number of incorrect answers:";
+//
+//"PRACTICE_MCQ"				    = "MCQ Practice";
+//"PRACTICE_TEST" 					= "Practice Test";
+//"P_TOTEL_NUMBER_OF_QUESTION"		= "Total number of questions:";
+//"P_NUMBER_OF_QUESTION_ATTEMPTED"	= "Number of questions attempted:";
+//"P_NUMBER_OF_CORRECT_ANSWER"		= "Number of correct answers:";
+//"P_NUMBER_OF_INCORRECT_ANSWER	"= "Number of incorrect answers:";
+//"P_THATS_CORRECT"				= "That's correct";
+//"P_THATS_INCORRECT"				= "That's incorrect";
+//
+//
+//"REMOVE_COURSE_DIR"			= "The app could not find the course directory. In case you have accidentally deleted it, restart the app to set it up again.";
+//"REMOVE_MODULE_DIR"			= "The app could not find the module directory. It seems you have accidentally deleted it. Press OK to go the Course Catalog to download the Module content again.";
+//
+//"SCN"						= "Scenario";
+//"SCN_PRAC"					= "Scenario Practice";
+//"SCN_PRAC_CONCEPT"		    = "CONCEPT";
+//"SCN_PRAC_ACTIVITY"			= "ACTIVITY";
+//"SCN_PRAC_PRACTICE"			= "PRACTICE";
+//
+//"SCORE"						= "Score";
+//
+//"INSTRUCTION_ENACT"			= "制定场景";
+//"INSTRUCTION_MSG_FR_VR"		= "现在让我们通过倾听并记录访谈的回答来进行练习";
+//"INSTRUCTION_REVIEW"			= "评论";
+//"INSTRUCTION_REVIEW_MSG"		= "请完成制定的场景";
+//"INSTRUCTION_STEP"			= "步骤";
+//"INSTRUCTION_WATCH"			= "观察和观摩";
+//"LOCK_MODULE_EMSG"			= "This module is as yet locked for you. Please complete the previous module(s) first.";
+//
+//
+//"POP_MSG_FR_CLOSE_VIDEO"		= "Do you want to close video ?";
+//"PRACTICE_YOUR_TURN"			= "Your turn";
+//
+//"VOCAB_PRAC" 				= "词汇练习";
+//"VOCAB_COMPARE"				= "4.Compare";
+//"VOCAB_EXPERT"				= "1.Expert";
+//"VOCAB_GRAPH"				= "Audio Graph";
+//"VOCAB_MEANING"				= "Meaning";
+//"VOCAB_MSG"				= "Let us now learn and practice pronunciation of some interview specific words";
+//"VOCAB_PART_SPEECH"			= "Parts of speech";
+//"VOCAB_RECORD"				= "2.Record";
+//"VOCAB_REVIEW"				= "3.Review";
+//"VOCABULARY"					= "Vocabulary";
+//"VV_HIDE_TRANS"				= "Hide Transcript";
+//"VV_FULL_TRANS"				= "Show Transcript";
+//"VV_TRANS"					= "Transcript";
+//"ACTIVITY"                  = "Activity";
+//
+//"SHARETITLE"                ="Application share Link.";
+//"SHAREFACEBOOK"             ="Facebook";
+//"SHAREWHATSAPP"             ="Whatsapp";
+//"SHARETWITTER"              ="Twitter";
+//"SHAREGOOGLEPLUS"           ="Google Plus";
+//"SHAREGMAIL"                ="Gmail";
+//"YOUGOT"                    ="You got %s points";
+//"COMPLETE"                  ="Completed";
+//"CONGRATS"                  ="Congratulations !";
+//"CURRENT_CHAP"             ="Get more points.";
+//
+//
+//

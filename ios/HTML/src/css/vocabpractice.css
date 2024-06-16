@@ -1,0 +1,84 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 7 Jul, 2014, 11:38:03 AM
+    Author     : liqmac
+*/
+
+.vocabPractice
+{
+    height: 60px;
+    font-size: 1.2em;
+    font-style: normal;
+    font-family: "Helvetica";
+    //font-weight:bold;
+    //background: white;
+    padding-top:10px;
+    
+    
+    
+}
+
+.instructionHeaderIphone
+{
+ height:60px; 
+ font-family: "Helvetica";
+ font-size: 15px;
+ padding-top: 10px;
+ padding-left:10px;
+ //color:#f7f7f7;
+}
+
+.instructionHeader
+{
+ height:60px; 
+ font-family: "Helvetica";
+ font-size: 16px;
+ padding-top: 10px;
+ padding-left:10px;
+ //color:#f7f7f7;
+}
+.vacabcheck
+{
+    height: 40px;
+    font-size: 1.2em;
+    font-style: normal;
+    font-family: "Helvetica";
+    font-weight:bold;
+    //background: white;
+    padding-top: 5px;
+    //padding-right:15px;
+    
+}
+
+.vocabDivider
+{
+    height:1px;
+    background: #f2f2f2;
+}
+
+.padingAndbackground
+{
+    background:#ffffff;
+    padding-top: 18px;
+    padding-left:30px;
+    
+}
+
+.padingAndbackground:hover
+{
+    background:#e8e8e8;
+    padding-top: 18px;
+    padding-left:30px;
+    
+}
+.padingAndbackground:active
+{
+    background:#e8e8e8;
+    padding-top: 18px;
+    padding-left:30px;
+    
+}

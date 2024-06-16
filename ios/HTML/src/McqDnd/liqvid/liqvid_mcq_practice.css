@@ -1,0 +1,545 @@
+body {
+   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica, Arial", "Lucida Grande", "sans-serif"; 
+   font-weight: 300;
+}
+
+html {
+    width : 100%;
+    height : 100%;
+}
+
+img {
+    max-width:100%;
+    max-height:100%;
+}
+
+.liqvid_practice_mcq {
+    position : relative;
+    height : 100%;
+    width : 100%;
+    background-image :  url("./bg1_1.png");
+    background-size:   cover;    
+    background-repeat: no-repeat;
+}
+
+.assess_progress {
+    width : 100%;
+    height : 3%;
+}
+
+.assess_qaarea {
+    width : 100%;
+    height : 65%;
+    padding-left : 10%;
+    padding-right : 10%;
+    padding-top : 5%;
+    margin-bottom: 5%;
+}
+
+.assess_nav {
+    width : 100%;
+    height : 20%;
+    padding-left :20%;
+    padding-right : 20%;
+}
+
+.assess_stars {
+    text-align : right;
+    width :100%;
+    height : 60%;
+    letter-spacing : 5px;
+    font-size:20px;
+    padding-top:7px;
+    padding-right:12px;;
+}
+
+.full_star {
+   color : #FCF900; 
+}
+
+.empty_star {
+    color : #7D7D7D;
+}
+
+.assess_progress_bar {
+    text-align : center;
+    width : 100%;
+    height : 10%;
+    padding-top: 5px;
+}
+
+.assess_progress_bar_left {
+   width : 70%;
+   height : 100%;
+   float : left;
+    padding-left : 10%;
+}
+
+.assess_progress_bar_right {
+    height : 100%;
+    width : 25%;
+    margin-right:5%;
+    float :right;
+    font-size: 15px;
+    //padding-top:5px;
+}
+
+.assess_progress_bar_filled {
+    color : #ed5565;//#FE204A;
+    background-color: #ed5565;//#FE204A;
+}
+
+.assess_progress_bar_empty {
+    color : #EDECE1;
+    background-color: #EDECE1;
+}
+
+
+
+
+
+::-webkit-scrollbar {
+    width: 2px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(216,216,216,0.5); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    -webkit-box-shadow: inset 0 0 6px rgba(177,177,177,0.5); 
+}
+
+
+.qadiv_mcq_options {
+    width : 100%;
+    height : 64%;
+    cursor : hand;
+}
+
+.qadiv_mcq_option {
+   border-radius : 5px; 
+   margin-top : 15px;
+   padding-top: 2%;
+   height : 18%;
+   font-size : 16px;
+   background : #EDECE1;
+}
+
+@media(min-width:300px)
+{
+.cbox_unselected {
+    width : 10%;
+    height :100%;
+    margin-right : 2%;
+    margin-left : -16%;
+    font-size : 23px;
+    color : #91A6A6;
+}
+
+.cbox_selected {
+    width : 10%;
+    height :100%;
+    margin-right : 2%;
+    margin-left : -16%;
+    font-size : 23px;
+    color : #ed5565;//#FD291B;
+}
+.qa_option_text {
+    width : 90%;
+    height : 100%;
+    margin-left : 15px;
+    font-size : 15px;
+}
+.questionNumber{
+    margin-left: -23px;
+    font-size: 18px;
+    color: #3B4350;
+}
+.qadiv_question {
+    width : 100%;
+    height : 40%;
+    margin-top: -8%;
+    margin-bottom: 15%;
+    max-height: 300px;
+    font-size : 17px;
+    color : #3B4350;
+    position: static;
+    //overflow:scroll;
+    //background-color:black ;
+    overflow-y: auto;
+}
+}
+
+
+@media(min-width:420px)
+{
+.cbox_unselected {
+    width : 10%;
+    height :100%;
+    margin-right : 2%;
+    margin-left : -10%;
+    font-size : 35px;
+    color : #91A6A6;
+}
+
+.cbox_selected {
+    width : 10%;
+    height :100%;
+    margin-right : 2%;
+    margin-left : -10%;
+    font-size : 35px;
+    color : #ed5565;//#FD291B;
+}
+.qa_option_text {
+    width : 90%;
+    height : 100%;
+    margin-left : 15px;
+    font-size : 20px;
+}
+.questionNumber{
+    margin-left: -23px;
+    font-size: 18px;
+    color: #3B4350;
+}
+.qadiv_question {
+    width : 100%;
+    height : 40%;
+    margin-top: -3.6%;
+    margin-bottom: 15%;
+    max-height: 300px;
+    font-size : 17px;
+    color : #3B4350;
+    position: static;
+    //overflow:scroll;
+    //background-color:black ;
+    overflow-y: auto;
+}
+}
+
+
+
+
+.submit_button {
+    width : 100%;
+    margin-top : 35%;
+    height : 35%;
+    border-bottom-color : #EB4F5E;
+    border-bottom-width : 2px;
+    border-radius : 10px;
+    font-size : 15px;
+    background-color: #242e3a;
+    color:white;
+    
+}
+
+.submit_button_iPad {
+    width : 100%;
+    margin-top : 10%;
+    height : 25%;
+    border-bottom-color : #EB4F5E;
+    border-bottom-width : 2px;
+    border-radius : 10px;
+    font-size : 20px;
+    background-color: #242e3a;
+    color:white;
+    
+}
+
+.correct_answer {
+    position : absolute;
+    top: 0;
+    left: 0;
+    width : 100%;
+    height : 100%;
+    z-index : 9999;
+}
+@media(min-width:300px) 
+{
+    .correct_answer_meat {
+        margin-top : 35%;
+        margin-bottom : 25%;
+        margin-left:2px;
+        margin-right : 2px;
+        padding-right : 10px;
+        background-color : #5AC1DC;
+        width:95%;
+        height:60%;
+        border-color :#FFDADE;
+        border-width: 5px;
+        //border-radius : 10px;
+        color : #000000;
+        box-shadow: 5px 5px 3px #e1e1e1;
+    }
+    
+    .wrong_cross {
+    color : red;
+    
+    font-size : 24px;
+}
+
+.correct_tick {
+    color : white;//#45c254;
+    
+    font-size : 40px;
+}
+.correct_answer_meat_coins {
+    width : 100%;
+    height : 50%;
+    text-align : center;
+}
+}
+
+@media(min-width:450px) 
+{
+    .correct_answer_meat {
+        margin-top : 40%;
+        margin-bottom : 25%;
+        margin-left:4px;
+        margin-right : 2px;
+        padding-right : 10px;
+        background-color : #5AC1DC;
+        width:95%;
+        height:55%;
+        border-color :#FFDADE;
+        border-width: 5px;
+        //border-radius : 10px;
+        color : #000000;
+        box-shadow: 5px 5px 3px #e1e1e1;
+    }
+    .correct_answer_meat_coins {
+    width : 100%;
+   
+    text-align : center;
+}
+.correct_tick {
+    color : white;//#45c254;
+    margin-left : 5px;
+    font-size : 40px;
+}
+    .wrong_cross {
+    color : red;
+    margin-right : 0px;
+    font-size : 24px;
+}
+}
+
+.correct_answer_meat_progress {
+    width : 100%;
+    height : 10%;
+    text-align : right;
+}
+
+.correct_answer_meat_title {
+    width : 100%;
+    height : 20%;
+    font-size : 22px;
+    text-align : center;
+    color:white;
+}
+
+.correct_answer_meat_answer {
+    width : 100%;
+    height : 15%;
+    padding-left :15%;
+    padding-right: 15%;
+    font-size : 18px;
+    text-align : center;
+    
+}
+
+
+
+.correct_answer_next_button {
+    background : #eb4f5e;// #FF2D50;
+    height : 12%;
+    width : 50%;
+    margin-left:25%;
+    border-radius: 10px;
+    color : #ffffff;
+    font-size: 15px;
+    
+}
+
+.correct_answer_next_button_iPad {
+    background : #eb4f5e;// #FF2D50;
+    height : 12%;
+    width : 50%;
+    margin-left:25%;
+    border-radius: 10px;
+    color : #ffffff;
+    font-size: 25px;
+}
+
+
+
+
+
+.drag_and_drop_container {
+    padding-left:0px;
+}
+
+.drag_and_drop_item {
+    display : inline-block;
+    font-size :16px;
+    border-radius : 20px;
+    background:#EDECE1;
+    margin:10px;
+    padding:10px;
+    line-height : 4em;
+}
+
+body.dragging, body.dragging * {
+  cursor: move !important;
+}
+    
+.dragged {
+  position: absolute;
+  opacity: 0.9;
+  z-index: 2000;
+}
+
+ul.drag_and_drop_container li.placeholder {
+  position: relative;
+  /** More li styles **/
+}
+ul.drag_and_drop_container li.placeholder:before {
+  position: absolute;
+  /** Define arrowhead **/
+}
+
+.answer_progress_graph {
+    position:relative;
+    width: 20%; /* width and height are arbitrary, just make sure the #bar styles are changed accordingly */
+    height: 15px;
+    background: rgb(168,168,168);
+    position: relative;
+    width : 100px;
+    float : right;
+    margin-top:10px;
+    border-radius:5px;
+}
+
+.answer_progress_star {
+    position : relative;
+    font-size:13px;
+    float:left;
+    margin-left :-8px;
+}
+.answer_progress_bar {
+    height: 15px; 
+    background:#eb4f5e;//#45c254 ; 
+}
+
+.answer_progress_bar p {
+ position: absolute; text-align: center; width: 100%; margin: 0; line-height: 15px; 
+}
+
+.fader {
+    -webkit-animation: fadein 3s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 3s; /* Firefox < 16 */
+        -ms-animation: fadein 3s; /* Internet Explorer */
+         -o-animation: fadein 3s; /* Opera < 12.1 */
+            animation: fadein 3s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.qadiv_ddanswer {
+    width : 90%;
+    height : 25%;
+    float : left;
+    background: -webkit-linear-gradient(top,#f0f0f0 0%,white 5%) 0 0;
+    background: -moz-linear-gradient(top,#f0f0f0 0%,white 5%) 0 0;
+    background: linear-gradient(top,#f0f0f0 0%,white 5%) 0 0;
+    /* -webkit-background-size: 100% 30px; */
+    -moz-background-size: 100% 30px;
+    -ms-background-size: 100% 30px;
+    background-size: 100% 30px;
+}
+
+.qadiv_ddclear_cross {
+    width : 10%;
+    height : 20%;
+    float : right;
+}
+
+.qadiv_ddoptions {
+    width : 100%;
+    height: 20%;
+    float : left;
+}
+
+.drag_and_drop_item_disabled {
+    display : inline-block;
+    font-size :16px;
+    border-radius : 20px;
+    background:#cacaca;
+    margin:10px;
+    padding:10px;
+    line-height : 4em;
+}
+
+.qadiv_ddclear_cross {
+    text-align : center;
+    font-size : 18px;
+    color : #5AC1DC ;//#9E0400;
+    
+}
+
+.qadiv_ddanswer {
+    color : #383838;
+    font-size : 20px;
+    font-weight : bold;
+    margin-bottom : 10px;
+    
+}
+    
+.drag_item {
+    display : inline-block;
+    font-size :16px;
+    border-radius : 5px;
+    background:#edece1;
+    margin:6px;
+    padding:6px;
+    line-height : 2em;
+    min-width : 30px;
+    text-align: center;
+}
+
+.drop_item {
+    
+    background:#ffffff;
+   
+}
+
+

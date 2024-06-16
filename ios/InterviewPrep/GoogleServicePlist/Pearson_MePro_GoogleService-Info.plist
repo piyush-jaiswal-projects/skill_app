@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>966129114231-lrf3u2ai1mnd538jn3482qa7r4ocqv39.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.966129114231-lrf3u2ai1mnd538jn3482qa7r4ocqv39</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>966129114231-55rnue0aorpe06no98ocoei6kkbjqmbr.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAa9HPdaQWXdneV7rPjklHQPhVZnZYCMog</string>
+	<key>GCM_SENDER_ID</key>
+	<string>966129114231</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.liqvid.pearsonmepro</string>
+	<key>PROJECT_ID</key>
+	<string>emp-test-199a5</string>
+	<key>STORAGE_BUCKET</key>
+	<string>emp-test-199a5.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:966129114231:ios:2053549d78fe047d5aba72</string>
+	<key>DATABASE_URL</key>
+	<string>https://emp-test-199a5.firebaseio.com</string>
+</dict>
+</plist>

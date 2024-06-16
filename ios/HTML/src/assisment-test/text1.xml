@@ -1,0 +1,279 @@
+<assess uniqid="mid_assessment">
+  <name>Practice test mid </name>
+ <description> Assessment for Interview Preparation </description>
+    <delivery>
+ <flow>random</flow>
+ <selection>10</selection>
+ <max_minutes>30</max_minutes>
+ </delivery>
+    <question uniqid="mid_assessment.1">
+        <format>
+                <delivery>mc</delivery>
+                <qform>t</qform>
+                <aform>t</aform>
+        </format>
+        <instruction>Choose the correct option </instruction>
+        <content>What is the correct way to introduce yourself?</content>
+        <answers  choice="single" served="random" display_time="0">
+            <answer uniqid="mid_assessment.1.1">
+                 <content>Myself is Ramya.</content>
+                 <is_correct>false</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.1.2">
+                 <content>My name is Mohan Sharma.</content>
+                 <is_correct>true</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.1.3">
+                 <content>Myself is Aditya Nayyar.</content>
+                 <is_correct>false</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.1.4">
+                 <content>I am Meera.</content>
+                 <is_correct>false</is_correct>
+            </answer>
+        </answers>
+    </question>
+    <question uniqid="mid_assessment.2">
+        <format>
+                <delivery>mc</delivery>
+                <qform>t</qform>
+                <aform>t</aform>
+        </format>
+        <instruction>Choose the correct option </instruction>
+        <content>What is the order you should use when talking about yourself?</content>
+        <answers  choice="single" served="random" display_time="0">
+            <answer uniqid="mid_assessment.2.1">
+                 <content>Family, hobbies, qualifications, work experience or projects</content>
+                 <is_correct>false</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.2.2">
+                 <content>Qualifications, family, hobbies, work experience or projects</content>
+                 <is_correct>false</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.2.3">
+                 <content>Work experience or projects, qualifications, hobbies, family</content>
+                 <is_correct>true</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.2.4">
+                 <content>Work experience or projects, family, qualifications, hobbies</content>
+                 <is_correct>false</is_correct>
+            </answer>
+        </answers>
+    </question>
+    <question uniqid="mid_assessment.3">
+        <format>
+                <delivery>mc</delivery>
+                <qform>t</qform>
+                <aform>t</aform>
+        </format>
+        <instruction>Choose the correct option </instruction>
+        <content>Choose the best response to the long_term career question.</content>
+        <answers  choice="single" served="random" display_time="0">
+            <answer uniqid="mid_assessment.3.1">
+                 <content>In 5 years, I want to be a project manager.</content>
+                 <is_correct>true</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.3.2">
+                 <content>I want to be in a good position in 5 years.</content>
+                 <is_correct>false</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.3.3">
+                 <content>In 5 years, my salary should have doubled.</content>
+                 <is_correct>false</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.3.4">
+                 <content>In 5 years, I""'d like to have a good job with a high pay.</content>
+                 <is_correct>false</is_correct>
+            </answer>
+        </answers>
+    </question>
+    <question uniqid="mid_assessment.4">
+        <format>
+                <delivery>mc</delivery>
+                <qform>t</qform>
+                <aform>t</aform>
+        </format>
+        <instruction>Choose the correct option </instruction>
+        <content>Choose the best response for: Tell me about your strengths?""</content>
+        <answers  choice="single" served="random" display_time="0">
+            <answer uniqid="mid_assessment.4.1">
+                 <content>I can motivate people easily. I love talking.</content>
+                 <is_correct>false</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.4.2">
+                 <content>I am hardworking. I can work for long hours.</content>
+                 <is_correct>false</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.4.3">
+                 <content>I sing very well. I""'ve won several awards.</content>
+                 <is_correct>false</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.4.4">
+                 <content>I have strong time management skills. I deliver on time.</content>
+                 <is_correct>true</is_correct>
+            </answer>
+        </answers>
+    </question>
+    <question uniqid="mid_assessment.5">
+        <format>
+                <delivery>mc</delivery>
+                <qform>t</qform>
+                <aform>t</aform>
+        </format>
+        <instruction>Choose the correct option </instruction>
+        <content>Why have you applied for this job? Choose the best response.</content>
+        <answers  choice="single" served="random" display_time="0">
+            <answer uniqid="mid_assessment.5.1">
+                 <content>I'd like to practise what I learned.</content>
+                 <is_correct>true</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.5.2">
+                 <content>I need a job to feed my family.</content>
+                 <is_correct>false</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.5.3">
+                 <content>I applied because you had a vacancy.</content>
+                 <is_correct>false</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.5.4">
+                 <content>I want to be productive in life.</content>
+                 <is_correct>false</is_correct>
+            </answer>
+        </answers>
+    </question>
+    <question uniqid="mid_assessment.6">
+        <format>
+                <delivery>mc</delivery>
+                <qform>t</qform>
+                <aform>t</aform>
+        </format>
+        <instruction>Choose the correct option </instruction>
+        <content>Why should we hire you? Choose the best response.</content>
+        <answers  choice="single" served="random" display_time="0">
+            <answer uniqid="mid_assessment.6.1">
+                 <content>I have the required qualifications.</content>
+                 <is_correct>false</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.6.2">
+                 <content>I am efficient and excel in all my tasks.</content>
+                 <is_correct>true</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.6.3">
+                 <content>I have the best qualifications in the country.</content>
+                 <is_correct>false</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.6.4">
+                 <content>I am a bit of a perfectionist.</content>
+                 <is_correct>false</is_correct>
+            </answer>
+        </answers>
+    </question>
+    <question uniqid="mid_assessment.7">
+        <format>
+                <delivery>mc</delivery>
+                <qform>t</qform>
+                <aform>t</aform>
+        </format>
+        <instruction>Choose the correct option </instruction>
+        <content>"I like persuading people. So in 5 years  I'd be a marketing manager." What's wrong with this response?</content>
+        <answers  choice="single" served="random" display_time="0">
+            <answer uniqid="mid_assessment.7.1">
+                 <content>It's not realistic.</content>
+                 <is_correct>false</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.7.2">
+                 <content>It's too ambitious.</content>
+                 <is_correct>false</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.7.3">
+                 <content>It's about likes and dislikes.</content>
+                 <is_correct>false</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.7.4">
+                 <content>There is no plan.</content>
+                 <is_correct>true</is_correct>
+            </answer>
+        </answers>
+    </question>
+    <question uniqid="mid_assessment.8">
+        <format>
+                <delivery>mc</delivery>
+                <qform>t</qform>
+                <aform>t</aform>
+        </format>
+        <instruction>Choose the correct option </instruction>
+        <content>Where are you from? Choose the best response.</content>
+        <answers  choice="single" served="random" display_time="0">
+            <answer uniqid="mid_assessment.8.1">
+                 <content>I belong to Chandigarh.</content>
+                 <is_correct>false</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.8.2">
+                 <content>U.P.</content>
+                 <is_correct>false</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.8.3">
+                 <content>My native place is Chennai.</content>
+                 <is_correct>false</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.8.4">
+                 <content>I am from Mumbai.</content>
+                 <is_correct>true</is_correct>
+            </answer>
+        </answers>
+    </question>
+    <question uniqid="mid_assessment.9">
+        <format>
+                <delivery>mc</delivery>
+                <qform>t</qform>
+                <aform>t</aform>
+        </format>
+        <instruction>Choose the correct option </instruction>
+        <content>What is your greatest weakness? Choose the best response.</content>
+        <answers  choice="single" served="random" display_time="0">
+            <answer uniqid="mid_assessment.9.1">
+                 <content>I need to develop more confidence, but I learn fast.</content>
+                 <is_correct>true</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.9.2">
+                 <content>I am a survivor. I can survive in any situation.</content>
+                 <is_correct>false</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.9.3">
+                 <content>Everybody has defects. It's not a big issue.</content>
+                 <is_correct>false</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.9.4">
+                 <content></content>
+                 <is_correct>false</is_correct>
+            </answer>
+        </answers>
+    </question>
+    <question uniqid="mid_assessment.10">
+        <format>
+                <delivery>mc</delivery>
+                <qform>t</qform>
+                <aform>t</aform>
+        </format>
+        <instruction>Choose the correct option </instruction>
+        <content>What is your short_term goal? Choose the best response.</content>
+        <answers  choice="single" served="random" display_time="0">
+            <answer uniqid="mid_assessment.10.1">
+                 <content>I want to get certfied so that I can get to the next level.</content>
+                 <is_correct>false</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.10.2">
+                 <content>I want to lead a team within a year.</content>
+                 <is_correct>false</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.10.3">
+                 <content>I'd like to gain as much experience as possible.</content>
+                 <is_correct>true</is_correct>
+            </answer>
+            <answer uniqid="mid_assessment.10.4">
+                 <content>I'd like to get some experience and then move on.</content>
+                 <is_correct>false</is_correct>
+            </answer>
+        </answers>
+    </question>
+</assess>

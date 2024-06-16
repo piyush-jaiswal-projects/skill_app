@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" class="app">
+    <head >
+        <script type="text/javascript">
+            function getParam(name)
+            {
+                name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+                var regexS = "[\\?&]" + name + "=([^&#]*)";
+                var regex = new RegExp(regexS);
+
+                var results = regex.exec(window.location.href);
+                if (results === null)
+                    return "";
+                else
+                    return results[1];
+
+            }
+        </script>
+        <meta charset="utf-8" />
+        <title>InterView Prep</title>
+        <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <link rel="stylesheet" href="../css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="../css/animate.css" type="text/css" />
+        <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css" />
+        <link rel="stylesheet" href="../css/font.css" type="text/css" />
+        <link rel="stylesheet" href="../js/nestable/nestable.css" type="text/css" />
+        <link rel="stylesheet" href="../css/app.css" type="text/css" />
+        <link rel="stylesheet" href="../css/vocabpractice.css" type="text/css" />
+        <!--[if lt IE 9]>
+         <script src="js/ie/html5shiv.js"></script>
+         <script src="js/ie/respond.min.js"></script>
+         <script src="js/ie/excanvas.js"></script>
+         <![endif]-->
+    </head>
+    <body >
+        <script language="javascript">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            var JSInterface =null;
+            var messageObj;
+            var focusDiv = null;
+            ;
+            (function($, window, document, undefined)
+            {
+                function initialise()
+                {
+//                    var jsonval = JSInterface.initialise(16);
+//                    messageObj = JSON.parse(JSInterface.getScreenMsg(16));
+//                   var raw = JSON.parse(jsonval);
+//                   var msg = raw.json;
+//                    var uri_dec = decodeURIComponent(msg);
+//                    msg = uri_dec;
+                    var msg = "{ \"vocabArray\": [ { \"wordName\": \"Knowledge 1\", \"uid\": \"w01\", \"status\": -1 }, { \"wordName\": \"Knowledge 2\", \"uid\": \"w02\", \"status\": 0 }, { \"wordName\": \"Knowledge 3\", \"uid\": \"w03\", \"status\": 1 }, { \"wordName\": \"Knowledge 4\", \"uid\": \"w04\", \"status\": 2 }, { \"wordName\": \"Knowledge 5\", \"uid\": \"w05\", \"status\": 3 }, { \"wordName\": \"Knowledge 6\", \"uid\": \"w06\", \"status\": 2 }, { \"wordName\": \"Knowledge 7\", \"uid\": \"w07\", \"status\": 1 }, { \"wordName\": \"Knowledge 8\", \"uid\":\"w08\", \"status\": 1 }, { \"wordName\": \"Knowledge 9\", \"uid\": \"w09\", \"status\": 3 } ] }";
+//                    var regex = new RegExp('%22', 'g');
+//                    var regex1 = new RegExp('%20', 'g');
+//                    msg = msg.replace(regex, '"');
+//                    msg = msg.replace(regex1, ' ');
+
+                    var listJsonData = JSON.parse(msg);
+                    //var listData = listJsonData["course"];
+                    VocabPractice(listJsonData);
+                    //setFocus();
+                }
+
+
+                initialise();
+            })(window.jQuery || window.Zepto, window, document);
+            function createCookie(value) 
+             {
+
+                var jsObject = new Object();
+                jsObject.type = "setcookie";
+                var obj = new Object();
+                obj.numI = value;
+                jsObject.data = obj;
+                var dataval = JSON.stringify(jsObject);
+                JSInterface.send(dataval,function (responseData) {
+                    
+                    
+                     
+                    
+                });
+            }
+            function setFocus()
+            {
+             
+             //alert(focusDiv);
+              document.getElementById(focusDiv).scrollIntoView();
+              
+            
+              
+//              document.getElementById(focusDiv).trigger('touchstart');
+//              document.getElementById(focusDiv).trigger('touchend');
+            }
+            function handleLearningItemClick(v, v1)
+            {
+                // dbgAlert("handleLearningClick called"+v+v1);
+                showAndroidToast(v, v1);
+            }
+
+            function showAndroidToast(v, v1) {
+                var obj = new Object();
+                obj.uid = v;
+                obj.type = v1;
+                var jsonString = JSON.stringify(obj);
+                //  dbgAlert("handleLearningClick called final"+jsonString);
+                JSInterface.setMCatLogResp(jsonString);
+            }
+
+            function openAndroidDialog() {
+                JSInterface.openAndroidDialog();
+            }
+
+            function callFromActivity(msg) {
+                makelist1(msg);
+                document.getElementById("mytext").innerHTML = msg;
+            }
+
+
+            function VocabPractice(listData)
+            {
+                if (listData !== null)
+                {
+                    var overallContainer = document.createElement("div");
+                    overallContainer.setAttribute("class", "whiteb");
+
+                    document.getElementsByTagName("body")[0].appendChild(overallContainer);
+
+
+
+                    var vocabins = document.createElement("div");
+                    vocabins.setAttribute("class", " instructionHeader");
+                    vocabins.innerHTML = "Let us now learn and practice pronounciation of some interview specific words.";
+                    overallContainer.appendChild(vocabins);
+                    //messageObj.VOCAB_MSG;//
+
+                    var listDivider = document.createElement("div");
+                    listDivider.setAttribute("class", " vocabDivider scrollable");
+                    //listDivider.innerHTML =  vcbData[i].wordName;
+                    overallContainer.appendChild(listDivider);
+
+
+                    var vcbData = listData.vocabArray;
+                    var numberOfListItems = vcbData.length;
+                    for (var i = 0; i < numberOfListItems; ++i)
+                    {
+
+                        var vocabmaindiv = document.createElement("div");
+                        vocabmaindiv.setAttribute("class", "padingAndbackground scrollable"); 
+                        vocabmaindiv.setAttribute("id", vcbData[i].uid);
+//                        vocabmaindiv.setAttribute("")
+                        
+                        //focusDiv = vcbData[i].uid;
+//                        if(vcbData[i].uid == focusDiv)
+//                        {
+//                            vocabmaindiv.setAttribute("state", "");
+//                        }
+//                        else
+//                        {
+//                          vocabmaindiv.setAttribute("class", "padingAndbackground scrollable");  
+//                        }
+                        
+                        overallContainer.appendChild(vocabmaindiv);
+
+                        var listItemModuleHeaderContent = document.createElement("div");
+                        listItemModuleHeaderContent.setAttribute("class", " vocabPractice col-lg-10 col-xs-10 col-sm-10");
+                        listItemModuleHeaderContent.setAttribute("onclick", "javascript:clickOnWord('" + vcbData[i].uid + "')");
+                        listItemModuleHeaderContent.innerHTML = vcbData[i].wordName;
+                        
+                        vocabmaindiv.appendChild(listItemModuleHeaderContent);
+
+
+
+                        var listItemModuleHeaderContent = document.createElement("div");
+                        listItemModuleHeaderContent.setAttribute("class", " vacabcheck fa-stack col-lg-2 col-xs-2 col-sm-2 text-center");
+
+                        vocabmaindiv.appendChild(listItemModuleHeaderContent);
+
+                        var listItemcheckContent = document.createElement("div");
+                        var statusColor = parseInt(vcbData[i].status,10);
+                        if (statusColor === 1) //yellow
+                        {
+                            listItemcheckContent.setAttribute("class", " fa fa-check-circle text-statusMedium fa-stack-2x");
+                        }
+                        else if (statusColor === 2) // green
+                        {
+                            listItemcheckContent.setAttribute("class", " fa fa-check-circle text-statusGreen fa-stack-2x");
+                        }
+                        else if (statusColor === -1) // gray
+                        {
+                            listItemcheckContent.setAttribute("class", " fa fa-check-circle text-statusRetry fa-stack-2x");
+                        }
+                        else if (statusColor === 3) // orang
+                        {
+                            listItemcheckContent.setAttribute("class", " fa fa-check-circle text-statusPerfact fa-stack-2x");
+                        }
+                        else if (statusColor === 0) // red
+                        {
+                            listItemcheckContent.setAttribute("class", " fa fa-check-circle text-statusRed fa-stack-2x");
+                        }
+
+
+
+                        listItemModuleHeaderContent.appendChild(listItemcheckContent);
+                        var listDivider = document.createElement("div");
+                        listDivider.setAttribute("class", " vocabDivider col-lg-12 col-xs-12");
+                        //listDivider.innerHTML =  vcbData[i].wordName;
+                        vocabmaindiv.appendChild(listDivider);
+
+
+
+                    }
+                }
+            }
+            function clickOnWord(divId)
+            {
+                //alert("Test");   
+                var obj = new Object();
+                obj.uid = divId;
+                //focusDiv = divId;
+                //createCookie(divId);
+                
+                
+//                var jsonString = JSON.stringify(obj);
+//                //  dbgAlert("handleLearningClick called final"+jsonString);
+//                JSInterface.setVocabWordListResp(jsonString);
+
+
+            }
+            function handleLearningItemClick(varId, varType)
+            {
+                alert("Testing");
+            }
+
+            function handleLearningItemClick(data)
+            {
+                alert('hello');
+            }
+
+
+        </script>
+        <script src="../js/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="../js/bootstrap.js"></script>
+        <!-- App -->
+        <script src="../js/app.js"></script>
+        <script src="../js/app.plugin.js"></script>
+        <script src="../js/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="../js/sortable/jquery.sortable.js"></script>
+        <script src="../js/nestable/jquery.nestable.js"></script>
+        <script src="../js/nestable/demo.js"></script>
+        <span id=dbgsp></span>
+
+    </body>
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" class="app">
+    <head>
+        <script src="../js/jquery.min.js"></script>
+        <script type="text/javascript">
+        window.onerror = function (err) {
+                //log('window.onerror: ' + err)
+            }
+
+            function connectWebViewJavascriptBridge(callback) {
+                if (window.WebViewJavascriptBridge) {
+                    callback(WebViewJavascriptBridge)
+                } else {
+                    document.addEventListener('WebViewJavascriptBridgeReady', function () {
+                        callback(WebViewJavascriptBridge)
+                    }, false);
+                }
+            }
+
+            connectWebViewJavascriptBridge(function (bridge) {
+
+                JSInterface = bridge;
+
+
+
+
+                var uniqueId = 1;
+                var Data;
+                var jsObject = new Object();
+                jsObject.type = "msg";
+                jsObject.data = 5;
+                var dataval = JSON.stringify(jsObject);
+                bridge.send(dataval, function (responseData) {
+                    messageObj = JSON.parse(responseData);
+                    //loadMessage(messageObj);
+
+
+                });
+
+                //initialise();
+                var jsObject = new Object();
+                jsObject.type = "drawData";
+                jsObject.data = 5;
+                var dataval = JSON.stringify(jsObject);
+                bridge.send(dataval, function (responseData) {
+                    //messageObj = JSON.parse(responseData);
+                    //loadMessage(messageObj);
+                    var msg = responseData;
+                    initialise(msg);
+
+                });
+
+                function log(message, data) {
+                    var log = document.getElementById('log')
+                    var el = document.createElement('div')
+                    el.className = 'logLine'
+                    el.innerHTML = uniqueId++ + '. ' + message + ':<br/>' + JSON.stringify(data)
+                    if (log.children.length) {
+                        log.insertBefore(el, log.children[0])
+                    }
+                    else {
+                        log.appendChild(el)
+                    }
+                }
+                bridge.init(function (message, responseCallback) {
+
+
+                    //log('JS got a message', message)
+                    var data = {'Javascript Responds': 'Wee!'}
+                    //log('JS responding with', data)
+                    responseCallback(data)
+                });
+
+                bridge.registerHandler('testJavascriptHandler', function (data, responseCallback) {
+
+                    var responseData = {'Javascript Says': 'Right back atcha!'}
+
+                    responseCallback(responseData)
+                });
+            });
+
+
+
+
+            var JSInterface = null;
+            var tokenValue = null;
+            var activityId = null;
+            var username = null;
+            var password = null;
+            var bookingClassId = null;
+            var confirmMsg = "ConfirmMSG1234567890";
+            var cancelMsg = "CancelMSG";
+            var wizIqurl = null;
+            var HasBuy = null;
+            var isBooked = 0;
+            var messageObj;
+            var lofinType;
+
+            function getParam(name)
+            {
+                name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+                var regexS = "[\\?&]" + name + "=([^&#]*)";
+                var regex = new RegExp(regexS);
+
+                var results = regex.exec(window.location.href);
+                if (results === null)
+                    return "";
+                else
+                    return results[1];
+
+            }
+        </script>
+        <meta charset="utf-8" />
+        <title>InterView Prep</title>
+        <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <link rel="stylesheet" href="../css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="../css/animate.css" type="text/css" />
+        <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css" />
+        <link rel="stylesheet" href="../css/font.css" type="text/css" />
+        <link rel="stylesheet" href="../js/nestable/nestable.css" type="text/css" />
+        <link rel="stylesheet" href="../css/app.css" type="text/css" />
+        <link rel="stylesheet" href="../css/activity.css" type="text/css" />
+        <link rel="stylesheet" href="../js/fuelux/fuelux.css" type="text/css" />
+        <!--[if lt IE 9]>
+         <script src="js/ie/html5shiv.js"></script>
+         <script src="js/ie/respond.min.js"></script>
+         <script src="js/ie/excanvas.js"></script>
+         <![endif]-->
+
+
+
+
+        <script src="../js/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="../js/bootstrap.js"></script>
+        <!-- App -->
+        <script src="../js/app.js"></script>
+        <script src="../js/app.plugin.js"></script>
+        <script src="../js/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="../js/sortable/jquery.sortable.js"></script>
+        <script src="../js/nestable/jquery.nestable.js"></script>
+        <script src="../js/nestable/demo.js"></script>
+        <script language="javascript">
+            //;(function($, window, document, undefined)
+            //{
+
+
+
+            function initialise(msg)
+            {
+                showProgress(messageObj.PLEASE_WAIT);
+                var container = document.getElementById("containerDivId");
+
+
+
+                if ($(document).height() == 960 && $(document).width() == 768)
+                {
+                    document.getElementById("alertID").style.top = "45%";
+                    document.getElementById("alertID").style.left = "25%";
+                    document.getElementById("alertID").style.height = "150px";
+                    document.getElementById("alertID").style.width = "50%";
+                }
+                else
+                {
+                    document.getElementById("alertID").style.top = "25%";
+                    document.getElementById("alertID").style.left = "10px";
+                    document.getElementById("alertID").style.height = "150px";
+                    document.getElementById("alertID").style.width = "300px";
+                }
+                document.getElementById("okAlertId").innerHTML = messageObj.LP_OK;
+                //container.setAttribute("style", "background: white;");
+//                    var width =$(document).width();
+//                    var bottom = document.getElementById("bottomDiv");
+//                    if(width <= 400)
+//                    {
+//                      bottom.setAttribute("class","HbottomDivPhone");
+//                    }
+//                    else if (width > 400 && width < 800 )
+//                    {
+//                      bottom.setAttribute("class","HbottomDivTab");
+//                    }
+//                    else
+//                    {
+//                       bottom.setAttribute("class","HbottomDiv"); 
+//                    }
+//                      var arr = ["Gupta", "bad", "Boy", "but", "neeraj.." ];
+//////                     
+//                      alert(formatString("amit %s a %s %s %s %s",arr));
+
+//                      var jsonval = JSInterface.initialise(5);
+//                      messageObj = JSON.parse(JSInterface.getScreenMsg(5));
+
+
+
+                //document.getElementById("").innerHTML=messageObj.;
+                document.getElementById("bookingId").innerHTML = messageObj.BOOKING_DETAIL;
+                document.getElementById("cancelId").innerHTML = messageObj.CANCEL;
+                document.getElementById("confirmId").innerHTML = messageObj.CONFIRM;
+                document.getElementById("joinId").innerHTML = messageObj.JOIN;
+                document.getElementById("backId").innerHTML = messageObj.BACK;
+                document.getElementById("dropoutId").innerHTML = messageObj.DROPOUT;
+                document.getElementById("buyclassId").innerHTML = messageObj.BUY_CLASS;
+                document.getElementById("buyId").innerHTML = messageObj.BUY;
+                document.getElementById("cancelID").innerHTML = messageObj.CANCEL;
+                document.getElementById("recordedId").innerHTML = messageObj.ACTIVITY_REC_VIDEOS;
+                document.getElementById("cancelID1").innerHTML = messageObj.CANCEL;
+                document.getElementById("bookedAlertId").innerHTML = messageObj.BOOKED_ALERT;
+                document.getElementById("okId").innerHTML = messageObj.LP_OK;
+                document.getElementById("playId").innerHTML = messageObj.PLAY;
+
+
+
+
+//                      var raw = JSON.parse(jsonval);
+//                      var msg = raw.json;
+//                      var uri_dec = decodeURIComponent(msg);
+//                      msg = uri_dec;
+////                   edgeId 
+//                     // var msg = "{\"uid\":\"15938\",\"userName\":\"beta\",\"password\":\"123456\"}";
+//                      var regex = new RegExp('%22', 'g');
+//                      var regex1 = new RegExp('%20', 'g');
+//                      msg = msg.replace(regex, '"');
+//                      msg = msg.replace(regex1, ' ');
+                //alert("test1");
+                var JsonData = JSON.parse(msg);
+                loginType = JsonData.loginType;
+                activityId = JsonData["uid"];
+                username = JsonData.userName;
+                password = JsonData.password;
+                var jsonData = makeJsonRequest();
+                //alert("test2");
+                sendtoServerRequest(jsonData, "auth");
+            }
+
+
+
+            //})(window.jQuery || window.Zepto, window, document);
+
+            function rc4(key, str) {
+                var s = [], j = 0, x, res = '';
+                for (var i = 0; i < 256; i++) {
+                    s[i] = i;
+                }
+                for (i = 0; i < 256; i++) {
+                    j = (j + s[i] + key.charCodeAt(i % key.length)) % 256;
+                    x = s[i];
+                    s[i] = s[j];
+                    s[j] = x;
+                }
+                i = 0;
+                j = 0;
+                for (var y = 0; y < str.length; y++) {
+                    i = (i + 1) % 256;
+                    j = (j + s[i]) % 256;
+                    x = s[i];
+                    s[i] = s[j];
+                    s[j] = x;
+                    res += String.fromCharCode(str.charCodeAt(y) ^ s[(s[i] + s[j]) % 256]);
+                }
+                return res;
+            }
+
+            function makeJsonRequest()
+            {
+                if (activityId === null)
+                {
+                    return;
+                }
+
+                var logInPassword;
+                      if(parseInt(loginType,10) == 1)
+                      {
+                      logInPassword = new Object();
+                      logInPassword.login = username;
+                      logInPassword.password = password;
+                      }
+                      else
+                      {
+                        logInPassword = new Object();
+                        logInPassword.unique_id = username;  
+                      }
+                var request = new Object();
+                      request.token = null;
+                      if(parseInt(loginType,10) == 1)
+                      {
+                         request.decree = 'token';
+                      }
+                      else
+                      {
+                          request.decree = 'rlbltok';  
+                      }
+                      request.param = logInPassword;
+                      var jsonString = JSON.stringify(request);
+                      return jsonString;
+
+            }
+            function sendtoServerRequest(jsonString, requestType)
+            {
+                //alert("test 3");
+                if (requestType === "auth")
+                {
+                    var encStr = rc4("p1^bil", jsonString);
+                    //alert("Encrypted String is "+encStr);
+                    $.post("http://dev.englishedge.in/live/service.php",
+                            {obj: encStr},
+                    decryptAndConvertJson)
+                            .error(function (StatusCode) {
+                                if (StatusCode !== 200)
+                                {
+                                    //alert("Testing Failure Alert");
+                                    //alert(JSON.stringify(StatusCode));
+                                    status(0, messageObj.ACTIVITY_ERROR_MSG);//"SERVER NOT RESPONDING...");
+                                }
+
+                            });
+                }
+                else if (requestType === "classlist")
+                {
+                    var encStr = rc4("p1^bil", jsonString);
+                    $.post("http://dev.englishedge.in/live/service.php",
+                            {obj: encStr},
+                    decryptAndConvertJsonDrawUI)
+                            .error(function (StatusCode) {
+                                if (StatusCode !== 200)
+                                {
+                                    //alert(JSON.stringify(StatusCode));
+                                    status(0, "SERVER NOT RESPONDING...");
+                                }
+                            });
+                }
+                else if (requestType === "bookclass")
+                {
+                    var encStr = rc4("p1^bil", jsonString);
+                    $.post("http://dev.englishedge.in/live/service.php",
+                            {obj: encStr},
+                    decryptAndConvertJsonBook)
+                            .error(function (StatusCode) {
+                                if (StatusCode !== 200)
+                                {
+                                    //alert(JSON.stringify(StatusCode));
+                                    status(0, "SERVER NOT RESPONDING...");
+                                }
+                            });
+                }
+
+            }
+
+            function error()
+            {
+                alert('Test Error in Post');
+            }
+            // function sendtoServerRequestOld(jsonString)
+            //    {
+            //    if(jsonString === null)
+            //    {
+            //        return;
+            //    }
+            //    xmlhttp = new XMLHttpRequest();
+            //    var url = "http://dev.englishedge.in/live/service.php";
+            //    xmlhttp.open("POST", url, true);
+            //
+            //    xmlhttp.onreadystatechange = function () 
+            //    { 
+            //    if (xmlhttp.readyState === 4 && xmlhttp.status === 200) 
+            //    {
+            //        decryptAndConvertJson(xmlhttp.responseText);
+            //    }   
+            //    var param = "obj="+jsonString;     
+            //    xmlhttp.send(param);
+            //}
+
+            function decryptAndConvertJson(resData)
+            {
+                if (resData === null)
+                {
+                    return;
+                }
+                //alert("test 11");
+                var decryptData = rc4("p1^bil", resData);
+
+                var responseJson = JSON.parse(decryptData);
+                if (responseJson.retCode === 'SUCCESS')
+                {
+                    tokenValue = responseJson.retVal;
+                    var reqData = makeClassReqJson();
+                    sendtoServerRequest(reqData, "classlist");
+
+                }
+                //return responseJson;
+            }
+
+            function makeClassReqJson()
+            {
+
+                var tokenReq = new Object();
+                tokenReq.token = tokenValue;
+                tokenReq.decree = "lsclass";
+                var request = new Array();
+                request[0] = activityId;
+                var token = new Object();
+                token.topic_ids = request;
+                tokenReq.param = token;
+                var tokenJsonReq = JSON.stringify(tokenReq);
+                return tokenJsonReq;
+            }
+
+
+            function decryptAndConvertJsonDrawUI(resData)
+            {
+                if (resData === null)
+                {
+                    return;
+                }
+                //alert("test 22");
+                var decryptData = rc4("p1^bil", resData);
+
+                var responseJson = JSON.parse(decryptData);
+                var tokenJsonReq = JSON.stringify(responseJson);
+                if (responseJson.retCode === 'SUCCESS' && responseJson.retVal !== null)
+                {
+                    HasBuy = parseInt(responseJson.retVal.user_state,10);
+                    var data = responseJson.retVal.classList;
+                    if (data != null)
+                    {
+                        status(1, "");
+                        activityUi(data);
+                    }
+                    else
+                    {
+                        status(1, messageObj.ACTIVITY_NOT_FOUND_CLASS); //"No Class Found.");
+                        var div =   document.getElementById("errorDivID");
+                             div.style.display = "block";
+                             div.innerHTML=messageObj.ACTIVITY_NOT_FOUND_CLASS_EMSG;
+                    }
+
+                }
+                else
+                {
+                    status(1, messageObj.ACTIVITY_NOT_FOUND_CLASSLIST);//"class list not found.");
+                    var div =   document.getElementById("errorDivID");
+                             div.style.display = "block";
+                             div.innerHTML=messageObj.ACTIVITY_NOT_FOUND_CLASS_EMSG;
+                }
+                //return responseJson;
+            }
+
+            function decryptAndConvertJsonBook(resData)
+            {
+
+                if (resData === null)
+                {
+                    return;
+                }
+                //alert("test 33");
+                var decryptData = rc4("p1^bil", resData);
+
+                var responseJson = JSON.parse(decryptData);
+                var tokenJsonReq = JSON.stringify(responseJson);
+                if (responseJson.retCode == 'SUCCESS')
+                {
+                    var data = responseJson.retVal.status;
+                    var statusObj = new Object();
+                    statusObj.uid = -1;
+                    statusObj.type = 1;
+                    var JsonReq = JSON.stringify(statusObj);
+                    //JSInterface.setWebinarResp(JsonReq);
+                    location.reload();
+
+                }
+            }
+
+            // $(function() {
+            //$( "#dialog-confirm" ).dialog({
+            //resizable: false,
+            //height:140,
+            //modal: true,
+            //buttons: {
+            //"Delete all items": function() {
+            //$( this ).dialog( "close" );
+            //},
+            //Cancel: function() {
+            //$( this ).dialog( "close" );
+            //}
+            //}
+            //});
+            //// $( "#opener" ).click(function() {
+            ////$( "#dialog-confirm" ).dialog( "open" );
+            ////});
+            //});
+
+
+            function activityUi(data)
+            {
+
+
+                var container = document.getElementById("listView");
+//                      var width =$(document).width();
+//                        
+//                        if(width <= 400)
+//                        {
+//                          container.setAttribute("class","HListViewPhone");
+//                        }
+//                        else if (width > 400 && width < 800 )
+//                        {
+//                          container.setAttribute("class","HListViewTab");
+//                        }
+//                        else
+//                        {
+//                           container.setAttribute("class","HListView"); 
+//                        }
+//                      container.setAttribute("style", "height:" + $(document).height() + "px;");
+
+                var mainDiv = document.createElement("div");
+                mainDiv.setAttribute("class", "headDiv");
+                //mainDiv.setAttribute("style","height:"+$(document).height()+"px;");
+                container.appendChild(mainDiv);
+                var header = document.createElement("div");
+                header.setAttribute("class", "header");
+                if (HasBuy != 3)
+                {
+                    header.innerHTML = messageObj.ACTIVITY_LIVE_WEBINAR;//"Live Webinar";
+                }
+                else
+                {
+                    header.innerHTML = messageObj.ACTIVITY_REC_VIDEOS;//"Recorded Videos";  
+                }
+                mainDiv.appendChild(header);
+
+                var containerDiv = document.createElement("div");
+                //containerDiv.setAttribute("class", "scrollable");
+                containerDiv.setAttribute("style", "height:90%");
+
+                mainDiv.appendChild(containerDiv);
+                for (var i = 0; i < data.length; i++)
+                {
+
+
+                    var ScrollDiv = document.createElement("div");
+                    ScrollDiv.setAttribute("class", " scrollDiv ");
+                    containerDiv.appendChild(ScrollDiv);
+
+                    if (i === 0)
+                    {
+                        ScrollDiv.setAttribute("style", "height:160px;");
+                        var borderDiv = document.createElement("div");
+                        borderDiv.setAttribute("style", "background:#f2f2f2;height:10px;");
+                        ScrollDiv.appendChild(borderDiv);
+
+                    }
+
+
+                    if (HasBuy != 3)
+                    {
+                        var leftDiv = document.createElement("div");
+                        leftDiv.setAttribute("class", "leftDiv col-lg-3 col-xs-3 col-sm-3 text-center");
+                        ScrollDiv.appendChild(leftDiv);
+
+                        var ScrollDivElement = document.createElement("img");
+                        ScrollDivElement.setAttribute("class", "divElement");
+                        ScrollDivElement.setAttribute("src", "../images/image_circle.png");
+                        leftDiv.appendChild(ScrollDivElement);
+
+                        var textScrollDiv = document.createElement("div");
+                        textScrollDiv.setAttribute("class", "textScrollDiv");
+                        textScrollDiv.innerHTML = data[i].teacher_name;
+                        leftDiv.appendChild(textScrollDiv);
+
+
+
+
+                        var middleDiv = document.createElement("div");
+                        middleDiv.setAttribute("class", "middleDiv col-lg-8 col-xs-8 col-sm-8");
+                        ScrollDiv.appendChild(middleDiv);
+
+
+                        var textScrollDivdate = document.createElement("div");
+                        textScrollDivdate.setAttribute("class", "textmiddleDiv");
+                        //alert(data[i].start_time);
+                        var t = data[i].start_time.split(/[- :]/);
+
+                        var myDate = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+                        
+                        //var myDate = new Date(data[i].start_time);
+
+                        textScrollDivdate.innerHTML = myDate.toTimeString();//data[i].start_time;
+                        middleDiv.appendChild(textScrollDivdate);
+
+
+
+                        var textScrollDivdateSub = document.createElement("div");
+                        textScrollDivdateSub.setAttribute("class", "textScrollDivdateSub");
+                        
+                        var t = data[i].start_time.split(/[- :]/);
+
+                        var myDate = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+                        //var myDate = new Date(data[i].start_time);
+
+                        textScrollDivdateSub.innerHTML = myDate.toDateString();//data[i].start_time;
+                        middleDiv.appendChild(textScrollDivdateSub);
+
+
+                        var textScrollDivtitle = document.createElement("div");
+                        textScrollDivtitle.setAttribute("class", "middletitleDiv");
+                        textScrollDivtitle.innerHTML = data[i].title;
+                        middleDiv.appendChild(textScrollDivtitle);
+
+                        var textScrollDivDescription = document.createElement("div");
+                        textScrollDivDescription.setAttribute("class", "middleDesDiv");
+                        textScrollDivDescription.innerHTML = data[i].description;
+                        middleDiv.appendChild(textScrollDivDescription);
+
+
+                        if (data[i].booked === true)
+                        {
+                            isBooked = 1;
+                            var checkContent = document.createElement("div");
+                            checkContent.setAttribute("class", " checkContent fa fa-check-circle text-statusPerfact");
+                            //checkContent.setAttribute("style","font-size:20px; padding-left:10px;");
+                            textScrollDivdate.appendChild(checkContent);
+
+                        }
+
+                        if (data[i].avail_seat === 0)
+                        {
+                            var noRoom = document.createElement("div");
+                            noRoom.setAttribute("class", "text-left text-statusPerfact");
+                            noRoom.setAttribute("style", "font-size:20px;");
+                            noRoom.innerHTML = messageObj.ACTIVITY_NO_AVAIL_ROOM;//"No room available.";
+                            middleDiv.appendChild(noRoom);
+                        }
+
+
+
+                        var progressbardiv = document.createElement("div");
+
+                        progressbardiv.setAttribute("class", "progressDiv progress progress-xs m-t-sm");
+
+                        middleDiv.appendChild(progressbardiv);
+                        var progressbar = document.createElement("div");
+                        var percent = (data[i].avail_seat / data[i].max_seat) * 100;
+                        var proNum = 100 - parseInt(percent);
+                        proNum = proNum + "%";
+                        progressbar.setAttribute("class", " progress-bar progress-bar-info");
+                        progressbar.setAttribute("data-toggle", "tooltip");
+                        progressbar.setAttribute("data-original-title", "10%");
+
+                        progressbar.style.width = proNum;
+
+                        progressbardiv.appendChild(progressbar);
+
+
+
+                        var rightDiv = document.createElement("div");
+                        rightDiv.setAttribute("class", "rightDiv col-lg-1 col-xs-1 col-sm-1");
+                        ScrollDiv.appendChild(rightDiv);
+
+
+                        //var sectionDiv = document.createElement("div");
+                        //sectionDiv.setAttribute("style","width:100% height:150;");
+                        //        //rightDiv.setAttribute("onclick", "handleClassItemClick('"+data[i].class_id+"')");
+                        //ScrollDiv.appendChild(sectionDiv);
+
+                        //        var span = document.createElement("span");
+                        //        span.setAttribute("id","resultSpan");
+                        //        //rightDiv.setAttribute("onclick", "handleClassItemClick('"+data[i].class_id+"')");
+                        //        ScrollDiv.appendChild(span);
+
+
+
+                        //var popup = document.createElement("div");
+                        if (HasBuy >= 1)
+                        {
+                            if (data[i].avail_seat !== 0)
+                            {
+                                if (data[i].booked !== true)
+                                {
+                                    if (isBooked == 0)
+                                    {
+                                        ScrollDiv.setAttribute("onclick", "showModal('" + data[i].teacher_name + "','" + data[i].start_time + "','" + data[i].title + "','" + data[i].class_id + "')");
+                                    }
+                                    else
+                                    {
+                                        ScrollDiv.setAttribute("onclick", "showCancelBookModal('" + data[i].teacher_name + "','" + data[i].start_time + ")");
+                                    }
+                                }
+                                else
+                                {
+                                    if (HasBuy == 3)
+                                    {
+                                        ScrollDiv.setAttribute("onclick", "showPlayModal('" + data[i].recording_url + "')");
+
+                                    }
+                                    else
+                                    {
+                                        ScrollDiv.setAttribute("onclick", "showCancelModal('" + data[i].teacher_name + "','" + data[i].start_time + "','" + data[i].title + "','" + data[i].class_id + "','" + data[i].url + "')");
+                                    }
+                                }
+
+
+                                var textScrollDiv1 = document.createElement("div");
+                                textScrollDiv1.setAttribute("class", "fa fa-caret-right fa-stack-2x ");
+                                textScrollDiv1.setAttribute("style", "padding-top:55px;color:#cccccc");
+                                //textScrollDiv1.innerHTML = ">";
+                                rightDiv.appendChild(textScrollDiv1);
+                            }
+                            else
+                            {
+
+                            }
+                        }
+                        else
+                        {
+                            ScrollDiv.setAttribute("onclick", "showBuyModal('" + tokenValue + "','" + activityId + "','http://learn.englishedge.in/b2c/shop/index.php')");
+
+                        }
+
+                    }
+                    else
+                    {
+                        var leftDiv = document.createElement("div");
+                        leftDiv.setAttribute("class", "leftDivRecoded col-lg-5 col-xs-5 col-sm-5 text-center");
+                        ScrollDiv.appendChild(leftDiv);
+
+                        var ScrollDivElement = document.createElement("img");
+                        ScrollDivElement.setAttribute("class", "divThumbElement");
+                        ScrollDivElement.setAttribute("src", "../images/thumbnil.jpg");
+                        leftDiv.appendChild(ScrollDivElement);
+
+
+
+                        var middleDiv = document.createElement("div");
+                        middleDiv.setAttribute("class", "middleDiv col-lg-7 col-xs-7 col-sm-7");
+                        ScrollDiv.appendChild(middleDiv);
+
+
+
+
+
+                        var textScrollDivtitle = document.createElement("div");
+                        textScrollDivtitle.setAttribute("class", "middletitleRecDiv");
+                        textScrollDivtitle.innerHTML = data[i].title;
+                        middleDiv.appendChild(textScrollDivtitle);
+
+                        var textScrollDivDescription = document.createElement("div");
+                        textScrollDivDescription.setAttribute("class", "middleDesRecDiv");
+                        textScrollDivDescription.innerHTML = data[i].description;
+                        middleDiv.appendChild(textScrollDivDescription);
+                        ScrollDiv.setAttribute("onclick", "showPlayModal('" + data[i].recording_url + "')");
+
+                        var textScrollDiv = document.createElement("div");
+                        textScrollDiv.setAttribute("class", "fa fa-user");
+                        textScrollDiv.setAttribute("style", "margin-right:2px;");
+                        textScrollDiv.innerHTML = data[i].teacher_name;
+                        middleDiv.appendChild(textScrollDiv);
+
+                        var textScrollDivdate = document.createElement("div");
+                        textScrollDivdate.setAttribute("class", "fa fa-clock-o");
+                        //textScrollDivdate.setAttribute("style", "margin-right:50px;");
+                        //alert(data[i].start_time);
+                        
+                        var t = data[i].start_time.split(/[- :]/);
+
+                        var myDate = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+                        //var myDate = new Date(data[i].start_time);
+
+                        textScrollDivdate.innerHTML = myDate.toLocaleTimeString();//data[i].start_time;
+                        middleDiv.appendChild(textScrollDivdate);
+
+
+
+                        var textScrollDivdateSub = document.createElement("div");
+                        textScrollDivdateSub.setAttribute("class", "fa fa-calendar");
+                        
+                        
+                        var t = data[i].start_time.split(/[- :]/);
+
+                        var myDate = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+                        //var myDate = new Date(data[i].start_time);
+
+                        textScrollDivdateSub.innerHTML = myDate.toLocaleDateString();//data[i].start_time;
+                        middleDiv.appendChild(textScrollDivdateSub);
+                    }
+
+                    if (i !== data.length - 1)
+                    {
+                        var borderDiv = document.createElement("div");
+                        borderDiv.setAttribute("class", "bordercss");
+                        containerDiv.appendChild(borderDiv);
+                    }
+
+
+                }
+
+
+            }
+
+            function status(stat, msg)
+            {
+                var statusObj = new Object();
+                statusObj.status = stat;
+                statusObj.msg = msg;
+                var JsonReq = JSON.stringify(statusObj);
+                closeProgress();
+                if (stat == 0)
+                    showAlert(msg);
+                //JSInterface.activityStatus(JsonReq);
+            }
+            function handleClassItemClick(classId)
+            {
+
+
+
+                //alert("before :"+bookingClassId);
+            }
+
+            function getConfirmMsg()
+            {
+                document.getElementById("confirmAlertId").innerHTML = confirmMsg;
+            }
+            function confirmClass()
+            {
+                //alert("after :"+bookingClassId);
+
+                // 
+            }
+
+            function CancelClass()
+            {
+                alert("work in progress..");
+            }
+            function makeBookClassjsn(classId, decree)
+            {
+                var clsJsonReq = new Object();
+                clsJsonReq.token = tokenValue;
+                clsJsonReq.decree = decree;
+                var clsObj = new Object();
+                clsObj.class_id = parseInt(classId);
+                clsJsonReq.param = clsObj;
+                var JsonReq = JSON.stringify(clsJsonReq);
+                return JsonReq;
+            }
+
+
+            function showModal(name, time, data, classId)
+            {
+                bookingClassId = classId;
+                document.getElementById("modal1").style.display = "block";
+                document.getElementById("fadeout").style.display = "block";
+                //document.getElementById("finput").value = "";
+                var text = messageObj.ACTIVITY_REG_MSG;//"You are registering for a live webinar session with our expert '" + name + "' on'" + data + "' scheduled for '" + time + "'. Click CONFIRM to book your slot or CANCEL to go back.";
+                var newArr = new Array();
+                newArr.push(name);
+                newArr.push(data);
+                newArr.push(time);
+
+
+                document.getElementById("modalDynamicText").innerHTML = formatString(text, newArr);
+            }
+
+            function closeModal()
+            {
+                //document.getElementById("resultSpan").innerHTML = document.getElementById("finput").value;
+                document.getElementById("modal1").style.display = "none";
+                document.getElementById("fadeout").style.display = "none";
+            }
+
+            function closeConfirmModal()
+            {
+                //document.getElementById("resultSpan").innerHTML = document.getElementById("finput").value;
+                document.getElementById("modal1").style.display = "none";
+                document.getElementById("fadeout").style.display = "none";
+                var reqtype = "bkclass";
+                var req = makeBookClassjsn(bookingClassId, reqtype);
+                sendtoServerRequest(req, "bookclass");
+            }
+
+            function showCancelModal(name, time, data, classId, url)
+            {
+                //alert(url);
+                bookingClassId = classId;
+                wizIqurl = url;
+                document.getElementById("joinId").href = wizIqurl;
+                document.getElementById("modal2").style.display = "block";
+                document.getElementById("fadeout").style.display = "block";
+                //document.getElementById("finput").value = "";
+                var text = messageObj.ACTIVITY_CANCEL_REG_MSG;//"Click CANCEL BOOKING to cancel your registered slot for the live webinar session with our expert '" + name + "' on'" + data + "' scheduled for '" + time + "' click BACK to go back. ";
+
+                var newArr = new Array();
+                newArr.push(name);
+                newArr.push(data);
+                newArr.push(time);
+                document.getElementById("modalDynamicText1").innerHTML = formatString(text, newArr);
+            }
+
+            function closeCancelModalonServer()
+            {
+                //document.getElementById("resultSpan").innerHTML = document.getElementById("finput").value;
+                document.getElementById("modal2").style.display = "none";
+                document.getElementById("fadeout").style.display = "none";
+                var reqtype = "cancelclass";
+                var req = makeBookClassjsn(bookingClassId, reqtype);
+
+                sendtoServerRequest(req, "bookclass");
+            }
+
+            function JoinClass()
+            {
+                //document.getElementById("resultSpan").innerHTML = document.getElementById("finput").value;
+                document.getElementById("modal2").style.display = "none";
+                document.getElementById("fadeout").style.display = "none";
+                window.open(wizIqurl, '_self', false);
+            }
+
+            function closeCancelModal()
+            {
+                //document.getElementById("resultSpan").innerHTML = document.getElementById("finput").value;
+                document.getElementById("modal2").style.display = "none";
+                document.getElementById("fadeout").style.display = "none";
+            }
+
+
+
+
+
+
+            function showBuyModal(tokenId, classId, url)
+            {
+                alert(url);
+                bookingClassId = classId;
+                var buyObj = new Object();
+                buyObj.edge_id = classId;
+                buyObj.token = tokenId;
+                var buyString = JSON.stringify(buyObj);
+                var encryptDta = rc4("p1^bil", buyString);
+                var encodeData = encodeURI(encryptDta);
+                var BuyUrl = url + "?obj=" + encodeData;
+
+                //alert(BuyUrl);
+
+                document.getElementById("buyID").href = BuyUrl;
+                document.getElementById("buyModel").style.display = "block";
+                document.getElementById("fadeout").style.display = "block";
+                //document.getElementById("finput").value = "";
+                var text = messageObj.ACTIVITY_BUY_MSG;//"Please click BUY to proceed to Payment Options or click CANCEL to go back.";
+                //formatString("text",)
+                document.getElementById("modalDynamicText2").innerHTML = text;
+            }
+
+
+
+            function buyClass()
+            {
+                //document.getElementById("resultSpan").innerHTML = document.getElementById("finput").value;
+                document.getElementById("buyModel").style.display = "none";
+                document.getElementById("fadeout").style.display = "none";
+                window.open(wizIqurl, '_self', false);
+            }
+
+            function closeBuyModal()
+            {
+                //document.getElementById("resultSpan").innerHTML = document.getElementById("finput").value;
+                document.getElementById("buyModel").style.display = "none";
+                document.getElementById("fadeout").style.display = "none";
+            }
+
+
+
+            function showCancelBookModal(name, time)
+            {
+
+
+                document.getElementById("bookedAlert").style.display = "block";
+                document.getElementById("fadeout").style.display = "block";
+                //document.getElementById("finput").value = "";
+                var text = messageObj.ACTIVITY_CANCEL_SHD_MSG;//"Please cancel booking of already scheduled session for '"+name+"' at '"+time+"' to schedule a new one.";
+                var newArr = new Array();
+                newArr.push(name);
+                newArr.push(time);
+                document.getElementById("modalDynamicText4").innerHTML = formatString(text, newArr);
+            }
+
+            function closeCancelBookModal()
+            {
+                //document.getElementById("resultSpan").innerHTML = document.getElementById("finput").value;
+                document.getElementById("bookedAlert").style.display = "none";
+                document.getElementById("fadeout").style.display = "none";
+            }
+
+
+            function showPlayModal(url)
+            {
+                window.open(url, '_self', false);
+//                     var BuyUrl = url;
+//                     document.getElementById("PlayLink").href = BuyUrl;
+//                      document.getElementById("recorderModel").style.display = "block";
+//                      document.getElementById("fadeout").style.display = "block";
+//                      //document.getElementById("finput").value = "";
+//                      var text = "Test Data1";
+//                      document.getElementById("modalDynamicText3").innerHTML = text;
+            }
+            function showAlert(text)
+            {
+                document.getElementById("alertID").style.display = "block";
+                document.getElementById("fadeout").style.display = "block";
+
+                document.getElementById("displayMSG").innerHTML = text;
+            }
+
+            function closeAlert()
+            {
+                //document.getElementById("resultSpan").innerHTML = document.getElementById("finput").value;
+                document.getElementById("alertID").style.display = "none";
+                document.getElementById("fadeout").style.display = "none";
+            }
+            function closePlayModal()
+            {
+                //document.getElementById("resultSpan").innerHTML = document.getElementById("finput").value;
+                document.getElementById("recorderModel").style.display = "none";
+                document.getElementById("fadeout").style.display = "none";
+            }
+
+
+
+            function createAlert()
+            {
+
+            }
+
+
+
+            function formatString(formatstring, arrayInput)
+            {
+                var newStr;
+                var returnStr = "";
+                var arrString = formatstring.split("%s");
+                if (arrString != null && arrString.length > 0)
+                {
+                    newStr = new Array();
+                    for (var i = 0; i < arrString.length; i++)
+                    {
+
+                        newStr.push(arrString[i]);
+                        if (i != arrString.length - 1)
+                            newStr.push(arrayInput[i]);
+                    }
+                }
+
+                if (newStr != null && newStr.length > 0)
+                {
+
+                    for (var j = 0; j < newStr.length; j++)
+                    {
+                        returnStr = returnStr + newStr[j];
+                    }
+                }
+
+                return returnStr;
+            }
+            
+            function showProgress(text)
+            {
+                document.getElementById("loadingBarId").style.display = "block";
+                document.getElementById("fadeout").style.display = "block";
+                
+                document.getElementById("loadingText").innerHTML = text;
+            }
+
+            function closeProgress()
+            {
+                //document.getElementById("resultSpan").innerHTML = document.getElementById("finput").value;
+                document.getElementById("loadingBarId").style.display = "none";
+                document.getElementById("fadeout").style.display = "none";
+            }
+
+        </script>
+
+
+
+
+
+    <body >
+        <div id = "errorDivID"  style="display: none; margin-top:40px; margin-left:15px; margin-right:15px;padding-left:20px;font-size: 18px; "></div>
+        <div id="containerDivId">
+            <section id="listView" class="HListView">
+
+            </section>
+            <!--        <div id ="bottomDiv" >
+                        <div id= "upcomingDiv" onclick="" class="col-lg-6 col-xs-6 col-sm-6 text-center Hbottomsub1Div "> UPCOMING </div>
+                        <div id= "recordingDiv" onclick="" class="col-lg-6 col-xs-6 col-sm-6 text-center Hbottomsub2Div"> RECORDING </div>
+                        
+                    </div>-->
+        </div>
+
+
+
+
+
+
+        <div id="modal1" class="modalWindow"> 
+            <div id="bookingId" class = "text-center" style="font-size:21px; padding-bottom: 5px">Booking Detail </div>
+
+            <div style="background: #f2f2f2;height: 1px;width: 100%;"></div>
+            <div id="modalDynamicText" style="font-size:16px; padding-top: 5px;padding-bottom: 5px;height:135px" class="scrollable">
+
+            </div>
+
+            <div style="background: #f2f2f2;height: 1px;width: 100%;"></div>
+            <div style="padding-top:5px;"> 
+                <a id="cancelId" onclick=closeModal() class = "col-lg-6 col-xs-6 col-sm-6 text-center dd-handle dd-hover" style = "color: black; background: white;" >
+                    CANCEL
+                </a>
+                <a id="confirmId" onclick=closeConfirmModal() class = "col-lg-6 col-xs-6 col-sm-6 text-center dd-handle dd-hover" style = "color: white; background: #5dc9e6;;" >
+                    CONFIRM
+                </a>  
+            </div>      
+        </div>
+        <div id="fadeout"></div>
+
+
+        <div id="modal2" class="modalWindow"> 
+            <div id="bookingID" class = "text-center" style="font-size:21px; padding-bottom: 5px"> Booking Detail</div>
+
+            <div style="background: #f2f2f2;height: 1px;width: 100%;"></div>
+            <div id="modalDynamicText1" style="font-size:16px; padding-top: 5px;padding-bottom: 5px;height:135px" class="scrollable">
+
+            </div>
+
+            <div style="background: #f2f2f2;height: 1px;width: 100%;"></div>
+            <div style="padding-top:5px;"> 
+                <a id="joinId" href="#" class = "col-lg-4 col-xs-4 col-sm-4 text-center dd-handle" style = "color: white; background: #5dc9e6;" >
+                    JOIN
+                </a>
+                <div id="backId" onclick=closeCancelModal() class = "col-lg-4 col-xs-4 col-sm-4 text-center dd-handle" style = "color: black; background: white; ;" >
+                    BACK
+                </div>
+                <div id="dropoutId" onclick=closeCancelModalonServer() class = "col-lg-4 col-xs-4 col-sm-4 text-center dd-handle" style = "color: white; background: #5dc9e6;" >
+                    DROPOUT
+                </div>  
+            </div>     
+        </div> 
+
+
+
+        <div id="buyModel" class="modalWindow"> 
+            <div id="buyclassId" class = "text-center" style="font-size:21px; padding-bottom: 5px"> Buy Classes</div>
+
+            <div style="background: #f2f2f2;height: 1px;width: 100%;"></div>
+            <div id="modalDynamicText2" style="font-size:16px; padding-top: 5px;padding-bottom: 5px;height:135px" class="scrollable">
+
+            </div>
+
+            <div style="background: #f2f2f2;height: 1px;width: 100%;"></div>
+            <div style="padding-top:5px;"> 
+                <a id="buyId" href="#" class = "col-lg-6 col-xs-6 col-sm-6 text-center dd-handle" style = "color: white; background: #5dc9e6;" >
+                    BUY
+                </a>
+                <div id="cancelID" onclick=closeBuyModal() class = "col-lg-6 col-xs-6 col-sm-6 text-center dd-handle" style = "color: black; background: #5dc9e6; ;" >
+                    CANCEL
+                </div>
+
+            </div>     
+        </div> 
+
+
+        <div id="recorderModel" class="modalWindow"> 
+            <div id="recordedId" class = "text-center" style="font-size:21px; padding-bottom: 5px">Recorded Video</div>
+
+            <div style="background: #f2f2f2;height: 1px;width: 100%;"></div>
+            <div id="modalDynamicText3" style="font-size:16px; padding-top: 5px;padding-bottom: 5px;height:135px" class="scrollable">
+
+            </div>
+
+            <div  style="background: #f2f2f2;height: 1px;width: 100%;"></div>
+            <div style="padding-top:5px;"> 
+                <a id="playId" href="#"  class = "col-lg-6 col-xs-6 col-sm-6 text-center dd-handle" style = "color: white; background: #5dc9e6;" >
+                    Play
+                </a>
+                <div id="cancelID1" onclick=closePlayModal() class = "col-lg-6 col-xs-6 col-sm-6 text-center dd-handle" style = "color: black; background: #5dc9e6; ;" >
+                    CANCEL
+                </div>
+
+            </div>     
+        </div> 
+
+
+
+
+        <div id="bookedAlert" class="modalWindow"> 
+            <div id="bookedAlertId" class = "text-center" style="font-size:21px; padding-bottom: 5px">Booked Alert</div>
+
+            <div style="background: #f2f2f2;height: 1px;width: 100%;"></div>
+            <div id="modalDynamicText4" style="font-size:16px; padding-top: 5px;padding-bottom: 5px;height:135px" class="scrollable">
+
+            </div>
+
+            <div style="background: #f2f2f2;height: 1px;width: 100%;"></div>
+            <div style="padding-top:5px;"> 
+
+                <div id="okId" onclick=closeBuyModal() class = "col-lg-12 col-xs-12 col-sm-12 text-center dd-handle" style = "color: black; background: #5dc9e6;" >
+                    OK
+                </div>
+
+            </div>     
+        </div> 
+
+        <div id="alertID" class="alertIDModel">
+
+            <div id="displayMSG" style="font-size:16px; padding-top: 30px;padding-bottom: 5px;height:100px" class="text-center scrollable">
+
+            </div>
+            <div class="col-lg-12 col-xs-12">
+                <div class="col-lg-4 col-xs-4 col-sm-4">
+
+                </div>
+
+                <div class="col-lg-4 col-xs-4 col-sm-4">
+                    <div id="okAlertId" onclick=closeAlert() class = "text-center dd-handle" style = "color: black; background: #5dc9e6;">
+
+                    </div> 
+                </div>
+
+                <div class="col-lg-4 col-xs-4 col-sm-4">
+
+                </div>
+
+
+            </div>
+        </div>
+       <div id="loadingBarId" class="loadingModel">
+            <div class="col-lg-12 col-xs-12">
+                <div class="col-lg-4 col-xs-4 col-sm-4">
+                    <div class="text-center" style="padding-top: 30px;">
+                      <img src="../images/loading.gif" class ="divElement">
+                   </div>
+                   </div>
+                <div class="col-lg-8 col-xs-8 col-sm-8">
+                   <div id="loadingText" style=" color: black;font-size:16px; padding-top: 30px;padding-bottom: 5px;height:100px" class="scrollable"></div>
+                </div>
+            </div>
+        </div>  
+
+
+    </body>
+</head>
+</html>
+
+

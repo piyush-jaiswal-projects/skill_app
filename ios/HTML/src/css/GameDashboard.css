@@ -1,0 +1,461 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 12, 2015, 9:38:25 PM
+    Author     : liqmac
+*/
+
+
+html {
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+    background-color:  transparent;
+}
+body {
+    margin: 0px;
+    max-height: 100%;
+    max-width: 100%;
+    background-color:  transparent;
+}
+
+
+/*.scroll 
+{
+width:600px;
+height:180px;
+margin:100px auto;
+background:#A3CBE0;
+border:2px solid #000;
+overflow:auto;
+white-space:nowrap;
+box-shadow:0 0 10px #000;
+}*/
+.container{
+    background-color:  transparent;  
+}
+
+
+@media(min-width:300px)
+{
+    
+    .top
+{
+    overflow:hidden;
+    white-space: nowrap; 
+    height: 70%;
+    width: 100%;
+}
+
+
+.horizontalDiv{
+        
+    
+    
+        display: inline-block; 
+        background-color: whitesmoke;
+        border-radius:10px;
+        //margin-left: 7%;
+        //margin-top:2%;
+        width:90%;
+        height:90%;
+        box-shadow: 0 0 0.25em #888888;
+    }
+    .horizontalDiv-right{
+/*        -webkit-animation-name: example-right;  Chrome, Safari, Opera 
+        -webkit-animation-duration: 1s;  Chrome, Safari, Opera 
+        -webkit-transition-property:-webkit-transform, left, top; 
+        animation-name: example-right;
+         animation-duration: 1s;
+         transition-property:transform, left, top;
+           transition-timing-function: ease;*/
+    
+        display: inline-block; 
+        background-color: whitesmoke;
+        border-radius:10px;
+        margin-left: 7%;
+        //margin-left: 5%; /* positions the div half way horizontally */
+        margin-top:2%;
+
+
+        width:96%;
+        height:90%;
+        box-shadow: 0 0 0.25em #888888;
+    }
+    .horizontalDiv-left{
+/*         -webkit-transition-property:-webkit-transform, left, top; 
+       -webkit-animation-name: example-right;
+        -webkit-animation-name: example-left;  Chrome, Safari, Opera 
+    -webkit-animation-duration: 1s;  Chrome, Safari, Opera 
+    animation-name: example-left;
+    animation-duration: 1s;
+    animation-direction:alternate;
+      transition-timing-function: ease;
+    
+    transition-property:transform, left, top;*/
+        display: inline-block; 
+        background-color: whitesmoke;
+        border-radius:10px;
+        margin-left: 2%;
+        //margin-left: 5%; /* positions the div half way horizontally */
+        margin-top:2%;
+
+        width:96%;
+        height:90%;
+        box-shadow: 0 0 0.25em #888888;
+    }
+}
+
+@media(min-width:450px)
+{
+    .top
+{
+
+    overflow:hidden;
+    //overflow-x: auto;
+    white-space: nowrap;
+    //display: block;
+    //background-color:  #edebe1;   
+    height: 70%;
+    //margin-left: 10%;
+
+    //text-align: center;
+
+
+    //overflow: auto;
+    width: 100%;
+}
+
+.horizontalDiv{
+       
+        display: inline-block; 
+        background-color: whitesmoke;
+        border-radius:10px;
+/*        margin-left: 2%;
+        //margin-left: 5%;  positions the div half way horizontally 
+        margin-top:2%;*/
+
+        width:96%;
+        height:90%;
+        box-shadow: 0 0 0.25em #888888;
+    }
+    .horizontalDiv-right{
+/*        -webkit-transition-property:-webkit-transform, left, top; 
+        -webkit-animation-name: example-right;  Chrome, Safari, Opera 
+    -webkit-animation-duration: 1s;  Chrome, Safari, Opera 
+    animation-name: example-right;
+    animation-duration: 1s;
+     transition-property:transform, left, top;
+       transition-timing-function: ease;*/
+        display: inline-block; 
+        background-color: whitesmoke;
+        border-radius:10px;
+        margin-left: 2%;
+        //margin-left: 5%; /* positions the div half way horizontally */
+        margin-top:2%;
+
+        width:96%;
+        height:90%;
+        box-shadow: 0 0 0.25em #888888;
+    }
+    .horizontalDiv-left{
+       
+/*        -webkit-animation-name: example-left;  Chrome, Safari, Opera 
+    -webkit-animation-duration: 1s;  Chrome, Safari, Opera 
+    animation-name: example-left;
+    animation-duration: 1s;
+      transition-timing-function: ease;*/
+        display: inline-block; 
+        background-color: whitesmoke;
+        border-radius:10px;
+        margin-left: 2%;
+        //margin-left: 5%; /* positions the div half way horizontally */
+        margin-top:2%;
+
+        width:96%;
+        height:90%;
+        box-shadow: 0 0 0.25em #888888;
+    }
+}
+
+/* Chrome, Safari, Opera 
+@-webkit-keyframes example-right {
+     
+    0%   {background-color:white; margin-left:0%; margin-top:0px;}
+    100%  {background-color:white; margin-left:95%; margin-top:0px;}
+    50%  {background-color:blue; margin-left:200px; margin-top:200px;}
+    75%  {background-color:green; margin-left:0px; margin-top:200px;}
+    100% {background-color:red; margin-left:0px; margin-top:0px;}
+}
+
+ Standard syntax 
+@keyframes example {
+    0%   {background-color:red; margin-left:0px; margin-top:0px;}
+    25%  {background-color:yellow; margin-left:200px; margin-top:0px;}
+    50%  {background-color:blue; margin-left:200px; margin-top:200px;}
+    75%  {background-color:green; margin-left:0px; margin-top:200px;}
+    100% {background-color:red; margin-left:0px; margin-top:0px;}
+}
+
+
+
+@-webkit-keyframes example-left {
+    0%   {background-color:white; margin-left:0%; margin-top:0px;}
+    1%   {background-color:white; margin-left:0%; margin-top:0px;}
+    50%  {background-color:white; margin-left:0%; margin-top:0px;}
+    100%  {background-color:white; margin-left:-95%; margin-top:0px}
+    75%  {background-color:green; margin-left:0px; margin-top:200px;}
+    100% {background-color:red; margin-left:0px; margin-top:0px;}
+}
+
+ Standard syntax 
+@keyframes example-left {
+    0%   {background-color:red; margin-left:0px; margin-top:0px;}
+    25%  {background-color:yellow; margin-left:200px; margin-top:0px;}
+    50%  {background-color:blue; margin-left:200px; margin-top:200px;}
+    75%  {background-color:green; margin-left:0px; margin-top:200px;}
+    100% {background-color:red; margin-left:0px; margin-top:0px;}
+}*/
+.modalWindow {
+
+    height: 100%;
+    position: relative;
+    
+}
+
+
+.triangle-topright 
+{ 
+   // border-top: 100px solid red; border-left: 100px solid transparent;
+    width: 0; height: 0; border-left: 70px solid transparent; border-right: 70px solid transparent; border-bottom: 70px solid #ee7481; position: absolute;z-index: 10000;right:-55px;color:white;margin-top: -18px;
+    -ms-transform: rotate(45deg); /* IE 9 */
+    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+    transform: rotate(45deg); 
+  
+}
+
+.textTransform
+{
+   left: -20px;
+   position: relative;
+   top:50px;
+   
+}
+
+
+.iconColor{
+    color: #edebe1;//#959595;
+}
+
+
+
+.name
+{
+    font-size: 14px;
+    color:#2d2d2d; 
+
+}
+
+
+@media(min-width:300px)
+{
+    .starFontSize
+    {
+        margin-top: 10px; 
+        //padding: 0 auto;
+        font-size: 25px;
+        color:#ebebeb;
+    }
+    .CircleDefault {
+    width: 50px;
+    height: 50px;
+    background: #ee7481;//#ff8d15;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 35px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding-top: 13px;
+}
+    
+}
+
+@media(min-width:400px)
+{
+    .starFontSize
+    {
+        margin-top: 15px;
+        //padding: 0 auto;
+        font-size: 35px;
+        color:#ebebeb;
+    }
+    .CircleDefault {
+    width: 100px;
+    height: 100px;
+    background: #ee7481;//#ff8d15;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 48px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding-top: 23px;
+    font-size: 50px;
+    }
+}
+
+@media(min-width:500px)
+{
+    .starFontSize
+    {
+        margin-top: 20px;  
+        //padding: 0 auto;
+        font-size: 45px; 
+        color:#ebebeb;
+    }
+}
+
+
+
+
+@media(min-width:300px) 
+{
+
+    .scnText
+    {
+        height: 50px;
+        font-size: 18px;
+        margin-top: 8%;
+        overflow-y: auto;
+        white-space: pre-wrap;
+    }
+
+    .scndesc
+    {
+        height: 60px; 
+        font-size: 14px;
+        margin-top: 4%;
+        //margin-bottom: 50px;
+        overflow-y: auto;
+        white-space: pre-wrap;
+        color: #919191;
+    }
+    .refreshAndStart{
+        color: white;
+        font-size: 18px;
+        margin-top: 13%;
+        background-color: #5dc9e6;
+        -moz-border-radius: 10px / 10px;
+        border-radius: 10px / 10px;
+        //width: 130px;
+        z-index: 100;
+    }
+    .bottom
+    {
+        background-color:  #edebe1;
+        margin-top: 15px;   
+    }
+    .badge_cus {
+        position: relative;
+        top: -35px;
+        padding: 3px 8px;
+        left: 70%;
+        background-color: #5fc7c8; 
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        font-size: 9px;
+  
+    }
+}
+
+@media(min-width:450px)
+{
+    .scnText
+    {
+        height: 50px;
+        font-size: 18px;
+        margin-top: 10%;
+        overflow-y: auto;
+        white-space: pre-wrap;
+    }
+
+    .scndesc
+    {
+        height: 60px; 
+        font-size: 14px;
+        margin-top: 8%;
+        margin-bottom: 10%;
+        color: #919191;
+    }
+    .refreshAndStart{
+        color: white; 
+        font-size: 18px;
+        margin-top: 1%;
+        background-color: #5dc9e6;
+        -moz-border-radius: 10px / 10px;
+        border-radius: 10px / 10px;
+        width: 30%;
+        padding-top:8px;
+        margin-left:10%;
+        height:40px;
+
+    }
+    .bottom
+    {
+        background-color:  #edebe1;
+        margin-top: 15px;   
+    }
+    .badge_cus {
+        position: relative;
+        top: -40px;
+        padding: 5px 9px;
+        left:50%;
+        background-color: #5fc7c8; 
+        -moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+  
+    }
+}
+
+@media(min-width:300px)and (max-height:350px)
+{
+
+    .scnText
+    {
+        height: 25px;
+        font-size: 18px;
+        margin-top: 5%;
+        overflow-y: auto;
+        white-space: pre-wrap;
+    }
+
+    .scndesc
+    {
+        height: 60px; 
+        font-size: 14px;
+        margin-top: 4%;
+        //margin-bottom: 50px;
+        overflow-y: auto;
+        white-space: pre-wrap;
+        color: #919191;
+    }
+    .refreshAndStart{
+        color: white;
+        font-size: 18px;
+        margin-top: 10%;
+        background-color: #5dc9e6;
+        -moz-border-radius: 10px / 10px;
+        border-radius: 10px / 10px;
+        //width: 130px;
+        z-index: 100;
+    }
+    .bottom
+    {
+        background-color:  #edebe1;
+        margin-top: 0px;   
+    }
+}

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" class="app">
+    <head >
+        <script type="text/javascript">
+            function getParam(name)
+            {
+                name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+                var regexS = "[\\?&]" + name + "=([^&#]*)";
+                var regex = new RegExp(regexS);
+
+                var results = regex.exec(window.location.href);
+                if (results === null)
+                    return "";
+                else
+                    return results[1];
+
+
+            }
+        </script>
+        <script src="../js/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="../js/bootstrap.js"></script>
+        <!-- App -->
+        <script src="../js/app.js"></script>
+        <script src="../js/app.plugin.js"></script>
+        <script src="../js/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="../js/sortable/jquery.sortable.js"></script>
+        <script src="../js/nestable/jquery.nestable.js"></script>
+        <script src="../js/nestable/demo.js"></script>
+        <meta charset="utf-8" />
+        <title>InterView Prep</title>
+        <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+        <meta name="viewport"  content="width=device-width, nitial-scale=1, maximum-scale=1" />
+        <link rel="stylesheet" href="../css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="../css/animate.css" type="text/css" />
+        <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css" />
+        <link rel="stylesheet" href="../css/font.css" type="text/css" />
+        <link rel="stylesheet" href="../js/nestable/nestable.css" type="text/css" />
+        <link rel="stylesheet" href="../css/app.css" type="text/css" />
+        <link rel="stylesheet" href="../css/GameOverview.css" type="text/css" />
+        <!--[if lt IE 9]>
+         <script src="js/ie/html5shiv.js"></script>
+         <script src="js/ie/respond.min.js"></script>
+         <script src="js/ie/excanvas.js"></script>
+         <![endif]-->
+        <script language="javascript">
+//    ;(function($, window, document, undefined)
+//        {
+            function initialise()
+            {
+//               var jsonval = JSInterface.initialise();
+//               var raw = JSON.parse(jsonval);
+//               var msg = raw.json;
+//                  var uri_dec = decodeURIComponent(msg);
+//                  msg = uri_dec;
+                msg = "{}";
+                var regex = new RegExp('%22', 'g');
+                var regex1 = new RegExp('%20', 'g');
+                msg = msg.replace(regex, '"');
+                msg = msg.replace(regex1, ' ');
+                var Data = JSON.parse(msg);
+                craeteMenuUI(Data);
+            }
+
+
+//        initialise();
+//    })(window.jQuery || window.Zepto, window, document);
+
+
+
+            function craeteMenuUI(data)
+            {
+                if (data !== null)
+                {
+
+
+
+                    var Containerouter = document.createElement("div");
+                    Containerouter.setAttribute("style", "height:" + $(document).height() + "px;");
+                    document.getElementsByTagName("body")[0].appendChild(Containerouter);
+
+                    var Container = document.createElement("div");
+                    Container.setAttribute("class", " text-center headerSpace");
+                    Containerouter.appendChild(Container);
+
+                    var click = document.createElement("a");
+                    click.setAttribute("onclick", "clickGame('hangman/plank.html')");
+                    Container.appendChild(click);
+
+
+                    var Containerimg = document.createElement("img");
+                    Containerimg.setAttribute("src", "../images/hangman.png");
+                    Containerimg.setAttribute("class", "gameIcon");
+                    click.appendChild(Containerimg);
+
+
+
+                }
+            }
+
+
+
+
+            function clickGame(path)
+            {
+                var obj = new Object();
+                obj.uid = -1;
+                obj.path = path;
+                var jsonString = JSON.stringify(obj);
+                //alert(path);
+                //  dbgAlert("handleLearningClick called final"+jsonString);
+                JSInterface.setGamePath(jsonString);
+
+
+            }
+
+            function clickCourse()
+            {
+                //alert("Inside clickCourse()")  ; 
+                var obj = new Object();
+                obj.uid = -1;
+                obj.type = 12;
+                var jsonString = JSON.stringify(obj);
+                //  dbgAlert("handleLearningClick called final"+jsonString);
+                JSInterface.setMenuResp(jsonString);
+
+
+            }
+
+            function clickProgramOverview()
+            {
+
+                var obj = new Object();
+                obj.uid = -1;
+                obj.type = 13;
+                var jsonString = JSON.stringify(obj);
+                //  dbgAlert("handleLearningClick called final"+jsonString);
+                JSInterface.setMenuResp(jsonString);
+
+
+            }
+            function handleLearningItemClick(varId, varType)
+            {
+                alert("Testing");
+            }
+
+            function handleLearningItemClick(data)
+            {
+                alert('hello');
+            }
+
+
+        </script>
+    </head>
+
+    <body style="overflow: hidden" onload = "initialise()">
+
+
+        <span id=dbgsp></span>
+
+    </body>
+</html>
+
+
+
+
+
+
+
+

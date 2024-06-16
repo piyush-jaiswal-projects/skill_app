@@ -1,0 +1,328 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 14, 2015, 10:12:26 PM
+    Author     : liqmac
+*/
+
+body 
+{
+   margin: 0px;
+   max-height: 100%;
+   width: 100%;
+   background-color:   #edebe1;
+}
+html 
+{
+   margin: 0px;
+   height: 100%;
+   width: 100%;
+    background-color:   #edebe1; 
+}
+
+
+
+@media(min-width:300px)
+{
+    
+.cupAreabackground{
+     height:305px;  
+     background-color: white;
+     width: 100%;
+    }   
+.cupArea
+{
+    width: 90%;
+    height: 100%;
+    margin-left: 5%;
+    
+    //margin-bottom :1%;
+    //background-image: url('../McqDnd/liqvid/coins.gif');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    //margin-top: 3%;
+    background-color: white;
+    
+    
+}
+}
+
+@media(min-width:450px)
+{
+    
+.cupAreabackground{
+     height: 325px;
+     background-color: white;
+      width: 100%;
+    }     
+.cupArea
+{
+    width: 80%;
+    margin-left: 10%;
+    height: 100%;
+    //margin-bottom :5%;
+    //background-image: url('../McqDnd/liqvid/coins.gif');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    //margin-top: 3%;
+    
+}
+}
+
+@media(min-width:600px)
+{
+    
+ .cupAreabackground{
+      height: 600px;
+      background-color: white;
+      width: 100%;
+    }  
+.cupArea
+{
+    width: 70%;
+    margin-left: 15%;
+    height: 100%;
+    //margin-bottom :2%;
+    //background-image: url('../McqDnd/liqvid/coins.gif');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    //margin-top: 3%;
+    
+   
+}
+}
+ 
+
+
+.circleColor{
+    color:#d84100;
+}
+
+@media(min-width:300px)
+{
+    
+    
+    .congrats{
+        margin-top:1%;
+    }   
+.roundedCorner{
+    margin:12px 0px 0px 15px;
+    border-radius: 25px;
+    border: 2px solid #f7d0d4;
+    //padding-right: 10px; 
+    width: 250px;
+    height: 45px; 
+    background:#fbf0f1;
+    font-size: 9px;
+    font-weight: bold;
+    
+}
+.blueroundedCorner{
+    margin:12px 0px 0px 15px;
+    border-radius: 25px;
+    border: 2px solid #2ab4e5;
+    padding-top: 5px; 
+    //width: 250px;
+    height: 45px; 
+    background:#5dc9e6;
+    font-size: 16px;
+   font-weight: bold;
+   color:white;
+    
+    
+}
+
+
+.roundedCorner em {
+  font-size: 12px;
+}
+}
+
+@media(min-width:400px)
+{
+    .congrats{
+        margin-top:2%;
+    } 
+.roundedCorner{
+    margin: 12px 0px 0px 15px;
+    border-radius: 25px;
+    border: 2px solid #f7d0d4;
+    //padding-right: 10px; 
+    
+    width: 170px;
+    height: 45px; 
+    background:#fbf0f1;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.blueroundedCorner{
+    margin: 30px 0px 0px 15px;
+    border-radius: 25px;
+    border: 2px solid  #2ab4e5;
+    padding-top: 5px;  
+    
+    //width: 170px;
+    height: 45px; 
+    background:#5dc9e6;
+    font-size: 20px;
+   font-weight: bold;
+   color:white;
+}
+
+.roundedCorner em {
+  font-size: 14px;
+}
+}
+
+@media(min-width:600px)
+{
+    .congrats{
+        margin-top:4%;
+    } 
+.roundedCorner{
+    margin:12px 0px 0px 15px;
+    border-radius: 35px;
+     
+    border: 2px solid #f7d0d4; 
+     
+    //padding-right: 10px;  
+     width: 500px;
+     height: 45px; 
+     
+    background:#fbf0f1; 
+     
+    font-size: 17px; 
+     
+    font-weight: bold;  
+}
+
+.blueroundedCorner{
+    margin:30px 0px 0px 15px;
+    border-radius: 35px;
+     
+    border: 2px solid #2ab4e5; 
+     
+    padding-top: 5px;   
+     //width: 500px;
+     height: 45px; 
+     
+    background:#5dc9e6; 
+     
+    font-size: 20px;
+   font-weight: bold;
+   color:white;
+}
+
+.roundedCorner em {
+  font-size: 19px;
+}
+}
+
+
+@media(min-width:300px)
+{
+.starArea
+{
+  margin-top: 30px;
+  padding: 0 auto;
+}
+
+.courseArea
+{
+   margin-top: 35px;   
+}
+
+.name{
+    //margin-top: 35px; 
+   font-size: 16px;
+   font-weight: bold;
+   
+   background-color:  #fbf0f1;
+   color: #d84100;
+   //border: 2px solid #d84100;
+   border-top:2px solid #f7d0d4; border-bottom: 2px solid #f7d0d4;
+   padding:2% 0 2% 0;
+  
+}
+
+}
+
+
+@media(min-width:450px)
+{
+.starArea 
+{
+  margin-top: 70px;
+  padding: 0 auto;
+}
+
+.courseArea
+{
+   margin-top: 45px;   
+}
+
+.name{
+    //margin-top: 45px; 
+   font-size: 20px;
+   font-weight: bold;
+   
+   background-color:  #fbf0f1;
+   color: #d84100;
+   //border: 2px solid #d84100;
+   border-top:2px solid #f7d0d4; border-bottom: 2px solid #f7d0d4;
+   padding:2% 0 2% 0;
+  
+}
+
+}
+
+
+@media(min-width:600px)
+{
+.starArea
+{
+  margin-top: 80px;
+  padding: 0 auto;
+}
+
+.courseArea
+{
+   margin-top: 55px;   
+}
+
+.name{
+  // margin-top: 55px;  
+   font-size: 20px;
+   font-weight: bold;
+   
+   background-color:  #fbf0f1;
+   color: #d84100;
+   //border: 2px solid #d84100;
+   border-top:2px solid #f7d0d4; border-bottom: 2px solid #f7d0d4;
+   padding:2% 0 2% 0;
+  
+}
+
+}
+
+fa-customStack {
+  position: relative;
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  line-height: 1.2em;
+  vertical-align: middle;
+ 
+}
+
+
+.customStarbolt
+{
+    padding-top:10px;
+}
+
+

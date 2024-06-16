@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no,maximum-scale=1.0">
+    <script src="../js/Practice/concept.js"></script>
+	<script src="./liqvid/jquery.min.js"></script>
+    <script src="./liqvid/xml2json.js"></script>
+    <script src="./liqvid/liqvid_native.js"></script>
+    <script src="./liqvid/liqvid_common.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="liqvid_ccvid.css">
+    <script>
+        function tt(e,d) {
+            var obj = new Object();
+            obj.event = e;
+            obj.eventData = d;
+            LiqCommon.triggerEvent(obj);
+        }
+    </script>
+</head>
+<body>
+	<div id="titleId" class="liqvid_cc_video" style="width :100%; height: 100%"
+		data-xml="./unzips/course.au/module1/scenario1/concept1.xml" 
+		data-container="viddiv" data-xscript="xscriptdiv" data-title=""
+        > 
+          <div id="viddiv" ></div></div>
+          <div id="xscriptdiv"></div>
+    <script src="./top.liqvid_ccvid.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 3, 2014, 2:16:05 PM
+    Author     : liqmac
+*/
+
+.userScore {
+    background : #f2f2f2;
+    //margin-left: 150px;
+    padding-top: 10px;
+}
+
+.badgeImg
+{
+  height: 90px;
+  width :90px;    
+}
+
+
+.name
+{
+  background : red;  
+}
+.partName{
+   //background : #f2f2f2;  
+}

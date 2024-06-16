@@ -1,0 +1,258 @@
+/* 
+  language.strings
+  InterviewPrep
+
+  Created by Amit Gupta on 19/11/14.
+  Copyright (c) 2014 Liqvid. All rights reserved.
+*/
+"SP_STOP_INS"= "Please press stop button first.";
+"START"      = "Start";
+"STOP"       = "Stop";
+"START_QUIZ" = "Start Quiz";
+"HM_LOGIN"   = "Sign In";
+"HM_SIGNUP"      ="Sign Up";
+"RP_REGISTRATION"          ="Registration";
+"RP_TEXT"   ="Fill in the information to continue.";
+"RP_FIRSTNAME"             ="First Name";
+"RP_LASTNAME"              ="Last Name";
+"RP_EMAILID" =     "Email Id";
+"RP_PASSWORD"              ="Password";
+"RP_CONFIRM_PASSWORD"      ="Confirm password";
+"RP_MOBILENO"              ="Mobile No (Optional)";
+"RP_IAGREETEXT"            ="I agree to the Terms of Service";
+"RP_FNAME_MSG"                ="First Name can not be blank.";
+"RP_LNAME_MSG"                ="Last Name can not be blank.";
+"RP_ENAME_MSG"                ="Email ID can not be blank.";
+"RP_VALIDEMAIL_MSG"         ="Please enter a valid Email ID.";
+"RP_PNAME_MSG"                ="Password can not be blank.";
+"RP_VALIDTC_MSG" ="Please select the Terms of Service.";
+"RP_MNAME_MSG"                ="Mobile Number should have a minimum of 10 digits.";
+"RP_SIGNUP" ="Sign Up";
+"RP_MEPRO_SIGNUP" ="Create Account";
+"TC_TERMCONDITION"            ="Terms of Service";
+"TC_SKIP"                    ="DECLINE";
+"TC_IAGREE"                 ="I AGREE";
+"LP_UNAME_PLACEHOLDER"        ="Email ID/Username/Mobile";
+"LP_UNAME_MEPRO_PLACEHOLDER"        ="Email";
+"LP_PWD"                    ="Password";
+"LP_LOSTPWD"                ="Forgot Password?";
+"LP_LOGIN"                    ="Sign In";
+"LP_MEPRO_LOGIN"                    ="Login";
+"LP_UNAME_MSG"                ="Please enter Email ID/Username.";
+"LP_PWD_MSG"                ="Please enter Password.";
+"LP_INVALID_PWD"            ="Invalid Username or Password";
+"CLP_TITLE" ="My Courses";
+"CLP_COURSES"="COURSES";
+"CLP_STATUS"="STATUS";
+"MENU_MCP"="My Content Pack  ";
+"MENU_ACP"="Add Content Pack  ";
+"MENU_ABOUNTUS"="About Us  ";
+"MENU_FAQ"="FAQs  ";
+"MENU_AC"="My Account  ";
+
+"MENU_FEEDBACK"="Support  ";
+"MENU_LOGOUT"="Logout  ";
+"MENU_MCP_TEXT"="Select a Content Pack.";
+"MENU_AUTH_MSG"="You are not authorized to access content pack on this device.";
+"MENU_DEACTIVTAED_MSG"="Content Pack deactivated. Please contact administrator.";
+"MENU_EXPIRE_MSG"="Content Pack is expired.";
+"MENU_LIMIT_MSG"="Device limit exceeded for this Content Pack.";
+"SHARETITLE" ="Share with friends";
+"H_PROFILE"                    ="My Performance";
+"H_CHAPTERS"                    ="Chapters";
+"H_MEPRO_CHAPTERS"              ="List";
+"DOWNLOAD_MSG"              ="Do you want to download?";
+"DOWNLOAD_LATER"            ="Maybe later";
+"DOWNLOAD_NOW"              ="Yes";
+"DLOAD_CHAP_MSG"            ="Downloading. Please wait…";
+"DOWNLOAD_CNL_MSG"          ="Are you sure you want to cancel downloading of chapter?";
+"CHAP_DEL_CONT_TEXT" ="Select a chapter to delete the content.";
+"CHAP_DEL_TITLE" ="Delete Content";
+"CHAP_DEL_NO_TEXT"="Currently there are no chapters \n to be deleted.";
+"CHAP_DEL_CON_MSG"="Do you want to delete content of this chapter?";
+"MCQ_CORRECTANSS"="Correct Answers";
+"ASSES_DETAIL_MSG" ="You will receive a detailed report at your registered email id.";
+"VV_FULL_TRANS"                ="Show Complete Transcript";
+"VV_TRANS"                    ="Transcript";
+"VV_HIDE_TRANS"                ="Hide Transcript";
+"INSTRUCTION_MSG_FR_VR"        ="Watch the video and then record your own using the given prompts.";
+"INSTRUCTION_STEP"            ="Steps";
+"INSTRUCTION_WATCH"            ="Watch";
+"INSTRUCTION_ENACT"            ="Record";
+"INSTRUCTION_REVIEW"            ="Review";
+"POP_MSG_FR_CLOSE_VIDEO"        ="Are you sure you want to exit?";
+"POP_MSG_FR_CLOSE_VIDEO_F"      = "Are you sure you want to exit without recording?";
+"SETTING"    ="Setting";
+"SETTING_MSG" ="Select recording mode";
+"SETTINGVIDEO"              ="Video";
+"SETTINGAUDIO"              ="Audio";
+"PRACTICE_YOUR_TURN"            ="Your turn";
+"MCQ_INS"="Instructions";
+"MCQ_RIGHT_ANS_HAI"         ="Correct answer is: %@";
+"MCQ_RIGHT_ANS_HAI_S"         ="Correct answers are: %@";
+"MCQ_RESULT"="RESULT";
+"MCQ_RPLAYT"="Try Again!";
+"MCQ_SUBMITSCORE" ="Submit Score";
+"MCQ_WELLDONE"="Well done!";
+"VOCAB_MSG"  ="Let us now practice pronunciation of specific words.";
+"VOCAB_EXPERT"                ="1.Expert";
+"VOCAB_RECORD"               ="2.Record";
+"VOCAB_REVIEW"               ="3.Listen";
+"VOCAB_COMPARE"                ="4.Compare";
+"VOCAB_MEANING"                ="Meaning";
+"VOCAB_USAGE"                ="Usage";
+"VOCAB_PRONOUNCIATION"                    ="Pronunciation";
+"VOCAB_ETYMOLOGIES"                    ="Etymologies";
+"GAME_INS" ="  Tap on a component to launch.";
+"CURRENT_CHAP"            ="Current Chapter";
+"IR" ="Coins";
+"BADGE" ="Badge";
+"COURSECOM" ="Time Spent";
+"DB_PRO_COMP"                ="Progress";
+"DB_YOUR"                    ="Time (min.)/Chapter";
+"CHOOSE_PHOTO"  ="Choose a Profile Picture.";
+"CHOOSE_GALLERY"  ="From Gallery";
+"CHOOSE_CAMERA"  ="Click Picture";
+"NW_EMSG"                    ="Please check your network connection.";
+"CONTENT_UPDATE"        ="Update";
+"UPDATE_MSG"              ="Do you want to update ?";
+"UPDATE_NOW"              ="Yes";
+"UPDATE_LATER"            ="Maybe later";
+"PLEASE_WAIT"                ="Please wait.";
+"BACK"                        ="Back";
+"SEND"                        ="Send";
+"YES"                        ="Yes";
+"NO"                        ="No";
+"NEXT"                        ="Next";
+"SKIP"                    ="Skip";
+"CHAP_START"  ="Start";
+"CANCEL"                    ="Cancel";
+"SUBMIT"                     ="Submit";
+"OK"                        ="OK";
+"BUY"                        ="Buy";
+"DOWNLOAD"   ="Download";
+"MCP_LOGOUT_TEXT"           ="Do you want to synchronise the progress data before logging out?\n\nNote: Your device must be connected to the internet to synchronise data.";
+"MCP_LOGOUT_WLOGOUT" ="Synchronise now and log out";
+"MCP_LOGOUT_WOLOGOUT" ="Log out without synchronisation";
+"WARNING"="Warning";
+"ERROR"="Error";
+"ALRDY_ADDED_CONTENT"="Content Pack already added.";
+"VALID_CONTENT_PACK"="Please enter valid Content pack.";
+"COURSE_FILE_NA" ="Please check your Course Code.";
+"ENTER_CONTENT_PACK"="Please enter Content Pack.";
+"CURRENT_CHAP_NA" ="Current chapter not available.";
+"VOCAB_PART_SPEECH"            ="Parts of speech";
+"CONTINUE"="Continue";
+"MCQ_CORRECTANS"="Correct Answer";
+"PURCHASE_MSG"="To purchase all the course visit the webiste.";
+"RP_SUCCESSREGISTERED_MSG"    ="you are successfully registered.";
+"RP_SUCCESSFORGOTPASSWORD_MSG" ="Your password is sent to your Email ID.";
+"LOCKED"="Locked";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"CONFIRM"					="Confirm";
+"JOIN" 						="Join";
+"PLAY" 						="Play";
+"DROPOUT"					="Dropout";
+"BOOKING_DETAIL"            ="Booking Detail";
+"BOOKED_ALERT" 			    ="Booked Alert";
+"ACTIVITY_BUY_MSG"			="Please click BUY to proceed to Payment Options or click CANCEL to go back";
+"ACTIVITY_CANCEL_BOOKING"	="Cancel Booking";
+"ACTIVITY_CANCEL_REG_MSG"    ="Click CANCEL BOOKING to cancel your registered slot for the live webinar with our expert %s on %s scheduled for %s. Click back to go back";
+"ACTIVITY_CANCEL_SHD_MSG"    ="Please cancel booking of already scheduled session for %s at %s to schedule a new one.";
+"ACTIVITY_ERROR_MSG"         ="Server not responding";
+"ACTIVITY_FETCH_MSG"         ="Fetching data from server. Please wait.";
+"ACTIVITY_REG_MSG"           ="Your are registering for a live webinar session with our expert %s on %s scheduled for %s. Click CONFIRM to book your slot or Cancel to go back";
+"ACTIVITY_NO_AVAIL_ROOM"	="No room available.";
+"ACTIVITY_REC_VIDEOS" 		="Recorded Videos";
+"ACTIVITY_LIVE_WEBINAR" 		="Live Webinar";
+"ACTIVITY_NOT_FOUND_CLASSLIST"  ="Class list not found.";
+"ACTIVITY_NOT_FOUND_CLASS"      ="No class found.";
+"ACTIVITY_NOT_FOUND_CLASS_EMSG" ="The ACTIVITY sessions are Instructor led Virtual classroom based or contact class based sessions that focus on learner activities like role plays, mock interviews, group discussions, query resolution etc. For further details, please drop a mail to the email Id : <i>englishedge@liqvid.com</i>";
+
+"ACTIVITY_RECORDED"        ="Recording";
+"ACTIVITY_UPCOMING"      ="Upcoming";
+"ACTIVITY_ENROLL_NOW"    ="Enroll Now" ;
+"ACTIVITY_ENROLL_LATER"    ="Enroll Later" ;
+"ACTIVITY_ENROLL_MSG"    ="Do you want to enroll webinar?" ;
+
+"RP_BEC_IAGREETEXT"            ="I agree with the Cambridge Assessment English <em>Privacy Policy</em>";
+"LP_UNAME_TEXT"				="";
+"LP_DIFF_USR_MSG"			="This is a personalized app and hence each installation can be used by a single user only. To use this app on this device with your user name, first uninstall and then re-install";
+
+
+"MCQ_RIGHT_ANS"             ="";
+
+"MCQ_WRONG_ANS"             ="";
+"COMPLETE"   ="Complete";
+"SHAREFACEBOOK"             ="Facebook";
+"SHAREWHATSAPP"             ="WhatsApp";
+"SHARETWITTER"              ="Twitter";
+"SHAREGOOGLEPLUS"           ="Google Plus";
+
+"COMPLETE"      ="Completed";
+
+
+"LP_UNIQUECODE" ="Licence key";
+"RP_ENTERUNIQUECODE"="Please enter Licence key.";
+
+
+
+
+"SHAREGMAIL" ="Mail";
+"YOUGOT"     ="You got %s points";
+"MDB_REFRESH" ="Refresh";
+"CONGRATS"      ="Congratulations !";
+"VOCAB_GRAPH"                ="Audio Graph";
+"LOCK_MODULE_EMSG"            ="This Section is as yet locked for you. Please complete the previous Section(s) first.";
+"H_HOME"                        ="Home";
+"INSTRUCTION_REVIEW_MSG"        ="Please complete the enact scenario";
+"DB_AVG"                        ="AVG IR";
+
+"BEC_CATEGORY" = "Category";
+
+"LP_BACK" ="Back";
+"LP_MEPRO_BACK" = "Not Now";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

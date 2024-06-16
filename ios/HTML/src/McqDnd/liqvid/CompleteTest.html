@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+
+<!-- 
+/*Copyright (C) 2014 Liqvid E-Learning Services Pvt Ltd - All Rights Reserved
+
+ * This code is civered under all applicable Non Disclosure Agreements
+ * The right to modify  or distribute this code is NOT GRANTED to anyone – except granted by 
+* a separate agreement with Liqvid E-Learning Services that explicitly states the grant conditions. 
+ */
+
+-->
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Interview Prep</title>
+        <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+        <link rel="stylesheet" href="../assets/css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="../assets/css/animate.css" type="text/css" />
+        <link rel="stylesheet" href="../assets/css/font-awesome.min.css" type="text/css" />
+        <link rel="stylesheet" href="./CompleteTest.css" type="text/css" />        
+       <script>
+        function initialise()
+        {
+            getValuesFromArguments();
+        }
+        function showPopup(name,rightScore,totalrightScore, starScore)
+            {
+                document.getElementById("nameId").innerHTML = name;
+                document.getElementById("rightScoreID").innerHTML = rightScore+'/'+totalrightScore;
+                document.getElementById("starScoreID").innerHTML = starScore;
+                document.getElementById("modal").style.display = "block";
+                document.getElementById("pillowID").style.display = "block";
+                document.getElementById("fadeout").style.display = "block";
+                
+            }
+            function closePopup()
+            {
+
+                document.getElementById("modal").style.display = "none";
+                document.getElementById("pillowID").style.display = "none";
+                document.getElementById("fadeout").style.display = "none";
+                
+            } 
+           
+            function getValuesFromArguments() {
+                var query = window.location.search.substring(1);
+                var vars = query.split("&");
+                var name,rightScore,totalScore,starScore;
+                for (var i=0;i<vars.length;i++) {
+                    var pair = vars[i].split("=");
+                    if (pair[0] == "lname") {
+                        name = pair[1];
+                    }
+                    if (pair[0] == "score") {
+                        score = pair[1];
+                    }
+                    if (pair[0] == "max") {
+                        totalScore = pair[1];
+                    }
+                    if (pair[0] == "stars") {
+                        starScore = pair[1];
+                    }
+                }
+                showPopup(name,score,totalScore,starScore);
+            }
+       </script>
+       <div id="modal" class="modalWindow"> 
+          <h1 class="ribbon">
+                <strong id = "nameId" class="ribbon-content"></strong>
+            </h1>
+           
+            <div class="col-lg-12 col-xs-12">
+                <div class="col-lg-1 col-xs-1 col-sm-1 fa fa-check fa-3x" style="z-index: 1; color: green"></div>
+                <div id="rightScoreID" class="col-lg-11 col-xs-11 col-sm-11 textBox text-center"> </div>
+               <br>
+            </div>
+            <div class="col-lg-12 col-xs-12">
+                <div class="col-lg-1 col-xs-1 col-sm-1 fa fa-star fa-3x" style="z-index: 1; color: yellow"></div>
+               <div id="starScoreID" class="col-lg-11 col-xs-11 col-sm-11 textBox text-center"> </div>
+            </div>
+            <div class="col-lg-12 col-xs-12" style=" margin-left: 20%; margin-top: 35%">
+               <div class="col-lg-9 col-xs-9 col-sm-9 "> </div>
+               <div class="col-lg-3 col-xs-3 col-sm-3 imageHome"> </div>
+
+               <div class="col-lg-5 col-xs-5 col-sm-5"> </div>
+               <div class="col-lg-3 col-xs-3 col-sm-3 imageRefresh" style="margin-top: 5%"> </div>
+               <div class="col-lg-4 col-xs-4 col-sm-4 imagePlay"> </div>
+            </div>
+           <div class="col-lg-12 col-xs-12">
+               <div class="col-lg-4 col-xs-4 col-sm-4"> </div>
+               <div class="col-lg-4 col-xs-4 col-sm-4">
+                   
+<!--                    <a id="facebookId" class="btn btn-s-xl btn-facebook" style="font-size: 18px;"><i class="fa fa-fw fa-facebook"></i></a>-->
+                
+               </div>
+               <div class="col-lg-4 col-xs-4 col-sm-4 "> </div>     
+           </div>
+            <div id="pillowID" class="imageWindow">
+               <div class="image"></div>
+            </div >
+        </div>
+       <div id="fadeout"></div>
+        
+    </head>
+    <body onload="initialise()">
+    </body>
+</html>
+        
+        
+        
+        
+        
+        
+        
+        
+     

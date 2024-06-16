@@ -1,0 +1,222 @@
+﻿/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 2, 2015, 10:49:39 AM
+    Author     : liqmac
+*/
+
+.modalWindow {
+    display: none; /* ensures it’s invisible until it’s called */
+    position: absolute; /* makes the div go into a position that’s absolute to the browser viewing area */
+    left: 15%; /* positions the div half way horizontally */
+    top: 15%; /* positions the div half way vertically */
+    padding: 10px; 
+    border: 2px solid white;
+    background-color:  #5ac1dc;
+    width: 70%;
+    height: 60%;
+    z-index: 100; /* makes the div the top layer, so it’ll lay on top of the other content */
+    border-radius: 20px;
+    box-shadow: 0 0 1em #888888;
+     
+}
+.imageWindow {
+    display: none; /* ensures it’s invisible until it’s called */
+    position: absolute; /* makes the div go into a position that’s absolute to the browser viewing area */
+    //left: 15%; /* positions the div half way horizontally */
+    //top: 15%; /* positions the div half way vertically */
+    //padding: 10px; 
+    //border: 2px solid white;
+    //background-color:  #5ac1dc;
+    width: 100%;
+    height: 100%;
+    z-index: 50; /* makes the div the top layer, so it’ll lay on top of the other content */
+    //border-radius: 20px;
+    //background-image: url('../images/sparky_happy.png');
+     
+}
+
+.image
+
+{ 
+     width: 64%;
+     position: absolute;
+    //height: 88%;
+    margin-left: -20%;
+    margin-top:25%;
+    z-index: 100;
+    background-image: url('../images/sparky_happy.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.ribbon {
+ font-size: 16px !important;
+ /* This ribbon is based on a 16px font side and a 24px vertical rhythm. I've used em's to position each element for scalability. If you want to use a different font size you may have to play with the position of the ribbon elements */
+
+ width: 70%;
+    
+ position: relative;
+ background: #ed5565;//#ba89b6;
+ color: #fff;
+ text-align: center;
+ padding: 1em 2em; /* Adjust to suit */
+ margin: 2em auto;// 3em; /* Based on 24px vertical rhythm. 48px bottom margin - normally 24 but the ribbon 'graphics' take up 24px themselves so we double it. */
+ margin-top: -40px;
+}
+.ribbon:before, .ribbon:after {
+ content: "";
+ position: absolute;
+ display: block;
+ bottom: -1em;
+ border: 1.5em solid #ff5d6e;//#986794; ////#ed5565;
+ z-index: -1;
+}
+.ribbon:before {
+ left: -2em;
+ border-right-width: 1.5em;
+ border-left-color: transparent;
+}
+.ribbon:after {
+ right: -2em;
+ border-left-width: 1.5em;
+ border-right-color: transparent;
+}
+.ribbon .ribbon-content:before, .ribbon .ribbon-content:after {
+ content: "";
+ position: absolute;
+ display: block;
+ border-style: solid;
+ border-color: #c24452 /*#804f7c*/ transparent transparent transparent;
+ bottom: -1em;
+}
+.ribbon .ribbon-content:before {
+ left: 0;
+ border-width: 1em 0 0 1em;
+}
+.ribbon .ribbon-content:after {
+ right: 0;
+ border-width: 1em 1em 0 0;
+}
+ .textBox
+ {   //margin-top: -6%;
+     padding-top: 5px;
+     //margin-left:40px;
+     background-color: black;
+     height: 30px;
+     width:60%;
+     border-radius: 15px;
+     color: white;
+     font-size: 15px;
+     font-weight:bold;
+ }
+ 
+                    
+ 
+ 
+ .imageHome_iPhone
+ {
+   background-image: url('../images/Home1_1.png');  
+   height:50px;
+   width: 2500%;
+   background-repeat: no-repeat;
+   z-index: 1;
+   margin-left: -40px;
+   margin-top: 10px;
+ }
+ .imagePlay_iPhone
+ {
+   background-image: url('../images/Aage_Jaye1_1.png'); 
+   height:65px;
+   width: 200%;
+   background-repeat: no-repeat;
+   margin-left: -27px;
+ }
+ .imageRefresh_iPhone
+ {
+   background-image: url('../images/referesh1_1.png'); 
+   height:50px;
+   width: 2500%;
+   background-repeat: no-repeat;
+   margin-left: -30px;
+   margin-top: 10px;
+ }
+ 
+ 
+ .imageHome
+ {
+/*   background-image: url('../images/Home1.png');  
+   height:100px;
+   background-repeat: no-repeat;
+   width: 120%;
+    //background-size: 100%;
+   
+   //padding-left: 20px;
+   //width: 50px;
+   z-index: 1;*/
+   
+background-image:   url('../images/Home1.png'); 
+height: 100px;
+background-repeat: no-repeat;
+width: 210%;
+margin-left: 5px;
+margin-top: 17px;
+   
+   
+   
+   
+ }
+ .imagePlay
+ {
+   background-image: url('../images/Aage_Jaye1.png'); 
+   height:130px;
+   background-repeat: no-repeat;
+   width: 150%;
+    margin-left: 10px;
+ }
+ .imageRefresh
+ {
+   
+background-image: url('../images/referesh1.png'); 
+height: 100px;
+width: 150%;
+background-repeat: no-repeat;//
+background-size: 100%;//
+width: 50px;
+margin-left: -46px;
+margin-top: 17px;  
+ }
+ 
+ 
+ 
+ .facebookArea
+ {
+   background-color: blue;  
+ }
+ 
+ .bgImage
+ {
+  background-image: url('../liqvid/bg1_1.png');
+  width :100%;
+  height: 100%;
+ }
+ 
+ @media(min-width:300px) 
+{
+    .controll
+    {
+      height: 50px; 
+      margin-left: 43%;
+    }
+}
+ @media(min-width:450px) 
+{
+    .controll
+    {
+      height: 50px; 
+      margin-left: 37%;
+    }
+}

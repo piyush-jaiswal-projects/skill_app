@@ -1,0 +1,305 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 16 Oct, 2014, 12:36:46 PM
+    Author     : liqmac
+*/
+/*.body{
+  background-color: #242e3a;  
+}*/
+html{
+    background-color: transparent;
+}
+body {
+    
+    max-height: 100%;
+    max-width: 100%;
+    background-color: transparent ;
+    //margin-bottom: 20px;
+    
+}
+
+
+.divImage{
+     //background-image: url('../images/logo_bg_1.jpg');
+    //background-repeat: no-repeat;
+    //background-size: 100%;
+    background-color: #e5e5e5 ;//#edebe1 ;//#f0f2f5;
+/*    background: -webkit-linear-gradient(white,#ffb189);
+    background: linear-gradient(white,#ffb189);*/
+   // background: repeating-radial-gradient(black, black 5px, white 5px, white 10px);
+   margin-top:-20px;
+}
+
+#resultSpan {
+    color : #ff0000;
+}
+#fadeout {
+    display: none;  /* ensures itâ€™s invisible until itâ€™s called */
+    position: absolute;  /* makes the div go into a position thatâ€™s absolute to the browser viewing area */
+    left: 0%; /* makes the div span all the way across the viewing area */
+    top: 0%; /* makes the div span all the way across the viewing area */
+    background-color: black;
+    -moz-opacity: 0.7; /* makes the div transparent, so you have a cool overlay effect */
+    opacity: .70;
+    filter: alpha(opacity=70);
+    width: 100%;
+    height: 100%;
+    z-index: 10; /* makes the div the second most top layer, so itâ€™ll lay on top of everything else EXCEPT for divs with a higher z-index (meaning the #overlay ruleset) */
+}
+.modalWindow {
+    display: none; /* ensures itâ€™s invisible until itâ€™s called */
+    position: absolute; /* makes the div go into a position thatâ€™s absolute to the browser viewing area */
+    //left: 15%; /* positions the div half way horizontally */
+    //top: 40%; /* positions the div half way vertically */
+    //padding: 10px; 
+    //border: 2px solid black;
+    background-color:white;
+    box-shadow: 0 0 1em #888888;
+    
+    //width:60%;
+    //height: 260px;
+    z-index: 10; /* makes the div the top layer, so itâ€™ll lay on top of the other content */
+}
+
+.forgotWindow {
+    display: none; /* ensures itâ€™s invisible until itâ€™s called */
+    position: absolute; /* makes the div go into a position thatâ€™s absolute to the browser viewing area */
+    //left: 15%; /* positions the div half way horizontally */
+    //top: 40%; /* positions the div half way vertically */
+    //padding: 10px; 
+    //border: 2px solid black;
+    background-color:white;
+    box-shadow: 0 0 1em #888888;
+    //width:60%;
+    //height: 260px;
+    z-index: 10; /* makes the div the top layer, so itâ€™ll lay on top of the other content */
+}
+
+.registrationWindow
+{
+    display: block; /* ensures itâ€™s invisible until itâ€™s called */
+    position: absolute; /* makes the div go into a position thatâ€™s absolute to the browser viewing area */
+    //left: 15%; /* positions the div half way horizontally */
+    //top: 40%; /* positions the div half way vertically */
+    //padding: 10px; 
+    //border: 2px solid black;
+    background-color:white;
+    box-shadow: 0 0 1em #888888;
+    //width:60%;
+    //height: 260px;
+    z-index: 10; /* makes the div the top layer, so itâ€™ll lay on top of the other content */
+}
+
+
+
+/*.modalWindow {
+    display: none;  ensures it’s invisible until it’s called 
+    position: absolute;  makes the div go into a position that’s absolute to the browser viewing area 
+    left: 5%;  positions the div half way horizontally 
+    top: 30%;  positions the div half way vertically 
+    padding: 10px; 
+    border: 2px solid black;
+    background-color: white;
+    width: 90%;
+    height: 240px;
+    z-index: 100;  makes the div the top layer, so it’ll lay on top of the other content 
+}*/
+.progressModel{
+    display: none; /* ensures itâ€™s invisible until itâ€™s called */
+    position: absolute; /* makes the div go into a position thatâ€™s absolute to the browser viewing area */
+    //left: 15%; /* positions the div half way horizontally */
+    //top: 40%; /* positions the div half way vertically */
+    //padding: 10px; 
+    //border: 2px solid black;
+    background-color:black;
+    //width:150px;
+    //height: 80px;
+    z-index: 100; /* makes the div the top layer, so itâ€™ll lay on top of the other content */
+}
+
+.loadingModel{
+    display: none; /* ensures itâ€™s invisible until itâ€™s called */
+    position: absolute; /* makes the div go into a position thatâ€™s absolute to the browser viewing area */
+    left: 20%;
+    background-color:white;
+    top: 40%;
+    width:60%;
+    height: 100px;
+    z-index: 100;
+    -moz-border-radius: 10px / 10px;
+   border-radius: 10px / 10px;
+}
+
+.alertIDModel{
+    display: none; /* ensures itâ€™s invisible until itâ€™s called */
+    position: absolute; /* makes the div go into a position thatâ€™s absolute to the browser viewing area */
+    
+    background-color:white;
+    
+    z-index: 100;
+    -moz-border-radius: 10px / 10px;
+   border-radius: 10px / 10px;
+}
+.divElement{
+    height:40px;
+    width:40px;
+    
+    
+   
+}
+
+.submitCSS
+{
+     background-color: #5dc9e6;
+     color:white;
+     width: 160px;
+     -moz-border-radius: 10px / 10px;
+   border-radius: 10px / 10px;
+  // font-size: 18px;
+     //font-size: 15px;
+}
+
+/*.submitCSS
+{
+     background-color: #5dc9e6;
+     color:white;
+     width: 160px;
+     -moz-border-radius: 10px / 10px;
+   border-radius: 10px / 10px;
+  // font-size: 18px;
+     //font-size: 15px;
+}*/
+
+.logBackCSS
+{
+     background-color: #cccccc;
+     color:white;
+     width: 160px;
+     -moz-border-radius: 10px / 10px;
+   border-radius: 10px / 10px;
+}
+.signInCSS
+{
+     background-color: #5dc9e6;
+     color:white;
+     //font-size: 18px;
+}
+.signInCSS:hover{
+    background-color: #44acc8;
+    color:white;
+    //font-size: 18px;
+ }
+             
+.signInCSS:active{
+
+    background-color:#44acc8;
+    color:white;
+        //font-size: 18px;
+  } 
+.clearable{
+  background: #fff url(data:image/gif;base64,R0lGODlhBwAHAIAAAP///5KSkiH5BAAAAAAALAAAAAAHAAcAAAIMTICmsGrIXnLxuDMLADs=) no-repeat right -10px center;
+  //border: 1px solid #999;
+  padding: 3px 18px 3px 4px; /* Use the same right padding (18) in jQ! */
+  border-radius: 8px;
+  transition: background 0.4s;
+  height:30px;
+  width:20px;
+  
+  
+  
+}
+.clearable.x  { background-position: right 15px center;
+z-index: 120;}
+.clearable.onX{ cursor: pointer; }
+
+
+
+.redfamily {
+	color: gray;	
+}
+.search-box,.close-icon,.search-wrapper {
+	position: relative;
+        padding:5px;
+        
+}
+.search-wrapper {
+	width: 500px;
+	margin: auto;
+	margin-top: 50px;
+}
+.search-box {
+	width: 90%;
+	border: 1px solid #ccc;
+  outline: 0;
+        height:30px;
+  border-radius: 2px;
+}
+.search-box:focus {
+	box-shadow: 0 0 15px 5px #b0e0ee;
+	border: 2px solid #bebede;
+}
+.close-icon {
+	border:1px solid transparent;
+	background-color: transparent;
+	display: inline-block;
+	vertical-align: middle;
+  outline: 0;
+  cursor: pointer;
+}
+.close-icon:after {
+	content: "X";
+	display: block;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	background-color: #e8e8e8;
+	//z-index:1;
+	right: 20px;
+	//top: 0;
+	bottom: 0;
+	//margin: auto;
+	//padding: 1px;
+	border-radius: 50%;
+	text-align: center;
+	color: white;
+	font-weight: normal;
+	font-size: 10px;
+	box-shadow: 0 0 2px #e8e8e8;
+	cursor: pointer;
+}
+.search-box:not(:valid) ~ .close-icon {
+	display: none;
+}
+
+.terms {
+  //color:black;
+  //font-size: 15px;
+}
+
+.terms em {
+  font-weight:bold;
+  font-family: "Helvetica";
+  font-style: normal;
+  //font-size: 16px;
+  color: #5dc9e6;
+  text-decoration: underline;
+}
+
+
+.condition
+{
+    display: none; /* ensures itâ€™s invisible until itâ€™s called */
+    position: absolute; /* makes the div go into a position thatâ€™s absolute to the browser viewing area */
+    left: 2%; /* positions the div half way horizontally */
+    top: 0%; /* positions the div half way vertically */
+    //padding: 10px; 
+    //border: 2px solid black;
+    background-color:white;
+    width:96%;
+    height: 96%;
+    z-index: 1000000; /* makes the div the top layer, so itâ€™ll lay on top of the other content */  
+}

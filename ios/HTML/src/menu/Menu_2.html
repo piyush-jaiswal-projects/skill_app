@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" class="app">
+    <head >
+        <script type="text/javascript">
+            function getParam(name)
+            {
+                name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+                var regexS = "[\\?&]" + name + "=([^&#]*)";
+                var regex = new RegExp(regexS);
+
+                var results = regex.exec(window.location.href);
+                if (results === null)
+                    return "";
+                else
+                    return results[1];
+
+
+            }
+        </script>
+        <script src="../js/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="../js/bootstrap.js"></script>
+        <!-- App -->
+        <script src="../js/app.js"></script>
+        <script src="../js/app.plugin.js"></script>
+        <script src="../js/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="../js/sortable/jquery.sortable.js"></script>
+        <script src="../js/nestable/jquery.nestable.js"></script>
+        <script src="../js/nestable/demo.js"></script>
+        <meta charset="utf-8" />
+        <title>InterView Prep</title>
+        <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+        <meta name="viewport"  content="width=device-width, nitial-scale=1, maximum-scale=1" />
+        <link rel="stylesheet" href="../css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="../css/animate.css" type="text/css" />
+        <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css" />
+        <link rel="stylesheet" href="../css/font.css" type="text/css" />
+        <link rel="stylesheet" href="../js/nestable/nestable.css" type="text/css" />
+        <link rel="stylesheet" href="../css/app.css" type="text/css" />
+        <link rel="stylesheet" href="../css/Menu_2.css" type="text/css" />
+        <!--[if lt IE 9]>
+         <script src="js/ie/html5shiv.js"></script>
+         <script src="js/ie/respond.min.js"></script>
+         <script src="js/ie/excanvas.js"></script>
+         <![endif]-->
+        <script language="javascript">
+//    ;(function($, window, document, undefined)
+//        {
+            function initialise()
+            {
+                var msg = getParam("uid");
+//                  var uri_dec = decodeURIComponent(msg);
+//                  msg = uri_dec;
+                msg = "{\"pName\": \"MY PROFILE\",\"pId\": \"P01\",\"cName\": \"COURSE\",\"cId\": \"c01\",\"poName\": \"PROGRAM OVERVIEW\",\"poId\": \"Po01\"}";
+                var regex = new RegExp('%22', 'g');
+                var regex1 = new RegExp('%20', 'g');
+                msg = msg.replace(regex, '"');
+                msg = msg.replace(regex1, ' ');
+                var Data = JSON.parse(msg);
+                craeteMenuUI(Data);
+            }
+
+
+//        initialise();
+//    })(window.jQuery || window.Zepto, window, document);
+
+
+
+            function craeteMenuUI(data)
+            {
+                if (data !== null)
+                {
+
+
+
+                    var Containerouter = document.createElement("div");
+                    Containerouter.setAttribute("style", "height:" + $(document).height() + "px;");
+                    document.getElementsByTagName("body")[0].appendChild(Containerouter);
+
+                    var Container = document.createElement("div");
+                    Container.setAttribute("class", "imgbackGround scrollable");
+                    Containerouter.appendChild(Container);
+
+
+  
+//        var bckGround = document.createElement("img");
+//        bckGround.setAttribute("class","imgbackGround");
+//        bckGround.setAttribute("src","../images/bg.jpg");
+//        Container.appendChild(bckGround);
+                    
+                    var hidden = document.createElement("div");
+                    hidden.setAttribute("class", "hideDiv");
+                    Container.appendChild(hidden);
+                    
+                    
+                    var profilehidden = document.createElement("div");
+                    profilehidden.setAttribute("class", "hiddendiv ");
+                    Container.appendChild(profilehidden);
+
+
+                    var profile = document.createElement("div");
+                    profile.setAttribute("class", "profile menuitem");
+                    profile.setAttribute("onclick", "javascript:clickMyProfile()");
+                    Container.appendChild(profile);
+
+
+                    var padDiv = document.createElement("div");
+                    padDiv.setAttribute("class", "paddigDiv");
+                    profile.appendChild(padDiv);
+
+                    var profileimg = document.createElement("div");
+                    
+                    profileimg.setAttribute("style", "color:white;");
+                    profile.appendChild(profileimg);
+
+
+                    var profiletext = document.createElement("div");
+                    
+                    profiletext.innerHTML = "My Profile";
+                    
+                    //profiletext.setAttribute("style","font-size:30px;color:white;padding-top:17%;font-family:HelveticaNeueLTCom;");
+                    profile.appendChild(profiletext);
+
+
+
+
+//        var bckGround = document.createElement("img");
+//        bckGround.setAttribute("class","imgbackGround");
+//        bckGround.setAttribute("src","../images/bg.jpg");
+//        Container.appendChild(bckGround);
+
+
+                    var coursehidden = document.createElement("div");
+                    coursehidden.setAttribute("class", "hiddendiv ");
+                    Container.appendChild(coursehidden);
+
+                    var course = document.createElement("div");
+                    course.setAttribute("class", "course menuitem");
+                    course.setAttribute("onclick", "javascript:clickCourse()");
+                    Container.appendChild(course);
+
+                    var padDiv = document.createElement("div");
+                    padDiv.setAttribute("class", "paddigDiv");
+                    course.appendChild(padDiv);
+
+                    var courseimg = document.createElement("div");
+                    
+                    courseimg.setAttribute("style", "color:#353535;");
+                    course.appendChild(courseimg);
+
+
+                    var coursetext = document.createElement("div");
+                    
+                    coursetext.innerHTML = "Course";
+                    
+                    course.appendChild(coursetext);
+
+
+
+//        var bckGround = document.createElement("img");
+//        bckGround.setAttribute("class","imgbackGround");
+//        bckGround.setAttribute("src","../images/bg.jpg");
+//        Container.appendChild(bckGround);
+
+                    var POverviewhidden = document.createElement("div");
+                    POverviewhidden.setAttribute("class", "hiddendiv");
+                    Container.appendChild(POverviewhidden);
+
+                    var POverview = document.createElement("div");
+                    POverview.setAttribute("onclick", "javascript:clickProgramOverview()");
+                    POverview.setAttribute("class", "programOverview menuitem");
+
+                    Container.appendChild(POverview);
+
+
+                    var padDiv = document.createElement("div");
+                    padDiv.setAttribute("class", "paddigDiv");
+                    POverview.appendChild(padDiv);
+
+
+                    var POverviewimg = document.createElement("div");
+                    
+                    POverviewimg.setAttribute("style", "color:white;");
+                    POverview.appendChild(POverviewimg);
+
+
+                    var POverviewtext = document.createElement("div");
+                    
+                    POverviewtext.innerHTML = "Program Overview";
+                    //profiletext.setAttribute("style","padding-top:13%");
+                    POverviewtext.setAttribute("style", "color:white;");
+                    POverview.appendChild(POverviewtext);
+
+                    
+                    var devWidth = $(document).width();
+              
+                       if( devWidth <= 400)
+                       {
+                        profileimg.setAttribute("class", "fa fa-user col-lg-3 col-xs-3 col-sm-3 iconimgPhone text-right");
+                        profiletext.setAttribute("class", "col-lg-9 col-xs-9 col-sm-9 iconTextPhone");
+                        courseimg.setAttribute("class", "fa fa-book col-lg-3 col-xs-3 col-sm-3 iconimgPhone text-right");
+                        coursetext.setAttribute("class", "col-lg-9 col-xs-9 col-sm-9 iconText");
+                        POverviewimg.setAttribute("class", "fa fa-search col-lg-3 col-xs-3 col-sm-3 iconimgPhone text-right");
+                        POverviewtext.setAttribute("class", "col-lg-9 col-xs-9 col-sm-9 iconTextPhone");
+
+                       }else
+                       {
+                        profileimg.setAttribute("class", "fa fa-user col-lg-3 col-xs-3 col-sm-3 iconimgTab text-right");
+                        profiletext.setAttribute("class", "col-lg-9 col-xs-9 col-sm-9 iconTextTab");
+                        courseimg.setAttribute("class", "fa fa-book col-lg-3 col-xs-3 col-sm-3 iconimgTab text-right");
+                        coursetext.setAttribute("class", "col-lg-9 col-xs-9 col-sm-9 iconTextTab");
+                        POverviewimg.setAttribute("class", "fa fa-search col-lg-3 col-xs-3 col-sm-3 iconimgTab text-right");
+                        POverviewtext.setAttribute("class", "col-lg-9 col-xs-9 col-sm-9 iconTextTab");
+                       }
+
+
+
+                    var last = document.createElement("div");
+                    last.setAttribute("class", "hiddendiv");
+                    last.setAttribute("style", "height:15%;");
+                    //Container.appendChild(last);
+
+                }
+            }
+            function handleLearningItemClick(v, v1)
+            {
+                // dbgAlert("handleLearningClick called"+v+v1);
+                showAndroidToast(v, v1);
+            }
+
+            function showAndroidToast(v, v1) {
+                var obj = new Object();
+                obj.uid = v;
+                obj.type = v1;
+                var jsonString = JSON.stringify(obj);
+                //  dbgAlert("handleLearningClick called final"+jsonString);
+                JSInterface.setMCatLogResp(jsonString);
+            }
+
+            function openAndroidDialog() {
+                JSInterface.openAndroidDialog();
+            }
+
+            function callFromActivity(msg) {
+                makelist1(msg);
+                document.getElementById("mytext").innerHTML = msg;
+            }
+
+
+
+            function clickMyProfile()
+            {
+                var obj = new Object();
+                obj.uid = -1;
+                obj.type = 13;
+                var jsonString = JSON.stringify(obj);
+                //  dbgAlert("handleLearningClick called final"+jsonString);
+                JSInterface.setMenuResp(jsonString);
+
+
+            }
+
+            function clickCourse()
+            {
+                //alert("Inside clickCourse()")  ; 
+                var obj = new Object();
+                obj.uid = -1;
+                obj.type = 14;
+                var jsonString = JSON.stringify(obj);
+                //  dbgAlert("handleLearningClick called final"+jsonString);
+                JSInterface.setMenuResp(jsonString);
+
+
+            }
+
+            function clickProgramOverview()
+            {
+
+                var obj = new Object();
+                obj.uid = -1;
+                obj.type = 15;
+                var jsonString = JSON.stringify(obj);
+                //  dbgAlert("handleLearningClick called final"+jsonString);
+                JSInterface.setMenuResp(jsonString);
+
+
+            }
+            function handleLearningItemClick(varId, varType)
+            {
+                alert("Testing");
+            }
+
+            function handleLearningItemClick(data)
+            {
+                alert('hello');
+            }
+
+
+        </script>
+    </head>
+
+    <body style="overflow: hidden" onload = "initialise()">
+
+
+        <span id=dbgsp></span>
+
+    </body>
+</html>
+
+
+
+
+
+
+
+

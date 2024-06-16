@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" class="app">
+    <head >
+        <script type="text/javascript">
+            function getParam(name)
+            {
+                name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+                var regexS = "[\\?&]" + name + "=([^&#]*)";
+                var regex = new RegExp(regexS);
+
+                var results = regex.exec(window.location.href);
+                if (results === null)
+                    return "";
+                else
+                    return results[1];
+
+
+            }
+
+
+        </script>
+
+
+        <script src="../js/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="../js/bootstrap.js"></script>
+        <!-- App -->
+        <script src="../js/app.js"></script>
+        <script src="../js/app.plugin.js"></script>
+        <script src="../js/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="../js/sortable/jquery.sortable.js"></script>
+        <script src="../js/nestable/jquery.nestable.js"></script>
+        <script src="../js/nestable/demo.js"></script>
+
+        <meta charset="utf-8" />
+        <title>InterView Prep</title>
+        <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+        <meta name="viewport"  content="width=device-width, maximum-scale=1" />
+        <link rel="stylesheet" href="../css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="../css/animate.css" type="text/css" />
+        <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css" />
+        <link rel="stylesheet" href="../css/font.css" type="text/css" />
+        <link rel="stylesheet" href="../js/nestable/nestable.css" type="text/css" />
+        <link rel="stylesheet" href="../css/app.css" type="text/css" />
+        <link rel="stylesheet" href="../css/HonorCode.css" type="text/css" />
+
+        <!--[if lt IE 9]>
+         <script src="js/ie/html5shiv.js"></script>
+         <script src="js/ie/respond.min.js"></script>
+         <script src="js/ie/excanvas.js"></script>
+         <![endif]-->
+
+
+
+
+        <script language="javascript">
+
+            window.onerror = function (err) {
+                //log('window.onerror: ' + err)
+            }
+
+            function connectWebViewJavascriptBridge(callback) {
+                if (window.WebViewJavascriptBridge) {
+                    callback(WebViewJavascriptBridge)
+                } else {
+                    document.addEventListener('WebViewJavascriptBridgeReady', function () {
+                        callback(WebViewJavascriptBridge)
+                    }, false)
+                }
+            }
+
+            connectWebViewJavascriptBridge(function (bridge) {
+                var uniqueId = 1
+                var Data;
+                var jsObject = new Object();
+                jsObject.type = "msg";
+                jsObject.data = 1;
+                var dataval = JSON.stringify(jsObject);
+                bridge.send(dataval, function (responseData) {
+                    messageObj = JSON.parse(responseData);
+                    loadMessage(messageObj);
+                })
+                function log(message, data) {
+                    var log = document.getElementById('log')
+                    var el = document.createElement('div')
+                    el.className = 'logLine'
+                    el.innerHTML = uniqueId++ + '. ' + message + ':<br/>' + JSON.stringify(data)
+                    if (log.children.length) {
+                        log.insertBefore(el, log.children[0])
+                    }
+                    else {
+                        log.appendChild(el)
+                    }
+                }
+                bridge.init(function (message, responseCallback) {
+
+                    if (message == "completeAudio")
+                    {
+                        resetbuttons();
+                    }
+                    //log('JS got a message', message)
+                    var data = {'Javascript Responds': 'Wee!'}
+                    //log('JS responding with', data)
+                    responseCallback(data)
+                })
+
+                bridge.registerHandler('testJavascriptHandler', function (data, responseCallback) {
+
+                    var responseData = {'Javascript Says': 'Right back atcha!'}
+
+                    responseCallback(responseData)
+                })
+                
+                document.getElementById('SkipId').onclick = function () {
+
+                    var jsComObject = new Object();
+                    jsComObject.type = "HonorCode";
+
+                    var obj = new Object();
+                    obj.uid = "honorid";
+                    obj.type = 0;
+                    jsComObject.data = obj;
+                    var data = JSON.stringify(jsComObject);
+
+                    //alert(data);
+                    bridge.send(data, function (responseData) {
+                        //alert(responseData);  
+                    })
+                    //JSInterface.setHonorResp(jsonString);
+                }
+
+
+                document.getElementById('IAgreeId').onclick = function () {
+
+                    var jsComObject = new Object();
+                    jsComObject.type = "HonorCode";
+
+                    var obj = new Object();
+                    obj.honorID = "honorid";
+                    obj.isDone = 1;
+                    jsComObject.data = obj;
+                    var data = JSON.stringify(jsComObject);
+                    //alert(data);
+                    bridge.send(data, function (responseData) {
+                        //alert(responseData);  
+                    })
+                    //  dbgAlert("handleLearningClick called final"+jsonString);
+                    //JSInterface.setHonorResp(jsonString);
+                }
+
+            })
+            var messageObj = null;
+//    ;(function($, window, document, undefined)
+//        {
+
+
+
+           function loadMessage(lMessageObj)
+           {
+               document.getElementById("honorCodeId").innerHTML = lMessageObj.HONOR_CODE;
+               document.getElementById("honorSignId").innerHTML = lMessageObj.HONOR_SIGN;
+               document.getElementById("IAgreeId").innerHTML = lMessageObj.HONOR_IAGREE;
+               document.getElementById("SkipId").innerHTML = lMessageObj.HONOR_SKIP;
+           }
+
+
+            function initialise()
+            {
+                HonorCodeUi();
+            }
+
+
+//        initialise();
+//    })(window.jQuery || window.Zepto, window, document);
+
+
+
+            function HonorCodeUi()
+            {
+
+                var Container = document.createElement("div");
+
+                document.getElementsByTagName("body")[0].appendChild(Container);
+                Container.setAttribute("class", "overallcontainer");
+                // alert($(document).height());
+                Container.setAttribute("style", "height:" + $(document).height() + "px;");
+
+
+
+                var headDiv = document.createElement("div");
+                headDiv.setAttribute("class", "HheaderDiv");
+                Container.appendChild(headDiv);
+
+                var headsub1Div = document.createElement("div");
+                headsub1Div.setAttribute("id", "honorSignId");
+                headsub1Div.setAttribute("class", "Hheadersub1Div text-center");
+                //headsub1Div.innerHTML = messageObj.HONOR_SIGN;
+                headDiv.appendChild(headsub1Div);
+
+                var headsub2Div = document.createElement("div");
+                headsub2Div.setAttribute("id", "honorCodeId");
+                headsub2Div.setAttribute("class", "Hheadersub2Div text-center");
+                //headsub2Div.innerHTML = messageObj.HONOR_CODE;
+                headDiv.appendChild(headsub2Div);
+
+
+
+                //  Middle 
+
+                var middleDiv = document.createElement("div");
+                middleDiv.setAttribute("class", "  HmiddleDiv scrollable");
+                middleDiv.setAttribute("id", "midDivId");
+                Container.appendChild(middleDiv);
+
+                var para1 = document.createElement("div");
+                para1.setAttribute("class", "quesText");
+                para1.setAttribute("style", "margin-top:10px;");
+                para1.innerHTML = "1. Please tell us your goals";
+                middleDiv.appendChild(para1);
+
+                var paraSubQues1 = document.createElement("div");
+                paraSubQues1.setAttribute("class", "quesSubText");
+                paraSubQues1.setAttribute("style", "padding-top:10px");
+                paraSubQues1.innerHTML = "How many of the concept videos do you intend to watch?";
+                middleDiv.appendChild(paraSubQues1);
+
+                var AnsDiv = document.createElement("div");
+                AnsDiv.setAttribute("class", "AnsSubText");
+                middleDiv.appendChild(AnsDiv);
+
+                var radioBtn = document.createElement("input");
+                radioBtn.setAttribute('type', 'radio');
+
+                AnsDiv.appendChild(radioBtn);
+                var element = document.createElement("label");
+                element.setAttribute("style", "padding-left:10px;");
+                element.innerHTML = "  All";
+                AnsDiv.appendChild(element);
+
+                var br = document.createElement("br");
+                AnsDiv.appendChild(br);
+
+                var radioBtn1 = document.createElement("input");
+                radioBtn1.setAttribute('type', 'radio');
+
+                AnsDiv.appendChild(radioBtn1);
+                var element1 = document.createElement("label");
+                element1.setAttribute("style", "padding-left:10px;");
+                element1.innerHTML = "  Half or more";
+                AnsDiv.appendChild(element1);
+
+                var br = document.createElement("br");
+                AnsDiv.appendChild(br);
+
+                var radioBtn2 = document.createElement("input");
+                radioBtn2.setAttribute('type', 'radio');
+                AnsDiv.appendChild(radioBtn2);
+
+                var element2 = document.createElement("label");
+                element2.setAttribute("style", "padding-left:10px;");
+                element2.innerHTML = "  Less than half";
+                AnsDiv.appendChild(element2);
+
+                var br = document.createElement("br");
+                AnsDiv.appendChild(br);
+
+                var radioBtn3 = document.createElement("input");
+
+                radioBtn3.setAttribute('type', 'radio');
+                AnsDiv.appendChild(radioBtn3);
+                var element3 = document.createElement("label");
+                element3.setAttribute("style", "padding-left:5px;padding-bottom:10px;");
+                element3.innerHTML = "  None";
+                AnsDiv.appendChild(element3);
+
+
+
+                var paraSubQues2 = document.createElement("div");
+                paraSubQues2.setAttribute("class", "quesSubText");
+                paraSubQues2.innerHTML = "How many of the activity and practice sessions do you intend to do?";
+                middleDiv.appendChild(paraSubQues2);
+
+                var AnsDiv = document.createElement("div");
+                AnsDiv.setAttribute("class", "AnsSubText");
+                middleDiv.appendChild(AnsDiv);
+
+                var radioBtn = document.createElement("input");
+                radioBtn.setAttribute('type', 'radio');
+
+
+                AnsDiv.appendChild(radioBtn);
+                var element = document.createElement("label");
+                element.setAttribute("style", "padding-left:10px;");
+                element.innerHTML = "  All";
+                AnsDiv.appendChild(element);
+
+                var br = document.createElement("br");
+                AnsDiv.appendChild(br);
+
+                var radioBtn1 = document.createElement("input");
+                radioBtn1.setAttribute('type', 'radio');
+
+                AnsDiv.appendChild(radioBtn1);
+                var element1 = document.createElement("label");
+                element1.setAttribute("style", "padding-left:10px;");
+                element1.innerHTML = "  Half or more";
+                AnsDiv.appendChild(element1);
+
+                var br = document.createElement("br");
+                AnsDiv.appendChild(br);
+
+                var radioBtn2 = document.createElement("input");
+                radioBtn2.setAttribute('type', 'radio');
+                AnsDiv.appendChild(radioBtn2);
+
+                var element2 = document.createElement("label");
+                element2.setAttribute("style", "padding-left:10px;");
+                element2.innerHTML = "  Less than half";
+                AnsDiv.appendChild(element2);
+
+                var br = document.createElement("br");
+                AnsDiv.appendChild(br);
+
+                var radioBtn3 = document.createElement("input");
+
+                radioBtn3.setAttribute('type', 'radio');
+                AnsDiv.appendChild(radioBtn3);
+                var element3 = document.createElement("label");
+                element3.setAttribute("style", "padding-left:5px;padding-bottom:10px");
+                element3.innerHTML = "  None";
+                AnsDiv.appendChild(element3);
+
+
+
+
+                var para2 = document.createElement("div");
+                para2.setAttribute("class", "quesText");
+                para2.innerHTML = "2.  Sign the English Edge Honor Code";
+                middleDiv.appendChild(para2);
+
+                var para2Sub = document.createElement("p");
+                para2Sub.setAttribute("style", "padding-top:10px");
+                para2Sub.innerHTML = "All users accessing the course must agree to abide by the following code of conduct:";
+                middleDiv.appendChild(para2Sub);
+
+                para2Sub.setAttribute("class", "quesSubText");
+
+                var para2Sub1 = document.createElement("p");
+                para2Sub1.innerHTML = "1)	I will be the only one having access to this course(s).";
+                para2Sub1.setAttribute("class", "AnsSubText");
+                middleDiv.appendChild(para2Sub1);
+
+                var para2Sub2 = document.createElement("p");
+                para2Sub2.innerHTML = "2)	I will not share access to this course(s) with anyone else including friends, colleagues, classmates etc.";
+                para2Sub2.setAttribute("class", "AnsSubText");
+                middleDiv.appendChild(para2Sub2);
+
+                var para2Sub3 = document.createElement("p");
+                para2Sub3.innerHTML = "3)	I will not copy/make copies of this course(s) for any use whatsoever.";
+                para2Sub3.setAttribute("class", "AnsSubText");
+                middleDiv.appendChild(para2Sub3);
+
+                var para2Sub4 = document.createElement("p");
+                para2Sub4.innerHTML = "4)	I will not engage in any other activity(s) that will dishonestly provide user access to someone else in any form.";
+                para2Sub4.setAttribute("class", "AnsSubText");
+                middleDiv.appendChild(para2Sub4);
+
+
+
+
+
+
+
+
+
+                // Bottom
+
+                var bottomDiv = document.createElement("div");
+                bottomDiv.setAttribute("class", " HbottomDiv");
+                Container.appendChild(bottomDiv);
+
+                var bottomborder = document.createElement("div");
+                bottomborder.setAttribute("style", "background:#f2f2f2;height:1px;");
+                bottomDiv.appendChild(bottomborder);
+
+                var devWidth = $(document).width();
+                var bottominner = document.createElement("div");
+
+
+                if ($(document).height() == 460 && $(document).width() == 320)
+                {
+                    document.getElementById("midDivId").style.height = "73%";
+                    document.getElementById("midDivId").style.paddingTop = "10px;";
+                    var bottominner1 = document.createElement("div");
+                    bottominner1.setAttribute("class", "col-lg-3 col-xs-3 col-sm-3  text-center");
+                    //bottominner1.setAttribute("style", "padding-top:10px;");
+                    bottomDiv.appendChild(bottominner1);
+
+                    bottominner.setAttribute("style", "padding-top:5px;");
+                    bottominner.setAttribute("class", "col-lg-9 col-xs-9 col-sm-9  text-center");
+                    bottomDiv.appendChild(bottominner);
+                }
+                else if ($(document).height() == 548 && $(document).width() == 320)
+                {
+                    document.getElementById("midDivId").style.height = "75%";
+                    document.getElementById("midDivId").style.paddingTop = "10px;";
+
+                    var bottominner1 = document.createElement("div");
+                    bottominner1.setAttribute("class", "col-lg-3 col-xs-3 col-sm-3  text-center");
+                    //bottominner1.setAttribute("style", "padding-top:10px;");
+                    bottomDiv.appendChild(bottominner1);
+
+                    bottominner.setAttribute("style", "padding-top:5px;");
+                    bottominner.setAttribute("class", "col-lg-9 col-xs-9 col-sm-9  text-center");
+                    bottomDiv.appendChild(bottominner);
+                }
+                else if ($(document).height() == 647 && $(document).width() == 375)
+                {
+                    document.getElementById("midDivId").style.height = "75%";
+                    document.getElementById("midDivId").style.paddingTop = "10px;";
+
+                    var bottominner1 = document.createElement("div");
+                    bottominner1.setAttribute("class", "col-lg-3 col-xs-3 col-sm-3  text-center");
+                    //bottominner1.setAttribute("style", "padding-top:10px;");
+                    bottomDiv.appendChild(bottominner1);
+
+                    bottominner.setAttribute("style", "padding-top:5px;");
+                    bottominner.setAttribute("class", "col-lg-9 col-xs-9 col-sm-9  text-center");
+                    bottomDiv.appendChild(bottominner);
+                }
+                else if ($(document).height() == 716 && $(document).width() == 414)
+                {
+                    document.getElementById("midDivId").style.height = "75%";
+                    document.getElementById("midDivId").style.paddingTop = "10px;";
+
+                    var bottominner1 = document.createElement("div");
+                    bottominner1.setAttribute("class", "col-lg-3 col-xs-3 col-sm-3  text-center");
+                    //bottominner1.setAttribute("style", "padding-top:10px;");
+                    bottomDiv.appendChild(bottominner1);
+
+                    bottominner.setAttribute("style", "padding-top:5px;");
+                    bottominner.setAttribute("class", "col-lg-9 col-xs-9 col-sm-9  text-center");
+                    bottomDiv.appendChild(bottominner);
+                }
+                else if ($(document).height() == 1004 && $(document).width() == 768)
+                {
+                    document.getElementById("midDivId").style.height = "82%";
+                    document.getElementById("midDivId").style.paddingTop = "10px;";
+                    var bottominner1 = document.createElement("div");
+                    bottominner1.setAttribute("class", "col-lg-7 col-xs-7 col-sm-7  text-center");
+                    //bottominner1.setAttribute("style", "padding-top:10px;");
+                    bottomDiv.appendChild(bottominner1);
+
+                    bottominner.setAttribute("style", "padding-top:30px;");
+                    bottominner.setAttribute("class", "col-lg-5 col-xs-5 col-sm-5  text-center");
+                    bottomDiv.appendChild(bottominner);
+                }
+                else
+                {
+                    var bottominner1 = document.createElement("div");
+                    bottominner1.setAttribute("class", "col-lg-7 col-xs-7 col-sm-7  text-center");
+                    //bottominner1.setAttribute("style", "padding-top:10px;");
+                    bottomDiv.appendChild(bottominner1);
+
+                    bottominner.setAttribute("style", "padding-top:40px;");
+                    bottominner.setAttribute("class", "col-lg-5 col-xs-5 col-sm-5  text-center");
+                    bottomDiv.appendChild(bottominner);
+                }
+
+
+
+
+
+//               if( devWidth <= 400)
+//               {
+//                 
+//                var bottominner1 = document.createElement("div");
+//                 bottominner1.setAttribute("class", "col-lg-3 col-xs-3 col-sm-3  text-center");
+//                //bottominner1.setAttribute("style", "padding-top:10px;");
+//                bottomDiv.appendChild(bottominner1);
+//                
+//                bottominner.setAttribute("style", "padding-top:5px;");
+//                bottominner.setAttribute("class", "col-lg-9 col-xs-9 col-sm-9  text-center");
+//                bottomDiv.appendChild(bottominner);  
+//               }else
+//               {
+//                 
+//                
+//                var bottominner1 = document.createElement("div");
+//                 bottominner1.setAttribute("class", "col-lg-7 col-xs-7 col-sm-7  text-center");
+//                //bottominner1.setAttribute("style", "padding-top:10px;");
+//                bottomDiv.appendChild(bottominner1);
+//                
+//                bottominner.setAttribute("style", "padding-top:40px;");
+//                 bottominner.setAttribute("class", "col-lg-5 col-xs-5 col-sm-5  text-center");
+//                bottomDiv.appendChild(bottominner);
+//               }
+
+
+                var bottomsub2Div = document.createElement("div");
+                bottomsub2Div.setAttribute("class", "col-lg-6 col-xs-6 col-sm-6  text-center");
+
+                var bottomsub1Div = document.createElement("div");
+                bottomsub1Div.setAttribute("class", "col-lg-6 col-xs-6 col-sm-6 text-center");
+                // bottomsub1Div.setAttribute("style", "padding-left:44%;");
+
+                var Skip = document.createElement("div");
+                Skip.setAttribute("id","SkipId");
+                //Skip.innerHTML = messageObj.HONOR_SKIP;
+                Skip.setAttribute("class", "Hbottomsub1Div");
+                //Skip.setAttribute("id", "skipId");
+                //Skip.setAttribute("onclick", "javascript:clickOnCanel()");
+                bottomsub1Div.appendChild(Skip);
+                bottominner.appendChild(bottomsub1Div);
+
+
+
+                var IAgree = document.createElement("div");
+                //IAgree.setAttribute("id","IagreeId");
+                //IAgree.innerHTML = messageObj.HONOR_IAGREE;
+                IAgree.setAttribute("id", "IAgreeId");
+                IAgree.setAttribute("class", "Hbottomsub2Div");
+                //IAgree.setAttribute("onclick", "javascript:clickOnIAgree()");
+                bottomsub2Div.appendChild(IAgree);
+
+                bottominner.appendChild(bottomsub2Div);
+
+
+
+
+            }
+
+
+
+
+
+
+
+        </script>
+    </head>
+    <body style="overflow: hidden" onload = "initialise()">
+
+
+        <span id=dbgsp></span>
+
+    </body>
+</html>

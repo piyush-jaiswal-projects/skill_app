@@ -1,0 +1,101 @@
+<html lang="en" class="app js no-touch no-android chrome no-firefox no-iemobile no-ie no-ie10 no-ie11 no-ios js no-touch no-android chrome no-firefox no-iemobile no-ie no-ie10 no-ie11 no-ios"><head>
+  <meta charset="utf-8">
+  <title>Notebook | Web Application</title>
+  <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
+  <link rel="stylesheet" href="../../css/bootstrap.css" type="text/css">
+  <link rel="stylesheet" href="../../css/animate.css" type="text/css">
+  <link rel="stylesheet" href="../../css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="../../css/font.css" type="text/css">
+  
+  <link rel="stylesheet" href="../../css/app.css" type="text/css">
+  <link rel="stylesheet" href="../../css/plank.css" type="text/css">
+  <script src="../../js/plank.js"></script>
+  <!--[if lt IE 9]>
+    <script src="js/ie/html5shiv.js"></script>
+    <script src="js/ie/respond.min.js"></script>
+    <script src="js/ie/excanvas.js"></script>
+  <![endif]-->
+<style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}</style><style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}</style></head>
+<body style="" onload=loadWord()>
+  <section class="vbox">
+    
+    <section>
+      <section class="hbox stretch">
+        <!-- .aside -->
+        
+        <!-- /.aside -->
+        <section id="content">
+          <section class="vbox">
+            
+            <section class="scrollable wrapper">              
+              <div class="row">
+                
+                <div class="col-lg-4">
+                  <section class="panel panel-default">
+                    <div class="panel-body">
+                      <div class="clearfix text-center m-t">
+                        <div class="inline">
+                          
+                          <div class="h4 m-t m-b-xs question" id=dd></div>
+                        </div>                      
+                      </div>
+                    </div>
+                    <footer class="panel-footer bg-info text-center">
+                      <div class="row pull-out">
+                        <div class="col-xs-4">
+                          <div class="padder-v">
+                            <span id = "guessrem" class="m-b-xs h3 block text-white">8</span>
+                            <small class="text-muted">Guesses Remaining</small>
+                          </div>
+                        </div>
+                        <div class="col-xs-4 dk">
+                          <div class="padder-v">
+                            <span id="totwon" class="m-b-xs h3 block text-white">0</span>
+                            <small class="text-muted">Won</small>
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="padder-v">
+                            <span id=totplayed class="m-b-xs h3 block text-white">0</span>
+                            <small class="text-muted">Played</small>
+                          </div>
+                        </div>
+                      </div>
+                    </footer>
+                    <div class="panel-body">
+                      <div class="clearfix text-center m-t">
+                        <div class="inline">
+                          
+                          <div class="h4 m-t m-b-xs " id=kb></div>
+                          <div class="h4 m-t m-b-xs " id=startnew style="display:none"><a href="javascript:loadWord()">Start New Game</a></div></div>
+                        </div>                      
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+              
+            </section>
+          </section>
+          <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
+        </section>
+        
+      </section>
+    </section>
+      <div class = "col-lg-12 col-xs-12 col-sm-12">
+       <div class = "col-lg-8 col-xs-8 col-sm-8"></div>
+      <div onclick="submitScore(); " class = "col-lg-4 col-xs-4 col-sm-4 text-center" style = "color: white; background: #de5e00; font-size:21px; "> Submit Score</div>
+      </div>
+  </section>
+    
+  <script src="../../js/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="../../js/bootstrap.js"></script>
+  <!-- App -->
+  <script src="../../js/app.js"></script>
+  <script src="../../js/app.plugin.js"></script>
+  <script src="../../js/slimscroll/jquery.slimscroll.min.js"></script>
+  <script src="../../js/charts/easypiechart/jquery.easy-pie-chart.js"></script>
+<script src="../../js/charts/sparkline/jquery.sparkline.min.js"></script>
+</body></html>

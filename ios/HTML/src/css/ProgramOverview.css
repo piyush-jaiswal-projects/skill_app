@@ -1,0 +1,218 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 21 Jul, 2014, 8:35:31 PM
+    Author     : liqmac
+*/
+
+.HeaderTab
+{
+  font-size: 18px; 
+  font-weight: bold;
+  font-family: "Helvetica";
+  height:55px;
+  padding-top:5px;
+  background:#e8e8e8;
+  
+}
+.HeaderPhone
+{
+  font-size: 15px; 
+  font-weight: bold;
+  font-family: "Helvetica";
+  height:55px;
+  padding-top:5px;
+  background:#e8e8e8;
+  
+}
+.Header
+{
+  font-size: 18px; 
+  font-weight: bold;
+  font-family: "Helvetica";
+  height:55px;
+  padding-top:5px;
+  background:#e8e8e8;
+  
+}
+
+.HeadersubTab
+{
+  font-size: 23px; 
+  font-weight: bold;
+  font-family: "Helvetica";
+  background:#e8e8e8;
+  margin-top:-30px;
+  margin-bottom:20px;
+  
+}
+.HeadersubPhone
+{
+  font-size: 20px; 
+  font-weight: bold;
+  font-family: "Helvetica";
+  background:#e8e8e8;
+  margin-top:-35px;
+  margin-bottom:20px;
+  
+}
+.Headersub
+{
+  font-size: 18px;
+  font-family: "Helvetica";
+  font-weight: bold;
+  background:#e8e8e8;
+  
+}
+.contentData
+{
+  font-size: 15px; 
+  font-family: "Helvetica";
+}
+
+.contentDataBottom
+{
+  font-size: 15px; 
+  font-family: "Helvetica";
+  margin-top:80px;
+  
+  
+}
+
+.ModuleHeader
+{
+  height: 60px;
+  //background: #f2f2f2;
+  //padding-bottom: 100px;
+  
+}
+
+.whiteBackground
+{
+   background: white;
+   //margin-bottom:  20px;
+   
+  
+}
+
+.line1 {
+        width: 25px;
+        height: 1px;
+        border-top: 1px solid #c2c2c2;
+        -webkit-transform:
+            translateY(-20px)
+            translateX(5px)
+            rotate(0deg); 
+        position: absolute;
+        
+         
+    }
+  
+    
+    
+/*    .line1 { 
+        position: relative; width: 50px; height: 5px; 
+    } 
+    .line1:before, 
+   .line1:after { 
+        width: 50px;
+        height: 1px;
+        border-top: 1px solid #e8e8e8;
+        -webkit-transform:
+            translateY(-20px)
+            translateX(5px)
+            rotate(0deg); 
+        position: absolute;
+    }
+        
+   .line1:after { 
+        width: 10px; 
+        height: 10px; 
+        background: red; 
+        border-top: 1px solid #e8e8e8;
+        -moz-border-radius: 5px; 
+        -webkit-border-radius: 5px; 
+        border-radius: 5px;
+    }*/
+    
+    
+    
+    /*#infinity { position: relative; width: 212px; height: 100px; } #infinity:before, #infinity:after { content: ""; position: absolute; top: 0; left: 0; width: 60px; height: 60px; border: 20px solid red; -moz-border-radius: 50px 50px 0 50px; border-radius: 50px 50px 0 50px; -webkit-transform: rotate(-45deg); -moz-transform: rotate(-45deg); -ms-transform: rotate(-45deg); -o-transform: rotate(-45deg); transform: rotate(-45deg); } #infinity:after { left: auto; right: 0; -moz-border-radius: 50px 50px 50px 0; border-radius: 50px 50px 50px 0; -webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg); }*/
+.DGraph {
+    
+    
+    width: 0px; 
+    height: 0px; 
+    border-left: 220px solid transparent; 
+    border-top: 220px solid transparent; 
+    border-right: 220px solid #CCFFFF; 
+    border-bottom: 220px solid #CCFFFF; 
+    border-top-left-radius: 220px; 
+    border-top-right-radius: 220px; 
+    border-bottom-left-radius: 220px; 
+    border-bottom-right-radius: 220px;
+    -webkit-transform: rotate(-45deg);
+    margin-left: -210px;
+    //border: 1px solid #c2c2c2;
+/*    opacity:0.8;
+    filter:alpha(opacity=60);*/
+     
+}
+
+.tv { 
+    position: relative; 
+    width:400px;
+    //height: 10px; 
+    
+    //margin: 30px 15px; 
+    //background:background; 
+    border-radius: 50% / 10%; 
+    color: black; 
+    text-align: left; 
+    //text-indent: .1em; 
+    //border: 1px solid red;
+    margin-top: 5px;
+    opacity:0.8;
+    filter:alpha(opacity=60); 
+/*    background:background ;//#f2f2f2;//fff;
+    -webkit-border-radius: 3px;
+            border-radius: 3px;*/
+    
+    
+} 
+/*#tv:before 
+{ content: ''; 
+  position: absolute; 
+  top: 10%; 
+  bottom: 10%; 
+  right: -5%; 
+  left: -5%; 
+  background: inherit; 
+  border-radius: 5% / 50%; 
+  border-color: blue;
+}*/
+.Concept{
+   
+}
+.Activity{
+    
+}
+.Practice {
+    
+}
+
+
+.description {
+  color:black;
+}
+
+.description em {
+  font-weight:bold;
+  font-family: "Helvetica";
+  font-style: normal;
+  font-size: 13px;
+  color: #5dc9e6;
+}
